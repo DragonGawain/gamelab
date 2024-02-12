@@ -12,9 +12,10 @@ public class PlayerController : MonoBehaviour
     Rigidbody body;
 
     // movement
-    [SerializeField, Range(1,10)] float maxVelocity = 2;
-    [SerializeField, Range(1,10)] float acceleration = 5f;
+    [SerializeField, Range(1,10)] float maxVelocity = 5;
+    [SerializeField, Range(1,50)] float acceleration = 10;
     Vector3 desiredVelocity = new(0,0,0);
+    float diagonalRegulator = 1;
     // Start is called before the first frame update
     void Awake()
     {
@@ -31,20 +32,24 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (moveInput.x != 0 && moveInput.y != 0)
+            diagonalRegulator = 2;
+        else
+            diagonalRegulator = 1;
         // normalize input values
         if (moveInput.x < 0)
-            desiredVelocity.x = -1 * acceleration + body.velocity.x;
+            desiredVelocity.x = -1 * acceleration * Time.fixedDeltaTime / diagonalRegulator + body.velocity.x;
         else if (moveInput.x > 0)
-            desiredVelocity.x = 1 * acceleration + body.velocity.x;
+            desiredVelocity.x = 1 * acceleration * Time.fixedDeltaTime / diagonalRegulator + body.velocity.x;
         else
-            desiredVelocity.x = body.velocity.x;
+            desiredVelocity.x = 0;
 
         if (moveInput.y < 0)
-            desiredVelocity.z = -1 * acceleration + body.velocity.z;
+            desiredVelocity.z = -1 * acceleration * Time.fixedDeltaTime / diagonalRegulator + body.velocity.z;
         else if (moveInput.y > 0)
-            desiredVelocity.z = 1 * acceleration + body.velocity.z;
+            desiredVelocity.z = 1 * acceleration * Time.fixedDeltaTime / diagonalRegulator + body.velocity.z;
         else
-            desiredVelocity.z = body.velocity.z;
+            desiredVelocity.z = 0;
 
         // clamping
         desiredVelocity = Vector3.ClampMagnitude(desiredVelocity, maxVelocity);
