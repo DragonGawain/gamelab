@@ -16,12 +16,21 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Range(1,50)] float acceleration = 10;
     Vector3 desiredVelocity = new(0,0,0);
     float diagonalRegulator = 1;
+
+    // weapons
+    // I'm imagining a weapon system where we have a single abstract Weapon that everything inherits from? Might not be possible, but that'll be the current assumption
+
     // Start is called before the first frame update
     void Awake()
     {
         body = GetComponent<Rigidbody>();
+        // inputs - IMPORTANT: any time you subscribe an input action to a function, unsubscribe it in OnDestroy.
+        // Otherwise, when you reload the scene, the input will still be subscribed the function in the destroyed object, 
+        // and using the input will cause a NullObjectReference error and subsequently crash the game.
         inputs = new Inputs();
         inputs.Player.Enable();
+        inputs.Player.Fire.performed += shootWeapon;
+
     }
 
     // Update is called once per frame
@@ -56,12 +65,16 @@ public class PlayerController : MonoBehaviour
         
         // apply movements to rigidbody
         body.velocity = desiredVelocity;
+    }
 
+    void shootWeapon(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
+    {
+        Debug.Log("pew pew");
+    }
 
-            
+    void OnDestroy()
+    {
+        // unsubscribe inputs
+        inputs.Player.Fire.performed -= shootWeapon;
     }
 }
-
-
-
-// UnityEngine.InputSystem.InputAction.CallbackContext ctx
