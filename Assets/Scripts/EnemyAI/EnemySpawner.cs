@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.AI.Navigation;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -7,12 +8,14 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private Transform enemyPrefab;
 
     [Header("Spawn Locations")]
-    [SerializeField] private SpawnSlotCouple[] outsideSpawnSlotCouples;
-    [SerializeField] private Transform[] insideSpawnTransforms;
-    [SerializeField] private BedroomDoorSlot bedroomDoorSlot;
+    [SerializeField] private Transform[] outsideSpawnPointsArray;
+
+    [SerializeField] private SO_TargetManager soTargetManager;
 
 
     private List<Transform> spawnedEnemyList = new List<Transform>();
+
+    [SerializeField] private NavMeshSurface navmeshSurface;
 
     private enum SpawnLocation
     {
@@ -20,57 +23,50 @@ public class EnemySpawner : MonoBehaviour
         Inside
     }
 
-    [System.Serializable] private struct SpawnSlotCouple
+    private void Awake()
     {
-        public Transform spawnTransform;
-        public WallSlot slot;
+        soTargetManager.navmeshSurface = navmeshSurface;
     }
-
     private void SpawnEnemy(SpawnLocation spawnLocation)
     {
-        SpawnSlotCouple _spawnSlotCouple = default;
+        Vector3 spawnPos = Vector3.zero;
+        // where we spawn the enemies? outside or inside
         switch (spawnLocation)
         {
             case SpawnLocation.Outside:
-                _spawnSlotCouple = GetRandomSpawnSlotCouple(outsideSpawnSlotCouples);
+                //Debug.Log("spawning outside...");
+                spawnPos = GetOutsideSpawnPosition();
                 break;
             case SpawnLocation.Inside:
-                _spawnSlotCouple = GetRandomSpawnSlotCouple(outsideSpawnSlotCouples);
-                break;
+                //Debug.Log("can not spawning inside");              
+                return;
         }
-        if (_spawnSlotCouple.spawnTransform == null)
-        {
-            Debug.Log("no empty slot!");
-            return;
-        }
-        EnemyAI enemyAiRef = EnemyAI.Create(enemyPrefab, _spawnSlotCouple.spawnTransform.position, _spawnSlotCouple.slot, bedroomDoorSlot);
-        _spawnSlotCouple.slot.isFilled = true;
-        
+
+        EnemyAI enemyAiRef = EnemyAI.Create(enemyPrefab, spawnPos);
         spawnedEnemyList.Add(enemyAiRef.transform);
     }
-
-    private SpawnSlotCouple GetRandomSpawnSlotCouple(SpawnSlotCouple[] spawnSlotCouples)
+    private void Update()
     {
-        int index = Random.Range(0, spawnSlotCouples.Length);
-        if (spawnSlotCouples[index].slot.isFilled == false) return spawnSlotCouples[index];
-        else return default;
+        if (Input.GetKeyDown(KeyCode.S) && soTargetManager.IsThereEmptyWallSlot()) SpawnEnemy(SpawnLocation.Outside);
     }
 
-    private void Start()
+    private Vector3 GetOutsideSpawnPosition()
     {
-        Invoke(nameof(CheckForSpawn), 1f);
+        // returning a position randomly selected between outer spawn points
+        int index = Random.Range(0, outsideSpawnPointsArray.Length);
+        return outsideSpawnPointsArray[index].position;
     }
 
-    private void CheckForSpawn()
+    private void OnDestroy()
     {
-        SpawnSlotCouple spawnSlotCouple = GetRandomSpawnSlotCouple(outsideSpawnSlotCouples);
-        if (spawnSlotCouple.slot != null && spawnSlotCouple.slot.isFilled == false)
-        {
-            SpawnEnemy(SpawnLocation.Outside);
-        }
-
-        Invoke(nameof(CheckForSpawn), 1f);
+        soTargetManager.ClearTargetManager();
     }
+
+
+
+
+
+
 
 
 }
