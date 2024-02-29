@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/KiraScene.unity
     guid: 58943090b504bd944a414c7dfca11dc6
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: 65f2d7530e1c8c644b929785552cdda9,
+      type: 2}
+    com.unity.localization.addressable-group-rules: {fileID: 11400000, guid: d292fdc3c807b2446ba0b5c25d91c510,
+      type: 2}
+    com.unity.localization.settings: {fileID: 11400000, guid: 3c374e86bd6b5334b873bbc317a603a0,
+      type: 2}
