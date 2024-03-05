@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
+using Weapons;
 
 namespace Players
 {
@@ -13,18 +14,21 @@ namespace Players
 
         // components
         Rigidbody body;
+        
+        // member variables
+        [SerializeField] private int health = 100;
 
         // movement
         [SerializeField, Range(1, 10)]
-        float maxVelocity = 5;
+        private float maxVelocity = 5;
 
         [SerializeField, Range(1, 50)]
-        float acceleration = 10;
+        private float acceleration = 10;
         Vector3 desiredVelocity = new(0, 0, 0);
-        float diagonalRegulator = 1;
+        private float diagonalRegulator = 1;
 
         // weapons
-        // I'm imagining a weapon system where we have a single abstract Weapon that everything inherits from? Might not be possible, but that'll be the current assumption
+        private Weapon currentWeapon;
 
         // Start is called before the first frame update
         void Awake()
@@ -36,6 +40,7 @@ namespace Players
             inputs = new Inputs();
             inputs.Player.Enable();
             inputs.Player.Fire.performed += ShootWeapon;
+            
         }
 
         public override void OnNetworkSpawn()
@@ -99,6 +104,18 @@ namespace Players
         void ShootWeapon(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
         {
             Debug.Log("pew pew");
+        }
+        
+        public void Heal(int amount)
+        {
+            this.health += amount;
+            // plus animation for healing up
+        }
+
+        public void TakeDamage(int amount)
+        {
+            this.health -= amount;
+            // plus animation for taking damage
         }
 
         // void OnDestroy()

@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/Scenes/KiraScene.unity
+    path: Assets/Scenes/KiraSceneNetworking.unity
     guid: 58943090b504bd944a414c7dfca11dc6
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 65f2d7530e1c8c644b929785552cdda9,

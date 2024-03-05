@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 1039938651
+  GlobalObjectIdHash: 2191751145
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -247,6 +247,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 996c36887d38747548d2c6c5a5f3bdfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 100
   maxVelocity: 5
   acceleration: 10
-  cube: {fileID: 7549428354785939743, guid: e3e1cf4d41a65cf47b561b0da7a754f0, type: 3}
