@@ -26,9 +26,7 @@ namespace Players
         private void Awake()
         {
             characterController = GetComponent<CharacterController>();
-            AttachWeapon(flamethrower, 0.834f);
-            Debug.Log(currentWeapon);
-
+            AttachWeapon(flamethrower, 0.834f); //giving player a flamethrower to test 
         }
 
         private void Update()
@@ -52,29 +50,31 @@ namespace Players
 
         public void Move(InputAction.CallbackContext ctx)
         {
+            // Simple movement for testing purposes
             input = ctx.ReadValue<Vector2>();
             direction = new Vector3(input.x, 0.0f, input.y);
         }
 
         public void Fire(InputAction.CallbackContext ctx)
         {
+            
             if (!currentWeapon) return;
             
             if (currentWeapon as Flamethrower)
             {
-                (currentWeapon as Flamethrower).Fire();
+                // Player holds to fire
+                if (ctx.performed)
+                {
+                    (currentWeapon as Flamethrower).Fire();
+                }
+                // Player releases
+                else if (ctx.canceled)
+                {
+                    (currentWeapon as Flamethrower).StopFire();
+                }
 
             }
-
-            if (ctx.performed)
-            {
-                
-            }
-            // bool fired = ctx.ReadValueAsButton();
-            // if (fired)
-            // {
-            //     
-            // }
+            
         }
     }
 }
