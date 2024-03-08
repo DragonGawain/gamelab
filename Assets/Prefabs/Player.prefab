@@ -346,6 +346,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: aa0ea5db-25be-41ff-9e16-7ef7b45d0adb
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4548681428882872341}
+        m_TargetAssemblyTypeName: Players.PlayerTestScript, Assembly-CSharp
+        m_MethodName: SwapWeapon
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e1f0fe60-ffda-4e67-baaf-ef80bd860eb3
+    m_ActionName: Player/SwapWeapon[/Keyboard/q,/DualShock4GamepadHID/rightShoulder]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -363,8 +379,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8adcc08157d166143b4cfb5dcf289fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flamethrower: {fileID: 7830794301040452377, guid: dd97550bf21267b4f8292058257c906a,
-    type: 3}
   speed: 5
   smoothTime: 0.05
 --- !u!143 &4118672303479936397

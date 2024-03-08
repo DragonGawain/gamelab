@@ -17,12 +17,12 @@ namespace Weapons{
             SetWeaponName("Flamethrower");
         }
         
-        public void Fire()
+        public override void OnFire()
         {
             particles.Play();
         }
 
-        public void StopFire()
+        public override void StopFire()
         {
             particles.Stop();
         }

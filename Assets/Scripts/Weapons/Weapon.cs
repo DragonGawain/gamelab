@@ -4,21 +4,24 @@ using UnityEngine;
 
 namespace Weapons
 {
-    public class Weapon : MonoBehaviour
+    abstract public class Weapon : MonoBehaviour
     {
         [SerializeField] private int damage = 20;
         private string weaponName;
         
-        public void SetDamage(int damage)
+        protected void SetDamage(int damage)
         {
             this.damage = damage;
         }
 
-        public void SetWeaponName(string weaponName)
+        protected void SetWeaponName(string weaponName)
         {
             this.weaponName = weaponName;
         }
-        
+
+        abstract public void OnFire();
+        abstract public void StopFire();
+
     }
     
     

@@ -8,15 +8,13 @@ using Weapons;
 
 namespace Players
 {
-    public class PlayerTestScript : MonoBehaviour
+    abstract public class PlayerTestScript : MonoBehaviour
     {
 
         private Vector2 input;
         private CharacterController characterController;
         private Vector3 direction;
-        private Weapon currentWeapon;
-
-        public Flamethrower flamethrower;
+        protected Weapon currentWeapon;
 
         [SerializeField] private float speed = 5;
 
@@ -26,7 +24,8 @@ namespace Players
         private void Awake()
         {
             characterController = GetComponent<CharacterController>();
-            AttachWeapon(flamethrower, 0.834f); //giving player a flamethrower to test 
+            OnAwake();
+            //AttachWeapon(flamethrower); //giving player a flamethrower to test 
         }
 
         private void Update()
@@ -40,7 +39,7 @@ namespace Players
         }
 
         // attaches the gun object to the character and stores it in "currentWeapon"
-        private void AttachWeapon(Weapon weapon, float offsetZ)
+        protected void AttachWeapon(Weapon weapon, float offsetZ = 0.834f)
         {
             currentWeapon = Instantiate(weapon, transform.position, transform.rotation);
             currentWeapon.transform.parent = transform;
@@ -55,26 +54,27 @@ namespace Players
             direction = new Vector3(input.x, 0.0f, input.y);
         }
 
-        public void Fire(InputAction.CallbackContext ctx)
+        // Called when the player fires with LMB or RT on controller
+        virtual public void Fire(InputAction.CallbackContext ctx)
         {
-            
             if (!currentWeapon) return;
             
-            if (currentWeapon as Flamethrower)
-            {
-                // Player holds to fire
-                if (ctx.performed)
-                {
-                    (currentWeapon as Flamethrower).Fire();
-                }
-                // Player releases
-                else if (ctx.canceled)
-                {
-                    (currentWeapon as Flamethrower).StopFire();
-                }
+        }
 
-            }
+        // Called when the player swaps weapons with Q or RB on controller
+        virtual public void SwapWeapon(InputAction.CallbackContext ctx)
+        {
+            // despawn current weapon
+            // add other weapon
+            // update currentWeapon
+            // reflect that on the UI
+            
+            Debug.Log("swapped");
+
+            if (!currentWeapon) return;
             
         }
+
+        abstract protected void OnAwake();
     }
 }
