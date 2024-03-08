@@ -119,8 +119,8 @@ GameObject:
   - component: {fileID: 4767789267673014493}
   - component: {fileID: 189054653886193056}
   - component: {fileID: 6433285731611124124}
-  - component: {fileID: 4548681428882872341}
   - component: {fileID: 4118672303479936397}
+  - component: {fileID: 4378789646577826271}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -272,7 +272,7 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4548681428882872341}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Players.PlayerTestScript, Assembly-CSharp
         m_MethodName: Move
         m_Mode: 0
@@ -292,7 +292,7 @@ MonoBehaviour:
     m_ActionName: Player/Look[/Mouse/delta,/Pen/delta]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4548681428882872341}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Players.PlayerTestScript, Assembly-CSharp
         m_MethodName: Fire
         m_Mode: 0
@@ -348,7 +348,7 @@ MonoBehaviour:
     m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4548681428882872341}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Players.PlayerTestScript, Assembly-CSharp
         m_MethodName: SwapWeapon
         m_Mode: 0
@@ -367,20 +367,6 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &4548681428882872341
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3964186947282512288}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8adcc08157d166143b4cfb5dcf289fe5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  smoothTime: 0.05
 --- !u!143 &4118672303479936397
 CharacterController:
   m_ObjectHideFlags: 0
@@ -407,3 +393,21 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4378789646577826271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3964186947282512288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f53c2ac09a7b74245b2fa87eb318dd53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  smoothTime: 0.05
+  flamethrower: {fileID: 7830794301040452377, guid: dd97550bf21267b4f8292058257c906a,
+    type: 3}
+  blaster: {fileID: 1128229197112233283, guid: b07e80de5e0b27e4b88265ccd36e62e2, type: 3}
+  text: {fileID: 0}
