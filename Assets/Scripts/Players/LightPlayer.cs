@@ -24,6 +24,8 @@ namespace Players
         public override void Fire(InputAction.CallbackContext ctx)
         {
             base.Fire(ctx);
+            
+            // If they fire with the Flamethrower
             if (currentWeapon as Flamethrower)
             {
                 // Player holds to fire
@@ -37,6 +39,15 @@ namespace Players
                     (currentWeapon as Flamethrower).StopFire();
                 }
 
+            }
+            
+            // If they fire with the Blaster
+            else
+            {
+                if (ctx.performed)
+                {
+                    (currentWeapon as Blaster).OnFire();
+                }
             }
         }
 

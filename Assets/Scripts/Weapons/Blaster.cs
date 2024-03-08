@@ -9,6 +9,13 @@ namespace Weapons{
     {
 
         [SerializeField] private ParticleSystem particles;
+
+        [SerializeField] private Transform firePoint;
+        [SerializeField] private GameObject bulletPrefab;
+
+        [SerializeField] private float bulletForce = 40f;
+        
+        
         
         // Start is called before the first frame update
         void Start()
@@ -19,12 +26,16 @@ namespace Weapons{
         
         public override void OnFire()
         {
-            particles.Play();
+            // Creating bullet and making it go
+            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            Rigidbody rb = bullet.GetComponent<Rigidbody>();
+            rb.AddForce(firePoint.forward * bulletForce, ForceMode.Impulse);
+
         }
 
         public override void StopFire()
         {
-            particles.Stop();
+            //
         }
     }
 }
