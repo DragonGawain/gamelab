@@ -4,44 +4,61 @@ using UnityEngine;
 
 public class DCore : MonoBehaviour
 {
+    // I created a custom event which will be triggered when the core is destroyed
     public delegate void DCoreDelegate();
     public event DCoreDelegate OnCoreDestroyed;
+
+    // default health for a dream core is 100
     private int health = 100;
 
+    // public getter method for health
     public int GetHealth
     {
         get { return health; }
     }
 
+    // dream core add itself to the dream core list managed by soTargetManager
     [SerializeField] private SO_TargetManager soTargetManager;
     private void Awake()
     {
+        // when OnCoreDestroyed event is triggered, run the DestructibleByEnemy_OnDestroyed method
+        // (here I assign a method to a event)
         OnCoreDestroyed += DestructibleByEnemy_OnDestroyed;
 
+        // adding itself to the dream core list manager by soTargetManager
         soTargetManager.AddDCore(this);
     }
 
     private void OnDestroy()
     {
+        // we need to de-assign methods otherwise you may see errors
         OnCoreDestroyed -= DestructibleByEnemy_OnDestroyed;
     }
 
     private void DestructibleByEnemy_OnDestroyed()
     {
+        // first remove itself from the dream core list managed by soTargetManager
         soTargetManager.RemoveDCore(this);
+        // then destroy itself
         Destroy(this.gameObject);
     }
 
     private void Update()
     {
+        // this just rotates the dreamcore around y-axis, no functionality,
+        // just for visual.
         transform.Rotate(transform.up, 20 * Time.deltaTime);
     }
 
     public bool GetDamage(int amount)
     {
+        // dream core gets damage with this method
+        // it returns true if the dream core is destroyed
+        // or it returns false if dream core is still alive after the damage
         health -= amount;
         if(health < 0)
         {
+            // triggering the event
             OnCoreDestroyed();
             return true;
         }
