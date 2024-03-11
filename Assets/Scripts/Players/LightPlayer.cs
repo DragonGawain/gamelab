@@ -102,7 +102,6 @@ namespace Players
         protected override Vector3 GetMoveInput()
         {
             Vector2 moveInput = physicalInputs.Player.LightMove.ReadValue<Vector2>();
-            Debug.Log("light move: " + moveInput);
             Vector3 dir = new(moveInput.x, 0.0f, moveInput.y);
             return dir;
         }
