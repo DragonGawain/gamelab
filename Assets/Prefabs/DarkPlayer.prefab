@@ -382,8 +382,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.9967556, y: 2.750002, z: 5.87}
-  m_LocalScale: {x: 2, y: 2, z: 2}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 61090203919749289}
   m_Father: {fileID: 0}
@@ -460,7 +460,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
@@ -651,7 +651,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   smoothTime: 0.05
-  flamethrower: {fileID: 7830794301040452377, guid: dd97550bf21267b4f8292058257c906a,
+  hammer: {fileID: 7523765462327748624, guid: e47f887229cd52c46b868df0f1e1d69b, type: 3}
+  grenadeLauncher: {fileID: 507905301725245242, guid: 1f9c6e251f27d7246824058b9633f541,
     type: 3}
-  blaster: {fileID: 1128229197112233283, guid: b07e80de5e0b27e4b88265ccd36e62e2, type: 3}
-  text: {fileID: 0}

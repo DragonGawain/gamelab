@@ -11,17 +11,14 @@ namespace Players
 {
     public class DarkPlayer : PlayerTestScript
     {
+        
+        //Prefabs of the weapons
         [SerializeField] private Hammer hammer;
         [SerializeField] private GrenadeLauncher grenadeLauncher;
         
-        
-        public TextMeshProUGUI text;
-
-        // This gets called in the Awake() function of the parent class
+        //Attach weapon at start of game
         protected override void OnAwake()
         {
-            // Start with this weapon
-            
             AttachWeapon(hammer); 
         }
         

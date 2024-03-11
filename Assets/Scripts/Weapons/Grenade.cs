@@ -24,8 +24,12 @@ public class Grenade : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        rb.isKinematic = true;
-        StartCoroutine(Explode());
+        print(other.collider.tag);
+        if (other.collider.tag == "Floor")
+        {
+            rb.isKinematic = true;
+            StartCoroutine(Explode());
+        }
     }
 
     IEnumerator Explode()

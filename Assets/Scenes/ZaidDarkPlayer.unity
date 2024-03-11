@@ -133,21 +133,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3632273476430691718, guid: aa149897507dac94e9abc439d60a9c07,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3632273476430691718, guid: aa149897507dac94e9abc439d60a9c07,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3632273476430691718, guid: aa149897507dac94e9abc439d60a9c07,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3632273476430691718, guid: aa149897507dac94e9abc439d60a9c07,
-        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -159,7 +144,7 @@ PrefabInstance:
     - target: {fileID: 3632273476430691718, guid: aa149897507dac94e9abc439d60a9c07,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.156195
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3632273476430691718, guid: aa149897507dac94e9abc439d60a9c07,
         type: 3}
@@ -194,28 +179,6 @@ PrefabInstance:
     - target: {fileID: 3632273476430691718, guid: aa149897507dac94e9abc439d60a9c07,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3632273476430691718, guid: aa149897507dac94e9abc439d60a9c07,
-        type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6207922104912766515, guid: aa149897507dac94e9abc439d60a9c07,
-        type: 3}
-      propertyPath: hammer
-      value: 
-      objectReference: {fileID: 7523765462327748624, guid: e47f887229cd52c46b868df0f1e1d69b,
-        type: 3}
-    - target: {fileID: 6207922104912766515, guid: aa149897507dac94e9abc439d60a9c07,
-        type: 3}
-      propertyPath: grenadeLauncher
-      value: 
-      objectReference: {fileID: 507905301725245242, guid: 1f9c6e251f27d7246824058b9633f541,
-        type: 3}
-    - target: {fileID: 6828041966523659754, guid: aa149897507dac94e9abc439d60a9c07,
-        type: 3}
-      propertyPath: m_UseGravity
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8661189381326145115, guid: aa149897507dac94e9abc439d60a9c07,
