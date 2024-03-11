@@ -23,6 +23,7 @@ namespace Players
         private float currentVelocity;
 
         protected Inputs physicalInputs;
+  
 
         private void Awake()
         {
@@ -39,6 +40,9 @@ namespace Players
         {
             if (input.sqrMagnitude == 0)
                 return;
+            direction = GetMoveInput();
+            if (direction == Vector3.zero)
+                return;
 
             var targetAngle = (Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg) + 180;
             var angle = Mathf.SmoothDampAngle(
@@ -48,7 +52,6 @@ namespace Players
                 smoothTime
             );
             transform.rotation = Quaternion.Euler(0.0f, angle, 0.0f);
-            direction = GetMoveInput();
             characterController.Move(speed * Time.deltaTime * direction);
         }
 
