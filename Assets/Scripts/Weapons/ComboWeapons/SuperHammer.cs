@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SuperHammer : MonoBehaviour
 {
+    int deathTimer = 150;
     // Start is called before the first frame update
     void Start()
     {
@@ -11,8 +12,12 @@ public class SuperHammer : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        deathTimer--;
+        if (deathTimer <= 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }
