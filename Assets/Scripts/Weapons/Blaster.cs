@@ -33,7 +33,6 @@ namespace Weapons
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
             // rb.velocity = GameManager.GetMousePosition3() * bulletForce; // TODO:: this may not work over the network
-            Debug.Log(GameManager.GetMousePosition3());
             rb.AddForce(GameManager.GetMousePosition3() * bulletForce, ForceMode.Impulse);
         }
 

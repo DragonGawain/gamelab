@@ -18,7 +18,7 @@ public class Grenade : MonoBehaviour
         
         rend = GetComponent<Renderer>();
         originalColor = rend.material.color;
-        rb.AddForce(-transform.right * force, ForceMode.Impulse);
+        rb.AddForce(GameManager.GetMousePosition3() * force, ForceMode.Impulse);
     }
 
 

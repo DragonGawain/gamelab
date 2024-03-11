@@ -23,6 +23,8 @@ namespace Players
         private float currentVelocity;
 
         protected Inputs physicalInputs;
+
+        int rotationTimer = 0;
   
 
         private void Awake()
@@ -38,21 +40,35 @@ namespace Players
 
         private void FixedUpdate()
         {
-            if (input.sqrMagnitude == 0)
-                return;
+            // if (input.sqrMagnitude == 0)
+            //     return;
             direction = GetMoveInput();
-            if (direction == Vector3.zero)
-                return;
+            // only move if there's a move input
+            if (direction != Vector3.zero)
+            {
+                characterController.Move(speed * Time.deltaTime * direction);
+            }
 
-            var targetAngle = (Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg) + 180;
-            var angle = Mathf.SmoothDampAngle(
-                transform.eulerAngles.y,
-                targetAngle,
-                ref currentVelocity,
-                smoothTime
-            );
-            transform.rotation = Quaternion.Euler(0.0f, angle, 0.0f);
-            characterController.Move(speed * Time.deltaTime * direction);
+
+            // if you have fired within the past 5 seconds, rotate to look in the direction of fire
+            if (rotationTimer > 0)
+                direction = GameManager.GetMousePosition3(); 
+            
+            // if you have fired recently or you have put in a move input, rotate
+            if (rotationTimer > 0 || direction != Vector3.zero)
+            {
+                var targetAngle = (Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg) + 180;
+                var angle = Mathf.SmoothDampAngle(
+                    transform.eulerAngles.y,
+                    targetAngle,
+                    ref currentVelocity,
+                    smoothTime
+                );
+                transform.rotation = Quaternion.Euler(0.0f, angle, 0.0f);
+            }
+            
+            if (rotationTimer >= 0)
+                rotationTimer--;
         }
 
         // attaches the gun object to the character and stores it in "currentWeapon"
@@ -79,6 +95,7 @@ namespace Players
         {
             if (!currentWeapon)
                 return;
+            rotationTimer = 250; // 50 FU's/sec -> 250/50 = 5 seconds
         }
 
         // Called when the player swaps weapons with Q or RB on controller
