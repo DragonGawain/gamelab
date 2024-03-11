@@ -116,6 +116,15 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MousePos"",
+                    ""type"": ""Value"",
+                    ""id"": ""9d6c6c02-0e03-402b-9a30-e1eb205a00b2"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -523,6 +532,17 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""DarkSwap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7ecab38e-6518-4b44-9d41-34e6d968cc11"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MousePos"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1120,6 +1140,7 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
         m_Player_DarkFire = m_Player.FindAction("DarkFire", throwIfNotFound: true);
         m_Player_LightSwap = m_Player.FindAction("LightSwap", throwIfNotFound: true);
         m_Player_DarkSwap = m_Player.FindAction("DarkSwap", throwIfNotFound: true);
+        m_Player_MousePos = m_Player.FindAction("MousePos", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1203,6 +1224,7 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_DarkFire;
     private readonly InputAction m_Player_LightSwap;
     private readonly InputAction m_Player_DarkSwap;
+    private readonly InputAction m_Player_MousePos;
     public struct PlayerActions
     {
         private @Inputs m_Wrapper;
@@ -1217,6 +1239,7 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
         public InputAction @DarkFire => m_Wrapper.m_Player_DarkFire;
         public InputAction @LightSwap => m_Wrapper.m_Player_LightSwap;
         public InputAction @DarkSwap => m_Wrapper.m_Player_DarkSwap;
+        public InputAction @MousePos => m_Wrapper.m_Player_MousePos;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1256,6 +1279,9 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
             @DarkSwap.started += instance.OnDarkSwap;
             @DarkSwap.performed += instance.OnDarkSwap;
             @DarkSwap.canceled += instance.OnDarkSwap;
+            @MousePos.started += instance.OnMousePos;
+            @MousePos.performed += instance.OnMousePos;
+            @MousePos.canceled += instance.OnMousePos;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1290,6 +1316,9 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
             @DarkSwap.started -= instance.OnDarkSwap;
             @DarkSwap.performed -= instance.OnDarkSwap;
             @DarkSwap.canceled -= instance.OnDarkSwap;
+            @MousePos.started -= instance.OnMousePos;
+            @MousePos.performed -= instance.OnMousePos;
+            @MousePos.canceled -= instance.OnMousePos;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1482,6 +1511,7 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
         void OnDarkFire(InputAction.CallbackContext context);
         void OnLightSwap(InputAction.CallbackContext context);
         void OnDarkSwap(InputAction.CallbackContext context);
+        void OnMousePos(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

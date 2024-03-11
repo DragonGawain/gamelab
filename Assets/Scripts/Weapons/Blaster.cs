@@ -4,33 +4,37 @@ using Unity.VisualScripting;
 using UnityEngine;
 using Weapons;
 
-namespace Weapons{
+namespace Weapons
+{
     public class Blaster : Weapon
     {
+        [SerializeField]
+        private ParticleSystem particles;
 
-        [SerializeField] private ParticleSystem particles;
+        [SerializeField]
+        private Transform firePoint;
 
-        [SerializeField] private Transform firePoint;
-        [SerializeField] private GameObject bulletPrefab;
+        [SerializeField]
+        private GameObject bulletPrefab;
 
-        [SerializeField] private float bulletForce = 40f;
-        
-        
-        
+        [SerializeField]
+        private float bulletForce = 40f;
+
         // Start is called before the first frame update
         void Start()
         {
             SetDamage(10);
             SetWeaponName("Blaster");
         }
-        
+
         public override void OnFire()
         {
             // Creating bullet and making it go
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
-            rb.AddForce(firePoint.forward * bulletForce, ForceMode.Impulse);
-
+            // rb.velocity = GameManager.GetMousePosition3() * bulletForce; // TODO:: this may not work over the network
+            Debug.Log(GameManager.GetMousePosition3());
+            rb.AddForce(GameManager.GetMousePosition3() * bulletForce, ForceMode.Impulse);
         }
 
         public override void StopFire()
@@ -39,4 +43,3 @@ namespace Weapons{
         }
     }
 }
-

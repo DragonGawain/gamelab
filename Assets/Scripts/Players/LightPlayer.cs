@@ -30,6 +30,13 @@ namespace Players
             physicalInputs.Player.LightSwap.performed -= LightSwap;
         }
 
+        private void Update()
+        {
+            // Vector2 mousePos = physicalInputs.Player.MousePos.ReadValue<Vector2>();
+            // mousePos = new(mousePos.x - (Screen.width / 2), mousePos.y - (Screen.height / 2));
+            // Debug.Log("mouse Pos: " + mousePos);
+        }
+
         public void LightFire(InputAction.CallbackContext ctx)
         {
             base.Fire(ctx);
