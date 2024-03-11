@@ -37,6 +37,24 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
+                    ""name"": ""LightMove"",
+                    ""type"": ""Value"",
+                    ""id"": ""c1dd1074-3d2c-45cc-9a0e-e8bb74389260"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""DarkMove"",
+                    ""type"": ""Value"",
+                    ""id"": ""cc7cf766-4292-4fc0-86ff-4469521a853f"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
                     ""name"": ""Look"",
                     ""type"": ""Value"",
                     ""id"": ""c698e79b-bca2-4efb-9dbe-bcdc0b9037c5"",
@@ -58,6 +76,42 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
                     ""name"": ""SwapWeapon"",
                     ""type"": ""Button"",
                     ""id"": ""e1f0fe60-ffda-4e67-baaf-ef80bd860eb3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LightFire"",
+                    ""type"": ""Button"",
+                    ""id"": ""6d9afcc2-fa95-41e2-bb69-47a6fa233a68"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DarkFire"",
+                    ""type"": ""Button"",
+                    ""id"": ""0bbf2f1f-8d4e-4221-96b5-4eb065f7d069"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LightSwap"",
+                    ""type"": ""Button"",
+                    ""id"": ""867a9082-f529-46eb-be29-331397244d9b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DarkSwap"",
+                    ""type"": ""Button"",
+                    ""id"": ""454255e9-f780-421f-a842-36158ce00cf0"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -315,6 +369,160 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""SwapWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""arrowKeys"",
+                    ""id"": ""8a74e6d6-3017-4126-aac2-289b29e5dce6"",
+                    ""path"": ""Dpad"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LightMove"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""a34d5b02-dc55-4af9-a003-ae649ef39028"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""LightMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""09699775-a3d6-4f86-9d37-74dabdbc86e8"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""LightMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""f633a5d2-e039-4fa3-af4e-b800ac340ea3"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""LightMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""39e65974-1efb-4c69-b0a2-a54780d7313e"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""LightMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""WASD"",
+                    ""id"": ""8d532630-87aa-48f1-ab4f-cefa17afdc0f"",
+                    ""path"": ""Dpad"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DarkMove"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""98474610-040c-44ef-893c-87f3ea08b72a"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""DarkMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""b139e9fc-00b3-44b8-9d0b-b3f810f7ed21"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""DarkMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""98934b83-417e-46a4-8bc7-129cb8386789"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""DarkMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""a6a2ae74-a0e3-409b-b253-6912b1acec45"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""DarkMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0e5f04fc-e109-48c6-b384-d50a9c7428eb"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LightFire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""512476d1-a845-468a-9160-eba0ae3f1618"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DarkFire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1992d817-9985-45fb-83d6-8eacb5d20a2e"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LightSwap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""70843382-b6bc-4af7-986d-5e878973d73f"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DarkSwap"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -903,9 +1111,15 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
+        m_Player_LightMove = m_Player.FindAction("LightMove", throwIfNotFound: true);
+        m_Player_DarkMove = m_Player.FindAction("DarkMove", throwIfNotFound: true);
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
         m_Player_SwapWeapon = m_Player.FindAction("SwapWeapon", throwIfNotFound: true);
+        m_Player_LightFire = m_Player.FindAction("LightFire", throwIfNotFound: true);
+        m_Player_DarkFire = m_Player.FindAction("DarkFire", throwIfNotFound: true);
+        m_Player_LightSwap = m_Player.FindAction("LightSwap", throwIfNotFound: true);
+        m_Player_DarkSwap = m_Player.FindAction("DarkSwap", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -980,17 +1194,29 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Player;
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Move;
+    private readonly InputAction m_Player_LightMove;
+    private readonly InputAction m_Player_DarkMove;
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Fire;
     private readonly InputAction m_Player_SwapWeapon;
+    private readonly InputAction m_Player_LightFire;
+    private readonly InputAction m_Player_DarkFire;
+    private readonly InputAction m_Player_LightSwap;
+    private readonly InputAction m_Player_DarkSwap;
     public struct PlayerActions
     {
         private @Inputs m_Wrapper;
         public PlayerActions(@Inputs wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
+        public InputAction @LightMove => m_Wrapper.m_Player_LightMove;
+        public InputAction @DarkMove => m_Wrapper.m_Player_DarkMove;
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
         public InputAction @SwapWeapon => m_Wrapper.m_Player_SwapWeapon;
+        public InputAction @LightFire => m_Wrapper.m_Player_LightFire;
+        public InputAction @DarkFire => m_Wrapper.m_Player_DarkFire;
+        public InputAction @LightSwap => m_Wrapper.m_Player_LightSwap;
+        public InputAction @DarkSwap => m_Wrapper.m_Player_DarkSwap;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1003,6 +1229,12 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
+            @LightMove.started += instance.OnLightMove;
+            @LightMove.performed += instance.OnLightMove;
+            @LightMove.canceled += instance.OnLightMove;
+            @DarkMove.started += instance.OnDarkMove;
+            @DarkMove.performed += instance.OnDarkMove;
+            @DarkMove.canceled += instance.OnDarkMove;
             @Look.started += instance.OnLook;
             @Look.performed += instance.OnLook;
             @Look.canceled += instance.OnLook;
@@ -1012,6 +1244,18 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
             @SwapWeapon.started += instance.OnSwapWeapon;
             @SwapWeapon.performed += instance.OnSwapWeapon;
             @SwapWeapon.canceled += instance.OnSwapWeapon;
+            @LightFire.started += instance.OnLightFire;
+            @LightFire.performed += instance.OnLightFire;
+            @LightFire.canceled += instance.OnLightFire;
+            @DarkFire.started += instance.OnDarkFire;
+            @DarkFire.performed += instance.OnDarkFire;
+            @DarkFire.canceled += instance.OnDarkFire;
+            @LightSwap.started += instance.OnLightSwap;
+            @LightSwap.performed += instance.OnLightSwap;
+            @LightSwap.canceled += instance.OnLightSwap;
+            @DarkSwap.started += instance.OnDarkSwap;
+            @DarkSwap.performed += instance.OnDarkSwap;
+            @DarkSwap.canceled += instance.OnDarkSwap;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1019,6 +1263,12 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
+            @LightMove.started -= instance.OnLightMove;
+            @LightMove.performed -= instance.OnLightMove;
+            @LightMove.canceled -= instance.OnLightMove;
+            @DarkMove.started -= instance.OnDarkMove;
+            @DarkMove.performed -= instance.OnDarkMove;
+            @DarkMove.canceled -= instance.OnDarkMove;
             @Look.started -= instance.OnLook;
             @Look.performed -= instance.OnLook;
             @Look.canceled -= instance.OnLook;
@@ -1028,6 +1278,18 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
             @SwapWeapon.started -= instance.OnSwapWeapon;
             @SwapWeapon.performed -= instance.OnSwapWeapon;
             @SwapWeapon.canceled -= instance.OnSwapWeapon;
+            @LightFire.started -= instance.OnLightFire;
+            @LightFire.performed -= instance.OnLightFire;
+            @LightFire.canceled -= instance.OnLightFire;
+            @DarkFire.started -= instance.OnDarkFire;
+            @DarkFire.performed -= instance.OnDarkFire;
+            @DarkFire.canceled -= instance.OnDarkFire;
+            @LightSwap.started -= instance.OnLightSwap;
+            @LightSwap.performed -= instance.OnLightSwap;
+            @LightSwap.canceled -= instance.OnLightSwap;
+            @DarkSwap.started -= instance.OnDarkSwap;
+            @DarkSwap.performed -= instance.OnDarkSwap;
+            @DarkSwap.canceled -= instance.OnDarkSwap;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1211,9 +1473,15 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
+        void OnLightMove(InputAction.CallbackContext context);
+        void OnDarkMove(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
         void OnSwapWeapon(InputAction.CallbackContext context);
+        void OnLightFire(InputAction.CallbackContext context);
+        void OnDarkFire(InputAction.CallbackContext context);
+        void OnLightSwap(InputAction.CallbackContext context);
+        void OnDarkSwap(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

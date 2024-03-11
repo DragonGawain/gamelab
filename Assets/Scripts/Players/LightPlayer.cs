@@ -19,12 +19,21 @@ namespace Players
         protected override void OnAwake()
         {
             // Start with this weapon
-           AttachWeapon(flamethrower); 
+            AttachWeapon(flamethrower);
+            physicalInputs.Player.LightFire.performed += LightFire;
+            physicalInputs.Player.LightSwap.performed += LightSwap;
         }
-        public override void Fire(InputAction.CallbackContext ctx)
+
+        private void OnDestroy()
+        {
+            physicalInputs.Player.LightFire.performed -= LightFire;
+            physicalInputs.Player.LightSwap.performed -= LightSwap;
+        }
+
+        public void LightFire(InputAction.CallbackContext ctx)
         {
             base.Fire(ctx);
-            
+
             // If they fire with the Flamethrower
             if (currentWeapon as Flamethrower)
             {
@@ -38,9 +47,7 @@ namespace Players
                 {
                     (currentWeapon as Flamethrower).StopFire();
                 }
-
             }
-            
             // If they fire with the Blaster
             else
             {
@@ -51,9 +58,10 @@ namespace Players
             }
         }
 
-        public override void SwapWeapon(InputAction.CallbackContext ctx)
+        public void LightSwap(InputAction.CallbackContext ctx)
         {
-            
+            Debug.Log("light swapped");
+
             base.SwapWeapon(ctx);
 
             // If the current weapon is flamethrower
@@ -61,36 +69,42 @@ namespace Players
             {
                 // Despawn current weapon
                 Destroy(currentWeapon.gameObject);
-                
+
                 // Switch to blaster
                 AttachWeapon(blaster);
-                
+
                 // Update UI
                 UpdateText("Blaster");
-                
             }
             else
             {
                 // Despawn current weapon
                 Destroy(currentWeapon.gameObject);
-                
+
                 // Switch to flamethrower
                 AttachWeapon(flamethrower);
-                
+
                 // Update UI
                 UpdateText("Flamethrower");
             }
-            
         }
 
         // To be deleted later, this is just for show
         private void UpdateText(string weaponName)
         {
             text.text = weaponName;
-            if (weaponName == "Flamethrower") text.color = Color.cyan;
-            else text.color = Color.blue;
-            
+            if (weaponName == "Flamethrower")
+                text.color = Color.cyan;
+            else
+                text.color = Color.blue;
+        }
+
+        protected override Vector3 GetMoveInput()
+        {
+            Vector2 moveInput = physicalInputs.Player.LightMove.ReadValue<Vector2>();
+            Debug.Log("light move: " + moveInput);
+            Vector3 dir = new(moveInput.x, 0.0f, moveInput.y);
+            return dir;
         }
     }
-
 }

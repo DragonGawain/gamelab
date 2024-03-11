@@ -11,18 +11,29 @@ namespace Players
 {
     public class DarkPlayer : PlayerTestScript
     {
-        
         //Prefabs of the weapons
-        [SerializeField] private Hammer hammer;
-        [SerializeField] private GrenadeLauncher grenadeLauncher;
-        
+        [SerializeField]
+        private Hammer hammer;
+
+        [SerializeField]
+        private GrenadeLauncher grenadeLauncher;
+
         //Attach weapon at start of game
         protected override void OnAwake()
         {
-            AttachWeapon(hammer); 
+            AttachWeapon(hammer);
+            physicalInputs.Player.DarkFire.performed += DarkFire;
+            physicalInputs.Player.DarkSwap.performed += DarkSwap;
         }
-        
-        public void AttachWeapon(Weapon weapon){
+
+        private void OnDestroy()
+        {
+            physicalInputs.Player.DarkFire.performed -= DarkFire;
+            physicalInputs.Player.DarkSwap.performed -= DarkSwap;
+        }
+
+        public void AttachWeapon(Weapon weapon)
+        {
             if (weapon as Hammer)
             {
                 GameObject handle = new GameObject("Hammer Handle");
@@ -31,17 +42,16 @@ namespace Players
                 handle.transform.localPosition = new Vector3(-0.5f, -1f, 0);
 
                 currentWeapon = Instantiate(hammer, handle.transform);
-                currentWeapon.transform.localPosition = new Vector3(-0.3f,1.0f,0);
-                
+                currentWeapon.transform.localPosition = new Vector3(-0.3f, 1.0f, 0);
             }
-
             else
             {
                 currentWeapon = Instantiate(grenadeLauncher, transform);
                 currentWeapon.transform.localPosition = new Vector3(-1.1f, 1, -0.75f);
             }
         }
-        public override void Fire(InputAction.CallbackContext ctx)
+
+        public void DarkFire(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
         {
             base.Fire(ctx);
             currentWeapon.OnFire();
@@ -53,9 +63,7 @@ namespace Players
                 {
                     (currentWeapon as Hammer).OnFire();
                 }
-
             }
-            
             // If they fire with the grenadeLauncher
             else
             {
@@ -66,9 +74,10 @@ namespace Players
             }
         }
 
-        public override void SwapWeapon(InputAction.CallbackContext ctx)
+        public void DarkSwap(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
         {
-            
+            Debug.Log("dark swapped");
+
             base.SwapWeapon(ctx);
 
             // If the current weapon is the hammer
@@ -77,22 +86,26 @@ namespace Players
                 // Despawn current weapon
 
                 (currentWeapon as Hammer).Destroy();
-                
+
                 // Switch to the Grenade Launcher
                 AttachWeapon(grenadeLauncher);
-                
             }
             else
             {
                 // Despawn current weapon
                 Destroy(currentWeapon.gameObject);
-                
+
                 // Switch to the hammer
                 AttachWeapon(hammer);
             }
-            
         }
-        
-    }
 
+        protected override Vector3 GetMoveInput()
+        {
+            Vector2 moveInput = physicalInputs.Player.DarkMove.ReadValue<Vector2>();
+            Debug.Log("dark move: " + moveInput);
+            Vector3 dir = new(moveInput.x, 0.0f, moveInput.y);
+            return dir;
+        }
+    }
 }

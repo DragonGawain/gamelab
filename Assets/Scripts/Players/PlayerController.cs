@@ -71,6 +71,8 @@ namespace Players
             if (!IsOwner)
                 return;
 
+            // desiredVelocity = new(moveInput.x, 0.0f, moveInput.y);
+
             if (moveInput.x != 0 && moveInput.y != 0)
                 diagonalRegulator = 2;
             else
