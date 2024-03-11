@@ -54,10 +54,9 @@ public class ComboAttackManager : MonoBehaviour
             return;
         bgTimer = 50;
 
-        Debug.Log("SPAWN BULLET BARRAGE");
         // It's VERY important to delete the grenade object first. Otherwise, it's theoretically possible that the spawned bullets collide with the same grenade. 
         // This will not only result in more bullets being spawned, but can also potentially crash the game (trying to destroy a gameobject that already destroyed -> nullObjectReference)
-        Destroy(bullet);
+        Destroy(bullet.transform.parent.gameObject);
         Vector3 grenadePos = grenade.transform.position;
         Destroy(grenade);
         GameObject tempBullet;
@@ -71,6 +70,7 @@ public class ComboAttackManager : MonoBehaviour
             radnomDir.Normalize();
             tempRb.AddForce(GameManager.GetMousePosition3() * Blaster.GetBulletForce(), ForceMode.Impulse);
         }
+        Debug.Log("SPAWN BULLET BARRAGE");
     }
 
     public static void SpawnSuperBullet(GameObject bullet)
@@ -79,11 +79,11 @@ public class ComboAttackManager : MonoBehaviour
             return;
         bhTimer = 50;
 
-        Debug.Log("SPAWN SUPER BULLET");
         GameObject superBullet = Instantiate(superBulletPrefab, bullet.transform.position, Quaternion.identity);
         Rigidbody superRb = superBullet.GetComponent<Rigidbody>();
-        superRb.velocity = bullet.GetComponent<Rigidbody>().velocity;
-        Destroy(bullet);
+        superRb.velocity = bullet.GetComponentInParent<Rigidbody>().velocity;
+        Destroy(bullet.transform.parent.gameObject);
+        Debug.Log("SPAWN SUPER BULLET");
     }
 
     public static void SpawnDOTCloud(GameObject grenade)
@@ -92,9 +92,9 @@ public class ComboAttackManager : MonoBehaviour
             return;
         fgTimer = 50;
 
-        Debug.Log("SPAWN DOT CLOUD");
         Instantiate(dotCloudPrefab, grenade.transform.position, Quaternion.identity);
         Destroy(grenade);
+        Debug.Log("SPAWN DOT CLOUD");
     }
 
     public static void SpawnSuperHammer(GameObject hammer)
@@ -102,9 +102,9 @@ public class ComboAttackManager : MonoBehaviour
         if (fhTimer > 0)
             return;
         fhTimer = 50;
-        
-        Debug.Log("SPAWN SUPER HAMMER");
+
         Instantiate(superHammerPrefab, hammer.transform.position, Quaternion.identity);
+        Debug.Log("SPAWN SUPER HAMMER");
     }
 
 }
