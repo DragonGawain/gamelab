@@ -18,7 +18,7 @@ namespace Weapons
         private GameObject bulletPrefab;
 
         [SerializeField]
-        private float bulletForce = 40f;
+        private static float bulletForce = 40f;
 
         // Start is called before the first frame update
         void Start()
@@ -39,6 +39,11 @@ namespace Weapons
         public override void StopFire()
         {
             //
+        }
+
+        public static float GetBulletForce()
+        {
+            return bulletForce;
         }
     }
 }
