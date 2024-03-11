@@ -31,7 +31,7 @@ public class ComboAttackManager : MonoBehaviour
         superHammerPrefab = Resources.Load<GameObject>("ComboWeapons/SuperHammer");
     }
 
-    public static void BulletBarrage(GameObject grenade, GameObject bullet)
+    public static void SpawnBulletBarrage(GameObject grenade, GameObject bullet)
     {
         GameObject tempBullet;
         Rigidbody tempRb;
@@ -44,12 +44,27 @@ public class ComboAttackManager : MonoBehaviour
             radnomDir.Normalize();
             tempRb.AddForce(GameManager.GetMousePosition3() * Blaster.GetBulletForce(), ForceMode.Impulse);
         }
+        Destroy(grenade);
+        Destroy(bullet);
     }
 
-    public static void SuperBullet()
+    public static void SpawnSuperBullet(GameObject bullet)
     {
-        
+        GameObject superBullet = Instantiate(superBulletPrefab, bullet.transform.position, Quaternion.identity);
+        Rigidbody superRb = superBullet.GetComponent<Rigidbody>();
+        superRb.velocity = bullet.GetComponent<Rigidbody>().velocity;
+        Destroy(bullet);
     }
 
+    public static void SpawnDOTCloud(GameObject grenade)
+    {
+        Instantiate(dotCloudPrefab, grenade.transform.position, Quaternion.identity);
+        Destroy(grenade);
+    }
+
+    public static void SpawnSuperHammer(GameObject hammer)
+    {
+        Instantiate(superHammerPrefab, hammer.transform.position, Quaternion.identity);
+    }
 
 }
