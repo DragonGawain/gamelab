@@ -22,6 +22,11 @@ public class ComboAttackManager : MonoBehaviour
     static GameObject superBulletPrefab;
     static GameObject dotCloudPrefab;
     static GameObject superHammerPrefab;
+
+    static int bgTimer = 0;
+    static int bhTimer = 0;
+    static int fgTimer = 0;
+    static int fhTimer = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,28 +36,49 @@ public class ComboAttackManager : MonoBehaviour
         superHammerPrefab = Resources.Load<GameObject>("ComboWeapons/SuperHammer");
     }
 
+    private void FixedUpdate()
+    {
+        if (bgTimer >= 0)
+            bgTimer--;
+        if (bhTimer >= 0)
+            bhTimer--;
+        if (fgTimer >= 0)
+            fgTimer--;
+        if (fhTimer >= 0)
+            fhTimer--;
+    }
+
     public static void SpawnBulletBarrage(GameObject grenade, GameObject bullet)
     {
+        if (bgTimer > 0)
+            return;
+        bgTimer = 50;
+
         Debug.Log("SPAWN BULLET BARRAGE");
         // It's VERY important to delete the grenade object first. Otherwise, it's theoretically possible that the spawned bullets collide with the same grenade. 
         // This will not only result in more bullets being spawned, but can also potentially crash the game (trying to destroy a gameobject that already destroyed -> nullObjectReference)
+        Destroy(bullet);
+        Vector3 grenadePos = grenade.transform.position;
         Destroy(grenade);
         GameObject tempBullet;
         Rigidbody tempRb;
         Vector3 radnomDir;
         for (int i = 0; i < 8; i++)
         {
-            tempBullet = Instantiate(bulletPrefab, grenade.transform.position, Quaternion.identity);
+            tempBullet = Instantiate(bulletPrefab, grenadePos, Quaternion.identity);
             tempRb = tempBullet.GetComponent<Rigidbody>();
             radnomDir = new(Random.Range(-1,1), 0, Random.Range(-1,1));
             radnomDir.Normalize();
             tempRb.AddForce(GameManager.GetMousePosition3() * Blaster.GetBulletForce(), ForceMode.Impulse);
         }
-        Destroy(bullet);
     }
 
     public static void SpawnSuperBullet(GameObject bullet)
     {
+        if (bhTimer > 0)
+            return;
+        bhTimer = 50;
+
         Debug.Log("SPAWN SUPER BULLET");
         GameObject superBullet = Instantiate(superBulletPrefab, bullet.transform.position, Quaternion.identity);
         Rigidbody superRb = superBullet.GetComponent<Rigidbody>();
@@ -62,6 +88,10 @@ public class ComboAttackManager : MonoBehaviour
 
     public static void SpawnDOTCloud(GameObject grenade)
     {
+        if (fgTimer > 0)
+            return;
+        fgTimer = 50;
+
         Debug.Log("SPAWN DOT CLOUD");
         Instantiate(dotCloudPrefab, grenade.transform.position, Quaternion.identity);
         Destroy(grenade);
@@ -69,6 +99,10 @@ public class ComboAttackManager : MonoBehaviour
 
     public static void SpawnSuperHammer(GameObject hammer)
     {
+        if (fhTimer > 0)
+            return;
+        fhTimer = 50;
+        
         Debug.Log("SPAWN SUPER HAMMER");
         Instantiate(superHammerPrefab, hammer.transform.position, Quaternion.identity);
     }
