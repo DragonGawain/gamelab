@@ -22,12 +22,15 @@ namespace Players
             AttachWeapon(flamethrower);
             physicalInputs.Player.LightFire.performed += LightFire;
             physicalInputs.Player.LightSwap.performed += LightSwap;
+            physicalInputs.Player.LightFire.canceled += LightFire;
+            
         }
 
         private void OnDestroy()
         {
             physicalInputs.Player.LightFire.performed -= LightFire;
             physicalInputs.Player.LightSwap.performed -= LightSwap;
+            physicalInputs.Player.LightFire.canceled -= LightFire;
         }
 
         private void Update()
