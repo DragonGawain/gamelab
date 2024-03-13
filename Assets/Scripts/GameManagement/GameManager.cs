@@ -35,4 +35,14 @@ public class GameManager : MonoBehaviour
     {
         return new Vector3(mousePosition.x, 0, mousePosition.y).normalized;
     }
+
+    public static Vector2 GetMousePositionNotNormalized()
+    {
+        return mousePosition;
+    }
+
+    public static Vector3 GetMousePosition3NotNormalized()
+    {
+        return new Vector3(mousePosition.x, 0, mousePosition.y);
+    }
 }

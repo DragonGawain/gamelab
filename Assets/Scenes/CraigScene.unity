@@ -209,6 +209,11 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 7795943148487557052, guid: e6fd05ede34549349bb500723c87a857,
         type: 3}
+      propertyPath: camObject
+      value: 
+      objectReference: {fileID: 1954042131}
+    - target: {fileID: 7795943148487557052, guid: e6fd05ede34549349bb500723c87a857,
+        type: 3}
       propertyPath: flamethrower
       value: 
       objectReference: {fileID: 7830794301040452377, guid: dd97550bf21267b4f8292058257c906a,
@@ -1400,6 +1405,11 @@ PrefabInstance:
       propertyPath: text
       value: 
       objectReference: {fileID: 1594805237}
+    - target: {fileID: 6207922104912766515, guid: aa149897507dac94e9abc439d60a9c07,
+        type: 3}
+      propertyPath: camObject
+      value: 
+      objectReference: {fileID: 1954042131}
     - target: {fileID: 6828041966523659754, guid: aa149897507dac94e9abc439d60a9c07,
         type: 3}
       propertyPath: m_Constraints

@@ -51,7 +51,8 @@ MonoBehaviour:
   angle: 15
   gravity: 10
   speed: 10
-  grenadePrefab: {fileID: -8331045647380659827, guid: 215676a72d793a740a87c7c392e1cc44,
+  grenadeForce: 8
+  grenadePrefab: {fileID: 2143028003263309556, guid: 215676a72d793a740a87c7c392e1cc44,
     type: 3}
   fireRate: 0.3
 --- !u!1 &604683201120601947

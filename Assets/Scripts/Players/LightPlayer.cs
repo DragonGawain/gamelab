@@ -23,7 +23,6 @@ namespace Players
             physicalInputs.Player.LightFire.performed += LightFire;
             physicalInputs.Player.LightSwap.performed += LightSwap;
             physicalInputs.Player.LightFire.canceled += LightFire;
-            
         }
 
         private void OnDestroy()

@@ -7,7 +7,6 @@ using UnityEngine;
 public class Grenade : MonoBehaviour
 {
     [SerializeField] private Rigidbody rb;
-    [SerializeField] private float force;
     [SerializeField] private Color changeColor;
     private Renderer rend;
     private Color originalColor;
@@ -18,7 +17,7 @@ public class Grenade : MonoBehaviour
         
         rend = GetComponent<Renderer>();
         originalColor = rend.material.color;
-        rb.AddForce(GameManager.GetMousePosition3() * force, ForceMode.Impulse);
+        
     }
 
 
