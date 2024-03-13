@@ -16,7 +16,7 @@ namespace Players
         protected Weapon currentWeapon;
 
         [SerializeField]
-        private float speed = 5;
+        private float speed = 8;
 
         [SerializeField]
         private float smoothTime = 0.05f;
