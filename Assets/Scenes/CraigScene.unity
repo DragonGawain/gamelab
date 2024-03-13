@@ -154,7 +154,7 @@ PrefabInstance:
     - target: {fileID: 6659875371469397928, guid: e6fd05ede34549349bb500723c87a857,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6659875371469397928, guid: e6fd05ede34549349bb500723c87a857,
         type: 3}
@@ -207,6 +207,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1128229197112233283, guid: b07e80de5e0b27e4b88265ccd36e62e2,
         type: 3}
+    - target: {fileID: 7795943148487557052, guid: e6fd05ede34549349bb500723c87a857,
+        type: 3}
+      propertyPath: camObject
+      value: 
+      objectReference: {fileID: 1954042131}
     - target: {fileID: 7795943148487557052, guid: e6fd05ede34549349bb500723c87a857,
         type: 3}
       propertyPath: flamethrower
@@ -1400,6 +1405,11 @@ PrefabInstance:
       propertyPath: text
       value: 
       objectReference: {fileID: 1594805237}
+    - target: {fileID: 6207922104912766515, guid: aa149897507dac94e9abc439d60a9c07,
+        type: 3}
+      propertyPath: camObject
+      value: 
+      objectReference: {fileID: 1954042131}
     - target: {fileID: 6828041966523659754, guid: aa149897507dac94e9abc439d60a9c07,
         type: 3}
       propertyPath: m_Constraints

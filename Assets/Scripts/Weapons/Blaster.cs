@@ -14,7 +14,8 @@ namespace Weapons
         [SerializeField]
         private Transform firePoint;
 
-        [SerializeField] private GameObject bulletObject;
+        [SerializeField]
+        private GameObject bulletObject;
 
         [SerializeField]
         private static float bulletForce = 40f;
@@ -28,17 +29,24 @@ namespace Weapons
 
         public override void OnFire()
         {
-            
             // Creating bullet and making it go
             GameObject bullet = Instantiate(bulletObject, firePoint.position, firePoint.rotation);
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
-            
+
             // Passing the weapon reference to the bullet so the enemy can handle weapon info
             Bullet b = bullet.GetComponent<Bullet>();
             b.SetWeaponRef(this);
-            
+
             // rb.velocity = GameManager.GetMousePosition3() * bulletForce; // TODO:: this may not work over the network
-            rb.AddForce(GameManager.GetMousePosition3() * bulletForce, ForceMode.Impulse);
+            // target - source
+
+            rb.AddForce(
+                (
+                    GameManager.GetMousePosition3NotNormalized()
+                    - player.GetScreenCoordinatesNotNormalized()
+                ).normalized * bulletForce,
+                ForceMode.Impulse
+            );
         }
 
         public override void StopFire()

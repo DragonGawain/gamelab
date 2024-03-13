@@ -25,13 +25,16 @@ namespace Players
         protected Inputs physicalInputs;
 
         int rotationTimer = 0;
-  
+
+        public GameObject camObject; // this should be the cam specific to this player
+        protected Camera cam;
 
         private void Awake()
         {
             characterController = GetComponent<CharacterController>();
             physicalInputs = new Inputs();
             physicalInputs.Player.Enable();
+            cam = camObject.GetComponent<Camera>();
             OnAwake();
             //AttachWeapon(flamethrower); //giving player a flamethrower to test
         }
@@ -49,11 +52,13 @@ namespace Players
                 characterController.Move(speed * Time.deltaTime * direction);
             }
 
-
             // if you have fired within the past 5 seconds, rotate to look in the direction of fire
             if (rotationTimer > 0)
-                direction = GameManager.GetMousePosition3(); 
-            
+                direction = (
+                    GameManager.GetMousePosition3NotNormalized()
+                    - GetScreenCoordinatesNotNormalized()
+                ).normalized;
+
             // if you have fired recently or you have put in a move input, rotate
             if (rotationTimer > 0 || direction != Vector3.zero)
             {
@@ -66,7 +71,7 @@ namespace Players
                 );
                 transform.rotation = Quaternion.Euler(0.0f, angle, 0.0f);
             }
-            
+
             if (rotationTimer >= 0)
                 rotationTimer--;
         }
@@ -75,10 +80,14 @@ namespace Players
         protected void AttachWeapon(Weapon weapon, float offsetZ = 0.85f)
         {
             currentWeapon = Instantiate(weapon, transform.position, transform.rotation);
-            
+
             currentWeapon.transform.parent = transform;
-            currentWeapon.transform.SetLocalPositionAndRotation(new Vector3(-offsetZ,0,0), new Quaternion(0,0,0,0));
-            
+            currentWeapon.transform.SetLocalPositionAndRotation(
+                new Vector3(-offsetZ, 0, 0),
+                Quaternion.identity
+            );
+            currentWeapon.SetPlayer(this);
+
             Debug.Log(this.transform.forward);
         }
 
@@ -111,5 +120,23 @@ namespace Players
 
         abstract protected void OnAwake();
         abstract protected Vector3 GetMoveInput();
+
+        public Vector3 GetScreenCoordinates()
+        {
+            Vector3 weaponPos = cam.WorldToScreenPoint(transform.position);
+            // The z corrdinate is the distance from the camera to the player, so we don't care about that.
+            // Note that these axes would (most likely) change if we were to rotate the whole world along the X or Z axes (the ones not perpendicular to the ground)
+            weaponPos = new(weaponPos.x - (Screen.width / 2), 0, weaponPos.y - (Screen.height / 2));
+            return weaponPos.normalized;
+        }
+
+        public Vector3 GetScreenCoordinatesNotNormalized()
+        {
+            Vector3 weaponPos = cam.WorldToScreenPoint(transform.position);
+            // The z corrdinate is the distance from the camera to the player, so we don't care about that.
+            // Note that these axes would (most likely) change if we were to rotate the whole world along the X or Z axes (the ones not perpendicular to the ground)
+            weaponPos = new(weaponPos.x - (Screen.width / 2), 0, weaponPos.y - (Screen.height / 2));
+            return weaponPos;
+        }
     }
 }
