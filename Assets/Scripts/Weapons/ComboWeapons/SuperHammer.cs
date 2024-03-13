@@ -5,10 +5,15 @@ using UnityEngine;
 public class SuperHammer : MonoBehaviour
 {
     int deathTimer = 150;
+    static SuperHammer instance;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        // singleton pattern - there can only be a single instance of the super hammer
+        if (instance == null)
+            instance = this;
+        if (instance != this)
+            Destroy(this.gameObject);
     }
 
     // Update is called once per frame
@@ -17,6 +22,7 @@ public class SuperHammer : MonoBehaviour
         deathTimer--;
         if (deathTimer <= 0)
         {
+            instance = null;
             Destroy(this.gameObject);
         }
     }
