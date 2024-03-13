@@ -4,8 +4,7 @@ using Unity.Networking.Transport.Error;
 using UnityEngine;
 using Weapons;
 
-
-/* 
+/*
 Combo attacks:
 Blaster + Grenade: bullet barrage:
     Spawn many bullets in random directions from grenade point. Also destroy original bullet and original grenade.
@@ -14,7 +13,7 @@ Blaster + Hammer: super blaster:
 Flamethrower + Grenade: cloud bomb:
     Delete original grenade. Spawn in DOT cloud
 Flamethrower + Hammer: super hammer: (doo-doo da-dee da-deee!)
-    Hammer gets BEEG. 
+    Hammer gets BEEG.
 */
 public class ComboAttackManager : MonoBehaviour
 {
@@ -27,6 +26,7 @@ public class ComboAttackManager : MonoBehaviour
     static int bhTimer = 0;
     static int fgTimer = 0;
     static int fhTimer = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,7 +54,7 @@ public class ComboAttackManager : MonoBehaviour
             return;
         bgTimer = 50;
 
-        // It's VERY important to delete the grenade object first. Otherwise, it's theoretically possible that the spawned bullets collide with the same grenade. 
+        // It's VERY important to delete the grenade object first. Otherwise, it's theoretically possible that the spawned bullets collide with the same grenade.
         // This will not only result in more bullets being spawned, but can also potentially crash the game (trying to destroy a gameobject that already destroyed -> nullObjectReference)
         Destroy(bullet.transform.parent.gameObject);
         Vector3 grenadePos = grenade.transform.position;
@@ -66,9 +66,9 @@ public class ComboAttackManager : MonoBehaviour
         {
             tempBullet = Instantiate(bulletPrefab, grenadePos, Quaternion.identity);
             tempRb = tempBullet.GetComponent<Rigidbody>();
-            radnomDir = new(Random.Range(-1,1), 0, Random.Range(-1,1));
+            radnomDir = new(Random.Range(-1, 1), 0, Random.Range(-1, 1));
             radnomDir.Normalize();
-            tempRb.AddForce(GameManager.GetMousePosition3() * Blaster.GetBulletForce(), ForceMode.Impulse);
+            tempRb.AddForce(radnomDir * Blaster.GetBulletForce(), ForceMode.Impulse);
         }
         Debug.Log("SPAWN BULLET BARRAGE");
     }
@@ -79,7 +79,11 @@ public class ComboAttackManager : MonoBehaviour
             return;
         bhTimer = 50;
 
-        GameObject superBullet = Instantiate(superBulletPrefab, bullet.transform.position, Quaternion.identity);
+        GameObject superBullet = Instantiate(
+            superBulletPrefab,
+            bullet.transform.position,
+            Quaternion.identity
+        );
         Rigidbody superRb = superBullet.GetComponent<Rigidbody>();
         superRb.velocity = bullet.GetComponentInParent<Rigidbody>().velocity;
         Destroy(bullet.transform.parent.gameObject);
@@ -106,5 +110,4 @@ public class ComboAttackManager : MonoBehaviour
         Instantiate(superHammerPrefab, hammer.transform.position, Quaternion.identity);
         Debug.Log("SPAWN SUPER HAMMER");
     }
-
 }
