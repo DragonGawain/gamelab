@@ -70,7 +70,5 @@ public class Grenade : MonoBehaviour
         }
         rend.material.color = changeColor;
         isExploding = true;
-
-        // transform.DOScale(Vector3.one * 10, 0.3f).OnComplete(() => Destroy(this.gameObject));
     }
 }
