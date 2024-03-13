@@ -19,6 +19,16 @@ namespace Weapons
             this.weaponName = weaponName;
         }
 
+        public int GetDamage()
+        {
+            return damage;
+        }
+
+        public string GetWeaponName()
+        {
+            return weaponName;
+        }
+
         abstract public void OnFire();
         abstract public void StopFire();
 
