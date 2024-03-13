@@ -80,16 +80,6 @@ namespace Players
             currentWeapon.transform.SetLocalPositionAndRotation(new Vector3(-offsetZ,0,0), new Quaternion(0,0,0,0));
             
             Debug.Log(this.transform.forward);
-            
-            // currentWeapon.transform.position = new Vector3(
-            //     currentWeapon.transform.position.x - offsetZ,
-            //     currentWeapon.transform.position.y,
-            //     currentWeapon.transform.position.z
-            // );
-            
-            
-            
-            //Debug.Log(currentWeapon.transform.position);
         }
 
         public void Move(InputAction.CallbackContext ctx)

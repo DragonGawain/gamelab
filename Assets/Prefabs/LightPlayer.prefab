@@ -362,6 +362,34 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: e1f0fe60-ffda-4e67-baaf-ef80bd860eb3
     m_ActionName: Player/SwapWeapon[/Keyboard/q,/DualShock4GamepadHID/rightShoulder]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c1dd1074-3d2c-45cc-9a0e-e8bb74389260
+    m_ActionName: Player/LightMove[/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: cc7cf766-4292-4fc0-86ff-4469521a853f
+    m_ActionName: Player/DarkMove[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6d9afcc2-fa95-41e2-bb69-47a6fa233a68
+    m_ActionName: Player/LightFire[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0bbf2f1f-8d4e-4221-96b5-4eb065f7d069
+    m_ActionName: Player/DarkFire[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 867a9082-f529-46eb-be29-331397244d9b
+    m_ActionName: Player/LightSwap[/Keyboard/q]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 454255e9-f780-421f-a842-36158ce00cf0
+    m_ActionName: Player/DarkSwap[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9d6c6c02-0e03-402b-9a30-e1eb205a00b2
+    m_ActionName: Player/MousePos[/Mouse/position]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -407,6 +435,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   smoothTime: 0.05
-  flamethrower: {fileID: 0}
-  blaster: {fileID: 0}
+  flamethrower: {fileID: 7830794301040452377, guid: dd97550bf21267b4f8292058257c906a,
+    type: 3}
+  blaster: {fileID: 1128229197112233283, guid: b07e80de5e0b27e4b88265ccd36e62e2, type: 3}
   text: {fileID: 0}
