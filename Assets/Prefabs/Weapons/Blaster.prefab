@@ -81,9 +81,8 @@ MonoBehaviour:
   damage: 20
   particles: {fileID: 0}
   firePoint: {fileID: 3665701817819516441}
-  bulletPrefab: {fileID: 619358578417660589, guid: 0c5e5727528b3874f893eeceb5da379f,
+  bulletObject: {fileID: 619358578417660589, guid: 0c5e5727528b3874f893eeceb5da379f,
     type: 3}
-  bulletForce: 20
 --- !u!1001 &469696065056190118
 PrefabInstance:
   m_ObjectHideFlags: 0
