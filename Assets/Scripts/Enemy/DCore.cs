@@ -42,14 +42,7 @@ public class DCore : MonoBehaviour
         // then destroy itself
         Destroy(this.gameObject);
     }
-
-    private void Update()
-    {
-        // this just rotates the dreamcore around y-axis, no functionality,
-        // just for visual.
-        transform.Rotate(transform.up, 20 * Time.deltaTime);
-    }
-
+    
     public bool GetDamage(int amount)
     {
         // dream core gets damage with this method

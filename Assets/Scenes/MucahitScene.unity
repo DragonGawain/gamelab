@@ -223,7 +223,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFilled: 0
   wallObject: {fileID: 171718796}
-  wallCollider: {fileID: 171718797}
   soTargetManager: {fileID: 11400000, guid: b38df5e0b75d0c94b81eccf7e41d650c, type: 2}
 --- !u!114 &26538002
 MonoBehaviour:
@@ -887,7 +886,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFilled: 0
   wallObject: {fileID: 641060017}
-  wallCollider: {fileID: 641060019}
   soTargetManager: {fileID: 11400000, guid: b38df5e0b75d0c94b81eccf7e41d650c, type: 2}
 --- !u!23 &202616529
 MeshRenderer:
@@ -1182,7 +1180,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFilled: 0
   wallObject: {fileID: 2029802729}
-  wallCollider: {fileID: 2029802731}
   soTargetManager: {fileID: 11400000, guid: b38df5e0b75d0c94b81eccf7e41d650c, type: 2}
 --- !u!23 &230792543
 MeshRenderer:
@@ -2716,7 +2713,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFilled: 0
   wallObject: {fileID: 1038015808}
-  wallCollider: {fileID: 1038015810}
   soTargetManager: {fileID: 11400000, guid: b38df5e0b75d0c94b81eccf7e41d650c, type: 2}
 --- !u!23 &656383577
 MeshRenderer:

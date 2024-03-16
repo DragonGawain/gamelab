@@ -8,6 +8,8 @@ public class VoidHoleSpawner : MonoBehaviour
     private List<Transform> spawnPoints;
     //Prefab of void hole
     [SerializeField] private VoidHole voidHolePrefab;
+    
+    [SerializeField] private SO_TargetManager soTargetManager;
     void Start()
     {
         //Get all spawners and remove itself from list
@@ -38,5 +40,10 @@ public class VoidHoleSpawner : MonoBehaviour
         {
             spawn();
         }
+    }
+    
+    private void OnDestroy()
+    {
+        soTargetManager.ClearTargetManager();
     }
 }

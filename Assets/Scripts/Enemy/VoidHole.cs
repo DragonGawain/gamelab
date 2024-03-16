@@ -8,14 +8,30 @@ using Random = UnityEngine.Random;
 public class VoidHole : MonoBehaviour
 {
     public static event Action<Transform> DespawnVoidHole;
-    void Start()
+    [SerializeField] private SO_TargetManager soTargetManager;
+    [SerializeField] private Transform enemyPrefab;
+    private List<Transform> spawnedEnemyList = new List<Transform>();
+    
+    
+
+    void Update()
     {
-        Invoke(nameof(DestroySelf), Random.Range(3, 7));
+        
+        if (Input.GetKeyDown(KeyCode.Q) && soTargetManager.IsThereDCore())
+        {
+            SpawnEnemy();
+        }
+    }
+    private void SpawnEnemy()
+    {
+        EnemyAI enemyAiRef = EnemyAI.Create(enemyPrefab, transform.position);
+        spawnedEnemyList.Add(enemyAiRef.transform);
     }
 
     private void DestroySelf()
     {
         DespawnVoidHole?.Invoke(transform.parent);
+        soTargetManager.ClearTargetManager();
         Destroy(this.gameObject);
     }
 }
