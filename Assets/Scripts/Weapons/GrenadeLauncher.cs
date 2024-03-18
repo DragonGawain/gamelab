@@ -12,12 +12,9 @@ namespace Weapons
         [SerializeField]
         private float angle;
 
-        [SerializeField]
-        private float gravity;
 
-        [SerializeField]
-        private float speed;
-
+        [SerializeField] private int dmg;
+        
         [SerializeField]
         private float grenadeForce = 8;
 
@@ -32,9 +29,8 @@ namespace Weapons
 
         void Start()
         {
-            int dmg = 10;
             SetDamage(dmg);
-            Grenade.damage = dmg;
+            Grenade.dmg = dmg;
             transform.localEulerAngles = new Vector3(0, -90, -angle);
             SetWeaponName("Grenade Launcher");
         }

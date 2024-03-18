@@ -11,12 +11,16 @@ public class Grenade : MonoBehaviour
 
     [SerializeField]
     private Color changeColor;
+
+    [SerializeField] private float boomRate;
+    [SerializeField] private float blastRadius;
     private Renderer rend;
     private Color originalColor;
-    public static int damage;
+    public static int dmg;
     bool hitGround = false;
     int timer = 0;
     bool isExploding = false;
+    private bool exploded = false;
 
     void Start()
     {
@@ -29,18 +33,42 @@ public class Grenade : MonoBehaviour
         // 0.3 seconds = 15 FU's
         if (isExploding)
         {
-            Debug.Log((float)timer / 15);
-            transform.localScale = Vector3.Lerp(Vector3.one, Vector3.one * 10, (float)timer / 15);
+            // Debug.Log((float)timer / 15);
+            transform.localScale = Vector3.Lerp(Vector3.one, Vector3.one * blastRadius, (float)timer / 15);
             timer++;
             if (timer >= 15)
+            {
+                exploded = true;
+                Collider[] colliders = Physics.OverlapSphere(transform.position, blastRadius/2);
+                foreach (Collider hit in colliders)
+                {
+                    if (!hit.CompareTag("Enemy"))
+                        continue;
+                    // Check if the collider belongs to an enemy
+                    Enemy enemy = hit.GetComponent<Enemy>();
+                    enemy.OnHit(dmg);
+                    Rigidbody rb = hit.GetComponent<Rigidbody>();
+                    if (rb != null)
+                    {
+                        rb.AddExplosionForce(100, transform.position, blastRadius);
+                    }
+                }
                 Destroy(this.gameObject);
+                exploded = false;
+            }
+                
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        // print(other.tag);
-        if (other.CompareTag("Floor") && !hitGround)
+        if (exploded && other.CompareTag("Enemy"))
+        {
+            Enemy enemy = other.GetComponent<Enemy>();
+            enemy.OnHit(dmg);
+        }
+        
+        if (!hitGround && other.CompareTag("Floor"))
         {
             hitGround = true;
             rb.isKinematic = true;
@@ -52,8 +80,8 @@ public class Grenade : MonoBehaviour
 
     IEnumerator Explode()
     {
-        float kaboomTime = Time.time + 3;
-        float boomRate = 1;
+        float kaboomTime = Time.time + boomRate;
+        float colorChangeRate = 1;
         while (Time.time < kaboomTime)
         {
             if (rend.material.color == originalColor)
@@ -65,8 +93,8 @@ public class Grenade : MonoBehaviour
                 rend.material.color = originalColor;
             }
 
-            boomRate *= 0.7f;
-            yield return new WaitForSeconds(boomRate);
+            colorChangeRate *= 0.7f;
+            yield return new WaitForSeconds(colorChangeRate);
         }
         rend.material.color = changeColor;
         isExploding = true;

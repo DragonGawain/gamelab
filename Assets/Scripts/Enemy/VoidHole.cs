@@ -17,7 +17,7 @@ public class VoidHole : MonoBehaviour
     void Update()
     {
         
-        if (Input.GetKeyDown(KeyCode.Q) && soTargetManager.IsThereDCore())
+        if (Input.GetKeyDown(KeyCode.Z) && soTargetManager.IsThereDCore())
         {
             SpawnEnemy();
         }

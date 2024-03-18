@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
@@ -12,11 +13,14 @@ namespace Weapons
         [SerializeField]
         protected float swingSpeed;
         protected Sequence rotationSequence;
+
+        private bool hit;
         // protected static Hammer instance;
 
         void Awake()
         {
             Debug.Log("THE HAMMER AWAKENS");
+            SetDamage(10);
             // singleton pattern - there can only be a single instance of the super hammer
             // if (instance == null)
             //     instance = this;
@@ -34,6 +38,7 @@ namespace Weapons
 
         protected void slam()
         {
+            hit = true;
             rotationSequence = DOTween.Sequence();
             transform.localRotation = Quaternion.identity;
             rotationSequence.Append(
@@ -43,10 +48,15 @@ namespace Weapons
             rotationSequence.Append(
                 transform.DOLocalRotate(Vector3.zero, 0.1f).SetEase(Ease.OutBack)
             );
-            rotationSequence.OnComplete(() => rotationSequence = null);
+            rotationSequence.OnComplete(StopFire);
         }
 
-        public override void StopFire() { }
+        public override void StopFire()
+        {
+            
+            hit = false;
+            rotationSequence = null;
+        }
 
         public void Destroy()
         {
@@ -58,6 +68,15 @@ namespace Weapons
             // Destroy(transform.parent.gameObject);
 
             Destroy(this.gameObject);
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (hit && other.CompareTag("Enemy"))
+            {
+                Enemy enemy = other.GetComponent<Enemy>();
+                enemy.OnHit(GetDamage());
+            }
         }
     }
 }

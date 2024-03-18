@@ -9,6 +9,7 @@ TagManager:
   - TargetWall
   - LightPlayer
   - DarkPlayer
+  - Enemy
   layers:
   - Default
   - TransparentFX

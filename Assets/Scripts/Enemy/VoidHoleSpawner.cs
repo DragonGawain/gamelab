@@ -36,7 +36,7 @@ public class VoidHoleSpawner : MonoBehaviour
     private void Update()
     {
         
-        if (Input.GetKeyDown(KeyCode.S) && spawnPoints.Count > 0)
+        if (Input.GetKeyDown(KeyCode.X) && spawnPoints.Count > 0)
         {
             spawn();
         }

@@ -12,39 +12,20 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private int health = 50;
     [SerializeField] private int damage;
-    [SerializeField] private Material material;
+    [SerializeField] private Renderer _renderer;
+    private Material material;
 
-    private void OnTriggerEnter(Collider other)
+    private void Awake()
     {
-        // Been hit by blaster
-        
-        if (other.gameObject.name == "Bullet(Clone)")
-        {
-         
-            Bullet bullet = other.gameObject.GetComponentInParent<Bullet>();
-            
-            // TODO: play bullet exploding animation?
-            bullet.Explode(); 
-            
-            OnHit();
-            
-            // If the bullet came from a blaster gun
-            if (bullet.GetWeaponRef() as Blaster)
-                HitByBlaster(bullet.GetWeaponRef() as Blaster);
-            
-            // If the bullet came from another gun later..etc.
-            // else if..
-                
-            Destroy(other.gameObject);
-            
-        }
-        
-        
-        
+        material = Instantiate(_renderer.material);
+        _renderer.material = material;
     }
-    private void OnHit()
+
+    public void OnHit(int dmg)
     {
-        Debug.Log(health);
+        Debug.Log("Before hit: " + health);
+        health -= dmg;
+        Debug.Log("After hit: " + health);
         if (health <= 0)
         {
             OnDeath();
@@ -52,9 +33,8 @@ public class Enemy : MonoBehaviour
         }
         
         // Play hit animation (e.g. enemy gets stunned or smth)
-            
-        
         // Enemy flashes red then turns back to normal
+
         Sequence sequence = DOTween.Sequence();
         sequence.Append(material.DOColor(Color.red, 0.2f));
         sequence.Append(material.DOColor(Color.white, 0.2f));
@@ -67,7 +47,7 @@ public class Enemy : MonoBehaviour
         health -= blaster.GetDamage();
         
         // any other blaster effects can go here
-
+    
     }
 
     private void OnDeath()
