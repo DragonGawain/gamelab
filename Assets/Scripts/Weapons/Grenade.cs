@@ -12,8 +12,12 @@ public class Grenade : MonoBehaviour
     [SerializeField]
     private Color changeColor;
 
+    //how long it takes for grenade to explode
     [SerializeField] private float boomRate;
+    //size of blast
     [SerializeField] private float blastRadius;
+    
+    
     private Renderer rend;
     private Color originalColor;
     public static int dmg;

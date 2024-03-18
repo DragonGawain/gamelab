@@ -21,11 +21,10 @@ public class Enemy : MonoBehaviour
         _renderer.material = material;
     }
 
+    //Called by weapons/projectiles
     public void OnHit(int dmg)
     {
-        Debug.Log("Before hit: " + health);
         health -= dmg;
-        Debug.Log("After hit: " + health);
         if (health <= 0)
         {
             OnDeath();
