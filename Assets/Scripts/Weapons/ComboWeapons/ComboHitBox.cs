@@ -12,7 +12,8 @@ public class ComboHitBox : MonoBehaviour
         HAMMER
     }
 
-    [SerializeField] WeaponType weaponType;
+    [SerializeField]
+    WeaponType weaponType;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -22,44 +23,99 @@ public class ComboHitBox : MonoBehaviour
         switch (weaponType)
         {
             case WeaponType.BULLET:
-                if (other.gameObject.GetComponent<ComboHitBox>().GetWeaponType() == WeaponType.GREANADE)
+                if (
+                    other.gameObject.GetComponent<ComboHitBox>().GetWeaponType()
+                    == WeaponType.GREANADE
+                )
                 {
                     ComboAttackManager.SpawnBulletBarrage(other.gameObject, this.gameObject);
                 }
-                else if (other.gameObject.GetComponent<ComboHitBox>().GetWeaponType() == WeaponType.HAMMER)
+                else if (
+                    other.gameObject.GetComponent<ComboHitBox>().GetWeaponType()
+                    == WeaponType.HAMMER
+                )
                 {
                     ComboAttackManager.SpawnSuperBullet(this.gameObject);
                 }
                 break;
             case WeaponType.FLAMETHROWER:
-                if (other.gameObject.GetComponent<ComboHitBox>().GetWeaponType() == WeaponType.GREANADE)
+                if (
+                    other.gameObject.GetComponent<ComboHitBox>().GetWeaponType()
+                    == WeaponType.GREANADE
+                )
                 {
                     ComboAttackManager.SpawnDOTCloud(other.gameObject);
                 }
-                else if (other.gameObject.GetComponent<ComboHitBox>().GetWeaponType() == WeaponType.HAMMER)
+                else if (
+                    other.gameObject.GetComponent<ComboHitBox>().GetWeaponType()
+                    == WeaponType.HAMMER
+                )
                 {
-                    ComboAttackManager.SpawnSuperHammer(other.gameObject);
+                    ComboAttackManager.SpawnSuperHammer();
                 }
                 break;
             case WeaponType.GREANADE:
-                if (other.gameObject.GetComponent<ComboHitBox>().GetWeaponType() == WeaponType.BULLET)
+                if (
+                    other.gameObject.GetComponent<ComboHitBox>().GetWeaponType()
+                    == WeaponType.BULLET
+                )
                 {
                     ComboAttackManager.SpawnBulletBarrage(this.gameObject, other.gameObject);
                 }
-                else if (other.gameObject.GetComponent<ComboHitBox>().GetWeaponType() == WeaponType.FLAMETHROWER)
+                else if (
+                    other.gameObject.GetComponent<ComboHitBox>().GetWeaponType()
+                    == WeaponType.FLAMETHROWER
+                )
                 {
                     ComboAttackManager.SpawnDOTCloud(this.gameObject);
                 }
                 break;
             case WeaponType.HAMMER:
-                if (other.gameObject.GetComponent<ComboHitBox>().GetWeaponType() == WeaponType.BULLET)
+                if (
+                    other.gameObject.GetComponent<ComboHitBox>().GetWeaponType()
+                    == WeaponType.BULLET
+                )
                 {
                     ComboAttackManager.SpawnSuperBullet(other.gameObject);
                 }
-                else if (other.gameObject.GetComponent<ComboHitBox>().GetWeaponType() == WeaponType.FLAMETHROWER)
+                else if (
+                    other.gameObject.GetComponent<ComboHitBox>().GetWeaponType()
+                    == WeaponType.FLAMETHROWER
+                )
                 {
-                    ComboAttackManager.SpawnSuperHammer(this.gameObject);
+                    ComboAttackManager.SpawnSuperHammer();
                 }
+                break;
+        }
+    }
+
+    // if the FT is staying in contact with the hammer, continuously reset the super hammer timer
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.GetComponent<ComboHitBox>() == null)
+            return;
+
+        switch (weaponType)
+        {
+            case WeaponType.FLAMETHROWER:
+                if (
+                    other.gameObject.GetComponent<ComboHitBox>().GetWeaponType()
+                    == WeaponType.HAMMER
+                )
+                {
+                    ComboAttackManager.SpawnSuperHammer();
+                }
+                break;
+            case WeaponType.HAMMER:
+                if (
+                    other.gameObject.GetComponent<ComboHitBox>().GetWeaponType()
+                    == WeaponType.FLAMETHROWER
+                )
+                {
+                    ComboAttackManager.SpawnSuperHammer();
+                }
+                break;
+            default:
                 break;
         }
     }

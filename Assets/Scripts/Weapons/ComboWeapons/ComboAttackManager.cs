@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Players;
 using Unity.Networking.Transport.Error;
+using Unity.VisualScripting;
 using UnityEngine;
 using Weapons;
 
@@ -27,6 +29,8 @@ public class ComboAttackManager : MonoBehaviour
     static int fgTimer = 0;
     static int fhTimer = 0;
 
+    static DarkPlayer darkPlayer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +50,11 @@ public class ComboAttackManager : MonoBehaviour
             fgTimer--;
         if (fhTimer >= 0)
             fhTimer--;
+    }
+
+    public static void SetDarkPlayer(DarkPlayer dp)
+    {
+        darkPlayer = dp;
     }
 
     public static void SpawnBulletBarrage(GameObject grenade, GameObject bullet)
@@ -101,13 +110,14 @@ public class ComboAttackManager : MonoBehaviour
         Debug.Log("SPAWN DOT CLOUD");
     }
 
-    public static void SpawnSuperHammer(GameObject hammer)
+    public static void SpawnSuperHammer()
     {
         if (fhTimer > 0)
             return;
-        fhTimer = 50;
+        fhTimer = 5;
 
-        Instantiate(superHammerPrefab, hammer.transform.position, Quaternion.identity);
+        // Instantiate(superHammerPrefab, hammer.transform.position, Quaternion.identity);
+        darkPlayer.SetIsHammerSuper(true);
         Debug.Log("SPAWN SUPER HAMMER");
     }
 }

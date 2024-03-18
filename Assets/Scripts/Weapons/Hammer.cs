@@ -10,41 +10,43 @@ namespace Weapons
     public class Hammer : Weapon
     {
         [SerializeField]
-        private float swingSpeed;
+        protected float swingSpeed;
+        protected Sequence rotationSequence;
+        // protected static Hammer instance;
 
-        private Sequence rotationSequence;
-        private Transform handle;
-        void Start()
+        void Awake()
         {
-            SetDamage(20);
-            SetWeaponName("Hammer");
-            handle = transform;
+            Debug.Log("THE HAMMER AWAKENS");
+            // singleton pattern - there can only be a single instance of the super hammer
+            // if (instance == null)
+            //     instance = this;
+            // if (instance != this)
+            //     Destroy(this.gameObject);
         }
 
         public override void OnFire()
         {
-            
             if (rotationSequence == null)
             {
-                slam();    
+                slam();
             }
-            
         }
 
-        private void slam()
+        protected void slam()
         {
             rotationSequence = DOTween.Sequence();
-            handle.localRotation = Quaternion.identity;
-            rotationSequence.Append(handle.DOLocalRotate(new Vector3(-65, 0, -40), 0.2f).SetEase(Ease.InBack));
+            transform.localRotation = Quaternion.identity;
+            rotationSequence.Append(
+                transform.DOLocalRotate(new Vector3(-65, 0, -40), 0.2f).SetEase(Ease.InBack)
+            );
             rotationSequence.AppendInterval(0.1f);
-            rotationSequence.Append(handle.DOLocalRotate(Vector3.zero, 0.1f).SetEase(Ease.OutBack));
+            rotationSequence.Append(
+                transform.DOLocalRotate(Vector3.zero, 0.1f).SetEase(Ease.OutBack)
+            );
             rotationSequence.OnComplete(() => rotationSequence = null);
         }
 
-        public override void StopFire()
-        {
-            
-        }
+        public override void StopFire() { }
 
         public void Destroy()
         {
@@ -54,7 +56,7 @@ namespace Weapons
             }
 
             // Destroy(transform.parent.gameObject);
-            
+
             Destroy(this.gameObject);
         }
     }

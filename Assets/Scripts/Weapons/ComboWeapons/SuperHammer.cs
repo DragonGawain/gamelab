@@ -1,29 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
+using Players;
+using Weapons;
 using UnityEngine;
 
-public class SuperHammer : MonoBehaviour
+namespace Weapons
 {
-    int deathTimer = 150;
-    static SuperHammer instance;
-    // Start is called before the first frame update
-    void Awake()
+    public class SuperHammer : Hammer
     {
-        // singleton pattern - there can only be a single instance of the super hammer
-        if (instance == null)
-            instance = this;
-        if (instance != this)
-            Destroy(this.gameObject);
-    }
+        static int deathTimer = 150;
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        deathTimer--;
-        if (deathTimer <= 0)
+        // Start is called before the first frame update
+        void Start()
         {
-            instance = null;
-            Destroy(this.gameObject);
+            SetDamage(50);
+            SetWeaponName("Super Hammer");
+        }
+
+        // Update is called once per frame
+        void FixedUpdate()
+        {
+            deathTimer--;
+            if (deathTimer <= 0)
+            {
+                // instance = null;
+                player.SetIsHammerSuper(false);
+                Destroy(this.gameObject);
+            }
+        }
+
+        public static void ResetSuperHammerTimer()
+        {
+            deathTimer = 150;
         }
     }
 }

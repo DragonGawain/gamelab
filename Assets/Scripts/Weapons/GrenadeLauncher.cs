@@ -36,6 +36,7 @@ namespace Weapons
             SetDamage(dmg);
             Grenade.damage = dmg;
             transform.localEulerAngles = new Vector3(0, -90, -angle);
+            SetWeaponName("Grenade Launcher");
         }
 
         public override void OnFire()

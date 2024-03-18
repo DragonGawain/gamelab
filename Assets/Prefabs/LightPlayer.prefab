@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 7795943148487557052}
   m_Layer: 0
   m_Name: LightPlayer
-  m_TagString: Untagged
+  m_TagString: LightPlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -435,6 +435,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 8
   smoothTime: 0.05
+  camObject: {fileID: 0}
   flamethrower: {fileID: 7830794301040452377, guid: dd97550bf21267b4f8292058257c906a,
     type: 3}
   blaster: {fileID: 1128229197112233283, guid: b07e80de5e0b27e4b88265ccd36e62e2, type: 3}

@@ -588,7 +588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0b09816be5238843b5fae65e1df74e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugTimescale: 0.25
+  debugTimescale: 1
 --- !u!4 &941122378
 Transform:
   m_ObjectHideFlags: 0

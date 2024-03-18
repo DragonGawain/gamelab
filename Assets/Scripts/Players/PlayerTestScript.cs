@@ -149,5 +149,10 @@ namespace Players
             weaponPos = new(weaponPos.x - (Screen.width / 2), 0, weaponPos.y - (Screen.height / 2));
             return weaponPos;
         }
+
+        public virtual void SetIsHammerSuper(bool status)
+        {
+            return;
+        }
     }
 }

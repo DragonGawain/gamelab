@@ -6,22 +6,35 @@ using Players;
 using TMPro;
 using UnityEngine.UI;
 using Weapons;
+using Unity.VisualScripting;
 
 namespace Players
 {
     public class DarkPlayer : PlayerTestScript
     {
         //Prefabs of the weapons
+        // [SerializeField]
+        // private Hammer hammer;
+
         [SerializeField]
-        private Hammer hammer;
+        private Hammer superHammer;
+
+        [SerializeField]
+        Hammer ygbyauda; // I do not know why, but this variable wants to be named this :shrug:. It magically breaks if I rename it
 
         [SerializeField]
         private GrenadeLauncher grenadeLauncher;
+        static bool isHammerSuper = false;
 
         //Attach weapon at start of game
         protected override void OnAwake()
         {
-            AttachWeapon(hammer, new(-0.3f, 0, 0));
+            // Debug.Log("HAMMER TIME: " + hammer);
+            // Debug.Log("SUPER HAMMER TIME: " + superHammer);
+            // Debug.Log("GRENADE TIME: " + grenadeLauncher);
+            // Debug.Log("ygbyauda TIME: " + ygbyauda);
+            AttachWeapon(ygbyauda, new(-0.3f, 0, 0));
+            ComboAttackManager.SetDarkPlayer(this);
             physicalInputs.Player.DarkFire.performed += DarkFire;
             physicalInputs.Player.DarkSwap.performed += DarkSwap;
         }
@@ -64,24 +77,27 @@ namespace Players
 
         public void DarkFire(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
         {
+            Debug.Log(currentWeapon);
             base.Fire(ctx);
             currentWeapon.OnFire();
             // If they fire with the Hammer
-            if (currentWeapon as Hammer)
+            if (currentWeapon as StdHammer)
             {
                 // Player holds to fire
                 if (ctx.performed)
-                {
-                    (currentWeapon as Hammer).OnFire();
-                }
+                    (currentWeapon as StdHammer).OnFire();
+            }
+            else if (currentWeapon as SuperHammer)
+            {
+                // Player holds to fire
+                if (ctx.performed)
+                    (currentWeapon as SuperHammer).OnFire();
             }
             // If they fire with the grenadeLauncher
             else
             {
                 if (ctx.performed)
-                {
                     (currentWeapon as GrenadeLauncher).OnFire();
-                }
             }
         }
 
@@ -106,7 +122,7 @@ namespace Players
             else
             {
                 // Switch to the hammer
-                AttachWeapon(hammer, new(-0.3f, 0, 0));
+                AttachWeapon(ygbyauda, new(-0.3f, 0, 0));
             }
         }
 
@@ -115,6 +131,30 @@ namespace Players
             Vector2 moveInput = physicalInputs.Player.DarkMove.ReadValue<Vector2>();
             Vector3 dir = new(moveInput.x, 0.0f, moveInput.y);
             return dir;
+        }
+
+        public override void SetIsHammerSuper(bool status)
+        {
+            bool oldStatus = isHammerSuper;
+            isHammerSuper = status;
+            if (oldStatus == isHammerSuper)
+            {
+                if (isHammerSuper)
+                    SuperHammer.ResetSuperHammerTimer();
+                else
+                    return;
+            }
+            else if (!currentWeapon.GetWeaponName().Equals("Grenade Launcher"))
+            {
+                Destroy(currentWeapon.gameObject);
+                if (isHammerSuper)
+                {
+                    AttachWeapon(superHammer, new(-0.3f, 0, 0));
+                    SuperHammer.ResetSuperHammerTimer();
+                }
+                else
+                    AttachWeapon(ygbyauda, new(-0.3f, 0, 0));
+            }
         }
     }
 }

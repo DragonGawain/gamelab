@@ -11,9 +11,7 @@ GameObject:
   - component: {fileID: 6055633046754903193}
   - component: {fileID: 1123140342173926109}
   - component: {fileID: 6004403833639120390}
-  - component: {fileID: 7400558254026834020}
   - component: {fileID: 7110841742569912110}
-  - component: {fileID: 1265552657875013337}
   m_Layer: 0
   m_Name: Head
   m_TagString: Untagged
@@ -64,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: af9fa37720a520b4286e7b782736d376, type: 2}
+  - {fileID: 2100000, guid: a2e5b51bb9c01a84c8cc4f1428e03872, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -86,29 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &7400558254026834020
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2636118198342330447}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!136 &7110841742569912110
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -132,19 +107,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!114 &1265552657875013337
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2636118198342330447}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2957a34d95e8e0247953e5018026e521, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponType: 3
 --- !u!1 &3449875433883800453
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,11 +116,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8294441539722770499}
-  - component: {fileID: 3643911665502490090}
-  - component: {fileID: 7510857532776073737}
-  - component: {fileID: 886729315361608250}
+  - component: {fileID: 8047829031987554622}
+  - component: {fileID: 6524865711970849321}
+  - component: {fileID: 1011340802780264719}
   m_Layer: 0
-  m_Name: Hammer Handle
+  m_Name: SuperHammer Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -174,13 +136,13 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.5, y: -1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6285310541711424358}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3643911665502490090
+--- !u!114 &8047829031987554622
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -189,12 +151,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3449875433883800453}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eec272e2c17179548bb4dbd654995eb2, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ca66d22940116e4e8af2e7adf96bffd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
+  damage: 50
   swingSpeed: 0
---- !u!136 &7510857532776073737
+--- !u!136 &6524865711970849321
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -217,7 +179,7 @@ CapsuleCollider:
   m_Height: 1.6
   m_Direction: 2
   m_Center: {x: -0.3, y: 1.45, z: 0}
---- !u!114 &886729315361608250
+--- !u!114 &1011340802780264719
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -325,7 +287,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: af9fa37720a520b4286e7b782736d376, type: 2}
+  - {fileID: 2100000, guid: a2e5b51bb9c01a84c8cc4f1428e03872, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -362,7 +324,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
