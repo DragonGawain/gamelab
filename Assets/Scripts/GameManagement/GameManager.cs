@@ -7,6 +7,10 @@ public class GameManager : MonoBehaviour
     Inputs physicalInputs;
     static Vector2 mousePosition;
 
+    // TODO:: THIS IS PURELY A DEBUG THING AND ***SHOULD NOT*** BE IN THE FINAL BUILD
+    [SerializeField, Range(0.001f, 2)]
+    float debugTimescale = 1;
+
     private void Awake()
     {
         physicalInputs = new Inputs();
@@ -14,7 +18,10 @@ public class GameManager : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start() { }
+    void Start()
+    {
+        Time.timeScale = debugTimescale;
+    }
 
     // Update is called once per frame
     void Update()

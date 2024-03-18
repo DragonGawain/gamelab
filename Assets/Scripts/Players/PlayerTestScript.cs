@@ -77,15 +77,26 @@ namespace Players
         }
 
         // attaches the gun object to the character and stores it in "currentWeapon"
-        protected void AttachWeapon(Weapon weapon, float offsetZ = 0.85f)
+        protected void AttachWeapon(Weapon weapon, Vector3? weaponOffsetInput = null)
         {
+            // Debug.Log("Weapon offset input: " + weaponOffsetInput);
+            Vector3 weaponOffset;
+            if (weaponOffsetInput == null)
+                weaponOffset = new(-0.85f, 0, 0);
+            else
+                weaponOffset = new(
+                    weaponOffsetInput.Value.x,
+                    weaponOffsetInput.Value.y,
+                    weaponOffsetInput.Value.z
+                );
+
+            // Debug.Log("Weapon offset value: " + weaponOffsetInput.Value);
+
+            Debug.Log("Weapon offset: " + weaponOffset);
             currentWeapon = Instantiate(weapon, transform.position, transform.rotation);
 
             currentWeapon.transform.parent = transform;
-            currentWeapon.transform.SetLocalPositionAndRotation(
-                new Vector3(-offsetZ, 0, 0),
-                Quaternion.identity
-            );
+            currentWeapon.transform.SetLocalPositionAndRotation(weaponOffset, Quaternion.identity);
             currentWeapon.SetPlayer(this);
 
             Debug.Log(this.transform.forward);

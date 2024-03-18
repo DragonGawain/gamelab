@@ -18,7 +18,7 @@ namespace Weapons
         {
             SetDamage(20);
             SetWeaponName("Hammer");
-            handle = transform.parent;
+            handle = transform;
         }
 
         public override void OnFire()
@@ -53,7 +53,7 @@ namespace Weapons
                 rotationSequence.Kill();
             }
 
-            Destroy(transform.parent.gameObject);
+            // Destroy(transform.parent.gameObject);
             
             Destroy(this.gameObject);
         }

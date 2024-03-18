@@ -73,12 +73,11 @@ namespace Players
 
             base.SwapWeapon(ctx);
 
+            // Despawn current weapon
+            Destroy(currentWeapon.gameObject);
             // If the current weapon is flamethrower
             if (currentWeapon as Flamethrower)
             {
-                // Despawn current weapon
-                Destroy(currentWeapon.gameObject);
-
                 // Switch to blaster
                 AttachWeapon(blaster);
 
@@ -87,9 +86,6 @@ namespace Players
             }
             else
             {
-                // Despawn current weapon
-                Destroy(currentWeapon.gameObject);
-
                 // Switch to flamethrower
                 AttachWeapon(flamethrower);
 
