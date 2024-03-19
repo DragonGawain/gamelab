@@ -42,6 +42,7 @@ public class Grenade : MonoBehaviour
             timer++;
             if (timer >= 15)
             {
+                //Create a ball the size of grenade to find all enemy colliders
                 exploded = true;
                 Collider[] colliders = Physics.OverlapSphere(transform.position, blastRadius/2);
                 foreach (Collider hit in colliders)

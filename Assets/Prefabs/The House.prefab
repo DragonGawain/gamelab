@@ -221,6 +221,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6055642407853407637}
+  - component: {fileID: 1639953018715243898}
   m_Layer: 0
   m_Name: The House
   m_TagString: Untagged
@@ -247,6 +248,37 @@ Transform:
   - {fileID: 8629466807398142146}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1639953018715243898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4758399334896804469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 2
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: 83324f02e0b0f304c8bcfaa7c9b6914e, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!1 &5171274534680368756
 GameObject:
   m_ObjectHideFlags: 0
@@ -1553,7 +1585,7 @@ PrefabInstance:
     - target: {fileID: 740209321224866551, guid: 31a1683526e5803448e3fc8b338f11f9,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9
+      value: 9.129999
       objectReference: {fileID: 0}
     - target: {fileID: 740209321224866551, guid: 31a1683526e5803448e3fc8b338f11f9,
         type: 3}
@@ -3099,7 +3131,7 @@ PrefabInstance:
     - target: {fileID: 740209321224866551, guid: 31a1683526e5803448e3fc8b338f11f9,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13
+      value: 9.079994
       objectReference: {fileID: 0}
     - target: {fileID: 740209321224866551, guid: 31a1683526e5803448e3fc8b338f11f9,
         type: 3}
@@ -11594,7 +11626,7 @@ PrefabInstance:
     - target: {fileID: 4187757804277967231, guid: 08a1bb9dd6544c74db5b9a971bd10c35,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9
+      value: 9.179994
       objectReference: {fileID: 0}
     - target: {fileID: 4187757804277967231, guid: 08a1bb9dd6544c74db5b9a971bd10c35,
         type: 3}
