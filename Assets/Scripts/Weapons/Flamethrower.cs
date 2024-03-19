@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -9,6 +10,7 @@ namespace Weapons{
     {
 
         [SerializeField] private ParticleSystem particles;
+        [SerializeField] private CapsuleCollider flameHitbox;
         
         // Start is called before the first frame update
         void Start()
@@ -20,11 +22,13 @@ namespace Weapons{
         public override void OnFire()
         {
             particles.Play();
+            flameHitbox.enabled = true;
         }
 
         public override void StopFire()
         {
             particles.Stop();
+            flameHitbox.enabled = false;
         }
     }
 }

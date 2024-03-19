@@ -19,7 +19,7 @@ namespace Weapons
 
         void Awake()
         {
-            Debug.Log("THE HAMMER AWAKENS");
+            Debug.Log("THE HAMMER AWAKENS"); // lmao
             SetDamage(10);
             // singleton pattern - there can only be a single instance of the super hammer
             // if (instance == null)

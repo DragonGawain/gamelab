@@ -23,4 +23,14 @@ public class Bullet : MonoBehaviour
     {
         // put an animation player here or smth instead of the bullet just disappearing
     }
+    
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            Enemy enemy = other.GetComponent<Enemy>();
+            enemy.OnHit(weaponRef.GetDamage());
+        }
+    }
 }
