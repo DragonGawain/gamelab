@@ -82,7 +82,7 @@ namespace Players
                 AttachWeapon(blaster);
 
                 // Update UI
-                UpdateText("Blaster");
+                // UpdateText("Blaster");
             }
             else
             {
@@ -90,7 +90,7 @@ namespace Players
                 AttachWeapon(flamethrower);
 
                 // Update UI
-                UpdateText("Flamethrower");
+                // UpdateText("Flamethrower");
             }
         }
 

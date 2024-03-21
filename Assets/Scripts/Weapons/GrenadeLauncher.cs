@@ -45,7 +45,7 @@ namespace Weapons
                     transform.rotation
                 );
                 Rigidbody rb = grenade.GetComponent<Rigidbody>();
-                Debug.Log("GRENADE RB: " + rb);
+                // Debug.Log("GRENADE RB: " + rb);
                 rb.AddForce(
                     (
                         GameManager.GetMousePosition3NotNormalized()

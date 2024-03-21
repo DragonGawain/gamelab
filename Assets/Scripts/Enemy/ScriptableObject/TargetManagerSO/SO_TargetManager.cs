@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Players;
 using Unity.AI.Navigation;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
@@ -7,7 +8,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New_SO_TargetManager", menuName = "ScriptableObjects/TargetManager")]
 public class SO_TargetManager : ScriptableObject
 {
-    
+
+    public PlayerTestScript darkPlayer { get; set; }
+    public PlayerTestScript lightPlayer { get; set; }
+
     // It will store all the dream core references. They can be given to enemies as target when they destroyed a wall or when their assigned wall is already destroyed before.
     private List<DCore> dCoreList = new List<DCore>();
 
@@ -48,6 +52,7 @@ public class SO_TargetManager : ScriptableObject
         if(closestIndex == -1) return null; 
         else return dCoreList[closestIndex];
     }
+
     
     public void ClearTargetManager()
     {

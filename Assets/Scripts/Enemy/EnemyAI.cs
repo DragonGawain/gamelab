@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Players;
 using UnityEngine;
 using UnityEngine.AI;
 public class EnemyAI : MonoBehaviour
@@ -23,8 +24,10 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private SO_TargetManager soTargetManager;
 
     [Header("Testing Parameters")]
+    [SerializeField] public PlayerTestScript playerTarget; //player target
     [SerializeField] private DCore dCoreTarget; // dream core target
     [SerializeField] private Transform target; // transform component of the target
+    
 
     // creating health variable and getter-setter for health
     // (you may prefer public health instead of this, it is possible)
@@ -36,7 +39,7 @@ public class EnemyAI : MonoBehaviour
     }
 
     // similar to the health
-    private int damage;
+    [SerializeField] private int damage;
     public int Damage
     {
         get { return damage; }
@@ -62,13 +65,30 @@ public class EnemyAI : MonoBehaviour
         return enemyAiRef;
     }
 
+    public void setDarkPlayerTarget()
+    {
+        playerTarget = soTargetManager.darkPlayer; 
+        target = playerTarget.transform;
+        state = EnemyState.ChasingPlayer;
+    }
+
+    public void setLightPlayerTarget()
+    {
+        playerTarget = soTargetManager.lightPlayer;
+        target = playerTarget.transform;
+        state = EnemyState.ChasingPlayer;
+    }
     private void SetInitialTarget()
     {
         // we get the closest wall slot from the soTargetManager, we just give our position
         // to get the closest one.
+        
+
+        
         dCoreTarget = soTargetManager.GetClosestDCore(transform.position);
         target = dCoreTarget.transform; // don't forget to set transform component of the target
-        
+
+
     }
     private void Update()
     {
@@ -84,6 +104,11 @@ public class EnemyAI : MonoBehaviour
             }
             lastTargetPos = target.position;
         }
+        else if (state == EnemyState.ChasingPlayer)
+        {
+            GetDreamcoreTarget();
+
+        }
 
 
         if (IsReached())
@@ -95,6 +120,11 @@ public class EnemyAI : MonoBehaviour
                 state = EnemyState.AtDreamCore;
                 // first attack to the dream core, the first call will be 0.5f
                 Invoke(nameof(PerformAttackToDreamCore), 0.5f);
+            }
+
+            if (state == EnemyState.ChasingPlayer)
+            {
+                PerformAttackOnPlayer();
             }
             else if(state == EnemyState.NoDreamCoreState)
             {
@@ -136,6 +166,18 @@ public class EnemyAI : MonoBehaviour
         state = EnemyState.GoingToDreamCore;
     }
 
+
+    private void PerformAttackOnPlayer()
+    {
+        
+        if (playerTarget == null)
+        {
+            return;
+        }
+        
+        
+        playerTarget.OnHit(damage);
+    }
     private void PerformAttackToDreamCore()
     {
         if(dCoreTarget == null)

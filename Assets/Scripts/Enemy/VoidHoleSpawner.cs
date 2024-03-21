@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Players;
 using UnityEngine;
 
 public class VoidHoleSpawner : MonoBehaviour
@@ -10,6 +11,9 @@ public class VoidHoleSpawner : MonoBehaviour
     [SerializeField] private VoidHole voidHolePrefab;
     
     [SerializeField] private SO_TargetManager soTargetManager;
+
+    [SerializeField] private PlayerTestScript darkPlayer;
+    [SerializeField] private PlayerTestScript lightPlayer;
     void Start()
     {
         //Get all spawners and remove itself from list
@@ -18,6 +22,19 @@ public class VoidHoleSpawner : MonoBehaviour
 
         //Add spawn point back to list after being available again 
         VoidHole.DespawnVoidHole += addSpawner;
+
+        if (darkPlayer == null)
+        {
+            darkPlayer = FindAnyObjectByType<DarkPlayer>();
+        }
+
+        if (lightPlayer == null)
+        {
+            lightPlayer = FindAnyObjectByType<LightPlayer>();
+        }
+
+        soTargetManager.lightPlayer = lightPlayer;
+        soTargetManager.darkPlayer = darkPlayer;
     }
 
     void spawn()

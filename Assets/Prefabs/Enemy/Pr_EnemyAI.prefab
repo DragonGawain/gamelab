@@ -138,8 +138,10 @@ MonoBehaviour:
   enemyType: {fileID: 11400000, guid: 66872e4669afb4fb49c1c573bf3605e2, type: 2}
   aiAgent: {fileID: 5665598030155847574}
   soTargetManager: {fileID: 11400000, guid: b38df5e0b75d0c94b81eccf7e41d650c, type: 2}
+  playerTarget: {fileID: 0}
   dCoreTarget: {fileID: 0}
   target: {fileID: 0}
+  damage: 10
 --- !u!114 &6507551319905440455
 MonoBehaviour:
   m_ObjectHideFlags: 0

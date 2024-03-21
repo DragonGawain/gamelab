@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 using UnityEngine.TextCore.Text;
 using UnityEngine.UIElements;
 using Weapons;
+using DG.Tweening;
+using Sequence = DG.Tweening.Sequence;
 
 namespace Players
 {
@@ -15,6 +17,12 @@ namespace Players
         private Vector3 direction;
         protected Weapon currentWeapon;
 
+        [SerializeField] private int health;
+        //How many seconds until player can get damaged again
+        [SerializeField] private float invincibleSeconds;
+        private float hitTime = 0;
+        
+        
         [SerializeField]
         private float speed = 8;
 
@@ -29,6 +37,10 @@ namespace Players
         public GameObject camObject; // this should be the cam specific to this player
         protected Camera cam;
 
+        //Change player color to see it getting damaged
+        private Renderer _renderer;
+        private Material material;
+        private Color originalColor;
         private void Awake()
         {
             characterController = GetComponent<CharacterController>();
@@ -37,6 +49,12 @@ namespace Players
             cam = camObject.GetComponent<Camera>();
             OnAwake();
             //AttachWeapon(flamethrower); //giving player a flamethrower to test
+            
+            //For Changing Color when hit 
+            _renderer = GetComponent<Renderer>();
+            material = Instantiate(_renderer.material);
+            _renderer.material = material;
+            originalColor = material.color;
         }
 
         private void Update() { }
@@ -99,7 +117,7 @@ namespace Players
             currentWeapon.transform.SetLocalPositionAndRotation(weaponOffset, Quaternion.identity);
             currentWeapon.SetPlayer(this);
 
-            Debug.Log(this.transform.forward);
+            //Debug.Log(this.transform.forward);
         }
 
         public void Move(InputAction.CallbackContext ctx)
@@ -129,6 +147,32 @@ namespace Players
                 return;
         }
 
+        public void OnHit(int dmg)
+        {
+            
+            if (Time.time < hitTime)
+            {
+                return;
+            }
+
+            hitTime = Time.time + invincibleSeconds;
+            health  -= dmg;
+            
+            if (health <= 0)
+            {
+                OnDeath();
+                return;
+            }
+            Sequence sequence = DOTween.Sequence();
+            sequence.Append(material.DOColor(Color.red, 0.2f));
+            sequence.Append(material.DOColor(originalColor, 0.2f));
+            sequence.Play();
+        }
+
+        void OnDeath()
+        {
+            Destroy(this.gameObject);
+        }
         abstract protected void OnAwake();
         abstract protected Vector3 GetMoveInput();
 

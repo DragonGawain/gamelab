@@ -677,10 +677,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d113bfb3c03a9e047a4462b0d39233fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 100
+  invincibleSeconds: 1
   speed: 5
   smoothTime: 0.05
   camObject: {fileID: 0}
-  hammer: {fileID: 3643911665502490090, guid: c6282d6a0c9f2224997cac0f1fdb44f6, type: 3}
   superHammer: {fileID: 8047829031987554622, guid: f19ea1917805f3e4580a74160057d334,
     type: 3}
   ygbyauda: {fileID: 3643911665502490090, guid: c6282d6a0c9f2224997cac0f1fdb44f6,

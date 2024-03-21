@@ -51,7 +51,7 @@ public class Grenade : MonoBehaviour
                         continue;
                     // Check if the collider belongs to an enemy
                     Enemy enemy = hit.GetComponent<Enemy>();
-                    enemy.OnHit(dmg);
+                    enemy.OnHit(dmg, "DarkPlayer");
                     Rigidbody rb = hit.GetComponent<Rigidbody>();
                     if (rb != null)
                     {
@@ -70,7 +70,7 @@ public class Grenade : MonoBehaviour
         if (exploded && other.CompareTag("Enemy"))
         {
             Enemy enemy = other.GetComponent<Enemy>();
-            enemy.OnHit(dmg);
+            enemy.OnHit(dmg, "DarkPlayer");
         }
         
         if (!hitGround && other.CompareTag("Floor"))

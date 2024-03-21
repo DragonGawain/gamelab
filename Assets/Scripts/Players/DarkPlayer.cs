@@ -77,7 +77,7 @@ namespace Players
 
         public void DarkFire(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
         {
-            Debug.Log(currentWeapon);
+            //Debug.Log(currentWeapon);
             base.Fire(ctx);
             currentWeapon.OnFire();
             // If they fire with the Hammer
