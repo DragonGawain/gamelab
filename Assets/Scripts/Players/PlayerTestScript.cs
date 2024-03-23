@@ -6,6 +6,7 @@ using UnityEngine.TextCore.Text;
 using UnityEngine.UIElements;
 using Weapons;
 using DG.Tweening;
+using UnityEditor.Animations;
 using Sequence = DG.Tweening.Sequence;
 
 namespace Players
@@ -15,6 +16,7 @@ namespace Players
         private Vector2 input;
         private CharacterController characterController;
         private Vector3 direction;
+        protected Animator animator;
         protected Weapon currentWeapon;
 
         [SerializeField] private int health;
@@ -55,9 +57,9 @@ namespace Players
             material = Instantiate(_renderer.material);
             _renderer.material = material;
             originalColor = material.color;
-        }
 
-        private void Update() { }
+            animator = GetComponent<Animator>();
+        }
 
         private void FixedUpdate()
         {
@@ -68,6 +70,12 @@ namespace Players
             if (direction != Vector3.zero)
             {
                 characterController.Move(speed * Time.deltaTime * direction);
+                if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+                    animator.SetTrigger("OnRun");
+            }
+            else
+            {
+                animator.SetTrigger("OnIdle");
             }
 
             // if you have fired within the past 5 seconds, rotate to look in the direction of fire
@@ -80,7 +88,7 @@ namespace Players
             // if you have fired recently or you have put in a move input, rotate
             if (rotationTimer > 0 || direction != Vector3.zero)
             {
-                var targetAngle = (Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg) + 180;
+                var targetAngle = (Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg);
                 var angle = Mathf.SmoothDampAngle(
                     transform.eulerAngles.y,
                     targetAngle,
