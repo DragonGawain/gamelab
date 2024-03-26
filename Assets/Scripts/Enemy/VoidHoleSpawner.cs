@@ -14,10 +14,17 @@ public class VoidHoleSpawner : MonoBehaviour
 
     [SerializeField] private PlayerTestScript darkPlayer;
     [SerializeField] private PlayerTestScript lightPlayer;
+
+    [SerializeField] private LevelManager level;
+
+    private float spawnTime;
     void Start()
     {
+        spawnTime = level.startTime;
+        
         //Get all spawners and remove itself from list
         spawnPoints = new List<Transform>(GetComponentsInChildren<Transform>());
+        
         spawnPoints.Remove(transform);
 
         //Add spawn point back to list after being available again 
@@ -36,27 +43,43 @@ public class VoidHoleSpawner : MonoBehaviour
         soTargetManager.lightPlayer = lightPlayer;
         soTargetManager.darkPlayer = darkPlayer;
     }
-
+    
     void spawn()
     {
         //Find a random spawner and creat void hole, then remove spawner from available spawners
+        if (spawnPoints.Count == 0)
+        {
+            spawnPoints = new List<Transform>(GetComponentsInChildren<Transform>());
+        }
+        
         int spawnIndex = Random.Range(0, spawnPoints.Count);
-        Instantiate(voidHolePrefab, spawnPoints[spawnIndex]);
+        VoidHole voidHole = Instantiate(voidHolePrefab, spawnPoints[spawnIndex]);
+        voidHole.level = level;
+        
         spawnPoints.RemoveAt(spawnIndex);
 
     }
 
-    private void addSpawner(Transform spawner)
-    {
-        spawnPoints.Add(spawner);
-    }
-    private void Update()
+    public void addSpawner(Transform spawner)
     {
         
-        if (Input.GetKeyDown(KeyCode.X) && spawnPoints.Count > 0)
+        print("ADDING SPAWNER " + spawner.name);
+        spawnPoints.Add(spawner);
+    }
+
+    
+    private void Update()
+    {
+
+        if (Time.time > spawnTime)
         {
+            spawnTime = Time.time + level.voidHoleSpawnTime + Random.Range(0, level.voidHoleSpawnRange); 
             spawn();
         }
+        // if (Input.GetKeyDown(KeyCode.X) && spawnPoints.Count > 0)
+        // {
+        //     spawn();
+        // }
     }
     
     private void OnDestroy()
