@@ -11,7 +11,7 @@ public class FlameHitbox : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             Enemy enemy = other.GetComponent<Enemy>();
-            enemy.OnHit(GetComponentInParent<Flamethrower>().GetDamage(), "LightPlayer");
+            enemy.OnHit(GetComponentInParent<Flamethrower>().GetDamage(), "LightPlayer", GetComponentInParent<Flamethrower>());
         }
     }
 }

@@ -32,6 +32,17 @@ public class Grenade : MonoBehaviour
         rend = GetComponent<Renderer>();
         originalColor = rend.material.color;
     }
+    private Weapon weaponRef; // passed from the weapon its firing from
+
+    public void SetWeaponRef(Weapon weapon)
+    {
+        weaponRef = weapon;
+    }
+
+    public Weapon GetWeaponRef()
+    {
+        return weaponRef;
+    }
 
     private void FixedUpdate()
     {
@@ -52,7 +63,7 @@ public class Grenade : MonoBehaviour
                         continue;
                     // Check if the collider belongs to an enemy
                     Enemy enemy = hit.GetComponent<Enemy>();
-                    enemy.OnHit(dmg, "DarkPlayer");
+                    enemy.OnHit(dmg, "DarkPlayer", weaponRef);
                     Rigidbody rb = hit.GetComponent<Rigidbody>();
                     if (rb != null)
                     {
@@ -71,7 +82,7 @@ public class Grenade : MonoBehaviour
         if (exploded && other.CompareTag("Enemy"))
         {
             Enemy enemy = other.GetComponent<Enemy>();
-            enemy.OnHit(dmg, "DarkPlayer");
+            enemy.OnHit(dmg, "DarkPlayer", weaponRef);
         }
         
         if (!hitGround && other.CompareTag("Floor"))

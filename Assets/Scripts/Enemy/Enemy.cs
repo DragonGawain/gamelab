@@ -43,8 +43,9 @@ public class Enemy : MonoBehaviour
     }
 
         //Called by weapons/projectiles
-        public void OnHit(int dmg, string playerTag)
+        public void OnHit(int dmg, string playerTag, Weapon weapon)
     {
+
         if (playerTag.CompareTo("DarkPlayer") == 0)
         {
             enemyAI.setDarkPlayerTarget();
@@ -53,10 +54,41 @@ public class Enemy : MonoBehaviour
         {
             enemyAI.setLightPlayerTarget();
         }
-        
-    
 
-        
+        string weaponName = weapon.GetWeaponName();
+        dmg = weapon.GetDamage();
+
+        // Use weaponName to determine the specific weapon and call the appropriate method
+        if (weaponName == "Blaster")
+        {
+            health -= weapon.GetDamage();
+
+            //HitByBlaster(weapon as Blaster); // Cast to Blaster if you're sure it's a Blaster
+        }
+        else if (weaponName == "Flamethrower")
+        {
+            health -= weapon.GetDamage();
+
+            //HitByFlamethrower(weapon as Flamethrower);
+        }
+        else if (weaponName == "Hammer")
+        {
+            health -= weapon.GetDamage();
+
+            //HitByHammer(weapon as Hammer);
+        }
+        else if (weaponName == "GrenadeLauncher")
+        {
+            health -= weapon.GetDamage();
+
+            //HitByGrenadeLauncher(weapon as GrenadeLauncher);
+        }
+
+
+        Debug.Log(weapon.GetWeaponName() + "doing damage: " + dmg);
+
+        FlashRed();
+
     }
 
     protected void FlashRed()
