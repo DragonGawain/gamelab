@@ -10,7 +10,17 @@ public class CrystalBar : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(LoseHealthOverTime()); // Start losing health over time by default
+        DCore core = FindObjectOfType<DCore>(); // Find the DCore in the scene
+        if (core != null)
+        {
+            core.OnHealthChanged += UpdateHealthBar; // Subscribe to the OnHealthChanged event
+        }
+    }
+
+    private void UpdateHealthBar(float healthPercentage)
+    {
+        fillAmount = healthPercentage; // Update the fillAmount based on the event data
+        HandleBar();
     }
 
     void Update()
@@ -26,7 +36,13 @@ public class CrystalBar : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("LightPlayer"))
+        {
+            StopAllCoroutines(); // Stop the losing health coroutine
+            StartCoroutine(GainHealthOverTime()); // Start gaining health coroutine
+            isInsideTrigger = true; // Set the flag to true
+        }
+        if (other.CompareTag("DarkPlayer"))
         {
             StopAllCoroutines(); // Stop the losing health coroutine
             StartCoroutine(GainHealthOverTime()); // Start gaining health coroutine
@@ -36,13 +52,21 @@ public class CrystalBar : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("LightPlayer"))
         {
             StopAllCoroutines(); // Stop the gaining health coroutine
-            StartCoroutine(LoseHealthOverTime()); // Start losing health coroutine
+           // StartCoroutine(LoseHealthOverTime()); // Start losing health coroutine
+            isInsideTrigger = false; // Reset the flag to false
+        }
+
+        if (other.CompareTag("DarkPlayer"))
+        {
+            StopAllCoroutines(); // Stop the gaining health coroutine
+           // StartCoroutine(LoseHealthOverTime()); // Start losing health coroutine
             isInsideTrigger = false; // Reset the flag to false
         }
     }
+
 
     private IEnumerator GainHealthOverTime()
     {
@@ -55,16 +79,16 @@ public class CrystalBar : MonoBehaviour
         }
     }
 
-    private IEnumerator LoseHealthOverTime()
-    {
-        while (!isInsideTrigger)
-        {
-            fillAmount -= 0.1f;
-            fillAmount = Mathf.Clamp(fillAmount, 0f, 1f);
-            HandleBar();
-            yield return new WaitForSeconds(3f); // Wait for 3 seconds before the next health reduction
-        }
-    }
+    //private IEnumerator LoseHealthOverTime()
+    //{
+    //    while (!isInsideTrigger)
+    //    {
+    //        fillAmount -= 0.1f;
+    //        fillAmount = Mathf.Clamp(fillAmount, 0f, 1f);
+    //        HandleBar();
+    //        yield return new WaitForSeconds(3f); // Wait for 3 seconds before the next health reduction
+    //    }
+    //}
 
     private void CheckHealthAndExit()
     {

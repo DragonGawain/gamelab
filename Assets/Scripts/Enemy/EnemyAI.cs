@@ -12,7 +12,8 @@ public class EnemyAI : MonoBehaviour
         AtDreamCore,
         NoDreamCoreState
     }
-    
+
+
     private EnemyState state = EnemyState.GoingToDreamCore;
     
     [SerializeField] SO_Enemy enemyType;
@@ -187,7 +188,8 @@ public class EnemyAI : MonoBehaviour
             GetDreamcoreTarget();
             return;
         }
-        if(dCoreTarget.GetDamage(enemyType.Damage))
+        //  if(dCoreTarget.GetDamage(enemyType.Damage))
+        if (dCoreTarget.GetDamage(enemyType.Damage))
         {
             // core destroyed (dCoreTarget.GetDamage returns true)
             Debug.Log($"core destroyed! getting another one!");

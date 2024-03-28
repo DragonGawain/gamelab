@@ -31,7 +31,8 @@ public class SO_Enemy : ScriptableObject
     [SerializeField] private int damage;
     public int Damage
     {
-        get { return damage; }
+        
+        get { return 3; }
     }
     
 

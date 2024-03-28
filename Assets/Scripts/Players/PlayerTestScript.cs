@@ -8,6 +8,8 @@ using Weapons;
 using DG.Tweening;
 using UnityEditor.Animations;
 using Sequence = DG.Tweening.Sequence;
+using System;
+
 
 namespace Players
 {
@@ -18,8 +20,9 @@ namespace Players
         private Vector3 direction;
         protected Animator animator;
         protected Weapon currentWeapon;
+        public event Action<float> OnHealthChanged; //changing health bar
 
-        [SerializeField] private int health;
+        [SerializeField] private int health = 100;
         //How many seconds until player can get damaged again
         [SerializeField] private float invincibleSeconds;
         private float hitTime = 0;
@@ -164,13 +167,18 @@ namespace Players
             }
 
             hitTime = Time.time + invincibleSeconds;
-            health  -= dmg;
             
+            health -= 10;
+            OnHealthChanged?.Invoke((float)health / 100); // Invoke the event, passing the current health percentage
+
             if (health <= 0)
             {
+                OnHealthChanged?.Invoke((float)health / 100); // Invoke the event, passing the current health percentage
+
                 OnDeath();
                 return;
             }
+
             Sequence sequence = DOTween.Sequence();
             sequence.Append(material.DOColor(Color.red, 0.2f));
             sequence.Append(material.DOColor(originalColor, 0.2f));

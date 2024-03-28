@@ -1,18 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+
 
 public class DCore : MonoBehaviour
 {
     // I created a custom event which will be triggered when the core is destroyed
     public delegate void DCoreDelegate();
     public event DCoreDelegate OnCoreDestroyed;
+    public event Action<float> OnHealthChanged; // Added this line for changing the health bar
 
     // default health for a dream core is 100
-    private int health = 100;
+    private float health = 100;
 
     // public getter method for health
-    public int GetHealth
+    public float GetHealth
     {
         get { return health; }
     }
@@ -43,12 +46,15 @@ public class DCore : MonoBehaviour
         Destroy(this.gameObject);
     }
     
-    public bool GetDamage(int amount)
+    public bool GetDamage(float amount)
     {
+
+        health -= amount;
+        OnHealthChanged?.Invoke((float)health / 100); // Invoke the event, passing the current health percentage
+
         // dream core gets damage with this method
         // it returns true if the dream core is destroyed
         // or it returns false if dream core is still alive after the damage
-        health -= amount;
         if(health < 0)
         {
             // triggering the event

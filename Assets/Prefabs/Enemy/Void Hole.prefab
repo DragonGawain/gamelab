@@ -99,3 +99,12 @@ MonoBehaviour:
   soTargetManager: {fileID: 11400000, guid: b38df5e0b75d0c94b81eccf7e41d650c, type: 2}
   enemyPrefab: {fileID: 1789292037031486079, guid: 704d50b2060ef4f77ae3badad26d8cf0,
     type: 3}
+  enemyPrefab2: {fileID: 1789292037031486079, guid: f00d9351c43dd400e9a090b2c59ac909,
+    type: 3}
+  enemyPrefab3: {fileID: 1789292037031486079, guid: 9a9f98adecdf24cf2b703cc35c0c8fee,
+    type: 3}
+  enemyPrefab4: {fileID: 1789292037031486079, guid: cc2998546cf0146b8a0886dcdc5c22f0,
+    type: 3}
+  enemyPrefab5: {fileID: 1789292037031486079, guid: b7787380a9c3446bb8d976b1984d8b7a,
+    type: 3}
+  level: {fileID: 0}
