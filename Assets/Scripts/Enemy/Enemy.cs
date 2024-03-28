@@ -84,9 +84,18 @@ public class Enemy : MonoBehaviour
             //HitByGrenadeLauncher(weapon as GrenadeLauncher);
         }
 
+        Debug.Log(" enemy health: " + health);
+
+        health -= weapon.GetDamage();
+        Debug.Log("weapon get damage: " + weapon.GetDamage());
 
         Debug.Log(weapon.GetWeaponName() + "doing damage: " + dmg);
 
+        if (health <= 0)
+        {
+            Destroy(this.gameObject);
+
+        }
         FlashRed();
 
     }
