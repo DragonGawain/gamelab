@@ -6,12 +6,13 @@ using Unity.VisualScripting;
 using UnityEngine;
 using Players;
 using Weapons;
+using static ComboAttackManager;
 using Sequence = DG.Tweening.Sequence;
 
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private int health = 50;
+    [SerializeField] public int health = 100;
     [SerializeField] private int damage;
     [SerializeField] private Renderer _renderer;
     private Material material;
@@ -27,8 +28,22 @@ public class Enemy : MonoBehaviour
         
     }
 
-    //Called by weapons/projectiles
-    public void OnHit(int dmg, string playerTag)
+    public virtual void OnHitByCombo(ComboAttackType attackType, int damage)
+    {
+        // Base implementation does nothing by default
+    }
+
+
+    public virtual void dealDamage(Weapon weapon)
+    {
+
+        // Play hit animation (e.g. enemy gets stunned or smth)
+        // Enemy flashes red then turns back to normal
+        FlashRed();
+    }
+
+        //Called by weapons/projectiles
+        public void OnHit(int dmg, string playerTag)
     {
         if (playerTag.CompareTo("DarkPlayer") == 0)
         {
@@ -39,30 +54,28 @@ public class Enemy : MonoBehaviour
             enemyAI.setLightPlayerTarget();
         }
         
-        health -= dmg;
-        if (health <= 0)
-        {
-            OnDeath();
-            return;
-        }
-        
-        // Play hit animation (e.g. enemy gets stunned or smth)
-        // Enemy flashes red then turns back to normal
+    
 
+        
+    }
+
+    protected void FlashRed()
+    {
         Sequence sequence = DOTween.Sequence();
         sequence.Append(material.DOColor(Color.red, 0.2f));
         sequence.Append(material.DOColor(Color.white, 0.2f));
         sequence.Play();
     }
 
-    private void HitByBlaster(Blaster blaster)
-    {
-        // deals blaster damage to health
-        health -= blaster.GetDamage();
+
+    //private void HitByBlaster(Blaster blaster)
+    //{
+    //    // deals blaster damage to health
+    //    health -= blaster.GetDamage();
         
-        // any other blaster effects can go here
+    //    // any other blaster effects can go here
     
-    }
+    //}
 
     private void OnDeath()
     {

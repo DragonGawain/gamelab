@@ -13,6 +13,7 @@ public class EnemyAI : MonoBehaviour
         NoDreamCoreState
     }
 
+  
 
     private EnemyState state = EnemyState.GoingToDreamCore;
     
@@ -32,7 +33,7 @@ public class EnemyAI : MonoBehaviour
 
     // creating health variable and getter-setter for health
     // (you may prefer public health instead of this, it is possible)
-    private int health;
+    public int health;
     public int Health
     {
         get { return health; }

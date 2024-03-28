@@ -24,6 +24,14 @@ public class ComboAttackManager : MonoBehaviour
     static GameObject dotCloudPrefab;
     static GameObject superHammerPrefab;
 
+    public enum ComboAttackType
+    {
+        BulletBarrage,
+        SuperBullet,
+        DOTCloud,
+        SuperHammer
+    }
+
     static int bgTimer = 0;
     static int bhTimer = 0;
     static int fgTimer = 0;
@@ -59,6 +67,7 @@ public class ComboAttackManager : MonoBehaviour
 
     public static void SpawnBulletBarrage(GameObject grenade, GameObject bullet)
     {
+
         if (bgTimer > 0)
             return;
         bgTimer = 50;

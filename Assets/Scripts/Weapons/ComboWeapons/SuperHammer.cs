@@ -14,7 +14,7 @@ namespace Weapons
         void Start()
         {
             SetDamage(50);
-            SetWeaponName("Super Hammer");
+            SetWeaponName("SuperHammer");
         }
 
         // Update is called once per frame

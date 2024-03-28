@@ -26,7 +26,7 @@ public class VoidHole : MonoBehaviour
     private void Start()
     {
         enemyCount = level.enemyCount + Random.Range(0, level.enemyRange);
-        print("ENEMY COUNT: " + enemyCount);
+        //print("ENEMY COUNT: " + enemyCount);
     }
 
     void Update()

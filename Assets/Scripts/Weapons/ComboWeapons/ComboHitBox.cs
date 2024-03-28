@@ -7,13 +7,12 @@ public class ComboHitBox : MonoBehaviour
     public enum WeaponType
     {
         BULLET,
-        GREANADE,
+        GRENADE,
         FLAMETHROWER,
         HAMMER
     }
 
-    [SerializeField]
-    WeaponType weaponType;
+    [SerializeField] WeaponType weaponType;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -25,7 +24,7 @@ public class ComboHitBox : MonoBehaviour
             case WeaponType.BULLET:
                 if (
                     other.gameObject.GetComponent<ComboHitBox>().GetWeaponType()
-                    == WeaponType.GREANADE
+                    == WeaponType.GRENADE
                 )
                 {
                     ComboAttackManager.SpawnBulletBarrage(other.gameObject, this.gameObject);
@@ -41,7 +40,7 @@ public class ComboHitBox : MonoBehaviour
             case WeaponType.FLAMETHROWER:
                 if (
                     other.gameObject.GetComponent<ComboHitBox>().GetWeaponType()
-                    == WeaponType.GREANADE
+                    == WeaponType.GRENADE
                 )
                 {
                     ComboAttackManager.SpawnDOTCloud(other.gameObject);
@@ -54,7 +53,7 @@ public class ComboHitBox : MonoBehaviour
                     ComboAttackManager.SpawnSuperHammer();
                 }
                 break;
-            case WeaponType.GREANADE:
+            case WeaponType.GRENADE:
                 if (
                     other.gameObject.GetComponent<ComboHitBox>().GetWeaponType()
                     == WeaponType.BULLET
