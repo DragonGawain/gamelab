@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 4136498135312619341}
   m_Layer: 0
   m_Name: Enemy2
-  m_TagString: Enemy
+  m_TagString: Enemy2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -140,7 +140,6 @@ MonoBehaviour:
   playerTarget: {fileID: 0}
   dCoreTarget: {fileID: 0}
   target: {fileID: 0}
-  health: 0
   damage: 10
 --- !u!195 &5665598030155847574
 NavMeshAgent:
