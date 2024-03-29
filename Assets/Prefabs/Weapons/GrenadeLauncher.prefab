@@ -53,7 +53,7 @@ MonoBehaviour:
   grenadeForce: 8
   grenadePrefab: {fileID: 2143028003263309556, guid: 215676a72d793a740a87c7c392e1cc44,
     type: 3}
-  fireRate: 0.3
+  fireRate: 1
 --- !u!1 &604683201120601947
 GameObject:
   m_ObjectHideFlags: 0

@@ -70,15 +70,22 @@ namespace Players
             //     return;
             direction = GetMoveInput();
             // only move if there's a move input
-            if (direction != Vector3.zero)
+        if (direction != Vector3.zero)
             {
                 characterController.Move(speed * Time.deltaTime * direction);
-                if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
-                    animator.SetTrigger("OnRun");
+                if (animator != null)
+                {
+                    if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+                        animator.SetTrigger("OnRun");    
+                }
+                
             }
             else
             {
-                animator.SetTrigger("OnIdle");
+                if (animator != null)
+                {
+                    animator.SetTrigger("OnIdle");    
+                }
             }
 
             // if you have fired within the past 5 seconds, rotate to look in the direction of fire
