@@ -27,9 +27,9 @@ public class Enemy1 : Enemy
     public override void OnHit(int dmg, string playerTag, Weapon weapon)
     {
 
-      
         string weaponName = weapon.GetWeaponName();
         dmg = weapon.GetDamage();
+        Debug.Log("WEAPON: " +weapon.GetWeaponName());
 
         if (weaponName == "Blaster")
         {

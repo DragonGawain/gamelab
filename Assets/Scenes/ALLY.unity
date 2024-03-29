@@ -13036,7 +13036,7 @@ MonoBehaviour:
     type: 3}
   enemyPrefab2: {fileID: 1789292037031486079, guid: f00d9351c43dd400e9a090b2c59ac909,
     type: 3}
-  enemyPrefab3: {fileID: 1789292037031486079, guid: cc2998546cf0146b8a0886dcdc5c22f0,
+  enemyPrefab3: {fileID: 1789292037031486079, guid: 9a9f98adecdf24cf2b703cc35c0c8fee,
     type: 3}
   weaponType: 0
   level: {fileID: 0}

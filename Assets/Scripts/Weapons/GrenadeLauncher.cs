@@ -32,7 +32,7 @@ namespace Weapons
             SetDamage(dmg);
             Grenade.dmg = dmg;
             transform.localEulerAngles = new Vector3(0, -90, -angle);
-            SetWeaponName("Grenade Launcher");
+            SetWeaponName("GrenadeLauncher");
         }
 
         public override void OnFire()
@@ -44,6 +44,9 @@ namespace Weapons
                     transform.position,
                     transform.rotation
                 );
+                Grenade g = grenade.GetComponent<Grenade>();
+                g.SetWeaponRef(this);
+
                 Rigidbody rb = grenade.GetComponent<Rigidbody>();
                 // Debug.Log("GRENADE RB: " + rb);
                 rb.AddForce(
