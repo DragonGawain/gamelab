@@ -135,6 +135,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 2
+  bullet: {fileID: 0}
+  grenade: {fileID: 0}
+  thrower: {fileID: 0}
+  hammer: {fileID: 0}
 --- !u!1 &8973999602560017180
 GameObject:
   m_ObjectHideFlags: 0
@@ -145,6 +149,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5541397032731559362}
   - component: {fileID: 7830794301040452377}
+  - component: {fileID: 5962838424698721265}
   m_Layer: 0
   m_Name: Flamethrower
   m_TagString: Untagged
@@ -186,6 +191,23 @@ MonoBehaviour:
   damage: 20
   particles: {fileID: 8739562680303120971}
   flameHitbox: {fileID: 5994752615539571729}
+--- !u!114 &5962838424698721265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8973999602560017180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2957a34d95e8e0247953e5018026e521, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponType: 2
+  bullet: {fileID: 619358578417660589, guid: 0c5e5727528b3874f893eeceb5da379f, type: 3}
+  grenade: {fileID: 2143028003263309556, guid: 215676a72d793a740a87c7c392e1cc44, type: 3}
+  thrower: {fileID: 8973999602560017180}
+  hammer: {fileID: 3492376130815383273, guid: e47f887229cd52c46b868df0f1e1d69b, type: 3}
 --- !u!1001 &469696065056190118
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -12,9 +12,14 @@ public class ComboHitBox : MonoBehaviour
         HAMMER
     }
 
+<<<<<<< Updated upstream
     [SerializeField]
     WeaponType weaponType;
 
+=======
+    [SerializeField] WeaponType weaponType;
+   
+>>>>>>> Stashed changes
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.GetComponent<ComboHitBox>() == null)
@@ -23,20 +28,19 @@ public class ComboHitBox : MonoBehaviour
         switch (weaponType)
         {
             case WeaponType.BULLET:
+<<<<<<< Updated upstream
                 if (
                     other.gameObject.GetComponent<ComboHitBox>().GetWeaponType()
                     == WeaponType.GREANADE
                 )
+=======
+                if (other.gameObject.GetComponent<ComboHitBox>().GetWeaponType() == WeaponType.GRENADE)
+>>>>>>> Stashed changes
                 {
+                    Debug.Log("here: " + other.gameObject + " and " + this.gameObject);
                     ComboAttackManager.SpawnBulletBarrage(other.gameObject, this.gameObject);
                 }
-                else if (
-                    other.gameObject.GetComponent<ComboHitBox>().GetWeaponType()
-                    == WeaponType.HAMMER
-                )
-                {
-                    ComboAttackManager.SpawnSuperBullet(this.gameObject);
-                }
+             
                 break;
             case WeaponType.FLAMETHROWER:
                 if (
@@ -54,6 +58,7 @@ public class ComboHitBox : MonoBehaviour
                     ComboAttackManager.SpawnSuperHammer();
                 }
                 break;
+<<<<<<< Updated upstream
             case WeaponType.GREANADE:
                 if (
                     other.gameObject.GetComponent<ComboHitBox>().GetWeaponType()
@@ -70,6 +75,24 @@ public class ComboHitBox : MonoBehaviour
                     ComboAttackManager.SpawnDOTCloud(this.gameObject);
                 }
                 break;
+=======
+            //case WeaponType.GRENADE:
+            //    if (
+            //        other.gameObject.GetComponent<ComboHitBox>().GetWeaponType()
+            //        == WeaponType.BULLET
+            //    )
+            //    {
+            //        ComboAttackManager.SpawnBulletBarrage(this.gameObject, other.gameObject);
+            //    }
+            //    else if (
+            //        other.gameObject.GetComponent<ComboHitBox>().GetWeaponType()
+            //        == WeaponType.FLAMETHROWER
+            //    )
+            //    {
+            //        ComboAttackManager.SpawnDOTCloud(this.gameObject);
+            //    }
+            //    break;
+>>>>>>> Stashed changes
             case WeaponType.HAMMER:
                 if (
                     other.gameObject.GetComponent<ComboHitBox>().GetWeaponType()

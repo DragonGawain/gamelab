@@ -23,6 +23,9 @@ public class ComboAttackManager : MonoBehaviour
     static GameObject superBulletPrefab;
     static GameObject dotCloudPrefab;
     static GameObject superHammerPrefab;
+    public GameObject bullet;
+    public GameObject grenade;
+
 
     static int bgTimer = 0;
     static int bhTimer = 0;
@@ -34,10 +37,10 @@ public class ComboAttackManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        bulletPrefab = Resources.Load<GameObject>("ComboWeapons/Bullet_DUPLICATE");
-        superBulletPrefab = Resources.Load<GameObject>("ComboWeapons/SuperBullet");
-        dotCloudPrefab = Resources.Load<GameObject>("ComboWeapons/DOTCloud");
-        superHammerPrefab = Resources.Load<GameObject>("ComboWeapons/SuperHammer");
+        bulletPrefab = Resources.Load<GameObject>("BulletBarrage");
+        superBulletPrefab = Resources.Load<GameObject>("SuperBullet");
+        dotCloudPrefab = Resources.Load<GameObject>("DOTCloud");
+        superHammerPrefab = Resources.Load<GameObject>("SuperHammer");
     }
 
     private void FixedUpdate()
