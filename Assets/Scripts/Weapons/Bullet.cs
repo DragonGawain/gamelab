@@ -30,7 +30,8 @@ public class Bullet : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             Enemy enemy = other.GetComponent<Enemy>();
-            enemy.OnHit(weaponRef.GetDamage(), "LightPlayer");
+            enemy.OnHit(weaponRef.GetDamage(), "LightPlayer", weaponRef);
+
         }
     }
 }

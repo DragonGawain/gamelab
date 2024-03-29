@@ -42,7 +42,7 @@ namespace Weapons
             rotationSequence = DOTween.Sequence();
             transform.localRotation = Quaternion.identity;
             rotationSequence.Append(
-                transform.DOLocalRotate(new Vector3(65, 0, -40), 0.2f).SetEase(Ease.InBack)
+                transform.DOLocalRotate(new Vector3(-65, 0, -40), 0.2f).SetEase(Ease.InBack)
             );
             rotationSequence.AppendInterval(0.1f);
             rotationSequence.Append(
@@ -75,7 +75,7 @@ namespace Weapons
             if (hit && other.CompareTag("Enemy"))
             {
                 Enemy enemy = other.GetComponent<Enemy>();
-                enemy.OnHit(GetDamage(), "DarkPlayer");
+                enemy.OnHit(GetDamage(), "DarkPlayer", this);
             }
         }
     }

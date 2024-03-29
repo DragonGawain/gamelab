@@ -15,8 +15,9 @@ GameObject:
   - component: {fileID: 392224214406953871}
   - component: {fileID: 4311722842877662770}
   - component: {fileID: 6741071505098691216}
+  - component: {fileID: -3850964157313598474}
   m_Layer: 0
-  m_Name: Bullet_DUPLICATE
+  m_Name: BulletBarrage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,7 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2fd8524d7be086f44b02398140e36aaa, type: 2}
+  - {fileID: 2100000, guid: 2cb17abe7396b4a4e9fe184c59cf4837, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -169,6 +170,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b7f026afd1455641abcfd4de64f73fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-3850964157313598474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619358578417660589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2c060ed2f9664cbe873219bbaf46928, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 50
+  angle: 0
+  dmg: 50
+  grenadeForce: 8
+  grenadePrefab: {fileID: 2143028003263309556, guid: 215676a72d793a740a87c7c392e1cc44,
+    type: 3}
+  fireRate: 0
 --- !u!1 &7299060277911594097
 GameObject:
   m_ObjectHideFlags: 0
