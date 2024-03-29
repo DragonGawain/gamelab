@@ -4,7 +4,7 @@ using UnityEngine.Audio;
 using TMPro;
 using static UnityEngine.Rendering.DebugUI;
 
-public class VolumeSettings : MonoBehaviour
+public class AudioManager : MonoBehaviour
 {
     [SerializeField] private AudioMixer gameMixer;
     [SerializeField] private Slider musicSlider;

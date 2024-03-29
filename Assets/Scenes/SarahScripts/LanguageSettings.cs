@@ -12,17 +12,17 @@ public class LanguageSettings : MonoBehaviour
 
     void Start()
     {
-        leftArrow.onClick.AddListener(ChangeLanguageLeft);
-        rightArrow.onClick.AddListener(ChangeLanguageRight);
+        //leftArrow.onClick.AddListener(ChangeLanguageLeft);
+        //rightArrow.onClick.AddListener(ChangeLanguageRight);
     }
 
     private void LateUpdate()
     {
-        leftArrow.onClick.AddListener(ChangeLanguageLeft);
-        rightArrow.onClick.AddListener(ChangeLanguageRight);
+        //leftArrow.onClick.AddListener(ChangeLanguageLeft);
+        //rightArrow.onClick.AddListener(ChangeLanguageRight);
     }
 
-    void ChangeLanguageLeft()
+    public void ChangeLanguageLeft()
     {
        if(currentLanguageText.text == languages[0])
         {
@@ -38,7 +38,7 @@ public class LanguageSettings : MonoBehaviour
         }
     }
 
-    void ChangeLanguageRight()
+    public void ChangeLanguageRight()
     {
         if (currentLanguageText.text == languages[0])
         {
