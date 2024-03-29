@@ -93,6 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1789292037031486079}
   - component: {fileID: 2669969322710532993}
+  - component: {fileID: 6507551319905440455}
   - component: {fileID: 5665598030155847574}
   - component: {fileID: 5845168380225816427}
   - component: {fileID: 4136498135312619341}
@@ -140,8 +141,22 @@ MonoBehaviour:
   playerTarget: {fileID: 0}
   dCoreTarget: {fileID: 0}
   target: {fileID: 0}
-  health: 0
   damage: 10
+--- !u!114 &6507551319905440455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 721925910991940730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b6fdeb0a6cd32b4c8889d6ad6b52968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 50
+  damage: 10
+  _renderer: {fileID: 4489704396763192051}
 --- !u!195 &5665598030155847574
 NavMeshAgent:
   m_ObjectHideFlags: 0
