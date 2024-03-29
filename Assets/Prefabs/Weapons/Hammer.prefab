@@ -252,10 +252,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 3
-  bullet: {fileID: 0}
-  grenade: {fileID: 0}
-  thrower: {fileID: 0}
-  hammer: {fileID: 0}
 --- !u!1 &3492376130815383273
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,7 +262,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2559318766119938625}
   - component: {fileID: 7523765462327748624}
-  - component: {fileID: -8415106517509832305}
   m_Layer: 0
   m_Name: Hammer
   m_TagString: Untagged
@@ -305,20 +300,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 20
   swingSpeed: 0
---- !u!114 &-8415106517509832305
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3492376130815383273}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2957a34d95e8e0247953e5018026e521, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponType: 3
-  bullet: {fileID: 619358578417660589, guid: 0c5e5727528b3874f893eeceb5da379f, type: 3}
-  grenade: {fileID: 2143028003263309556, guid: 215676a72d793a740a87c7c392e1cc44, type: 3}
-  thrower: {fileID: 8973999602560017180, guid: dd97550bf21267b4f8292058257c906a, type: 3}
-  hammer: {fileID: 3492376130815383273}

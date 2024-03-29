@@ -118,10 +118,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4df5ae4bcc779654ca307c8c14e02a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
-  angle: 0
-  dmg: 0
-  grenadeForce: 8
-  grenadePrefab: {fileID: 2143028003263309556, guid: 215676a72d793a740a87c7c392e1cc44,
-    type: 3}
-  fireRate: 0

@@ -10,9 +10,6 @@ TagManager:
   - LightPlayer
   - DarkPlayer
   - Enemy
-  - Enemy1
-  - Bullet
-  - Grenade
   layers:
   - Default
   - TransparentFX
