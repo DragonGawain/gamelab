@@ -75,7 +75,7 @@ namespace Weapons
             if (hit && other.CompareTag("Enemy"))
             {
                 Enemy enemy = other.GetComponent<Enemy>();
-                enemy.OnHit(GetDamage(), "DarkPlayer");
+                enemy.OnHit(GetDamage(), "DarkPlayer", this);
             }
         }
     }
