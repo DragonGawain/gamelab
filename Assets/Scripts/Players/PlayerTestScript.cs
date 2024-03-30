@@ -71,7 +71,7 @@ namespace Players
             //     return;
             direction = GetMoveInput();
             // only move if there's a move input
-        if (direction != Vector3.zero)
+            if (direction != Vector3.zero)
             {
                 characterController.Move(speed * Time.deltaTime * direction);
                 if (animator != null)
@@ -91,7 +91,7 @@ namespace Players
 
             // if you have fired within the past 5 seconds, rotate to look in the direction of fire
             if (rotationTimer > 0)
-                direction = (
+                direction = -(
                     GameManager.GetMousePosition3NotNormalized()
                     - GetScreenCoordinatesNotNormalized()
                 ).normalized;
