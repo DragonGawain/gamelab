@@ -96,7 +96,7 @@ namespace Players
                 // (currentWeapon as Hammer).Destroy();
 
                 // Switch to the Grenade Launcher
-                AttachWeapon(grenadeLauncher, new(-1.1f, 1, -0.75f));
+                AttachWeapon(grenadeLauncher, new(-1.1f, 3, -0.75f));
             }
             else
             {
