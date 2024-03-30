@@ -31,7 +31,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: b08c90d30ec3a884d925ed43b0424061,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.10000038
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b08c90d30ec3a884d925ed43b0424061,
         type: 3}
@@ -83,6 +83,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DarkPlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b08c90d30ec3a884d925ed43b0424061,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -114,7 +119,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b08c90d30ec3a884d925ed43b0424061,
         type: 3}
       insertIndex: -1
+      addedObject: {fileID: 8680238805144101229}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b08c90d30ec3a884d925ed43b0424061,
+        type: 3}
+      insertIndex: -1
       addedObject: {fileID: 1274436919136917900}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b08c90d30ec3a884d925ed43b0424061,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7476723687838700567}
   m_SourcePrefab: {fileID: 100100000, guid: b08c90d30ec3a884d925ed43b0424061, type: 3}
 --- !u!1 &6164403967038991240 stripped
 GameObject:
@@ -168,7 +181,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!23 &2089634295050198742
 MeshRenderer:
@@ -412,6 +425,27 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8680238805144101229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6164403967038991240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 2731943700
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
 --- !u!114 &1274436919136917900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -428,10 +462,23 @@ MonoBehaviour:
   invincibleSeconds: 1
   speed: 5
   smoothTime: 0.05
-  camObject: {fileID: 0}
+  camObject: {fileID: 7854156560825185214, guid: 84f8c9cf3b1e61e44a87203533676282,
+    type: 3}
   superHammer: {fileID: 8047829031987554622, guid: f19ea1917805f3e4580a74160057d334,
     type: 3}
   ygbyauda: {fileID: 3643911665502490090, guid: c6282d6a0c9f2224997cac0f1fdb44f6,
     type: 3}
   grenadeLauncher: {fileID: 507905301725245242, guid: 1f9c6e251f27d7246824058b9633f541,
     type: 3}
+--- !u!114 &7476723687838700567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6164403967038991240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7fbdf7546b19ff4aa6e1a53824fd4b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -120,6 +120,7 @@ GameObject:
   - component: {fileID: 189054653886193056}
   - component: {fileID: 6433285731611124124}
   - component: {fileID: 4118672303479936397}
+  - component: {fileID: -7142727690215782652}
   - component: {fileID: 4378789646577826271}
   m_Layer: 0
   m_Name: Player
@@ -362,6 +363,34 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: e1f0fe60-ffda-4e67-baaf-ef80bd860eb3
     m_ActionName: Player/SwapWeapon[/Keyboard/q,/DualShock4GamepadHID/rightShoulder]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c1dd1074-3d2c-45cc-9a0e-e8bb74389260
+    m_ActionName: Player/LightMove[/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: cc7cf766-4292-4fc0-86ff-4469521a853f
+    m_ActionName: Player/DarkMove[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6d9afcc2-fa95-41e2-bb69-47a6fa233a68
+    m_ActionName: Player/LightFire[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0bbf2f1f-8d4e-4221-96b5-4eb065f7d069
+    m_ActionName: Player/DarkFire[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 867a9082-f529-46eb-be29-331397244d9b
+    m_ActionName: Player/LightSwap[/Keyboard/q]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 454255e9-f780-421f-a842-36158ce00cf0
+    m_ActionName: Player/DarkSwap[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9d6c6c02-0e03-402b-9a30-e1eb205a00b2
+    m_ActionName: Player/MousePos[/Mouse/position]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -393,6 +422,27 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-7142727690215782652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3964186947282512288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 2829828891
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
 --- !u!114 &4378789646577826271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -405,8 +455,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f53c2ac09a7b74245b2fa87eb318dd53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 100
+  invincibleSeconds: 0
   speed: 5
   smoothTime: 0.05
+  camObject: {fileID: 0}
   flamethrower: {fileID: 7830794301040452377, guid: dd97550bf21267b4f8292058257c906a,
     type: 3}
   blaster: {fileID: 1128229197112233283, guid: b07e80de5e0b27e4b88265ccd36e62e2, type: 3}

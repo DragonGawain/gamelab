@@ -9,11 +9,12 @@ using DG.Tweening;
 using UnityEditor.Animations;
 using Sequence = DG.Tweening.Sequence;
 using System;
+using Unity.Netcode;
 
 
 namespace Players
 {
-    abstract public class PlayerTestScript : MonoBehaviour
+    abstract public class PlayerTestScript : NetworkBehaviour
     {
         private Vector2 input;
         private CharacterController characterController;
@@ -220,6 +221,11 @@ namespace Players
         public virtual void SetIsHammerSuper(bool status)
         {
             return;
+        }
+
+        public override void OnNetworkSpawn()
+        {
+            if (!IsOwner) Destroy(this);
         }
     }
 }
