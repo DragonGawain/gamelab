@@ -4,10 +4,11 @@ using UnityEngine;
 public class PlayerNetwork : NetworkBehaviour
 {
     private NetworkVariable<PlayerNetworkData> networkState = new NetworkVariable<PlayerNetworkData>(writePerm: NetworkVariableWritePermission.Owner);
+
     private Vector3 velocity;
     private float rotVelcoity;
     private float interpolTime = 0.1f;
-    void Update()
+    void FixedUpdate()
     {
         if (IsOwner)
         {
@@ -26,7 +27,7 @@ public class PlayerNetwork : NetworkBehaviour
 
     struct PlayerNetworkData: INetworkSerializable
     {
-        private float xPos, zPos;
+        public float xPos, zPos;
         private float yRot;
 
         internal Vector3 Position
@@ -43,10 +44,8 @@ public class PlayerNetwork : NetworkBehaviour
         internal Vector3 Rotation
         {
             get => new Vector3(0.0f, yRot, 0.0f);
-            set
-            {
-                yRot = value.y;
-            }
+            set => yRot = value.y;
+            
         }
 
         public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
