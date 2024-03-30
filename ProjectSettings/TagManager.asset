@@ -13,6 +13,13 @@ TagManager:
   - Enemy1
   - Bullet
   - Grenade
+  - Enemy2
+  - Enemy3
+  - BulletBarrage
+  - FlameHitBox
+  - FireParticles
+  - Hammer
+  - SuperHammer
   layers:
   - Default
   - TransparentFX

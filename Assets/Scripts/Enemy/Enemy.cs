@@ -42,7 +42,12 @@ public class Enemy : MonoBehaviour
         FlashRed();
 
     }
+    public  void OnTriggerEnter(Collider other)
+    {
 
+
+
+    }
 
     public virtual void dealDamage(Weapon weapon)
     {

@@ -64,6 +64,8 @@ public class Grenade : MonoBehaviour
                     // Check if the collider belongs to an enemy
                     Enemy enemy = hit.GetComponent<Enemy>();
                     Debug.Log("WEAPON REFFFFFF: " + weaponRef.GetWeaponName());
+                    // Passing the weapon reference to the bullet so the enemy can handle weapon info
+                   
 
                     enemy.OnHit(dmg, "DarkPlayer", weaponRef);
                     Rigidbody rb = hit.GetComponent<Rigidbody>();

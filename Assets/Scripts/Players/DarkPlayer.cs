@@ -16,8 +16,7 @@ namespace Players
         // [SerializeField]
         // private Hammer hammer;
 
-        [SerializeField]
-        private Hammer superHammer;
+        [SerializeField]   private Hammer superHammer;
 
         [SerializeField]
         Hammer ygbyauda; // I do not know why, but this variable wants to be named this :shrug:. It magically breaks if I rename it
