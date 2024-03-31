@@ -34,6 +34,12 @@ public class Enemy2 : Enemy
 
         }
 
+        if (weaponName == "DOTCloud")
+        {
+            health -= weapon.GetDamage();
+
+        }
+
 
         Debug.Log(" enemy health: " + health);
         health -= weapon.GetDamage();

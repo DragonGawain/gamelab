@@ -145,13 +145,48 @@ public class ComboAttackManager : MonoBehaviour
 
     public static void SpawnDOTCloud(GameObject grenade)
     {
-        if (fgTimer > 0)
-            return;
+        if (fgTimer > 0) return;
         fgTimer = 50;
 
-        Instantiate(dotCloudPrefab, grenade.transform.position, Quaternion.identity);
-        Destroy(grenade);
+        // Instantiate the cloud at the grenade's position
+        GameObject cloud = Instantiate(dotCloudPrefab, grenade.transform.position, Quaternion.identity);
+        cloud.transform.localScale = Vector3.zero; // Start with a tiny size
+
+        // Start the coroutine on the cloud GameObject
+        cloud.AddComponent<DOTCloudController>(); // Add a script component that can run coroutines
+
+        Destroy(grenade); // Destroy the grenade
         Debug.Log("SPAWN DOT CLOUD");
+    }
+
+    // You'll need to create a new script called DOTCloudController with the following content:
+    public class DOTCloudController : MonoBehaviour
+    {
+        public float growDuration = 3f; // Duration in seconds over which the cloud grows
+        public float maxSize = 8f; // Maximum size the cloud should grow to
+
+        private void Start()
+        {
+            StartCoroutine(GrowAndDisappear()); // Start the coroutine when the cloud is created
+        }
+
+        IEnumerator GrowAndDisappear()
+        {
+            float elapsedTime = 0;
+
+            // Gradually increase the cloud's size over time
+            while (elapsedTime < growDuration)
+            {
+                transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one * maxSize, elapsedTime / growDuration);
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+
+            // Optionally wait for a duration before the cloud disappears
+            yield return new WaitForSeconds(1f); // Wait for 1 second after it has reached its max size
+
+            Destroy(gameObject); // Destroy the cloud GameObject
+        }
     }
 
 

@@ -1,23 +1,46 @@
 using System.Collections;
 using System.Collections.Generic;
+using Players;
+using Weapons;
 using UnityEngine;
 
-public class DOTCloud : MonoBehaviour
+namespace Weapons
 {
-    int deathTimer = 150;
-    // Start is called before the first frame update
-    void Start()
+    public class DOTCloud : Weapon
     {
-        
-    }
+        static int deathTimer = 150;
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        deathTimer--;
-        if (deathTimer <= 0)
+        // Start is called before the first frame update
+        void Start()
         {
-            Destroy(this.gameObject);
+            SetDamage(50);
+            SetWeaponName("DOTCloud");
         }
+
+        // Update is called once per frame
+        void FixedUpdate()
+        {
+
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("Enemy2"))
+            {
+                Enemy enemy = other.GetComponent<Enemy>();
+                enemy.OnHit(GetDamage(), "DarkPlayer", this);
+            }
+        }
+        public override void OnFire()
+        {
+
+        }
+
+        public override void StopFire()
+        {
+
+        }
+
+
     }
 }
