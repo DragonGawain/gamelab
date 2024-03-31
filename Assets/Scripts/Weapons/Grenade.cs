@@ -118,6 +118,7 @@ public class Grenade : MonoBehaviour
             yield return new WaitForSeconds(colorChangeRate);
         }
         rend.material.color = changeColor;
+        Debug.Log("Exploding");
         isExploding = true;
     }
 }

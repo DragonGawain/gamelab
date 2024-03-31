@@ -11,22 +11,25 @@ namespace Weapons{
 
         [SerializeField] private ParticleSystem particles;
         [SerializeField] private CapsuleCollider flameHitbox;
-        
+        public bool firing;
         // Start is called before the first frame update
         void Start()
         {
             SetDamage(15);
             SetWeaponName("Flamethrower");
         }
+
         
         public override void OnFire()
         {
+            firing = true;
             particles.Play();
             flameHitbox.enabled = true;
         }
 
         public override void StopFire()
         {
+            firing = false;
             particles.Stop();
             flameHitbox.enabled = false;
         }

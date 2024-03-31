@@ -8,7 +8,7 @@ namespace Weapons
     public class SuperHammerCombo : Hammer
     {
 
-        private void OnTriggerEnter(Collider other)
+        private void OnTriggerStay(Collider other)
         {
 
             Debug.Log("do i get here even 2222?????");
@@ -16,9 +16,9 @@ namespace Weapons
             if (other.gameObject.CompareTag("FireParticles"))
             {
                 Debug.Log("here!!!!!!!!!: " + other.gameObject + " and " + this.gameObject);
-
-                ComboAttackManager.SpawnSuperHammer();
-
+                Flamethrower flamethrower = other.gameObject.GetComponentInParent<Flamethrower>();
+                if (flamethrower.firing)
+                    ComboAttackManager.SpawnSuperHammer();
             }
             else
             {

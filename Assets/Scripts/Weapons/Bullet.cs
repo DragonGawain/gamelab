@@ -7,7 +7,7 @@ using Weapons;
 
 public class Bullet : MonoBehaviour
 {
-    private Weapon weaponRef; // passed from the weapon its firing from
+    protected Weapon weaponRef; // passed from the weapon its firing from
 
     public void SetWeaponRef(Weapon weapon)
     {
@@ -25,7 +25,7 @@ public class Bullet : MonoBehaviour
     }
     
     
-    private void OnTriggerEnter(Collider other)
+    protected void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Enemy1"))
         {

@@ -5,24 +5,28 @@ using Weapons;
 
 namespace Weapons
 {
-    public class DOTCloudCombo : Blaster
+    public class DOTCloudCombo : MonoBehaviour
     {
-
-        private void OnTriggerEnter(Collider other)
+        
+        private void OnTriggerStay(Collider other)
         {
 
-            //YES YOU CAN
-            //Debug.Log("do i get here even?????");
+            //YES YOU CAN, nvm
 
             if (other.gameObject.CompareTag("Grenade"))
             {
                 Grenade grenade = other.gameObject.GetComponent<Grenade>();
-                if (grenade.isExploding == false) {
+                Flamethrower flamethrower = GetComponentInParent<Flamethrower>();
+                if (grenade.isExploding == false && flamethrower.firing) {
                
-
+                    
                     Debug.Log("here  ZAID: " + other.gameObject + " and " + this.gameObject);
 
-                ComboAttackManager.SpawnDOTCloud(other.gameObject);
+                    ComboAttackManager.SpawnDOTCloud(other.gameObject);
+                }
+                else
+                {
+                    Debug.Log("Grenade Exploding: " + grenade.isExploding + ", Flamethrower firing: " + flamethrower.firing);
                 }
             }
             else

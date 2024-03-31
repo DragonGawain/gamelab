@@ -100,8 +100,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: -8111377979844187916}
   changeColor: {r: 0.4669811, g: 0, b: 0, a: 0.57254905}
-  boomRate: 1
+  boomRate: 3
   blastRadius: 10
+  isExploding: 0
+  exploded: 0
 --- !u!54 &-8111377979844187916
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -20,13 +20,13 @@ namespace Weapons
         // Update is called once per frame
         void FixedUpdate()
         {
-            //deathTimer--;
-            //if (deathTimer <= 0)
-            //{
-            //    // instance = null;
-            //    player.SetIsHammerSuper(false);
-            //    Destroy(this.gameObject);
-            //}
+            deathTimer--;
+            if (deathTimer <= 0)
+            {
+                // instance = null;
+                player.SetIsHammerSuper(false);
+                Destroy(this.gameObject);
+            }
         }
 
         public static void ResetSuperHammerTimer()

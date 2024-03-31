@@ -129,7 +129,7 @@ namespace Players
 
             // Debug.Log("Weapon offset value: " + weaponOffsetInput.Value);
 
-            Debug.Log("Weapon offset: " + weaponOffset);
+            //Debug.Log("Weapon offset: " + weaponOffset);
             currentWeapon = Instantiate(weapon, transform.position, transform.rotation);
 
             currentWeapon.transform.parent = transform;

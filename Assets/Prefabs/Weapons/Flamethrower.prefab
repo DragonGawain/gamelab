@@ -118,6 +118,7 @@ MonoBehaviour:
   damage: 20
   particles: {fileID: 8739562680303120971}
   flameHitbox: {fileID: 5994752615539571729}
+  firing: 0
 --- !u!1001 &469696065056190118
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -126,6 +127,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5541397032731559362}
     m_Modifications:
+    - target: {fileID: 4762660226343725148, guid: 62634d34cae041c4a99c70134ad7b1d5,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 14.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 4762660226343725148, guid: 62634d34cae041c4a99c70134ad7b1d5,
+        type: 3}
+      propertyPath: m_Center.y
+      value: -1.31
+      objectReference: {fileID: 0}
     - target: {fileID: 4762660226343725148, guid: 62634d34cae041c4a99c70134ad7b1d5,
         type: 3}
       propertyPath: m_Material
@@ -224,10 +235,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4114531125bfb4665bf8959f6cac6379, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
-  particles: {fileID: 0}
-  firePoint: {fileID: 0}
-  bulletObject: {fileID: 0}
 --- !u!198 &8739562680303120971 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 9209188204746956013, guid: 62634d34cae041c4a99c70134ad7b1d5,

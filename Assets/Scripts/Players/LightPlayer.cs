@@ -13,8 +13,10 @@ namespace Players
     {
         public Flamethrower flamethrower;
         public Blaster blaster;
+        public SuperBlaster superBlaster;
         public TextMeshProUGUI text;
 
+        static bool isBlasterSuper = false;
         // This gets called in the Awake() function of the parent class
         protected override void OnAwake()
         {
@@ -94,6 +96,30 @@ namespace Players
             }
         }
 
+
+        public void SetIsBlasterSuper(bool status)
+        {
+            bool oldStatus = isBlasterSuper;
+            isBlasterSuper = status;
+            if (oldStatus == isBlasterSuper)
+            {
+                if (isBlasterSuper)
+                    SuperHammer.ResetSuperHammerTimer();
+                else
+                    return;
+            }
+            else if (!currentWeapon.GetWeaponName().Equals("Flamethrower"))
+            {
+                Destroy(currentWeapon.gameObject);
+                if (isBlasterSuper)
+                {
+                    AttachWeapon(superBlaster, new(-0.3f, 0, 0));
+                    SuperHammer.ResetSuperHammerTimer();
+                }
+                else
+                    AttachWeapon(blaster, new(-0.3f, 0, 0));
+            }
+        }
         // To be deleted later, this is just for show
         private void UpdateText(string weaponName)
         {
