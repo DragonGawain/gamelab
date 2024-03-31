@@ -10,6 +10,8 @@ namespace Weapons
     {
         static int deathTimer = 150;
 
+        private float blastRadius = 10;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -20,27 +22,35 @@ namespace Weapons
         // Update is called once per frame
         void FixedUpdate()
         {
-
-        }
-
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other.CompareTag("Enemy2"))
+            Collider[] colliders = Physics.OverlapSphere(transform.position, blastRadius / 2);
+            foreach (Collider hit in colliders)
             {
-                Enemy enemy = other.GetComponent<Enemy>();
+                if (!hit.CompareTag("Enemy2"))
+                    continue;
+                // Check if the collider belongs to an enemy
+                Enemy enemy = hit.GetComponent<Enemy>();
+
+                // Passing the weapon reference to the bullet so the enemy can handle weapon info
+
+
                 enemy.OnHit(GetDamage(), "DarkPlayer", this);
+                Rigidbody rb = hit.GetComponent<Rigidbody>();
+                if (rb != null)
+                {
+                    rb.AddExplosionForce(100, transform.position, blastRadius);
+                }
             }
         }
+
+
         public override void OnFire()
         {
-
+            throw new System.NotImplementedException();
         }
 
         public override void StopFire()
         {
-
+            throw new System.NotImplementedException();
         }
-
-
     }
 }
