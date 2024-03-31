@@ -11,7 +11,7 @@ namespace Weapons
         private void OnTriggerStay(Collider other)
         {
 
-            //YES YOU CAN, nvm
+            //YES YOU CAN, nvm, nvm again
 
             if (other.gameObject.CompareTag("Grenade"))
             {
@@ -20,13 +20,13 @@ namespace Weapons
                 if (grenade.isExploding == false && flamethrower.firing) {
                
                     
-                    Debug.Log("here  ZAID: " + other.gameObject + " and " + this.gameObject);
+                    //Debug.Log("here  ZAID: " + other.gameObject + " and " + this.gameObject);
 
                     ComboAttackManager.SpawnDOTCloud(other.gameObject);
                 }
                 else
                 {
-                    Debug.Log("Grenade Exploding: " + grenade.isExploding + ", Flamethrower firing: " + flamethrower.firing);
+                    //Debug.Log("Grenade Exploding: " + grenade.isExploding + ", Flamethrower firing: " + flamethrower.firing);
                 }
             }
             else

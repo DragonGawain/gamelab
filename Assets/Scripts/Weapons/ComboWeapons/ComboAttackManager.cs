@@ -26,6 +26,7 @@ public class ComboAttackManager : MonoBehaviour
 
     static GameObject superBulletPrefab;
     static GameObject dotCloudPrefab;
+    static GameObject superBlasterPrefab;
 
 
 
@@ -35,6 +36,7 @@ public class ComboAttackManager : MonoBehaviour
     static int fhTimer = 0;
 
     static DarkPlayer darkPlayer;
+    static LightPlayer lightPlayer;
 
     public enum WeaponType
     {
@@ -50,6 +52,8 @@ public class ComboAttackManager : MonoBehaviour
         bulletBarragePrefab = Resources.Load<GameObject>("BulletBarrage");
         superHammerPrefab = Resources.Load<GameObject>("SuperHammer Handle");
 
+        superBlasterPrefab = Resources.Load<GameObject>("SuperBlaster");
+        
         superBulletPrefab = Resources.Load<GameObject>("SuperBullet");
         dotCloudPrefab = Resources.Load<GameObject>("DOTCloud");
     }
@@ -69,6 +73,10 @@ public class ComboAttackManager : MonoBehaviour
     public static void SetDarkPlayer(DarkPlayer dp)
     {
         darkPlayer = dp;
+    }
+    public static void SetLightPlayer(LightPlayer lp)
+    {
+        lightPlayer = lp;
     }
 
     public WeaponType GetWeaponType()
@@ -91,7 +99,7 @@ public class ComboAttackManager : MonoBehaviour
         Destroy(grenade);
         GameObject tempBullet;
         Rigidbody tempRb;
-        Vector3 randomDir;
+        //Vector3 randomDir;
         int bulletCount = 12;
         for (int i = 0; i < bulletCount; i++)
         {
@@ -113,6 +121,14 @@ public class ComboAttackManager : MonoBehaviour
     }
 
 
+    public static void SpawnSuperBlaster()
+    {
+        if (bhTimer > 0)
+            return;
+        bhTimer = 50;
+        lightPlayer.SetIsBlasterSuper(true);
+        
+    }
     public static void SpawnSuperHammer()
     {
         if (fhTimer > 0)

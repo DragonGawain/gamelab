@@ -16,6 +16,7 @@ namespace Players
         public SuperBlaster superBlaster;
         public TextMeshProUGUI text;
 
+        
         static bool isBlasterSuper = false;
         // This gets called in the Awake() function of the parent class
         protected override void OnAwake()
@@ -25,6 +26,8 @@ namespace Players
             physicalInputs.Player.LightFire.performed += LightFire;
             physicalInputs.Player.LightSwap.performed += LightSwap;
             physicalInputs.Player.LightFire.canceled += LightFire;
+
+            ComboAttackManager.SetLightPlayer(this);
         }
 
         private void OnDestroy()
@@ -97,14 +100,14 @@ namespace Players
         }
 
 
-        public void SetIsBlasterSuper(bool status)
+        public override void SetIsBlasterSuper(bool status)
         {
             bool oldStatus = isBlasterSuper;
             isBlasterSuper = status;
             if (oldStatus == isBlasterSuper)
             {
                 if (isBlasterSuper)
-                    SuperHammer.ResetSuperHammerTimer();
+                    SuperBlaster.ResetSuperBlasterTimer();
                 else
                     return;
             }
@@ -113,11 +116,11 @@ namespace Players
                 Destroy(currentWeapon.gameObject);
                 if (isBlasterSuper)
                 {
-                    AttachWeapon(superBlaster, new(-0.3f, 0, 0));
-                    SuperHammer.ResetSuperHammerTimer();
+                    AttachWeapon(superBlaster);
+                    SuperBlaster.ResetSuperBlasterTimer();
                 }
                 else
-                    AttachWeapon(blaster, new(-0.3f, 0, 0));
+                    AttachWeapon(blaster);
             }
         }
         // To be deleted later, this is just for show

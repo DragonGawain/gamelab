@@ -59,7 +59,7 @@ namespace Players
                 // Player holds to fire
                 if (ctx.performed)
                 {
-                    Debug.Log("on hammer attack");
+                    //Debug.Log("on hammer attack");
                     //this.animator.SetTrigger("OnHammerAttack");
                     (currentWeapon as StdHammer).OnFire();
                 }

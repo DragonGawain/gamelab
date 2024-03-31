@@ -463,4 +463,6 @@ MonoBehaviour:
   flamethrower: {fileID: 7830794301040452377, guid: dd97550bf21267b4f8292058257c906a,
     type: 3}
   blaster: {fileID: 1128229197112233283, guid: b07e80de5e0b27e4b88265ccd36e62e2, type: 3}
+  superBlaster: {fileID: 6219481544275177149, guid: c79cef835460c714caa4a6d84e280fd9,
+    type: 3}
   text: {fileID: 0}

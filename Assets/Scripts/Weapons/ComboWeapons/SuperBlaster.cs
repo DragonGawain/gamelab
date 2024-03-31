@@ -5,7 +5,7 @@ using Weapons;
 
 public class SuperBlaster : Blaster
 {
-    static int deathTimer = 150;
+    static int deathTimer = 450;
     
     void Start()
     {
@@ -13,9 +13,22 @@ public class SuperBlaster : Blaster
         SetWeaponName("SuperBlaster");
     }
 
-    public static void ResetSuperHammerTimer()
+    
+    void FixedUpdate()
     {
-        deathTimer = 150;
+        deathTimer--;
+        if (deathTimer <= 0)
+        {
+            // instance = null;
+            player.SetIsBlasterSuper(false);
+            Destroy(this.gameObject);
+        }
+    }
+
+    
+    public static void ResetSuperBlasterTimer()
+    {
+        deathTimer = 450;
     }
     
     private void OnTriggerEnter(Collider other)

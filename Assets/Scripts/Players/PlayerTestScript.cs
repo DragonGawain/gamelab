@@ -223,6 +223,11 @@ namespace Players
             return;
         }
 
+        public virtual void SetIsBlasterSuper(bool status)
+        {
+            return;
+        }
+
         public override void OnNetworkSpawn()
         {
             if (!IsOwner) Destroy(this);
