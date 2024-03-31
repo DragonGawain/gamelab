@@ -11,7 +11,8 @@ namespace Weapons
         private void OnTriggerEnter(Collider other)
         {
 
-            Debug.Log("do i get here even?????");
+            //YES YOU CAN
+            //Debug.Log("do i get here even?????");
 
             if (other.gameObject.CompareTag("Grenade"))
             {

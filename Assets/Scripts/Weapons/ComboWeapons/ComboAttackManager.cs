@@ -93,13 +93,18 @@ public class ComboAttackManager : MonoBehaviour
         GameObject tempBullet;
         Rigidbody tempRb;
         Vector3 randomDir;
-        for (int i = 0; i < 8; i++)
+        int bulletCount = 12;
+        for (int i = 0; i < bulletCount; i++)
         {
             tempBullet = Instantiate(bulletBarragePrefab, grenadePos, Quaternion.identity);
             tempRb = tempBullet.GetComponent<Rigidbody>();
-            randomDir = new(Random.Range(-1, 1), 0, Random.Range(-1, 1));
-            randomDir.Normalize();
-            tempRb.AddForce(randomDir * Blaster.GetBulletForce(), ForceMode.Impulse);
+            // randomDir = new(Random.Range(-1, 1), 0, Random.Range(-1, 1));
+            // randomDir.Normalize();
+            // tempRb.AddForce(randomDir * Blaster.GetBulletForce(), ForceMode.Impulse);
+
+            float angle = i * (360f / bulletCount);
+            Vector3 direction = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), 0f, Mathf.Sin(angle * Mathf.Deg2Rad));
+            tempRb.velocity = direction * 10f;
 
         }
 
@@ -120,22 +125,22 @@ public class ComboAttackManager : MonoBehaviour
         Debug.Log("SPAWN SUPER HAMMER");
     }
 
-    //public static void SpawnSuperBullet(GameObject bullet)
-    //{
-    //    if (bhTimer > 0)
-    //        return;
-    //    bhTimer = 50;
-
-    //    GameObject superBullet = Instantiate(
-    //        superBulletPrefab,
-    //        bullet.transform.position,
-    //        Quaternion.identity
-    //    );
-    //    Rigidbody superRb = superBullet.GetComponent<Rigidbody>();
-    //    superRb.velocity = bullet.GetComponentInParent<Rigidbody>().velocity;
-    //    Destroy(bullet.transform.parent.gameObject);
-    //    Debug.Log("SPAWN SUPER BULLET");
-    //}
+    // public static void SpawnSuperBullet(GameObject bullet)
+    // {
+    //     if (bhTimer > 0)
+    //         return;
+    //     bhTimer = 50;
+    //
+    //     GameObject superBullet = Instantiate(
+    //         superBulletPrefab,
+    //         bullet.transform.position,
+    //         Quaternion.identity
+    //     );
+    //     Rigidbody superRb = superBullet.GetComponent<Rigidbody>();
+    //     superRb.velocity = bullet.GetComponentInParent<Rigidbody>().velocity;
+    //     Destroy(bullet.transform.parent.gameObject);
+    //     Debug.Log("SPAWN SUPER BULLET");
+    // }
 
     //public static void SpawnDOTCloud(GameObject grenade)
     //{
