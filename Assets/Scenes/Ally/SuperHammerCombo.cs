@@ -11,6 +11,7 @@ namespace Weapons
         private void OnTriggerStay(Collider other)
         {
 
+            
             Debug.Log("do i get here even 2222?????");
 
             if (other.gameObject.CompareTag("FireParticles"))
