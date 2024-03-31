@@ -148,6 +148,7 @@ public class ComboAttackManager : MonoBehaviour
         if (fgTimer > 0) return;
         fgTimer = 50;
 
+      
         // Instantiate the cloud at the grenade's position
         GameObject cloud = Instantiate(dotCloudPrefab, grenade.transform.position, Quaternion.identity);
         cloud.transform.localScale = Vector3.zero; // Start with a tiny size

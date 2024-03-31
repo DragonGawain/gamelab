@@ -16,10 +16,14 @@ namespace Weapons
 
             if (other.gameObject.CompareTag("Grenade"))
             {
-                Debug.Log("here UGH LOL!!!!!!!!!: " + other.gameObject + " and " + this.gameObject);
+                Grenade grenade = other.gameObject.GetComponent<Grenade>();
+                if (grenade.isExploding == false) {
+               
+
+                    Debug.Log("here  ZAID: " + other.gameObject + " and " + this.gameObject);
 
                 ComboAttackManager.SpawnDOTCloud(other.gameObject);
-
+                }
             }
             else
             {

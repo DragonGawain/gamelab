@@ -24,8 +24,8 @@ public class Grenade : MonoBehaviour
     public static int dmg;
     bool hitGround = false;
     int timer = 0;
-    bool isExploding = false;
-    private bool exploded = false;
+    public bool isExploding = false;
+    public bool exploded = false;
 
     void Start()
     {
