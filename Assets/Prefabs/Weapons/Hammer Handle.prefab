@@ -144,6 +144,7 @@ GameObject:
   - component: {fileID: 7510857532776073737}
   - component: {fileID: 4862239405537860366}
   - component: {fileID: 3669200722756009606}
+  - component: {fileID: 7083544794455193938}
   m_Layer: 0
   m_Name: Hammer Handle
   m_TagString: Hammer
@@ -239,6 +240,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 20
   swingSpeed: 0
+--- !u!114 &7083544794455193938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3449875433883800453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59a45f1894ee042a19b028a0684660fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 20
+  particles: {fileID: 0}
+  firePoint: {fileID: 0}
+  bulletObject: {fileID: 0}
 --- !u!1 &6736485646232850321
 GameObject:
   m_ObjectHideFlags: 0

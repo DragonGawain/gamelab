@@ -35,7 +35,12 @@ public class Enemy3 : Enemy
             health -= weapon.GetDamage();
 
         }
-      
+
+        if (weaponName == "SuperBullet")
+        {
+            health -= weapon.GetDamage();
+
+        }
 
         Debug.Log(" enemy health: " + health);
         health -= weapon.GetDamage();

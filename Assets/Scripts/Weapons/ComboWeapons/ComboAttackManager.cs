@@ -24,10 +24,9 @@ public class ComboAttackManager : MonoBehaviour
 
     static GameObject bulletBarragePrefab;
 
+    static GameObject superBulletPrefab;
+    static GameObject dotCloudPrefab;
 
-    //static GameObject superBulletPrefab;
-    //static GameObject dotCloudPrefab;
- 
 
 
     static int bgTimer = 0;
@@ -51,8 +50,8 @@ public class ComboAttackManager : MonoBehaviour
         bulletBarragePrefab = Resources.Load<GameObject>("BulletBarrage");
         superHammerPrefab = Resources.Load<GameObject>("SuperHammer Handle");
 
-        //superBulletPrefab = Resources.Load<GameObject>("SuperBullet");
-        //dotCloudPrefab = Resources.Load<GameObject>("DOTCloud");
+        superBulletPrefab = Resources.Load<GameObject>("SuperBullet");
+        dotCloudPrefab = Resources.Load<GameObject>("DOTCloud");
     }
 
     private void FixedUpdate()
@@ -125,33 +124,35 @@ public class ComboAttackManager : MonoBehaviour
         Debug.Log("SPAWN SUPER HAMMER");
     }
 
-    // public static void SpawnSuperBullet(GameObject bullet)
-    // {
-    //     if (bhTimer > 0)
-    //         return;
-    //     bhTimer = 50;
-    //
-    //     GameObject superBullet = Instantiate(
-    //         superBulletPrefab,
-    //         bullet.transform.position,
-    //         Quaternion.identity
-    //     );
-    //     Rigidbody superRb = superBullet.GetComponent<Rigidbody>();
-    //     superRb.velocity = bullet.GetComponentInParent<Rigidbody>().velocity;
-    //     Destroy(bullet.transform.parent.gameObject);
-    //     Debug.Log("SPAWN SUPER BULLET");
-    // }
+    public static void SpawnSuperBullet(GameObject bullet)
+    {
+        if (bhTimer > 0)
+            return;
+        bhTimer = 50;
 
-    //public static void SpawnDOTCloud(GameObject grenade)
-    //{
-    //    if (fgTimer > 0)
-    //        return;
-    //    fgTimer = 50;
+        GameObject superBullet = Instantiate(
+            superBulletPrefab,
+            bullet.transform.position,
+            Quaternion.identity
+        );
+        Rigidbody superRb = superBullet.GetComponent<Rigidbody>();
+        superRb.velocity = bullet.GetComponentInParent<Rigidbody>().velocity;
+        //Destroy(bullet.transform.parent.gameObject);
+        Destroy(bullet);
 
-    //    Instantiate(dotCloudPrefab, grenade.transform.position, Quaternion.identity);
-    //    Destroy(grenade);
-    //    Debug.Log("SPAWN DOT CLOUD");
-    //}
+        Debug.Log("SPAWN SUPER BULLET");
+    }
+
+    public static void SpawnDOTCloud(GameObject grenade)
+    {
+        if (fgTimer > 0)
+            return;
+        fgTimer = 50;
+
+        Instantiate(dotCloudPrefab, grenade.transform.position, Quaternion.identity);
+        Destroy(grenade);
+        Debug.Log("SPAWN DOT CLOUD");
+    }
 
 
 }
