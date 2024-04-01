@@ -7,12 +7,19 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 {
  [SerializeField] private PlayerTestScript player; // Reference to the player
- [SerializeField] private float fillAmount;
-[SerializeField] private Image health;
 
+
+    public float health;
+    public float maxHealth;
+    public GameObject healthBarUI;
+    public Slider slider;
 
     private void Start()
     {
+
+        health = maxHealth;
+        slider.value = 100;
+
         if (player != null)
         {
             player.OnHealthChanged += UpdateHealthBar;
@@ -32,36 +39,31 @@ public class HealthBar : MonoBehaviour
     }
 
 
-
-    private void UpdateHealthBar(float healthPercentage)
+    private void UpdateHealthBar(float newHealth)
     {
-        fillAmount = healthPercentage; // Update the fillAmount based on the event data
-        HandleBar();
-    }
+        slider.value = newHealth;
+        Debug.Log("NEW " + newHealth);
+        Debug.Log("SLV " + slider.value);
 
+        if (health < maxHealth)
+        {
+            healthBarUI.SetActive(true);
 
-
-    // Update is called once per frame
-    void Update()
-    {
-        HandleBar();
-        CheckHealthAndExit();
-
-    }
-
-    private void HandleBar()
-    {
-        health.fillAmount = fillAmount;
-    }
-
-
-
-    private void CheckHealthAndExit()
-    {
-        if (fillAmount == 0) // Check if fillAmount is essentially 0
+        }
+        if (health <= 0)
         {
             Debug.Log("Player was killed");
-          // game over or respawn?
+
         }
+        if (health > maxHealth)
+        {
+            health = maxHealth;
+        }
+
     }
+
+
+
+
+   
 }

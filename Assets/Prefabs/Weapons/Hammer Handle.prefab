@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eec272e2c17179548bb4dbd654995eb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
+  damage: 5
   swingSpeed: 0
 --- !u!136 &7510857532776073737
 CapsuleCollider:
