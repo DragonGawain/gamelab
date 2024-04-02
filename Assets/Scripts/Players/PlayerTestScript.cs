@@ -85,7 +85,8 @@ namespace Players
             {
                 if (animator != null)
                 {
-                    animator.SetTrigger("OnIdle");    
+                    if (animator.GetCurrentAnimatorStateInfo(0).IsName("Running"))
+                        animator.SetTrigger("OnIdle");    
                 }
             }
 
