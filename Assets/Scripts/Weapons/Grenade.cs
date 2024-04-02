@@ -59,11 +59,11 @@ public class Grenade : MonoBehaviour
                 Collider[] colliders = Physics.OverlapSphere(transform.position, blastRadius/2);
                 foreach (Collider hit in colliders)
                 {
-                    if (!hit.CompareTag("Enemy1"))
+                    if (!hit.CompareTag("BasicEnemy"))
                         continue;
                     // Check if the collider belongs to an enemy
                     Enemy enemy = hit.GetComponent<Enemy>();
-                    Debug.Log("WEAPON REFFFFFF: " + weaponRef.GetWeaponName());
+                    //Debug.Log("WEAPON REFFFFFF: " + weaponRef.GetWeaponName());
                     // Passing the weapon reference to the bullet so the enemy can handle weapon info
                    
 
@@ -83,7 +83,7 @@ public class Grenade : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (exploded && other.CompareTag("Enemy1"))
+        if (exploded && other.CompareTag("BasicEnemy"))
         {
             Enemy enemy = other.GetComponent<Enemy>();
             enemy.OnHit(dmg, "DarkPlayer", weaponRef);

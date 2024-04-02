@@ -18,12 +18,6 @@ namespace Weapons
                 if (flamethrower.firing)
                     ComboAttackManager.SpawnSuperHammer();
             }
-            else
-            {
-                //Debug.Log("WTFFFFF: " + other.gameObject + " and " + this.gameObject);
-
-            }
-
         }
 
     }

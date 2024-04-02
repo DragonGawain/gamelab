@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 6524865711970849321}
   m_Layer: 0
   m_Name: SuperHammer Handle
-  m_TagString: Untagged
+  m_TagString: SuperHammer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -154,6 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 50
+  swingSpeed: 0
 --- !u!136 &6524865711970849321
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -96,10 +96,10 @@ GameObject:
   - component: {fileID: 5665598030155847574}
   - component: {fileID: 5845168380225816427}
   - component: {fileID: 4136498135312619341}
-  - component: {fileID: 6752313148484474775}
+  - component: {fileID: 6630805890481390313}
   m_Layer: 0
   m_Name: VoidEnemy
-  m_TagString: Enemy3
+  m_TagString: ComboEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -206,7 +206,7 @@ CapsuleCollider:
   m_Height: 2.410676
   m_Direction: 1
   m_Center: {x: -0.027777791, y: 1.1600184, z: 0.05454296}
---- !u!114 &6752313148484474775
+--- !u!114 &6630805890481390313
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -215,12 +215,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 721925910991940730}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2935e9747004b446282af18c16bcc4de, type: 3}
+  m_Script: {fileID: 11500000, guid: 8ce2356d67f3d3a408e33f3d60852f3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
-  damage: 25
+  health: 100
+  damage: 12
   _renderer: {fileID: 4489704396763192051}
+  voidHolePrefab: {fileID: -5582418092171601750, guid: 3412cbc85eebefd49b2f64d65f316190,
+    type: 3}
+  VoidInfo: {fileID: 11400000, guid: ba6c3324e38232846a0cf5e8e5a1dfa9, type: 2}
 --- !u!1 &1498448567209578628
 GameObject:
   m_ObjectHideFlags: 0

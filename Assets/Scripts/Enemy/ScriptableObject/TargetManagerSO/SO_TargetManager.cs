@@ -36,7 +36,7 @@ public class SO_TargetManager : ScriptableObject
     // ReSharper disable Unity.PerformanceAnalysis
     public DCore GetClosestDCore(Vector3 pos)
     {
-        Debug.Log("Dream Cores in Scene: " + dCoreList.Count);
+        //Debug.Log("Dream Cores in Scene: " + dCoreList.Count);
         
         int closestIndex = -1;
         float closestDistance = Mathf.Infinity;

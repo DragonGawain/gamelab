@@ -6,15 +6,20 @@ using UnityEngine;
 public class LevelManager : ScriptableObject
 {
 
+    [Header("Seconds until Level Starts")]
     public float startTime;
     
+    
+    [Header("VH Spawner Features")]
     public float voidHoleSpawnTime;
-    public float enemySpawnTime;
-
-
     public float voidHoleSpawnRange;
+    
+    [Header("Void Hole Features")]
+    public float voidHolestartTime;
+    public float enemySpawnTime;
     public float enemySpawnRange;
 
+    [Header("Enemy Features")]
     public int enemyCount;
     public int enemyRange;
 

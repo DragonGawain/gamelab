@@ -16,8 +16,14 @@ public class VoidHoleSpawner : MonoBehaviour
     [SerializeField] private PlayerTestScript lightPlayer;
 
     [SerializeField] private LevelManager level;
-
+    
+    //Void hole spawn time
     private float spawnTime;
+    
+    //Current level (starts from 1)
+    private int levelNumber = 1;
+    
+    
     void Start()
     {
         spawnTime = level.startTime;
@@ -44,7 +50,7 @@ public class VoidHoleSpawner : MonoBehaviour
         soTargetManager.darkPlayer = darkPlayer;
     }
     
-    void spawn()
+    void spawnVoidHole()
     {
         //Find a random spawner and creat void hole, then remove spawner from available spawners
         if (spawnPoints.Count == 0)
@@ -70,16 +76,17 @@ public class VoidHoleSpawner : MonoBehaviour
     
     private void Update()
     {
-
         if (Time.time > spawnTime)
         {
             spawnTime = Time.time + level.voidHoleSpawnTime + Random.Range(0, level.voidHoleSpawnRange); 
-            spawn();
+            spawnVoidHole();
         }
-        // if (Input.GetKeyDown(KeyCode.X) && spawnPoints.Count > 0)
-        // {
-        //     spawn();
-        // }
+        
+        //Did game reach 4 minutes?
+        if (Time.time >= 240 * levelNumber)
+        {
+            levelNumber++;
+        }
     }
     
     private void OnDestroy()

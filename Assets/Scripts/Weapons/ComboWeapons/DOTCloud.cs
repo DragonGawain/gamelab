@@ -19,13 +19,14 @@ namespace Weapons
             SetWeaponName("DOTCloud");
         }
 
+        
         // Update is called once per frame
         void FixedUpdate()
         {
             Collider[] colliders = Physics.OverlapSphere(transform.position, blastRadius / 2);
             foreach (Collider hit in colliders)
             {
-                if (!hit.CompareTag("Enemy2"))
+                if (!hit.CompareTag("ComboEnemy"))
                     continue;
                 // Check if the collider belongs to an enemy
                 Enemy enemy = hit.GetComponent<Enemy>();

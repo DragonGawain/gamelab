@@ -34,7 +34,7 @@ public class SuperBlaster : Blaster
     private void OnTriggerEnter(Collider other)
     {
         // Check if the collided object is tagged as "Enemy2"
-        if (other.CompareTag("Enemy2"))
+        if (other.CompareTag("ComboEnemy"))
         {
             // Attempt to get the Enemy component from the collided object
             Enemy enemy = other.GetComponent<Enemy>();

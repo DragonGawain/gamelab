@@ -80,7 +80,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 20
   particles: {fileID: 0}
-  firePoint: {fileID: 3665701817819516441}
+  firePoint: {fileID: 0}
   bulletObject: {fileID: 619358578417660589, guid: bfd279b1eb9103246b50c5d42bd01aef,
     type: 3}
 --- !u!1001 &469696065056190118

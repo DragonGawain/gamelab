@@ -25,7 +25,7 @@ namespace Weapons
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Enemy3"))
+            if (other.CompareTag("ComboEnemy"))
             {
                 Enemy enemy = other.GetComponent<Enemy>();
                 enemy.OnHit(GetDamage(), "DarkPlayer", this);

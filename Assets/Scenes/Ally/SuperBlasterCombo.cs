@@ -8,7 +8,7 @@ namespace Scenes.Ally
         {
 
         
-            Debug.Log("Ally is touching things");
+            Debug.Log("Ally is touching " + other.name);
 
             if (other.gameObject.CompareTag("Hammer"))
             {
@@ -17,11 +17,6 @@ namespace Scenes.Ally
 
                 ComboAttackManager.SpawnSuperBlaster();
             
-
-            }
-            else
-            {
-                //Debug.Log("WTFFFFF: " + other.gameObject + " and " + this.gameObject);
 
             }
 

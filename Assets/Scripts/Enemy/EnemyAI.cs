@@ -30,15 +30,15 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private DCore dCoreTarget; // dream core target
     [SerializeField] private Transform target; // transform component of the target
     
-
-    // creating health variable and getter-setter for health
-    // (you may prefer public health instead of this, it is possible)
-    public int health;
-    public int Health
-    {
-        get { return health; }
-        set { health = value; }
-    }
+    //TODO:DELETE LATER IF NEVER USED
+    // // creating health variable and getter-setter for health
+    // // (you may prefer public health instead of this, it is possible)
+    // public int health;
+    // public int Health
+    // {
+    //     get { return health; }
+    //     set { health = value; }
+    // }
 
     // similar to the health
     [SerializeField] private int damage;
@@ -61,7 +61,7 @@ public class EnemyAI : MonoBehaviour
         enemyAiRef.SetInitialTarget(); // setting the first target of the enemy
 
         // using the enemy scriptable object to set health and damage
-        enemyAiRef.Health = enemyAiRef.enemyType.MaxHealth;
+        // enemyAiRef.Health = enemyAiRef.enemyType.MaxHealth;
         enemyAiRef.Damage = enemyAiRef.enemyType.Damage;
 
         return enemyAiRef;
@@ -88,6 +88,7 @@ public class EnemyAI : MonoBehaviour
 
         
         dCoreTarget = soTargetManager.GetClosestDCore(transform.position);
+        if (dCoreTarget == null) return;
         target = dCoreTarget.transform; // don't forget to set transform component of the target
 
 

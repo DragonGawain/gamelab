@@ -10,16 +10,17 @@ TagManager:
   - LightPlayer
   - DarkPlayer
   - Enemy
-  - Enemy1
   - Bullet
   - Grenade
-  - Enemy2
   - Enemy3
   - BulletBarrage
   - FlameHitBox
   - FireParticles
   - Hammer
   - SuperHammer
+  - ComboEnemy
+  - BasicEnemy
+  - VoidEnemy
   layers:
   - Default
   - TransparentFX
