@@ -78,6 +78,11 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -2843909369972686622, guid: b08c90d30ec3a884d925ed43b0424061,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ce7e04c355c679e45bc8957f5af85ab9, type: 2}
     - target: {fileID: 919132149155446097, guid: b08c90d30ec3a884d925ed43b0424061,
         type: 3}
       propertyPath: m_Name
@@ -437,7 +442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2731943700
+  GlobalObjectIdHash: 3324557488
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
