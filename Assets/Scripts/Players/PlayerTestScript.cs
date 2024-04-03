@@ -176,7 +176,7 @@ namespace Players
             }
 
             hitTime = Time.time + invincibleSeconds;
-            Debug.Log("health" + health);
+            //Debug.Log("health" + health);
 
             health -= 10;
             OnHealthChanged?.Invoke((float)health / 1); // Invoke the event, passing the current health percentage

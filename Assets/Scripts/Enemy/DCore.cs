@@ -49,7 +49,7 @@ public class DCore : MonoBehaviour
     public bool GetDamage(float amount)
     {
         health -= amount;
-        Debug.Log(health);
+        //Debug.Log(health);
         OnHealthChanged?.Invoke((float)health / 1); // Invoke the event, passing the current health percentage
 
         // dream core gets damage with this method

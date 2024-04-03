@@ -11,17 +11,17 @@ namespace Weapons
         static int deathTimer = 150;
 
         private float blastRadius = 10;
+        private bool isTakingDOTDamage = false;
 
         // Start is called before the first frame update
         void Start()
         {
-            SetDamage(50);
+            SetDamage(25);
             SetWeaponName("DOTCloud");
         }
 
-        
-        // Update is called once per frame
-        void FixedUpdate()
+
+        public void FixedUpdate()
         {
             Collider[] colliders = Physics.OverlapSphere(transform.position, blastRadius / 2);
             foreach (Collider hit in colliders)
@@ -42,6 +42,8 @@ namespace Weapons
                 }
             }
         }
+
+
 
 
         public override void OnFire()
