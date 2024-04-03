@@ -23,7 +23,7 @@ namespace Players
         protected Weapon currentWeapon;
         public event Action<float> OnHealthChanged; //changing health bar
 
-        [SerializeField] private int health = 100;
+        [SerializeField] private int health;
         //How many seconds until player can get damaged again
         [SerializeField] private float invincibleSeconds;
         private float hitTime = 0;
@@ -176,13 +176,14 @@ namespace Players
             }
 
             hitTime = Time.time + invincibleSeconds;
-            
+            Debug.Log("health" + health);
+
             health -= 10;
-            OnHealthChanged?.Invoke((float)health / 100); // Invoke the event, passing the current health percentage
+            OnHealthChanged?.Invoke((float)health / 1); // Invoke the event, passing the current health percentage
 
             if (health <= 0)
             {
-                OnHealthChanged?.Invoke((float)health / 100); // Invoke the event, passing the current health percentage
+                OnHealthChanged?.Invoke((float)health / 1); // Invoke the event, passing the current health percentage
 
                 OnDeath();
                 return;

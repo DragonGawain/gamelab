@@ -121,7 +121,6 @@ public class CrystalBar : MonoBehaviour {
         if (core != null)
         {
             core.OnHealthChanged += UpdateHealthBar; // Subscribe to the OnHealthChanged event
-            Debug.Log("sub");
         }
     }
 
@@ -172,8 +171,8 @@ public class CrystalBar : MonoBehaviour {
     private void UpdateHealthBar(float newHealth)
     {
         slider.value = newHealth;
-        Debug.Log("NEW " + newHealth);
-        Debug.Log("SLV " + slider.value);
+        //Debug.Log("NEW " + newHealth);
+        //Debug.Log("SLV " + slider.value);
 
         if (health < maxHealth)
         {

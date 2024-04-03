@@ -42,8 +42,8 @@ public class HealthBar : MonoBehaviour
     private void UpdateHealthBar(float newHealth)
     {
         slider.value = newHealth;
-        Debug.Log("NEW " + newHealth);
-        Debug.Log("SLV " + slider.value);
+        Debug.Log("PLAYER NEW " + newHealth);
+        Debug.Log("PLAYER SLV " + slider.value);
 
         if (health < maxHealth)
         {
