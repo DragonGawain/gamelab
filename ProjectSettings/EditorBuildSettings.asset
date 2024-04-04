@@ -8,12 +8,15 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/KiraSceneNetworking.unity
     guid: 58943090b504bd944a414c7dfca11dc6
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SarahScene.unity
     guid: e633cd390b967b045a6f9cd626b2936c
+  - enabled: 1
+    path: Assets/Scenes/CraigScene2.unity
+    guid: ae0c4993d635b1c42b075718c632faad
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 65f2d7530e1c8c644b929785552cdda9,
       type: 2}

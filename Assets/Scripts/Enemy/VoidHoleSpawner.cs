@@ -38,12 +38,12 @@ public class VoidHoleSpawner : MonoBehaviour
 
         if (darkPlayer == null)
         {
-            darkPlayer = FindAnyObjectByType<DarkPlayer>();
+            darkPlayer = FindAnyObjectByType<NetworkDarkPlayer>();
         }
 
         if (lightPlayer == null)
         {
-            lightPlayer = FindAnyObjectByType<LightPlayer>();
+            lightPlayer = FindAnyObjectByType<NetworkLightPlayer>();
         }
 
         soTargetManager.lightPlayer = lightPlayer;

@@ -35,8 +35,8 @@ public class ComboAttackManager : MonoBehaviour
     static int fgTimer = 0;
     static int fhTimer = 0;
 
-    static DarkPlayer darkPlayer;
-    static LightPlayer lightPlayer;
+    static NetworkDarkPlayer darkPlayer;
+    static NetworkLightPlayer lightPlayer;
 
     public enum WeaponType
     {
@@ -70,11 +70,11 @@ public class ComboAttackManager : MonoBehaviour
             fhTimer--;
     }
 
-    public static void SetDarkPlayer(DarkPlayer dp)
+    public static void SetDarkPlayer(NetworkDarkPlayer dp)
     {
         darkPlayer = dp;
     }
-    public static void SetLightPlayer(LightPlayer lp)
+    public static void SetLightPlayer(NetworkLightPlayer lp)
     {
         lightPlayer = lp;
     }
