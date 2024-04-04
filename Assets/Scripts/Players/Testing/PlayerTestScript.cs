@@ -16,8 +16,6 @@ namespace Players
     abstract public class PlayerTestScript : NetworkBehaviour
     {
         private Vector2 input;
-
-        // private CharacterController characterController;
         private Vector3 direction;
         protected Animator animator;
         protected Weapon currentWeapon;
@@ -32,11 +30,7 @@ namespace Players
         private float hitTime = 0;
 
         [SerializeField]
-        private float speed = 8;
-
-        [SerializeField]
         private float smoothTime = 0.05f;
-        private float currentVelocity;
 
         protected Inputs physicalInputs;
 
@@ -59,15 +53,14 @@ namespace Players
         [SerializeField, Range(1, 50)]
         protected float acceleration = 10;
         protected Vector3 desiredVelocity = new(0, 0, 0);
+        private float currentVelocity;
 
         private void Awake()
         {
-            // characterController = GetComponent<CharacterController>();
             physicalInputs = new Inputs();
             physicalInputs.Player.Enable();
             cam = camObject.GetComponent<Camera>();
             OnAwake();
-            //AttachWeapon(flamethrower); //giving player a flamethrower to test
 
             //For Changing Color when hit
             _renderer = GetComponent<Renderer>();
@@ -79,13 +72,9 @@ namespace Players
             body = GetComponent<Rigidbody>();
         }
 
-        // private void Update() { }
 
         private void FixedUpdate()
         {
-            // if (input.sqrMagnitude == 0)
-            //     return;
-            // only move if there's a move input
             // Slow down the body
             if (body.velocity.magnitude >= 0.1f)
                 body.velocity = Vector3.Lerp(body.velocity, Vector3.zero, 0.75f);
@@ -94,7 +83,6 @@ namespace Players
             desiredVelocity = GetMoveInput();
             if (desiredVelocity.magnitude != 0)
             {
-                // characterController.Move(speed * Time.deltaTime * direction);
                 desiredVelocity = Vector3.ClampMagnitude(desiredVelocity, maxVelocity);
                 body.velocity = desiredVelocity;
                 if (animator != null)
@@ -150,25 +138,21 @@ namespace Players
                     weaponOffsetInput.Value.z
                 );
 
-            // Debug.Log("Weapon offset value: " + weaponOffsetInput.Value);
 
-            //Debug.Log("Weapon offset: " + weaponOffset);
             currentWeapon = Instantiate(weapon, transform.position, transform.rotation);
 
             currentWeapon.transform.parent = transform;
             currentWeapon.transform.SetLocalPositionAndRotation(weaponOffset, Quaternion.identity);
             currentWeapon.transform.Rotate(new(0, 1, 0), 180);
             currentWeapon.SetPlayer(this);
-
-            //Debug.Log(this.transform.forward);
         }
 
-        public void Move(InputAction.CallbackContext ctx)
-        {
-            // Simple movement for testing purposes
-            input = ctx.ReadValue<Vector2>();
-            direction = new Vector3(input.x, 0.0f, input.y);
-        }
+        // public void Move(InputAction.CallbackContext ctx)
+        // {
+        //     // Simple movement for testing purposes
+        //     input = ctx.ReadValue<Vector2>();
+        //     direction = new Vector3(input.x, 0.0f, input.y);
+        // }
 
         // Called when the player fires with LMB or RT on controller
         virtual public void Fire(InputAction.CallbackContext ctx)

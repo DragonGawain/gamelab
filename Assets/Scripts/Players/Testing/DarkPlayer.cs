@@ -30,18 +30,15 @@ namespace Players
         //Attach weapon at start of game
         protected override void OnAwake()
         {
-            // Debug.Log("HAMMER TIME: " + hammer);
-            // Debug.Log("SUPER HAMMER TIME: " + superHammer);
-            // Debug.Log("GRENADE TIME: " + grenadeLauncher);
-            // Debug.Log("ygbyauda TIME: " + ygbyauda);
             AttachWeapon(ygbyauda, new(-0.3f, 0, 0));
             ComboAttackManager.SetDarkPlayer(this);
             physicalInputs.Player.DarkFire.performed += DarkFire;
             physicalInputs.Player.DarkSwap.performed += DarkSwap;
         }
 
-        private void OnDestroy()
+        public override void OnDestroy()
         {
+            base.OnDestroy();
             physicalInputs.Player.DarkFire.performed -= DarkFire;
             physicalInputs.Player.DarkSwap.performed -= DarkSwap;
         }

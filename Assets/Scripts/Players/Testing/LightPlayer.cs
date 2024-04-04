@@ -30,8 +30,9 @@ namespace Players
             ComboAttackManager.SetLightPlayer(this);
         }
 
-        private void OnDestroy()
+        public override void OnDestroy()
         {
+            base.OnDestroy();
             physicalInputs.Player.LightFire.performed -= LightFire;
             physicalInputs.Player.LightSwap.performed -= LightSwap;
             physicalInputs.Player.LightFire.canceled -= LightFire;
