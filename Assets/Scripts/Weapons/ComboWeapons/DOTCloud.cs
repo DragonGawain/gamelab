@@ -35,6 +35,8 @@ namespace Weapons
 
 
                 enemy.OnHit(GetDamage(), "DarkPlayer", this);
+                Debug.Log(GetDamage());
+
                 Rigidbody rb = hit.GetComponent<Rigidbody>();
                 if (rb != null)
                 {
