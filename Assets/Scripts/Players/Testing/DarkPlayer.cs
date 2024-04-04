@@ -7,6 +7,7 @@ using TMPro;
 using UnityEngine.UI;
 using Weapons;
 using Unity.VisualScripting;
+using UnityEditor.Localization.Plugins.XLIFF.V12;
 
 namespace Players
 {
@@ -16,7 +17,8 @@ namespace Players
         // [SerializeField]
         // private Hammer hammer;
 
-        [SerializeField]   private Hammer superHammer;
+        [SerializeField]
+        private Hammer superHammer;
 
         [SerializeField]
         Hammer ygbyauda; // I do not know why, but this variable wants to be named this :shrug:. It magically breaks if I rename it
@@ -49,13 +51,10 @@ namespace Players
             //Debug.Log(currentWeapon);
             base.Fire(ctx);
             currentWeapon.OnFire();
-            
-            
-            
+
             // If they fire with the Hammer
             if (currentWeapon as StdHammer)
             {
-                
                 // Player holds to fire
                 if (ctx.performed)
                 {
@@ -63,7 +62,6 @@ namespace Players
                     //this.animator.SetTrigger("OnHammerAttack");
                     (currentWeapon as StdHammer).OnFire();
                 }
-                    
             }
             else if (currentWeapon as SuperHammer)
             {
@@ -107,7 +105,12 @@ namespace Players
         protected override Vector3 GetMoveInput()
         {
             Vector2 moveInput = physicalInputs.Player.DarkMove.ReadValue<Vector2>();
-            Vector3 dir = new(moveInput.x, 0.0f, moveInput.y);
+            Vector3 dir =
+                new(
+                    moveInput.x * acceleration + body.velocity.x,
+                    0.0f,
+                    moveInput.y * acceleration + body.velocity.z
+                );
             return dir;
         }
 

@@ -16,7 +16,8 @@ namespace Players
     abstract public class PlayerTestScript : NetworkBehaviour
     {
         private Vector2 input;
-        private CharacterController characterController;
+
+        // private CharacterController characterController;
         private Vector3 direction;
         protected Animator animator;
         protected Weapon currentWeapon;
@@ -49,9 +50,19 @@ namespace Players
         private Material material;
         private Color originalColor;
 
+        protected Rigidbody body;
+
+        // movement
+        [SerializeField, Range(1, 10)]
+        float maxVelocity = 5;
+
+        [SerializeField, Range(1, 50)]
+        protected float acceleration = 10;
+        protected Vector3 desiredVelocity = new(0, 0, 0);
+
         private void Awake()
         {
-            characterController = GetComponent<CharacterController>();
+            // characterController = GetComponent<CharacterController>();
             physicalInputs = new Inputs();
             physicalInputs.Player.Enable();
             cam = camObject.GetComponent<Camera>();
@@ -65,17 +76,27 @@ namespace Players
             originalColor = material.color;
 
             animator = GetComponent<Animator>();
+            body = GetComponent<Rigidbody>();
         }
+
+        // private void Update() { }
 
         private void FixedUpdate()
         {
             // if (input.sqrMagnitude == 0)
             //     return;
-            direction = GetMoveInput();
             // only move if there's a move input
-            if (direction != Vector3.zero)
+            // Slow down the body
+            if (body.velocity.magnitude >= 0.1f)
+                body.velocity = Vector3.Lerp(body.velocity, Vector3.zero, 0.75f);
+            else
+                body.velocity = Vector3.zero;
+            desiredVelocity = GetMoveInput();
+            if (desiredVelocity.magnitude != 0)
             {
-                characterController.Move(speed * Time.deltaTime * direction);
+                // characterController.Move(speed * Time.deltaTime * direction);
+                desiredVelocity = Vector3.ClampMagnitude(desiredVelocity, maxVelocity);
+                body.velocity = desiredVelocity;
                 if (animator != null)
                 {
                     if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
