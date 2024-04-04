@@ -11,7 +11,6 @@ using Sequence = DG.Tweening.Sequence;
 using System;
 using Unity.Netcode;
 
-
 namespace Players
 {
     abstract public class PlayerTestScript : NetworkBehaviour
@@ -23,12 +22,14 @@ namespace Players
         protected Weapon currentWeapon;
         public event Action<float> OnHealthChanged; //changing health bar
 
-        [SerializeField] private int health;
+        [SerializeField]
+        private int health;
+
         //How many seconds until player can get damaged again
-        [SerializeField] private float invincibleSeconds;
+        [SerializeField]
+        private float invincibleSeconds;
         private float hitTime = 0;
-        
-        
+
         [SerializeField]
         private float speed = 8;
 
@@ -47,6 +48,7 @@ namespace Players
         private Renderer _renderer;
         private Material material;
         private Color originalColor;
+
         private void Awake()
         {
             characterController = GetComponent<CharacterController>();
@@ -55,8 +57,8 @@ namespace Players
             cam = camObject.GetComponent<Camera>();
             OnAwake();
             //AttachWeapon(flamethrower); //giving player a flamethrower to test
-            
-            //For Changing Color when hit 
+
+            //For Changing Color when hit
             _renderer = GetComponent<Renderer>();
             material = Instantiate(_renderer.material);
             _renderer.material = material;
@@ -77,22 +79,21 @@ namespace Players
                 if (animator != null)
                 {
                     if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
-                        animator.SetTrigger("OnRun");    
+                        animator.SetTrigger("OnRun");
                 }
-                
             }
             else
             {
                 if (animator != null)
                 {
                     if (animator.GetCurrentAnimatorStateInfo(0).IsName("Running"))
-                        animator.SetTrigger("OnIdle");    
+                        animator.SetTrigger("OnIdle");
                 }
             }
 
             // if you have fired within the past 5 seconds, rotate to look in the direction of fire
             if (rotationTimer > 0)
-                direction = -(
+                direction = (
                     GameManager.GetMousePosition3NotNormalized()
                     - GetScreenCoordinatesNotNormalized()
                 ).normalized;
@@ -100,7 +101,7 @@ namespace Players
             // if you have fired recently or you have put in a move input, rotate
             if (rotationTimer > 0 || direction != Vector3.zero)
             {
-                var targetAngle = (Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg);
+                var targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
                 var angle = Mathf.SmoothDampAngle(
                     transform.eulerAngles.y,
                     targetAngle,
@@ -135,6 +136,7 @@ namespace Players
 
             currentWeapon.transform.parent = transform;
             currentWeapon.transform.SetLocalPositionAndRotation(weaponOffset, Quaternion.identity);
+            currentWeapon.transform.Rotate(new(0, 1, 0), 180);
             currentWeapon.SetPlayer(this);
 
             //Debug.Log(this.transform.forward);
@@ -169,7 +171,6 @@ namespace Players
 
         public void OnHit(int dmg)
         {
-            
             if (Time.time < hitTime)
             {
                 return;
@@ -199,6 +200,7 @@ namespace Players
         {
             Destroy(this.gameObject);
         }
+
         abstract protected void OnAwake();
         abstract protected Vector3 GetMoveInput();
 
@@ -232,7 +234,8 @@ namespace Players
 
         public override void OnNetworkSpawn()
         {
-            if (!IsOwner) Destroy(this);
+            if (!IsOwner)
+                Destroy(this);
         }
     }
 }
