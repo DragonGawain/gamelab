@@ -147,12 +147,6 @@ namespace Players
             currentWeapon.SetPlayer(this);
         }
 
-        // public void Move(InputAction.CallbackContext ctx)
-        // {
-        //     // Simple movement for testing purposes
-        //     input = ctx.ReadValue<Vector2>();
-        //     direction = new Vector3(input.x, 0.0f, input.y);
-        // }
 
         // Called when the player fires with LMB or RT on controller
         virtual public void Fire(InputAction.CallbackContext ctx)
