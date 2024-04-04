@@ -16,8 +16,8 @@ namespace Players
         public SuperBlaster superBlaster;
         public TextMeshProUGUI text;
 
-        
         static bool isBlasterSuper = false;
+
         // This gets called in the Awake() function of the parent class
         protected override void OnAwake()
         {
@@ -30,18 +30,12 @@ namespace Players
             ComboAttackManager.SetLightPlayer(this);
         }
 
-        private void OnDestroy()
+        public override void OnDestroy()
         {
+            base.OnDestroy();
             physicalInputs.Player.LightFire.performed -= LightFire;
             physicalInputs.Player.LightSwap.performed -= LightSwap;
             physicalInputs.Player.LightFire.canceled -= LightFire;
-        }
-
-        private void Update()
-        {
-            // Vector2 mousePos = physicalInputs.Player.MousePos.ReadValue<Vector2>();
-            // mousePos = new(mousePos.x - (Screen.width / 2), mousePos.y - (Screen.height / 2));
-            // Debug.Log("mouse Pos: " + mousePos);
         }
 
         public void LightFire(InputAction.CallbackContext ctx)
@@ -99,7 +93,6 @@ namespace Players
             }
         }
 
-
         public override void SetIsBlasterSuper(bool status)
         {
             bool oldStatus = isBlasterSuper;
@@ -123,6 +116,7 @@ namespace Players
                     AttachWeapon(blaster);
             }
         }
+
         // To be deleted later, this is just for show
         private void UpdateText(string weaponName)
         {
@@ -136,7 +130,12 @@ namespace Players
         protected override Vector3 GetMoveInput()
         {
             Vector2 moveInput = physicalInputs.Player.LightMove.ReadValue<Vector2>();
-            Vector3 dir = new(moveInput.x, 0.0f, moveInput.y);
+            Vector3 dir =
+                new(
+                    moveInput.x * acceleration + body.velocity.x,
+                    0.0f,
+                    moveInput.y * acceleration + body.velocity.z
+                );
             return dir;
         }
     }

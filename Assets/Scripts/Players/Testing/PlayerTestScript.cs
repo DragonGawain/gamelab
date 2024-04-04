@@ -11,30 +11,26 @@ using Sequence = DG.Tweening.Sequence;
 using System;
 using Unity.Netcode;
 
-
 namespace Players
 {
     abstract public class PlayerTestScript : NetworkBehaviour
     {
         private Vector2 input;
-        private CharacterController characterController;
         private Vector3 direction;
         protected Animator animator;
         protected Weapon currentWeapon;
         public event Action<float> OnHealthChanged; //changing health bar
 
-        [SerializeField] private int health;
-        //How many seconds until player can get damaged again
-        [SerializeField] private float invincibleSeconds;
-        private float hitTime = 0;
-        
-        
         [SerializeField]
-        private float speed = 8;
+        private int health;
+
+        //How many seconds until player can get damaged again
+        [SerializeField]
+        private float invincibleSeconds;
+        private float hitTime = 0;
 
         [SerializeField]
         private float smoothTime = 0.05f;
-        private float currentVelocity;
 
         protected Inputs physicalInputs;
 
@@ -47,52 +43,66 @@ namespace Players
         private Renderer _renderer;
         private Material material;
         private Color originalColor;
+
+        protected Rigidbody body;
+
+        // movement
+        [SerializeField, Range(1, 10)]
+        float maxVelocity = 5;
+
+        [SerializeField, Range(1, 50)]
+        protected float acceleration = 10;
+        protected Vector3 desiredVelocity = new(0, 0, 0);
+        private float currentVelocity;
+
         private void Awake()
         {
-            characterController = GetComponent<CharacterController>();
             physicalInputs = new Inputs();
             physicalInputs.Player.Enable();
             cam = camObject.GetComponent<Camera>();
             OnAwake();
-            //AttachWeapon(flamethrower); //giving player a flamethrower to test
-            
-            //For Changing Color when hit 
+
+            //For Changing Color when hit
             _renderer = GetComponent<Renderer>();
             material = Instantiate(_renderer.material);
             _renderer.material = material;
             originalColor = material.color;
 
             animator = GetComponent<Animator>();
+            body = GetComponent<Rigidbody>();
         }
+
 
         private void FixedUpdate()
         {
-            // if (input.sqrMagnitude == 0)
-            //     return;
-            direction = GetMoveInput();
-            // only move if there's a move input
-            if (direction != Vector3.zero)
+            // Slow down the body
+            if (body.velocity.magnitude >= 0.1f)
+                body.velocity = Vector3.Lerp(body.velocity, Vector3.zero, 0.75f);
+            else
+                body.velocity = Vector3.zero;
+            desiredVelocity = GetMoveInput();
+            if (desiredVelocity.magnitude != 0)
             {
-                characterController.Move(speed * Time.deltaTime * direction);
+                desiredVelocity = Vector3.ClampMagnitude(desiredVelocity, maxVelocity);
+                body.velocity = desiredVelocity;
                 if (animator != null)
                 {
                     if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
-                        animator.SetTrigger("OnRun");    
+                        animator.SetTrigger("OnRun");
                 }
-                
             }
             else
             {
                 if (animator != null)
                 {
                     if (animator.GetCurrentAnimatorStateInfo(0).IsName("Running"))
-                        animator.SetTrigger("OnIdle");    
+                        animator.SetTrigger("OnIdle");
                 }
             }
 
             // if you have fired within the past 5 seconds, rotate to look in the direction of fire
             if (rotationTimer > 0)
-                direction = -(
+                direction = (
                     GameManager.GetMousePosition3NotNormalized()
                     - GetScreenCoordinatesNotNormalized()
                 ).normalized;
@@ -100,7 +110,7 @@ namespace Players
             // if you have fired recently or you have put in a move input, rotate
             if (rotationTimer > 0 || direction != Vector3.zero)
             {
-                var targetAngle = (Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg);
+                var targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
                 var angle = Mathf.SmoothDampAngle(
                     transform.eulerAngles.y,
                     targetAngle,
@@ -128,24 +138,21 @@ namespace Players
                     weaponOffsetInput.Value.z
                 );
 
-            // Debug.Log("Weapon offset value: " + weaponOffsetInput.Value);
 
-            //Debug.Log("Weapon offset: " + weaponOffset);
             currentWeapon = Instantiate(weapon, transform.position, transform.rotation);
 
             currentWeapon.transform.parent = transform;
             currentWeapon.transform.SetLocalPositionAndRotation(weaponOffset, Quaternion.identity);
+            currentWeapon.transform.Rotate(new(0, 1, 0), 180);
             currentWeapon.SetPlayer(this);
-
-            //Debug.Log(this.transform.forward);
         }
 
-        public void Move(InputAction.CallbackContext ctx)
-        {
-            // Simple movement for testing purposes
-            input = ctx.ReadValue<Vector2>();
-            direction = new Vector3(input.x, 0.0f, input.y);
-        }
+        // public void Move(InputAction.CallbackContext ctx)
+        // {
+        //     // Simple movement for testing purposes
+        //     input = ctx.ReadValue<Vector2>();
+        //     direction = new Vector3(input.x, 0.0f, input.y);
+        // }
 
         // Called when the player fires with LMB or RT on controller
         virtual public void Fire(InputAction.CallbackContext ctx)
@@ -169,7 +176,6 @@ namespace Players
 
         public void OnHit(int dmg)
         {
-            
             if (Time.time < hitTime)
             {
                 return;
@@ -199,6 +205,7 @@ namespace Players
         {
             Destroy(this.gameObject);
         }
+
         abstract protected void OnAwake();
         abstract protected Vector3 GetMoveInput();
 
@@ -232,7 +239,8 @@ namespace Players
 
         public override void OnNetworkSpawn()
         {
-            if (!IsOwner) Destroy(this);
+            if (!IsOwner)
+                Destroy(this);
         }
     }
 }
