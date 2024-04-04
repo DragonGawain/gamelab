@@ -72,7 +72,6 @@ namespace Players
             body = GetComponent<Rigidbody>();
         }
 
-
         private void FixedUpdate()
         {
             // Slow down the body
@@ -106,6 +105,8 @@ namespace Players
                     GameManager.GetMousePosition3NotNormalized()
                     - GetScreenCoordinatesNotNormalized()
                 ).normalized;
+            else
+                direction = desiredVelocity.normalized;
 
             // if you have fired recently or you have put in a move input, rotate
             if (rotationTimer > 0 || direction != Vector3.zero)
@@ -137,7 +138,6 @@ namespace Players
                     weaponOffsetInput.Value.y,
                     weaponOffsetInput.Value.z
                 );
-
 
             currentWeapon = Instantiate(weapon, transform.position, transform.rotation);
 

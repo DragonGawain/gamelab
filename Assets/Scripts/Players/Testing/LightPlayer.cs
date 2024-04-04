@@ -78,7 +78,7 @@ namespace Players
             if (currentWeapon as Flamethrower)
             {
                 // Switch to blaster
-                AttachWeapon(blaster);
+                AttachWeapon(blaster, new(-0.85f, 2, 0));
 
                 // Update UI
                 // UpdateText("Blaster");
@@ -86,7 +86,7 @@ namespace Players
             else
             {
                 // Switch to flamethrower
-                AttachWeapon(flamethrower);
+                AttachWeapon(flamethrower, new(-0.85f, 2, 0));
 
                 // Update UI
                 // UpdateText("Flamethrower");
