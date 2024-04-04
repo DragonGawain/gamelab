@@ -7,7 +7,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Joyful Jump
+  m_Name: CELEBRATE
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -21,7 +21,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: e82a7c43b51384b1fb851b6b55e5fdb4,
+  m_Motion: {fileID: -203655887218126122, guid: f2c18818935ea4a0793763dea9644b52,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
