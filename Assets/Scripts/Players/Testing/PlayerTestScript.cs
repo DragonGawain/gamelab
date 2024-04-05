@@ -72,7 +72,6 @@ namespace Players
             body = GetComponent<Rigidbody>();
         }
 
-
         private void FixedUpdate()
         {
             // Slow down the body
@@ -106,6 +105,8 @@ namespace Players
                     GameManager.GetMousePosition3NotNormalized()
                     - GetScreenCoordinatesNotNormalized()
                 ).normalized;
+            else
+                direction = desiredVelocity.normalized;
 
             // if you have fired recently or you have put in a move input, rotate
             if (rotationTimer > 0 || direction != Vector3.zero)
@@ -138,7 +139,6 @@ namespace Players
                     weaponOffsetInput.Value.z
                 );
 
-
             currentWeapon = Instantiate(weapon, transform.position, transform.rotation);
 
             currentWeapon.transform.parent = transform;
@@ -147,12 +147,6 @@ namespace Players
             currentWeapon.SetPlayer(this);
         }
 
-        // public void Move(InputAction.CallbackContext ctx)
-        // {
-        //     // Simple movement for testing purposes
-        //     input = ctx.ReadValue<Vector2>();
-        //     direction = new Vector3(input.x, 0.0f, input.y);
-        // }
 
         // Called when the player fires with LMB or RT on controller
         virtual public void Fire(InputAction.CallbackContext ctx)
