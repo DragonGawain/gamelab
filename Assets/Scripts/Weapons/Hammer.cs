@@ -15,12 +15,16 @@ namespace Weapons
         protected Sequence rotationSequence;
 
         private bool hit;
+
         // protected static Hammer instance;
+
+        private static bool isSwinging = false;
+        private static bool shouldBeSuper = false;
 
         void Awake()
         {
-
             SetDamage(10);
+            shouldBeSuper = false;
             // singleton pattern - there can only be a single instance of the super hammer
             // if (instance == null)
             //     instance = this;
@@ -32,6 +36,7 @@ namespace Weapons
         {
             if (rotationSequence == null)
             {
+                isSwinging = true;
                 slam();
             }
         }
@@ -52,9 +57,12 @@ namespace Weapons
         }
 
         public override void StopFire()
-        { 
+        {
             hit = false;
             rotationSequence = null;
+            isSwinging = false;
+            if (shouldBeSuper)
+                ComboAttackManager.SpawnSuperHammer();
         }
 
         public void Destroy()
@@ -76,6 +84,17 @@ namespace Weapons
                 Enemy enemy = other.GetComponent<Enemy>();
                 enemy.OnHit(GetDamage(), "DarkPlayer", this);
             }
+        }
+
+        public static bool GetIsSwinging()
+        {
+            Debug.Log("isSwinging: " + isSwinging);
+            return isSwinging;
+        }
+
+        public static void SetShouldBeSuper()
+        {
+            shouldBeSuper = true;
         }
     }
 }
