@@ -5,21 +5,23 @@ using Unity.VisualScripting;
 using UnityEngine;
 using Weapons;
 
-namespace Weapons{
+namespace Weapons
+{
     public class Flamethrower : Weapon
     {
+        [SerializeField]
+        private ParticleSystem particles;
 
-        [SerializeField] private ParticleSystem particles;
-        [SerializeField] private CapsuleCollider flameHitbox;
+        [SerializeField]
+        private CapsuleCollider flameHitbox;
         public bool firing;
+
         // Start is called before the first frame update
         void Start()
         {
-            SetDamage(15);
             SetWeaponName("Flamethrower");
         }
 
-        
         public override void OnFire()
         {
             firing = true;
@@ -35,4 +37,3 @@ namespace Weapons{
         }
     }
 }
-

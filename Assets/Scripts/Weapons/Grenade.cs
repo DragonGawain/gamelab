@@ -14,14 +14,16 @@ public class Grenade : MonoBehaviour
     private Color changeColor;
 
     //how long it takes for grenade to explode
-    [SerializeField] private float boomRate;
+    [SerializeField]
+    private float boomRate;
+
     //size of blast
-    [SerializeField] private float blastRadius;
-    
-    
+    [SerializeField]
+    private float blastRadius;
+
     private Renderer rend;
     private Color originalColor;
-    public static int dmg;
+    static readonly int dmg = 30;
     bool hitGround = false;
     int timer = 0;
     public bool isExploding = false;
@@ -32,6 +34,7 @@ public class Grenade : MonoBehaviour
         rend = GetComponent<Renderer>();
         originalColor = rend.material.color;
     }
+
     private Weapon weaponRef; // passed from the weapon its firing from
 
     public void SetWeaponRef(Weapon weapon)
@@ -50,45 +53,43 @@ public class Grenade : MonoBehaviour
         if (isExploding)
         {
             // Debug.Log((float)timer / 15);
-            transform.localScale = Vector3.Lerp(Vector3.one, Vector3.one * blastRadius, (float)timer / 15);
+            transform.localScale = Vector3.Lerp(
+                Vector3.one,
+                Vector3.one * blastRadius,
+                (float)timer / 15
+            );
             timer++;
             if (timer >= 15)
             {
                 //Create a ball the size of grenade to find all enemy colliders
                 exploded = true;
-                Collider[] colliders = Physics.OverlapSphere(transform.position, blastRadius/2);
+                Collider[] colliders = Physics.OverlapSphere(transform.position, blastRadius / 2);
                 foreach (Collider hit in colliders)
                 {
                     if (!hit.CompareTag("BasicEnemy"))
                         continue;
                     // Check if the collider belongs to an enemy
-                    Enemy enemy = hit.GetComponent<Enemy>();
+
                     //Debug.Log("WEAPON REFFFFFF: " + weaponRef.GetWeaponName());
                     // Passing the weapon reference to the bullet so the enemy can handle weapon info
-                   
 
-                    enemy.OnHit(dmg, "DarkPlayer", weaponRef);
+                    hit.GetComponent<Enemy>().OnHit(dmg, "DarkPlayer");
+
                     Rigidbody rb = hit.GetComponent<Rigidbody>();
                     if (rb != null)
-                    {
                         rb.AddExplosionForce(100, transform.position, blastRadius);
-                    }
                 }
                 Destroy(this.gameObject);
                 exploded = false;
             }
-                
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (exploded && other.CompareTag("BasicEnemy"))
-        {
-            Enemy enemy = other.GetComponent<Enemy>();
-            enemy.OnHit(dmg, "DarkPlayer", weaponRef);
-        }
-        
+            other.GetComponent<Enemy>().OnHit(dmg, "DarkPlayer");
+
         if (!hitGround && other.CompareTag("Floor"))
         {
             hitGround = true;

@@ -6,18 +6,15 @@ using UnityEngine;
 
 namespace Weapons
 {
+    // Inherits Bullet class just for the animation
     public class SuperBullet : Bullet
     {
+        readonly int dmg = 20;
+
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("ComboEnemy"))
-            {
-                Enemy enemy = other.GetComponent<Enemy>();
-                enemy.OnHit(weaponRef.GetDamage(), "LightPlayer", weaponRef);
-
-            }
+                other.GetComponent<Enemy>().OnHit(dmg, "LightPlayer");
         }
-
-
     }
 }

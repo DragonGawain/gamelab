@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8122024602081432206}
   - component: {fileID: 3809216536094501186}
   - component: {fileID: 7900544565930916547}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DOTCloud
   m_TagString: Untagged
   m_Icon: {fileID: 0}

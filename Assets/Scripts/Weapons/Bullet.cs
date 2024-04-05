@@ -7,31 +7,16 @@ using Weapons;
 
 public class Bullet : MonoBehaviour
 {
-    protected Weapon weaponRef; // passed from the weapon its firing from
-
-    public void SetWeaponRef(Weapon weapon)
-    {
-        weaponRef = weapon;
-    }
-
-    public Weapon GetWeaponRef()
-    {
-        return weaponRef;
-    }
+    readonly int dmg = 10;
 
     public void Explode()
     {
         // put an animation player here or smth instead of the bullet just disappearing
     }
-    
-    
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("BasicEnemy"))
-        {
-            Enemy enemy = other.GetComponent<Enemy>();
-            enemy.OnHit(weaponRef.GetDamage(), "LightPlayer", weaponRef);
-
-        }
+            other.GetComponent<Enemy>().OnHit(dmg, "LightPlayer");
     }
 }

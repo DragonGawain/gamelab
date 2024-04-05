@@ -14,22 +14,18 @@ namespace Weapons
         protected float swingSpeed;
         protected Sequence rotationSequence;
 
-        private bool hit;
+        protected bool hit;
 
         // protected static Hammer instance;
 
         private static bool isSwinging = false;
         private static bool shouldBeSuper = false;
 
+        protected int dmg = 10;
+
         void Awake()
         {
-            SetDamage(10);
             shouldBeSuper = false;
-            // singleton pattern - there can only be a single instance of the super hammer
-            // if (instance == null)
-            //     instance = this;
-            // if (instance != this)
-            //     Destroy(this.gameObject);
         }
 
         public override void OnFire()
@@ -68,11 +64,7 @@ namespace Weapons
         public void Destroy()
         {
             if (rotationSequence != null)
-            {
                 rotationSequence.Kill();
-            }
-
-            // Destroy(transform.parent.gameObject);
 
             Destroy(this.gameObject);
         }
@@ -80,15 +72,11 @@ namespace Weapons
         private void OnTriggerEnter(Collider other)
         {
             if (hit && other.CompareTag("BasicEnemy"))
-            {
-                Enemy enemy = other.GetComponent<Enemy>();
-                enemy.OnHit(GetDamage(), "DarkPlayer", this);
-            }
+                other.GetComponent<Enemy>().OnHit(dmg, "DarkPlayer");
         }
 
         public static bool GetIsSwinging()
         {
-            Debug.Log("isSwinging: " + isSwinging);
             return isSwinging;
         }
 

@@ -8,7 +8,7 @@ namespace Weapons
     {
         private void Start()
         {
-            SetDamage(20);
+            dmg = 20;
             SetWeaponName("Hammer");
         }
     }

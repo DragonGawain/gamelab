@@ -19,7 +19,8 @@ Flamethrower + Hammer: super hammer: (doo-doo da-dee da-deee!)
 */
 public class ComboAttackManager : MonoBehaviour
 {
-    [SerializeField] WeaponType weaponType;
+    [SerializeField]
+    WeaponType weaponType;
     static GameObject superHammerPrefab;
 
     static GameObject bulletBarragePrefab;
@@ -27,8 +28,6 @@ public class ComboAttackManager : MonoBehaviour
     static GameObject superBulletPrefab;
     static GameObject dotCloudPrefab;
     static GameObject superBlasterPrefab;
-
-
 
     static int bgTimer = 0;
     static int bhTimer = 0;
@@ -46,14 +45,21 @@ public class ComboAttackManager : MonoBehaviour
         HAMMER
     }
 
+    public enum ComboAttackType
+    {
+        BulletBarrage,
+        SuperBullet,
+        DOTCloud,
+        SuperHammer,
+        // Add other combo types as needed
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         bulletBarragePrefab = Resources.Load<GameObject>("BulletBarrage");
         superHammerPrefab = Resources.Load<GameObject>("SuperHammer Handle");
-
         superBlasterPrefab = Resources.Load<GameObject>("SuperBlaster");
-        
         superBulletPrefab = Resources.Load<GameObject>("SuperBullet");
         dotCloudPrefab = Resources.Load<GameObject>("DOTCloud");
     }
@@ -74,6 +80,7 @@ public class ComboAttackManager : MonoBehaviour
     {
         darkPlayer = dp;
     }
+
     public static void SetLightPlayer(LightPlayer lp)
     {
         lightPlayer = lp;
@@ -110,16 +117,16 @@ public class ComboAttackManager : MonoBehaviour
             // tempRb.AddForce(randomDir * Blaster.GetBulletForce(), ForceMode.Impulse);
 
             float angle = i * (360f / bulletCount);
-            Vector3 direction = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), 0f, Mathf.Sin(angle * Mathf.Deg2Rad));
+            Vector3 direction = new Vector3(
+                Mathf.Cos(angle * Mathf.Deg2Rad),
+                0f,
+                Mathf.Sin(angle * Mathf.Deg2Rad)
+            );
             tempRb.velocity = direction * 10f;
-
         }
 
-
         Debug.Log("SPAWN BULLET BARRAGE");
-
     }
-
 
     public static void SpawnSuperBlaster()
     {
@@ -127,8 +134,8 @@ public class ComboAttackManager : MonoBehaviour
             return;
         bhTimer = 5;
         lightPlayer.SetIsBlasterSuper(true);
-        
     }
+
     public static void SpawnSuperHammer()
     {
         if (fhTimer > 0)
@@ -161,50 +168,53 @@ public class ComboAttackManager : MonoBehaviour
 
     public static void SpawnDOTCloud(GameObject grenade)
     {
-        if (fgTimer > 0) return;
-        fgTimer = 50;
+        if (fgTimer > 0)
+            return;
+        fgTimer = 210; // cloud death timer is 200 FUs, so I'm making this slightly higher
 
-      
         // Instantiate the cloud at the grenade's position
-        GameObject cloud = Instantiate(dotCloudPrefab, grenade.transform.position, Quaternion.identity);
-        cloud.transform.localScale = Vector3.zero; // Start with a tiny size
+        Instantiate(dotCloudPrefab, grenade.transform.position, Quaternion.identity);
+        // cloud.transform.localScale = Vector3.zero; // Start with a tiny size
 
+        // nah, we ain't doing this no more.
         // Start the coroutine on the cloud GameObject
-        cloud.AddComponent<DOTCloudController>(); // Add a script component that can run coroutines
+        // cloud.AddComponent<DOTCloudController>(); // Add a script component that can run coroutines
 
         Destroy(grenade); // Destroy the grenade
         Debug.Log("SPAWN DOT CLOUD");
     }
 
     // You'll need to create a new script called DOTCloudController with the following content:
-    public class DOTCloudController : MonoBehaviour
-    {
-        public float growDuration = 3f; // Duration in seconds over which the cloud grows
-        public float maxSize = 8f; // Maximum size the cloud should grow to
+    // public class DOTCloudController : MonoBehaviour
+    // {
+    //     public float growDuration = 3f; // Duration in seconds over which the cloud grows
+    //     public float maxSize = 8f; // Maximum size the cloud should grow to
 
-        private void Start()
-        {
-            StartCoroutine(GrowAndDisappear()); // Start the coroutine when the cloud is created
-        }
+    //     private void Start()
+    //     {
+    //         StartCoroutine(GrowAndDisappear()); // Start the coroutine when the cloud is created
+    //     }
 
-        IEnumerator GrowAndDisappear()
-        {
-            float elapsedTime = 0;
+    //     IEnumerator GrowAndDisappear()
+    //     {
+    //         float elapsedTime = 0;
 
-            // Gradually increase the cloud's size over time
-            while (elapsedTime < growDuration)
-            {
-                transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one * maxSize, elapsedTime / growDuration);
-                elapsedTime += Time.deltaTime;
-                yield return null;
-            }
+    //         // Gradually increase the cloud's size over time
+    //         while (elapsedTime < growDuration)
+    //         {
+    //             transform.localScale = Vector3.Lerp(
+    //                 Vector3.zero,
+    //                 Vector3.one * maxSize,
+    //                 elapsedTime / growDuration
+    //             );
+    //             elapsedTime += Time.deltaTime;
+    //             yield return null;
+    //         }
 
-            // Optionally wait for a duration before the cloud disappears
-            yield return new WaitForSeconds(1f); // Wait for 1 second after it has reached its max size
+    //         // Optionally wait for a duration before the cloud disappears
+    //         yield return new WaitForSeconds(1f); // Wait for 1 second after it has reached its max size
 
-            Destroy(gameObject); // Destroy the cloud GameObject
-        }
-    }
-
-
+    //         Destroy(gameObject); // Destroy the cloud GameObject
+    //     }
+    // }
 }

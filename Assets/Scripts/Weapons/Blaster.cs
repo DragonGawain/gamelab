@@ -18,14 +18,12 @@ namespace Weapons
 
         [SerializeField]
         private static float bulletForce = 40f;
-        
 
         // Start is called before the first frame update
         void Start()
         {
-            SetDamage(10);
             SetWeaponName("Blaster");
-            // This is not a 'safe' way, but it will work. Just make sure that the fire point is alwayse the 0th child. 
+            // This is not a 'safe' way, but it will work. Just make sure that the fire point is alwayse the 0th child.
             firePoint = transform.GetChild(0);
         }
 
@@ -34,10 +32,6 @@ namespace Weapons
             // Creating bullet and making it go
             GameObject bullet = Instantiate(bulletObject, firePoint.position, firePoint.rotation);
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
-
-            // Passing the weapon reference to the bullet so the enemy can handle weapon info
-            Bullet b = bullet.GetComponent<Bullet>();
-            b.SetWeaponRef(this);
 
             // rb.velocity = GameManager.GetMousePosition3() * bulletForce; // TODO:: this may not work over the network
             // target - source
@@ -53,13 +47,12 @@ namespace Weapons
 
         public override void StopFire()
         {
-            //
+            return;
         }
 
         public static float GetBulletForce()
         {
             return bulletForce;
         }
-        
     }
 }

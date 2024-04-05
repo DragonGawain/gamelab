@@ -6,41 +6,15 @@ using UnityEngine;
 
 namespace Weapons
 {
-    public class BulletBarrage : Weapon
+    // Inherits Bullet class just for the animation
+    public class BulletBarrage : Bullet
     {
-        static int deathTimer = 150;
-
-        // Start is called before the first frame update
-        void Start()
-        {
-            SetDamage(50);
-            SetWeaponName("BulletBarrage");
-        }
-
-        // Update is called once per frame
-        void FixedUpdate()
-        {
-           
-        }
+        readonly int dmg = 50;
 
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("ComboEnemy"))
-            {
-                Enemy enemy = other.GetComponent<Enemy>();
-                enemy.OnHit(GetDamage(), "DarkPlayer", this);
-            }
+                other.GetComponent<Enemy>().OnHit(dmg, "DarkPlayer");
         }
-        public override void OnFire()
-        {
-
-        }
-
-        public override void StopFire()
-        {
-
-        }
-
-
     }
 }
