@@ -36,7 +36,7 @@ namespace Weapons
             }
         }
 
-        protected void slam()
+        protected virtual void slam()
         {
             hit = true;
             rotationSequence = DOTween.Sequence();
@@ -52,8 +52,7 @@ namespace Weapons
         }
 
         public override void StopFire()
-        {
-            
+        { 
             hit = false;
             rotationSequence = null;
         }

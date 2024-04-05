@@ -8,7 +8,7 @@ namespace Weapons
 {
     public class SuperHammer : Hammer
     {
-        static int deathTimer = 150;
+        static int deathTimer = 450;
 
         // Start is called before the first frame update
         void Start()
@@ -56,7 +56,18 @@ namespace Weapons
             }
         }
 
-    
+        protected override void slam()
+        {
+            if (deathTimer <= 25)
+                deathTimer = 25;
+            base.slam();
+        }
 
+        public override void StopFire()
+        {
+            base.StopFire();
+            if (deathTimer <= 10)
+                deathTimer = 1;
+        }
     }
 }
