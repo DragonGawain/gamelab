@@ -39,7 +39,7 @@ public class ColorDegradation : MonoBehaviour
     // That way, we only need to make one call for this when the core takes damage instead of looping through all the environment objects then.
     void Update()
     {
-        Debug.Log("saturation: " + (float)currentHP / (float)totalHP);
+        // Debug.Log("saturation: " + (float)currentHP / (float)totalHP);
         int i = 0;
         foreach (Material mat in mats)
         {
