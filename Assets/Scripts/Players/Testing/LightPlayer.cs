@@ -69,6 +69,7 @@ namespace Players
         public void LightSwap(InputAction.CallbackContext ctx)
         {
             Debug.Log("light swapped");
+            isBlasterSuper = false;
 
             base.SwapWeapon(ctx);
 
@@ -97,6 +98,7 @@ namespace Players
         {
             bool oldStatus = isBlasterSuper;
             isBlasterSuper = status;
+            Debug.Log(currentWeapon + ", " + currentWeapon.GetWeaponName());
             if (oldStatus == isBlasterSuper)
             {
                 if (isBlasterSuper)
@@ -109,11 +111,11 @@ namespace Players
                 Destroy(currentWeapon.gameObject);
                 if (isBlasterSuper)
                 {
-                    AttachWeapon(superBlaster);
+                    AttachWeapon(superBlaster, new(-0.85f, 2, 0));
                     SuperBlaster.ResetSuperBlasterTimer();
                 }
                 else
-                    AttachWeapon(blaster);
+                    AttachWeapon(blaster, new(-0.85f, 2, 0));
             }
         }
 

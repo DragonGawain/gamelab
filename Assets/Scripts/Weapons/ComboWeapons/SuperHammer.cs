@@ -25,7 +25,7 @@ namespace Weapons
             {
                 // instance = null;
                 player.SetIsHammerSuper(false);
-                Destroy(this.gameObject);
+                // Destroy(this.gameObject);
             }
         }
 

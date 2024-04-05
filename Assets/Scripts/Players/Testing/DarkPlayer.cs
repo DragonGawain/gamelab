@@ -77,6 +77,7 @@ namespace Players
         public void DarkSwap(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
         {
             Debug.Log("dark swapped");
+            isHammerSuper = false;
 
             base.SwapWeapon(ctx);
 

@@ -125,7 +125,7 @@ public class ComboAttackManager : MonoBehaviour
     {
         if (bhTimer > 0)
             return;
-        bhTimer = 50;
+        bhTimer = 5;
         lightPlayer.SetIsBlasterSuper(true);
         
     }

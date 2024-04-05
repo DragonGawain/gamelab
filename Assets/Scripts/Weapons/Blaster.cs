@@ -9,13 +9,12 @@ namespace Weapons
     public class Blaster : Weapon
     {
         [SerializeField]
-        private ParticleSystem particles;
+        protected ParticleSystem particles;
+
+        protected Transform firePoint;
 
         [SerializeField]
-        private Transform firePoint;
-
-        [SerializeField]
-        private GameObject bulletObject;
+        protected GameObject bulletObject;
 
         [SerializeField]
         private static float bulletForce = 40f;
@@ -26,6 +25,8 @@ namespace Weapons
         {
             SetDamage(10);
             SetWeaponName("Blaster");
+            // This is not a 'safe' way, but it will work. Just make sure that the fire point is alwayse the 0th child. 
+            firePoint = transform.GetChild(0);
         }
 
         public override void OnFire()
