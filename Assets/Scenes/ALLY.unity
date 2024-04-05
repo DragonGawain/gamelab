@@ -6294,6 +6294,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6854327436923728360, guid: 64fbb6de6daaa614a8c9ebac0239daea,
+        type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 3609053244
+      objectReference: {fileID: 0}
     - target: {fileID: 218685244246835382, guid: 64fbb6de6daaa614a8c9ebac0239daea,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6354,6 +6359,11 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1342168097}
+    - target: {fileID: 2146905481754870711, guid: 64fbb6de6daaa614a8c9ebac0239daea,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3885920481508890753, guid: 64fbb6de6daaa614a8c9ebac0239daea,
         type: 3}
       propertyPath: GlobalObjectIdHash
@@ -8469,6 +8479,11 @@ PrefabInstance:
     - target: {fileID: 7476723687838700567, guid: 6b6963baaf6ff464e878ab1daf530a0a,
         type: 3}
       propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7629563810350355074, guid: 6b6963baaf6ff464e878ab1daf530a0a,
+        type: 3}
+      propertyPath: m_IsKinematic
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8680238805144101229, guid: 6b6963baaf6ff464e878ab1daf530a0a,
