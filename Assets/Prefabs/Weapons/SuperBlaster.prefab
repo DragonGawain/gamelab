@@ -41,6 +41,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5541397032731559362}
   - component: {fileID: 6219481544275177149}
+  - component: {fileID: 3074997224190351735}
+  - component: {fileID: 1512822032134379445}
   m_Layer: 0
   m_Name: SuperBlaster
   m_TagString: Untagged
@@ -61,9 +63,9 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
+  - {fileID: 3665701817819516441}
   - {fileID: 8402222625984589277}
   - {fileID: 8173969838728242469}
-  - {fileID: 3665701817819516441}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6219481544275177149
@@ -79,10 +81,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 20
-  particles: {fileID: 0}
-  firePoint: {fileID: 0}
+  particles: {fileID: 8739562680303120971}
   bulletObject: {fileID: 619358578417660589, guid: bfd279b1eb9103246b50c5d42bd01aef,
     type: 3}
+--- !u!114 &3074997224190351735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8973999602560017180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0323845d99213b54287a549f43890760, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &1512822032134379445
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8973999602560017180}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1.6773317, z: 3.206628}
+  m_Center: {x: 0, y: 0.077997684, z: -0.50621617}
 --- !u!1001 &469696065056190118
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -344,6 +378,12 @@ PrefabInstance:
 --- !u!4 &8173969838728242469 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8641128230880136067, guid: 62634d34cae041c4a99c70134ad7b1d5,
+    type: 3}
+  m_PrefabInstance: {fileID: 469696065056190118}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &8739562680303120971 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 9209188204746956013, guid: 62634d34cae041c4a99c70134ad7b1d5,
     type: 3}
   m_PrefabInstance: {fileID: 469696065056190118}
   m_PrefabAsset: {fileID: 0}

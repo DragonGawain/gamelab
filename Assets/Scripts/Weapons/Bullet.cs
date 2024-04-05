@@ -25,7 +25,7 @@ public class Bullet : MonoBehaviour
     }
     
     
-    protected void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("BasicEnemy"))
         {

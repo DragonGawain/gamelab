@@ -8,7 +8,7 @@ namespace Weapons
 {
     public class SuperBullet : Bullet
     {
-        protected void OnTriggerEnter(Collider other)
+        private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("ComboEnemy"))
             {

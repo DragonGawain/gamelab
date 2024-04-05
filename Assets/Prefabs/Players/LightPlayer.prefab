@@ -287,7 +287,7 @@ MonoBehaviour:
   flamethrower: {fileID: 7830794301040452377, guid: dd97550bf21267b4f8292058257c906a,
     type: 3}
   blaster: {fileID: 1128229197112233283, guid: b07e80de5e0b27e4b88265ccd36e62e2, type: 3}
-  superBlaster: {fileID: 6219481544275177149, guid: b74c135ed8e02e0429239205955a6d03,
+  superBlaster: {fileID: 6219481544275177149, guid: f9189b0946a637048a07ed2e8007666b,
     type: 3}
   text: {fileID: 0}
 --- !u!114 &4716913310431206293
