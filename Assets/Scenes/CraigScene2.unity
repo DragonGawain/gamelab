@@ -1441,7 +1441,7 @@ PrefabInstance:
         type: 3}
       propertyPath: hammer
       value: 
-      objectReference: {fileID: 7523765462327748624, guid: e47f887229cd52c46b868df0f1e1d69b,
+      objectReference: {fileID: 3643911665502490090, guid: c6282d6a0c9f2224997cac0f1fdb44f6,
         type: 3}
     - target: {fileID: 1274436919136917900, guid: 6b6963baaf6ff464e878ab1daf530a0a,
         type: 3}

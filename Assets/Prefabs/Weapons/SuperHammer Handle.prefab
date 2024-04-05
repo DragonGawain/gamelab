@@ -118,6 +118,7 @@ GameObject:
   - component: {fileID: 8294441539722770499}
   - component: {fileID: 8047829031987554622}
   - component: {fileID: 6524865711970849321}
+  - component: {fileID: 5925366124869505616}
   m_Layer: 0
   m_Name: SuperHammer Handle
   m_TagString: SuperHammer
@@ -178,6 +179,20 @@ CapsuleCollider:
   m_Height: 1.6
   m_Direction: 2
   m_Center: {x: -0.3, y: 1.45, z: 0}
+--- !u!114 &5925366124869505616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3449875433883800453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 450676f49313f4cc6abbfaf013772d6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 20
+  swingSpeed: 0
 --- !u!1 &6736485646232850321
 GameObject:
   m_ObjectHideFlags: 0
