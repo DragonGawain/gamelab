@@ -19,6 +19,7 @@ namespace Weapons
 
         protected void SetWeaponName(string weaponName)
         {
+            Debug.Log("CALL: " + weaponName);
             this.weaponName = weaponName;
         }
 

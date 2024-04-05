@@ -30,7 +30,7 @@ namespace Players
         //Attach weapon at start of game
         protected override void OnAwake()
         {
-            AttachWeapon(ygbyauda, new(-0.3f, 0, 0));
+            AttachWeapon(ygbyauda, new(-0.3f, 0, 0), true);
             ComboAttackManager.SetDarkPlayer(this);
             physicalInputs.Player.DarkFire.performed += DarkFire;
             physicalInputs.Player.DarkSwap.performed += DarkSwap;
@@ -96,7 +96,7 @@ namespace Players
             else
             {
                 // Switch to the hammer
-                AttachWeapon(ygbyauda, new(-0.3f, 0, 0));
+                AttachWeapon(ygbyauda, new(-0.3f, 0, 0), true);
             }
         }
 
@@ -137,11 +137,11 @@ namespace Players
                 Destroy(currentWeapon.gameObject);
                 if (isHammerSuper)
                 {
-                    AttachWeapon(superHammer, new(-0.3f, 0, 0));
+                    AttachWeapon(superHammer, new(-0.3f, 0, 0), true);
                     SuperHammer.ResetSuperHammerTimer();
                 }
                 else
-                    AttachWeapon(ygbyauda, new(-0.3f, 0, 0));
+                    AttachWeapon(ygbyauda, new(-0.3f, 0, 0), true);
             }
         }
     }

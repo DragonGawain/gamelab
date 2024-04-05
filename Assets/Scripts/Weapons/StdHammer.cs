@@ -6,7 +6,7 @@ namespace Weapons
 {
     public class StdHammer : Hammer
     {
-        void Start()
+        private void Start()
         {
             SetDamage(20);
             SetWeaponName("Hammer");
