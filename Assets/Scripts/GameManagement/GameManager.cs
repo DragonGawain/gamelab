@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
             mousePosition.x - (Screen.width / 2),
             mousePosition.y - (Screen.height / 2)
         );
+        Time.timeScale = debugTimescale;
     }
 
     public static Vector2 GetMousePosition()

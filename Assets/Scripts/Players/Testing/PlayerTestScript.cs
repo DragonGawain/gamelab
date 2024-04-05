@@ -126,7 +126,11 @@ namespace Players
         }
 
         // attaches the gun object to the character and stores it in "currentWeapon"
-        protected void AttachWeapon(Weapon weapon, Vector3? weaponOffsetInput = null)
+        protected void AttachWeapon(
+            Weapon weapon,
+            Vector3? weaponOffsetInput = null,
+            bool isHammer = false
+        )
         {
             // Debug.Log("Weapon offset input: " + weaponOffsetInput);
             Vector3 weaponOffset;
@@ -143,10 +147,17 @@ namespace Players
 
             currentWeapon.transform.parent = transform;
             currentWeapon.transform.SetLocalPositionAndRotation(weaponOffset, Quaternion.identity);
-            currentWeapon.transform.Rotate(new(0, 1, 0), 180);
+            // Flip the rotations of all the weapons (they need it) except the hammers cause they're special
+            // This is the bad kind of special btw. It's because the rotation sequence has hard-coded values and will cause the hammer to teleport,
+            // so we need to set it's position to match.
+
+            // Since the object is only just initialized, we cannot check the name of the weapon (it has only just now been set)
+            // So, I'm instead passing in *another* default var to check
+            if (!(isHammer))
+                currentWeapon.transform.Rotate(new(0, 1, 0), 180);
+
             currentWeapon.SetPlayer(this);
         }
-
 
         // Called when the player fires with LMB or RT on controller
         virtual public void Fire(InputAction.CallbackContext ctx)
