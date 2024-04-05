@@ -125,6 +125,15 @@ namespace Players
             }
             else if (!currentWeapon.GetWeaponName().Equals("Grenade Launcher"))
             {
+                if (currentWeapon.GetWeaponName().Equals("Hammer"))
+                {
+                    if (Hammer.GetIsSwinging())
+                    {
+                        Hammer.SetShouldBeSuper();
+                        isHammerSuper = false; // Need to set this to false so that the super hammer gets spawned
+                        return;
+                    }
+                }
                 Destroy(currentWeapon.gameObject);
                 if (isHammerSuper)
                 {
