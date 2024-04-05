@@ -21,7 +21,7 @@ namespace Players
         private Hammer superHammer;
 
         [SerializeField]
-        Hammer ygbyauda; // I do not know why, but this variable wants to be named this :shrug:. It magically breaks if I rename it
+        Hammer hammer;
 
         [SerializeField]
         private GrenadeLauncher grenadeLauncher;
@@ -30,7 +30,7 @@ namespace Players
         //Attach weapon at start of game
         protected override void OnAwake()
         {
-            AttachWeapon(ygbyauda, new(-0.3f, 0, 0), true);
+            AttachWeapon(hammer, new(-0.3f, 0, 0), true);
             ComboAttackManager.SetDarkPlayer(this);
             physicalInputs.Player.DarkFire.performed += DarkFire;
             physicalInputs.Player.DarkSwap.performed += DarkSwap;
@@ -96,7 +96,7 @@ namespace Players
             else
             {
                 // Switch to the hammer
-                AttachWeapon(ygbyauda, new(-0.3f, 0, 0), true);
+                AttachWeapon(hammer, new(-0.3f, 0, 0), true);
             }
         }
 
@@ -141,7 +141,7 @@ namespace Players
                     SuperHammer.ResetSuperHammerTimer();
                 }
                 else
-                    AttachWeapon(ygbyauda, new(-0.3f, 0, 0), true);
+                    AttachWeapon(hammer, new(-0.3f, 0, 0), true);
             }
         }
     }
