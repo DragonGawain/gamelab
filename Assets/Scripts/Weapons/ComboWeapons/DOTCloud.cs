@@ -60,7 +60,6 @@ namespace Weapons
 
         private void OnTriggerEnter(Collider other)
         {
-            Debug.Log("DOT HIT: " + other.name);
             if (other.CompareTag("ComboEnemy"))
             {
                 inContactWith.Add(other.GetComponent<Enemy>());
