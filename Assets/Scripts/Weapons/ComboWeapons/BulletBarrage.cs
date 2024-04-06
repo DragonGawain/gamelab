@@ -14,7 +14,10 @@ namespace Weapons
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("ComboEnemy"))
+            {
                 other.GetComponent<Enemy>().OnHit(dmg, "DarkPlayer");
+                Destroy(this.gameObject);
+            }
         }
     }
 }

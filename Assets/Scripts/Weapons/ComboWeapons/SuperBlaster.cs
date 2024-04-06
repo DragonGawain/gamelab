@@ -5,7 +5,7 @@ using Weapons;
 
 public class SuperBlaster : Blaster
 {
-    static int deathTimer = 450;
+    static int deathTimer = 250;
 
     void Start()
     {
@@ -23,6 +23,6 @@ public class SuperBlaster : Blaster
 
     public static void ResetSuperBlasterTimer()
     {
-        deathTimer = 450;
+        deathTimer = 250;
     }
 }

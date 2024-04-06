@@ -17,6 +17,9 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("BasicEnemy"))
+        {
             other.GetComponent<Enemy>().OnHit(dmg, "LightPlayer");
+            Destroy(this.gameObject);
+        }
     }
 }

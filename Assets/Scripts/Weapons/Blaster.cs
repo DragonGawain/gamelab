@@ -19,6 +19,8 @@ namespace Weapons
         [SerializeField]
         private static float bulletForce = 40f;
 
+        protected static int fireDelay = 0;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -27,8 +29,17 @@ namespace Weapons
             firePoint = transform.GetChild(0);
         }
 
+        private void FixedUpdate()
+        {
+            if (fireDelay >= 0)
+                fireDelay--;
+        }
+
         public override void OnFire()
         {
+            if (fireDelay > 0)
+                return;
+            fireDelay = 25;
             // Creating bullet and making it go
             GameObject bullet = Instantiate(bulletObject, firePoint.position, firePoint.rotation);
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
