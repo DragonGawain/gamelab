@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-4182087866261299601
+--- !u!114 &-2238945403736189926
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BedMaterial
+  m_Name: grenadelauncherMaterial
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -40,11 +40,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 7b6efa65ba0d0784697ceade9c35ac81, type: 3}
+        m_Texture: {fileID: 2800000, guid: 445093009bb53fe4a9fcaf0ca575e9d6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 09e4586f64a42d24a961049666d89306, type: 3}
+        m_Texture: {fileID: 2800000, guid: c57e9650df95a204f8941283b08df174, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -60,15 +60,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 2800000, guid: e0b2f1a5cad2ad242a2599f61b93e776, type: 3}
+        m_Texture: {fileID: 2800000, guid: 1c3080cf63f0a0445a1195a23daf6a46, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 7b6efa65ba0d0784697ceade9c35ac81, type: 3}
+        m_Texture: {fileID: 2800000, guid: 445093009bb53fe4a9fcaf0ca575e9d6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 60f6324bed1c4ff4e8075d93d96be4f0, type: 3}
+        m_Texture: {fileID: 2800000, guid: 78febec55b8929e4d99cd9e5a8d9b209, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
