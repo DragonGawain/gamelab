@@ -219,6 +219,11 @@ namespace Players
             health = 100;
         }
 
+        public int GetHealth()
+        {
+            return health;
+        }
+
         abstract protected void OnDeath();
         abstract protected void OnAwake();
         abstract protected Vector3 GetMoveInput();

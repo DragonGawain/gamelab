@@ -94,8 +94,6 @@ public class EnemyAI : MonoBehaviour
         // we get the closest wall slot from the soTargetManager, we just give our position
         // to get the closest one.
 
-
-
         dCoreTarget = soTargetManager.GetClosestDCore(transform.position);
         if (dCoreTarget == null)
             return;
@@ -183,6 +181,8 @@ public class EnemyAI : MonoBehaviour
         if (playerTarget == null)
             return;
         playerTarget.OnHit(damage);
+        if (playerTarget.GetHealth() == 100)
+            GetDreamcoreTarget();
     }
 
     private void PerformAttackToDreamCore()
