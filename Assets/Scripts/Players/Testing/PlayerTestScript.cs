@@ -258,7 +258,7 @@ namespace Players
 
         public override void OnNetworkSpawn()
         {
-            if (IsServer)
+            /*if (IsServer)
             {
                 Debug.Log("Is host");
                 selection = 0;
@@ -270,7 +270,7 @@ namespace Players
                 Debug.Log("is Client");
                 //NetworkManager.GetNetworkPrefabOverride(GameObject.FindGameObjectWithTag("LightSelect"));
                 NetworkManager.GetNetworkPrefabOverride(lightPlayer);
-            }
+            }*/
 
             if (!IsOwner)
                 enabled = false;
