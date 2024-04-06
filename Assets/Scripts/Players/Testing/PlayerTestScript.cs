@@ -24,7 +24,7 @@ namespace Players
         //Network stuff
         [SerializeField] GameObject lightPlayer;
         [SerializeField] GameObject darkPlayer;
-        private int selection = 1;
+        public static int selection = 1;
 
 
         [SerializeField]
