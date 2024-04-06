@@ -13,7 +13,7 @@ namespace Weapons
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("ComboEnemy"))
+            if (other.CompareTag("VoidEnemy"))
             {
                 other.GetComponent<Enemy>().OnHit(dmg, "DarkPlayer");
                 Destroy(this.gameObject);

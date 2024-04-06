@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 6630805890481390313}
   m_Layer: 0
   m_Name: VoidEnemy
-  m_TagString: ComboEnemy
+  m_TagString: VoidEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -221,6 +221,7 @@ MonoBehaviour:
   health: 100
   damage: 12
   _renderer: {fileID: 4489704396763192051}
+  dotTick: 25
   voidHolePrefab: {fileID: -5582418092171601750, guid: 3412cbc85eebefd49b2f64d65f316190,
     type: 3}
   VoidInfo: {fileID: 11400000, guid: ba6c3324e38232846a0cf5e8e5a1dfa9, type: 2}
