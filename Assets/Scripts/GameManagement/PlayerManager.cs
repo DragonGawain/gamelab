@@ -31,6 +31,7 @@ public class PlayerManager : MonoBehaviour
         lightPlayer.gameObject.SetActive(false);
         lightRespawnTimer = 250;
         isLightPlayerDead = true;
+        lightPlayer.Revive();
     }
 
     public static void OnDarkPlayerDeath()
@@ -38,6 +39,7 @@ public class PlayerManager : MonoBehaviour
         darkPlayer.gameObject.SetActive(false);
         darkRespawnTimer = 250;
         isDarkPlayerDead = true;
+        darkPlayer.Revive();
     }
 
     static void RespawnLightPlayer()
@@ -58,6 +60,10 @@ public class PlayerManager : MonoBehaviour
     {
         if (isLightPlayerDead)
         {
+            if (isDarkPlayerDead)
+            {
+                // REPLACE THIS WITH SOME METHOD CALL (i guess to the gm?) TO TRIGGER THE LOSE UI
+            }
             lightRespawnTimer--;
             if (lightRespawnTimer <= 0)
                 RespawnLightPlayer();
