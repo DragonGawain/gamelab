@@ -22,10 +22,12 @@ namespace Players
         public event Action<float> OnHealthChanged; //changing health bar
 
         //Network stuff
-        [SerializeField] GameObject lightPlayer;
-        [SerializeField] GameObject darkPlayer;
-        public static int selection = 1;
+        [SerializeField]
+        GameObject lightPlayer;
 
+        [SerializeField]
+        GameObject darkPlayer;
+        public static int selection = 1;
 
         [SerializeField]
         private int health;
@@ -212,11 +214,7 @@ namespace Players
             sequence.Play();
         }
 
-        void OnDeath()
-        {
-            Destroy(this.gameObject);
-        }
-
+        abstract protected void OnDeath();
         abstract protected void OnAwake();
         abstract protected Vector3 GetMoveInput();
 
@@ -250,7 +248,7 @@ namespace Players
 
         public override void OnNetworkSpawn()
         {
-            if(IsServer)
+            if (IsServer)
             {
                 Debug.Log("Is host");
                 selection = 0;
@@ -266,7 +264,7 @@ namespace Players
 
             if (!IsOwner)
                 enabled = false;
-                //Destroy(this);
+            //Destroy(this);
         }
     }
 }

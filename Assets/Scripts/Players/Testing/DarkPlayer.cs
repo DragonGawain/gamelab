@@ -36,6 +36,7 @@ namespace Players
 
             ComboAttackManager.SetDarkPlayer(this);
             SO_TargetManager.darkPlayer = this;
+            PlayerManager.SetDarkPlayer(this);
         }
 
         public override void OnDestroy()
@@ -145,6 +146,11 @@ namespace Players
                 else
                     AttachWeapon(hammer, new(-0.3f, 0, 0), true);
             }
+        }
+    
+        protected override void OnDeath()
+        {
+            PlayerManager.OnDarkPlayerDeath();
         }
     }
 }

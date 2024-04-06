@@ -29,6 +29,7 @@ namespace Players
 
             ComboAttackManager.SetLightPlayer(this);
             SO_TargetManager.lightPlayer = this;
+            PlayerManager.SetLightPlayer(this);
         }
 
         public override void OnDestroy()
@@ -120,6 +121,10 @@ namespace Players
             }
         }
 
+        protected override void OnDeath()
+        {
+            PlayerManager.OnLightPlayerDeath();
+        }
         // To be deleted later, this is just for show
         private void UpdateText(string weaponName)
         {
