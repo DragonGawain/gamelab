@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-4182087866261299601
+--- !u!114 &-5918237522560906088
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BedMaterial
+  m_Name: blasterMaterial
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -40,11 +40,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 7b6efa65ba0d0784697ceade9c35ac81, type: 3}
+        m_Texture: {fileID: 2800000, guid: e465275568d14294081fd97558702bf3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 09e4586f64a42d24a961049666d89306, type: 3}
+        m_Texture: {fileID: 2800000, guid: f501f8b8151e1dc46a2eb7106b6317fb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -60,15 +60,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 2800000, guid: e0b2f1a5cad2ad242a2599f61b93e776, type: 3}
+        m_Texture: {fileID: 2800000, guid: 768f101d25c22794796f9bbaa22e20c7, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 7b6efa65ba0d0784697ceade9c35ac81, type: 3}
+        m_Texture: {fileID: 2800000, guid: e465275568d14294081fd97558702bf3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 60f6324bed1c4ff4e8075d93d96be4f0, type: 3}
+        m_Texture: {fileID: 2800000, guid: d7af98db5f416564cab8c715d9e789fc, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
