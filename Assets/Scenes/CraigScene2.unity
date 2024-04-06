@@ -1270,6 +1270,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LightPlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 595387465054001676, guid: 64fbb6de6daaa614a8c9ebac0239daea,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 943507946219187017, guid: 64fbb6de6daaa614a8c9ebac0239daea,
         type: 3}
       propertyPath: m_Enabled
@@ -1299,6 +1304,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsTrigger
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5288282150948070114, guid: 64fbb6de6daaa614a8c9ebac0239daea,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8862345156611905924, guid: 64fbb6de6daaa614a8c9ebac0239daea,
         type: 3}
