@@ -214,6 +214,11 @@ namespace Players
             sequence.Play();
         }
 
+        public void Revive()
+        {
+            health = 100;
+        }
+
         abstract protected void OnDeath();
         abstract protected void OnAwake();
         abstract protected Vector3 GetMoveInput();

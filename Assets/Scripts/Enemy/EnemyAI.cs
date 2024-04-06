@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Players;
 using UnityEngine;
 using UnityEngine.AI;
+
 public class EnemyAI : MonoBehaviour
 {
     private enum EnemyState
@@ -13,23 +14,30 @@ public class EnemyAI : MonoBehaviour
         NoDreamCoreState
     }
 
-  
-
     private EnemyState state = EnemyState.GoingToDreamCore;
-    
-    [SerializeField] SO_Enemy enemyType;
+
+    [SerializeField]
+    SO_Enemy enemyType;
 
     [Header("Required References")]
     // I am using NavMesh system for enemy movement
-    [SerializeField] private NavMeshAgent aiAgent;
+    [SerializeField]
+    private NavMeshAgent aiAgent;
+
     // soTargetManager will be used to get a suitable target for enemy
-    [SerializeField] private SO_TargetManager soTargetManager;
+    [SerializeField]
+    private SO_TargetManager soTargetManager;
 
     [Header("Testing Parameters")]
-    [SerializeField] public PlayerTestScript playerTarget; //player target
-    [SerializeField] private DCore dCoreTarget; // dream core target
-    [SerializeField] private Transform target; // transform component of the target
-    
+    [SerializeField]
+    public PlayerTestScript playerTarget; //player target
+
+    [SerializeField]
+    private DCore dCoreTarget; // dream core target
+
+    [SerializeField]
+    private Transform target; // transform component of the target
+
     //TODO:DELETE LATER IF NEVER USED
     // // creating health variable and getter-setter for health
     // // (you may prefer public health instead of this, it is possible)
@@ -41,13 +49,13 @@ public class EnemyAI : MonoBehaviour
     // }
 
     // similar to the health
-    [SerializeField] private int damage;
+    [SerializeField]
+    private int damage;
     public int Damage
     {
         get { return damage; }
         set { damage = value; }
     }
-
 
     // for holding the position of the last target
     private Vector3 lastTargetPos;
@@ -56,7 +64,7 @@ public class EnemyAI : MonoBehaviour
     public static EnemyAI Create(Transform _prefab, Vector3 _worldPosition)
     {
         Transform spawningTransform = Instantiate(_prefab, _worldPosition, Quaternion.identity);
-        
+
         EnemyAI enemyAiRef = spawningTransform.GetComponent<EnemyAI>();
         enemyAiRef.SetInitialTarget(); // setting the first target of the enemy
 
@@ -69,28 +77,31 @@ public class EnemyAI : MonoBehaviour
 
     public void setDarkPlayerTarget()
     {
-        target = SO_TargetManager.darkPlayer.transform; 
+        playerTarget = SO_TargetManager.darkPlayer;
+        target = playerTarget.transform;
         state = EnemyState.ChasingPlayer;
     }
 
     public void setLightPlayerTarget()
     {
-        target = SO_TargetManager.lightPlayer.transform;
+        playerTarget = SO_TargetManager.lightPlayer;
+        target = playerTarget.transform;
         state = EnemyState.ChasingPlayer;
     }
+
     private void SetInitialTarget()
     {
         // we get the closest wall slot from the soTargetManager, we just give our position
         // to get the closest one.
-        
 
-        
+
+
         dCoreTarget = soTargetManager.GetClosestDCore(transform.position);
-        if (dCoreTarget == null) return;
+        if (dCoreTarget == null)
+            return;
         target = dCoreTarget.transform; // don't forget to set transform component of the target
-
-
     }
+
     private void Update()
     {
         // when there is a target, it enters in this if statement
@@ -101,21 +112,21 @@ public class EnemyAI : MonoBehaviour
             {
                 // here I do not give the just target position. instead, i give a close point
                 // to the target position to avoid that agent walks inside of the target
-                aiAgent.SetDestination(target.position - (target.position - transform.position).normalized * 1f);
+                aiAgent.SetDestination(
+                    target.position - (target.position - transform.position).normalized * 1f
+                );
             }
             lastTargetPos = target.position;
         }
         else if (state == EnemyState.ChasingPlayer)
         {
             GetDreamcoreTarget();
-
         }
 
-
         if (IsReached())
-        {   // if enemy is reached its destination when going to wall slot,
+        { // if enemy is reached its destination when going to wall slot,
             // it means that it is arrived to the wall slot
-            if(state == EnemyState.GoingToDreamCore)
+            if (state == EnemyState.GoingToDreamCore)
             {
                 // if enemy were walking to the dream core,
                 state = EnemyState.AtDreamCore;
@@ -127,20 +138,21 @@ public class EnemyAI : MonoBehaviour
             {
                 PerformAttackOnPlayer();
             }
-            else if(state == EnemyState.NoDreamCoreState)
+            else if (state == EnemyState.NoDreamCoreState)
             {
                 state = EnemyState.NoDreamCoreState;
             }
-
         }
-
-        
     }
 
     private bool IsReached()
     {
         // reaching method created by using NavMesh.
-        if (!aiAgent.pathPending && aiAgent.remainingDistance <= aiAgent.stoppingDistance && (!aiAgent.hasPath || aiAgent.velocity.sqrMagnitude == 0))
+        if (
+            !aiAgent.pathPending
+            && aiAgent.remainingDistance <= aiAgent.stoppingDistance
+            && (!aiAgent.hasPath || aiAgent.velocity.sqrMagnitude == 0)
+        )
         {
             return true;
         }
@@ -149,14 +161,13 @@ public class EnemyAI : MonoBehaviour
             return false;
         }
     }
-    
 
     // this method sets a dream core target
     private void GetDreamcoreTarget()
     {
         // closest dream core is dCoreTarget
         dCoreTarget = soTargetManager.GetClosestDCore(transform.position);
-        if(dCoreTarget == null)
+        if (dCoreTarget == null)
         {
             // when there is no dCoreTarget,
             state = EnemyState.NoDreamCoreState;
@@ -167,21 +178,16 @@ public class EnemyAI : MonoBehaviour
         state = EnemyState.GoingToDreamCore;
     }
 
-
     private void PerformAttackOnPlayer()
     {
-        
         if (playerTarget == null)
-        {
             return;
-        }
-        
-        
         playerTarget.OnHit(damage);
     }
+
     private void PerformAttackToDreamCore()
     {
-        if(dCoreTarget == null)
+        if (dCoreTarget == null)
         {
             // it is already destroyed
             // get a new dream core as target
@@ -203,7 +209,4 @@ public class EnemyAI : MonoBehaviour
             Invoke(nameof(PerformAttackToDreamCore), 1.0f);
         }
     }
-    
-
-    
 }

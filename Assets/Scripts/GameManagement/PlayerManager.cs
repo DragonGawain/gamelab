@@ -28,20 +28,25 @@ public class PlayerManager : MonoBehaviour
 
     public static void OnLightPlayerDeath()
     {
+        Debug.Log("LIGHT DIED");
         lightPlayer.gameObject.SetActive(false);
         lightRespawnTimer = 250;
         isLightPlayerDead = true;
+        lightPlayer.Revive();
     }
 
     public static void OnDarkPlayerDeath()
     {
+        Debug.Log("DARK DIED");
         darkPlayer.gameObject.SetActive(false);
         darkRespawnTimer = 250;
         isDarkPlayerDead = true;
+        darkPlayer.Revive();
     }
 
     static void RespawnLightPlayer()
     {
+        Debug.Log("RESPAWN LIGHT");
         lightPlayer.transform.position = lightRespawnPoint;
         isLightPlayerDead = false;
         lightPlayer.gameObject.SetActive(true);
@@ -49,6 +54,7 @@ public class PlayerManager : MonoBehaviour
 
     static void RespawnDarkPlayer()
     {
+        Debug.Log("RESPAWN DARK");
         darkPlayer.transform.position = darkRespawnPoint;
         isDarkPlayerDead = false;
         darkPlayer.gameObject.SetActive(true);
