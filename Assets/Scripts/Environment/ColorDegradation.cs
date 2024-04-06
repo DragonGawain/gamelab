@@ -60,6 +60,8 @@ public class ColorDegradation : MonoBehaviour
         else
         {
             // A single mesh can have multiple materials, so we need to get all of them
+            if (!go.GetComponent<Renderer>())
+                return;
             Material[] materials = go.GetComponent<Renderer>().materials;
             foreach (Material mat in materials)
             {
