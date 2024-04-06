@@ -45,9 +45,6 @@ public class VoidHoleSpawner : MonoBehaviour
         {
             lightPlayer = FindAnyObjectByType<LightPlayer>();
         }
-
-        soTargetManager.lightPlayer = lightPlayer;
-        soTargetManager.darkPlayer = darkPlayer;
     }
     
     void spawnVoidHole()

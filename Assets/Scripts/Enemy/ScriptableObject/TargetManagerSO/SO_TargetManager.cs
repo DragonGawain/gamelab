@@ -8,36 +8,33 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New_SO_TargetManager", menuName = "ScriptableObjects/TargetManager")]
 public class SO_TargetManager : ScriptableObject
 {
-
-    public PlayerTestScript darkPlayer { get; set; }
-    public PlayerTestScript lightPlayer { get; set; }
+    public static PlayerTestScript darkPlayer { get; set; }
+    public static PlayerTestScript lightPlayer { get; set; }
 
     // It will store all the dream core references. They can be given to enemies as target when they destroyed a wall or when their assigned wall is already destroyed before.
-    private List<DCore> dCoreList = new List<DCore>();
+    private static List<DCore> dCoreList = new();
 
     // DCore (Dream core) objects will use this method to add themselves into the dCoreList.
-    public void AddDCore(DCore _dCore)
+    public static void AddDCore(DCore _dCore)
     {
-        
         dCoreList.Add(_dCore);
     }
 
     // When a dream core is destroyed, destroyed DCore object will call this to remove itself from the dCoreList.
-    public void RemoveDCore(DCore _dCore)
+    public static void RemoveDCore(DCore _dCore)
     {
         dCoreList.Remove(_dCore);
     }
 
-    public bool IsThereDCore()
+    public static bool IsThereDCore()
     {
         return dCoreList.Count > 0;
     }
+
     // this method used by enemies to get a closest dream core reference. same dream core can be targeted more than one enemy.
     // ReSharper disable Unity.PerformanceAnalysis
     public DCore GetClosestDCore(Vector3 pos)
     {
-        //Debug.Log("Dream Cores in Scene: " + dCoreList.Count);
-        
         int closestIndex = -1;
         float closestDistance = Mathf.Infinity;
         for (int i = 0; i < dCoreList.Count; i++)
@@ -50,11 +47,12 @@ public class SO_TargetManager : ScriptableObject
             }
         }
 
-        if(closestIndex == -1) return null; 
-        else return dCoreList[closestIndex];
+        if (closestIndex == -1)
+            return null;
+        else
+            return dCoreList[closestIndex];
     }
 
-    
     public void ClearTargetManager()
     {
         dCoreList = new List<DCore>();

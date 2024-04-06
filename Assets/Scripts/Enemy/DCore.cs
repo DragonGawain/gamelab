@@ -20,8 +20,8 @@ public class DCore : MonoBehaviour
     }
 
     // dream core add itself to the dream core list managed by soTargetManager
-    [SerializeField]
-    private SO_TargetManager soTargetManager;
+    // [SerializeField]
+    // private SO_TargetManager soTargetManager;
 
     private void Awake()
     {
@@ -30,7 +30,7 @@ public class DCore : MonoBehaviour
         OnCoreDestroyed += DestructibleByEnemy_OnDestroyed;
 
         // adding itself to the dream core list manager by soTargetManager
-        soTargetManager.AddDCore(this);
+        SO_TargetManager.AddDCore(this);
     }
 
     private void OnDestroy()
@@ -42,7 +42,7 @@ public class DCore : MonoBehaviour
     private void DestructibleByEnemy_OnDestroyed()
     {
         // first remove itself from the dream core list managed by soTargetManager
-        soTargetManager.RemoveDCore(this);
+        SO_TargetManager.RemoveDCore(this);
         // then destroy itself
         Destroy(this.gameObject);
     }

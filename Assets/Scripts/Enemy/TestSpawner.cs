@@ -15,9 +15,9 @@ public class TestSpawner : MonoBehaviour
 
     private void Start()
     {
-        enemy2Canvas.gameObject.SetActive(false); // Hide canvas initially
+        // enemy2Canvas.gameObject.SetActive(false); // Hide canvas initially
         //enemyCam.enabled = false;
-        mainCam.enabled = true;
+        // mainCam.enabled = true;
 
     }
 
@@ -30,8 +30,8 @@ public class TestSpawner : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Alpha2) && !enemy2Spawned)
         {
             SpawnEnemy(enemyPrefab2);
-            StartCoroutine(ShowCanvasAndPause(enemy2Canvas, 5f)); // Show the canvas for 3 seconds and pause the game
-            enemy2Spawned = true;
+            // StartCoroutine(ShowCanvasAndPause(enemy2Canvas, 5f)); // Show the canvas for 3 seconds and pause the game
+            // enemy2Spawned = true;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {

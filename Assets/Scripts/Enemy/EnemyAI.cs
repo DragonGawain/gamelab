@@ -69,15 +69,13 @@ public class EnemyAI : MonoBehaviour
 
     public void setDarkPlayerTarget()
     {
-        playerTarget = soTargetManager.darkPlayer; 
-        target = playerTarget.transform;
+        target = SO_TargetManager.darkPlayer.transform; 
         state = EnemyState.ChasingPlayer;
     }
 
     public void setLightPlayerTarget()
     {
-        playerTarget = soTargetManager.lightPlayer;
-        target = playerTarget.transform;
+        target = SO_TargetManager.lightPlayer.transform;
         state = EnemyState.ChasingPlayer;
     }
     private void SetInitialTarget()

@@ -31,9 +31,11 @@ namespace Players
         protected override void OnAwake()
         {
             AttachWeapon(hammer, new(-0.3f, 0, 0), true);
-            ComboAttackManager.SetDarkPlayer(this);
             physicalInputs.Player.DarkFire.performed += DarkFire;
             physicalInputs.Player.DarkSwap.performed += DarkSwap;
+
+            ComboAttackManager.SetDarkPlayer(this);
+            SO_TargetManager.darkPlayer = this;
         }
 
         public override void OnDestroy()

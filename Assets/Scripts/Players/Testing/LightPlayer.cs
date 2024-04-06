@@ -28,6 +28,7 @@ namespace Players
             physicalInputs.Player.LightFire.canceled += LightFire;
 
             ComboAttackManager.SetLightPlayer(this);
+            SO_TargetManager.lightPlayer = this;
         }
 
         public override void OnDestroy()

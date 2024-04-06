@@ -865,7 +865,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &362173522
 Transform:
   m_ObjectHideFlags: 0
@@ -2184,6 +2184,58 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e56ab56db3a99ce4f987129c388b02e4, type: 3}
+--- !u!1 &1674063165
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1674063167}
+  - component: {fileID: 1674063166}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1674063166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1674063165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a62261d662304af5ad843e78c5c2780, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 1789292037031486079, guid: cc2998546cf0146b8a0886dcdc5c22f0,
+    type: 3}
+  enemyPrefab2: {fileID: 1789292037031486079, guid: f00d9351c43dd400e9a090b2c59ac909,
+    type: 3}
+  enemyPrefab3: {fileID: 1789292037031486079, guid: 9a9f98adecdf24cf2b703cc35c0c8fee,
+    type: 3}
+  enemy2Canvas: {fileID: 0}
+  mainCam: {fileID: 0}
+--- !u!4 &1674063167
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1674063165}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9.86, y: 0, z: 0.19}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1715488437
 GameObject:
   m_ObjectHideFlags: 0
@@ -2627,3 +2679,4 @@ SceneRoots:
   - {fileID: 1649510706}
   - {fileID: 1975855046}
   - {fileID: 1049385306}
+  - {fileID: 1674063167}
