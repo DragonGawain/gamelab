@@ -31,6 +31,11 @@ public class Enemy : MonoBehaviour
     [SerializeField, Range(1, 250)]
     protected int dotTick = 25; // number of FUs to take a tick of DOT damage
 
+    protected bool isVoid = false;
+
+    [SerializeField]
+    GameObject voidHolePrefab;
+
     private void Awake()
     {
         //For Changing Color when hit
@@ -75,13 +80,6 @@ public class Enemy : MonoBehaviour
         FlashRed();
     }
 
-    public virtual void dealDamage(Weapon weapon)
-    {
-        // Play hit animation (e.g. enemy gets stunned or smth)
-        // Enemy flashes red then turns back to normal
-        FlashRed();
-    }
-
     protected void FlashRed()
     {
         Sequence sequence = DOTween.Sequence();
@@ -92,7 +90,13 @@ public class Enemy : MonoBehaviour
 
     protected virtual void OnDeath()
     {
+        WaveManager.EnemyDied();
         // Put some animation player also
+        if (isVoid)
+        {
+            GameObject vo = Instantiate(voidHolePrefab, transform.position, Quaternion.identity);
+            WaveManager.VoidEnemyDied(vo);
+        }
         Destroy(this.gameObject);
     }
 
@@ -100,5 +104,13 @@ public class Enemy : MonoBehaviour
     {
         isTakingDOTDamage = status;
         dotTimer = 25;
+    }
+
+    public void ThisEnemyIsVoid()
+    {
+        isVoid = true;
+        health = 200;
+        // set color stuff
+        transform.localScale = new(2, 2, 2); // temp debug thing
     }
 }

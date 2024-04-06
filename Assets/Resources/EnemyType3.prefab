@@ -222,9 +222,8 @@ MonoBehaviour:
   damage: 12
   _renderer: {fileID: 4489704396763192051}
   dotTick: 25
-  voidHolePrefab: {fileID: -5582418092171601750, guid: 3412cbc85eebefd49b2f64d65f316190,
+  voidHolePrefab: {fileID: 6480600198031667789, guid: 3412cbc85eebefd49b2f64d65f316190,
     type: 3}
-  VoidInfo: {fileID: 11400000, guid: ba6c3324e38232846a0cf5e8e5a1dfa9, type: 2}
 --- !u!1 &1498448567209578628
 GameObject:
   m_ObjectHideFlags: 0

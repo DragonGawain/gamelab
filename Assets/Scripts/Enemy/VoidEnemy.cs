@@ -6,14 +6,14 @@ using UnityEngine;
 public class VoidEnemy : Enemy
 {
     
-    [SerializeField] private VoidHole voidHolePrefab;
-    [SerializeField] private LevelManager VoidInfo; 
-    protected override void OnDeath()
-    {
-        Destroy(this.gameObject);
-        // Put some animation player also
-        VoidHole voidHole =  Instantiate(voidHolePrefab, transform.position, Quaternion.identity);
-        voidHole.level = VoidInfo;
+    // [SerializeField] private VoidHole voidHolePrefab;
+    // [SerializeField] private LevelManager VoidInfo; 
+    // protected override void OnDeath()
+    // {
+    //     Destroy(this.gameObject);
+    //     // Put some animation player also
+    //     // VoidHole voidHole =  Instantiate(voidHolePrefab, transform.position, Quaternion.identity);
+    //     // voidHole.level = VoidInfo;
         
-    }
+    // }
 }
