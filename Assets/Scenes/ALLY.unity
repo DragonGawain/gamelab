@@ -14412,6 +14412,8 @@ MonoBehaviour:
     type: 3}
   enemyPrefab3: {fileID: 1789292037031486079, guid: 9a9f98adecdf24cf2b703cc35c0c8fee,
     type: 3}
+  enemy2Canvas: {fileID: 0}
+  mainCam: {fileID: 0}
 --- !u!65 &1736769698
 BoxCollider:
   m_ObjectHideFlags: 0

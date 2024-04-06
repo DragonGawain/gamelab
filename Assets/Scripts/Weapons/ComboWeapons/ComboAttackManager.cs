@@ -51,7 +51,6 @@ public class ComboAttackManager : MonoBehaviour
         SuperBullet,
         DOTCloud,
         SuperHammer,
-        // Add other combo types as needed
     }
 
     // Start is called before the first frame update
