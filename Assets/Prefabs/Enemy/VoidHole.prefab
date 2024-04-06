@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1973431790813609805}
   - component: {fileID: -5582418092171601750}
   m_Layer: 0
-  m_Name: Void Hole
+  m_Name: VoidHole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

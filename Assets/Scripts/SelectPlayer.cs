@@ -2,6 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * SET UP HAS TO BE WORKED WITH NETWORKING
+ * 
+ * CURRENTLY ONLY FUNCTIONS FOR ONE PLAYER
+ * 
+ * ADD A CONFIRMATION TO SAVE SELECTION 
+ * 
+ */
+
+
 public class SelectPlayer : MonoBehaviour
 {
     [SerializeField] private Transform selectionIcon; // The transform of the selection icon
