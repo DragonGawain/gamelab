@@ -60,6 +60,10 @@ public class PlayerManager : MonoBehaviour
     {
         if (isLightPlayerDead)
         {
+            if (isDarkPlayerDead)
+            {
+                // REPLACE THIS WITH SOME METHOD CALL (i guess to the gm?) TO TRIGGER THE LOSE UI
+            }
             lightRespawnTimer--;
             if (lightRespawnTimer <= 0)
                 RespawnLightPlayer();
