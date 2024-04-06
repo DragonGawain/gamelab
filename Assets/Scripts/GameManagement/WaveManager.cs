@@ -52,7 +52,7 @@ public class WaveManager : MonoBehaviour
         {
             Destroy(oldVo);
         }
-        oldVoidHoles = newVoidHoles; // TODO:: ensure this is a deep copy
+        oldVoidHoles = newVoidHoles;
         newVoidHoles = new();
         Debug.Log("ovo count: " + oldVoidHoles.Count);
         currentWave++;
