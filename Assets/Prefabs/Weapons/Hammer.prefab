@@ -285,7 +285,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d56f8448c635de499748fed245c8370, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
   swingSpeed: 0
 --- !u!65 &3129620517827054865
 BoxCollider:
