@@ -58,10 +58,10 @@ public class ComboAttackManager : MonoBehaviour
     void Start()
     {
         bulletBarragePrefab = Resources.Load<GameObject>("BulletBarrage");
-        superHammerPrefab = Resources.Load<GameObject>("SuperHammer Handle");
-        superBlasterPrefab = Resources.Load<GameObject>("SuperBlaster");
-        superBulletPrefab = Resources.Load<GameObject>("SuperBullet");
         dotCloudPrefab = Resources.Load<GameObject>("DOTCloud");
+        superHammerPrefab = Resources.Load<GameObject>("SuperHammer Handle"); // don't need this
+        superBlasterPrefab = Resources.Load<GameObject>("SuperBlaster"); // don't need this
+        superBulletPrefab = Resources.Load<GameObject>("SuperBullet"); // don't need this
     }
 
     private void FixedUpdate()

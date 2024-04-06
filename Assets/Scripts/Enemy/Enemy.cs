@@ -45,6 +45,7 @@ public class Enemy : MonoBehaviour
     {
         if (isTakingDOTDamage)
         {
+            dotTimer--;
             if (dotTimer <= 0)
             {
                 dotTimer = dotTick;
@@ -98,5 +99,6 @@ public class Enemy : MonoBehaviour
     public void SetIsTakingDOTDamage(bool status)
     {
         isTakingDOTDamage = status;
+        dotTimer = 25;
     }
 }
