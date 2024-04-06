@@ -51,17 +51,17 @@ public class VoxelizedTerrainController : MonoBehaviour
 
     private void OnEnable()
     {
-        if (SampleLoader.instance != null)
+       // if (SampleLoader.instance != null)
         {
-            SampleLoader.instance.onMenuToggle += OnSamplesMenuToggle;
+           // SampleLoader.instance.onMenuToggle += OnSamplesMenuToggle;
         }
     }
 
     private void OnDisable()
     {
-        if (SampleLoader.instance != null)
+        //if (SampleLoader.instance != null)
         {
-            SampleLoader.instance.onMenuToggle -= OnSamplesMenuToggle;
+           // SampleLoader.instance.onMenuToggle -= OnSamplesMenuToggle;
         }
     }
 

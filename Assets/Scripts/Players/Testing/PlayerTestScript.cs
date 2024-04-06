@@ -21,6 +21,12 @@ namespace Players
         protected Weapon currentWeapon;
         public event Action<float> OnHealthChanged; //changing health bar
 
+        //Network stuff
+        [SerializeField] GameObject lightPlayer;
+        [SerializeField] GameObject darkPlayer;
+        private int selection = 1;
+
+
         [SerializeField]
         private int health;
 
@@ -244,8 +250,23 @@ namespace Players
 
         public override void OnNetworkSpawn()
         {
+            if(IsServer)
+            {
+                Debug.Log("Is host");
+                selection = 0;
+                //NetworkManager.GetNetworkPrefabOverride(GameObject.FindGameObjectWithTag("DarkPlayer"));
+                NetworkManager.GetNetworkPrefabOverride(darkPlayer);
+            }
+            if (IsOwner && selection == 1)
+            {
+                Debug.Log("is Client");
+                //NetworkManager.GetNetworkPrefabOverride(GameObject.FindGameObjectWithTag("LightSelect"));
+                NetworkManager.GetNetworkPrefabOverride(lightPlayer);
+            }
+
             if (!IsOwner)
-                Destroy(this);
+                enabled = false;
+                //Destroy(this);
         }
     }
 }

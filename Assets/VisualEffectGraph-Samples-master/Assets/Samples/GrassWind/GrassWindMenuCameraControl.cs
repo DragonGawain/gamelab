@@ -12,9 +12,9 @@ public class GrassWindMenuCameraControl : MonoBehaviour
         m_AxisDelegateBackup = CinemachineCore.GetInputAxis;
 
         CinemachineCore.GetInputAxis = GetInputAxis;
-        if(SampleLoader.instance != null)
+        ///if(SampleLoader.instance != null)
         {
-            SampleLoader.instance.onMenuToggle += OnSamplesMenuToggle;
+           // SampleLoader.instance.onMenuToggle += OnSamplesMenuToggle;
         }
     }
 
@@ -22,9 +22,9 @@ public class GrassWindMenuCameraControl : MonoBehaviour
     {
         CinemachineCore.GetInputAxis = m_AxisDelegateBackup;
 
-        if (SampleLoader.instance != null)
+       // if (SampleLoader.instance != null)
         {
-            SampleLoader.instance.onMenuToggle -= OnSamplesMenuToggle;
+           // SampleLoader.instance.onMenuToggle -= OnSamplesMenuToggle;
         }
     }
 

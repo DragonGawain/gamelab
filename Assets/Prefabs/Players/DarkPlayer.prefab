@@ -185,7 +185,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
@@ -417,7 +417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 3324557488
+  GlobalObjectIdHash: 2731943700
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -438,6 +438,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d113bfb3c03a9e047a4462b0d39233fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lightPlayer: {fileID: 595387465054001676, guid: 64fbb6de6daaa614a8c9ebac0239daea,
+    type: 3}
+  darkPlayer: {fileID: 6164403967038991240}
   health: 100
   invincibleSeconds: 1
   smoothTime: 0.05
@@ -446,8 +449,6 @@ MonoBehaviour:
   maxVelocity: 5.25
   acceleration: 4
   superHammer: {fileID: 8047829031987554622, guid: f19ea1917805f3e4580a74160057d334,
-    type: 3}
-  ygbyauda: {fileID: 3643911665502490090, guid: c6282d6a0c9f2224997cac0f1fdb44f6,
     type: 3}
   hammer: {fileID: 3643911665502490090, guid: c6282d6a0c9f2224997cac0f1fdb44f6, type: 3}
   grenadeLauncher: {fileID: 507905301725245242, guid: 1f9c6e251f27d7246824058b9633f541,

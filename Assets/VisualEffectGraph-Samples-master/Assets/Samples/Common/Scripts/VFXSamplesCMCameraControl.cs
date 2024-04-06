@@ -24,20 +24,20 @@ public class VFXSamplesCMCameraControl : MonoBehaviour
     {
         m_AxisDelegateBackup = CinemachineCore.GetInputAxis;
         CinemachineCore.GetInputAxis = GetInputAxis;
-        if(SampleLoader.instance != null)
+        /*if(SampleLoader.instance != null)
         {
             SampleLoader.instance.onMenuToggle += OnSamplesMenuToggle;
-        }
+        }*/
     }
 
     private void OnDisable()
     {
         CinemachineCore.GetInputAxis = m_AxisDelegateBackup;
 
-        if (SampleLoader.instance != null)
+       /* if (SampleLoader.instance != null)
         {
             SampleLoader.instance.onMenuToggle -= OnSamplesMenuToggle;
-        }
+        }*/
     }
 
     bool menuVisible = false;

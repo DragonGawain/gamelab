@@ -23,13 +23,13 @@ public class MeteoriteControl : MonoBehaviour
 
     private void OnEnable()
     {
-        if(SampleLoader.instance != null)
-            SampleLoader.instance.onMenuToggle += Instance_onMenuToggle;
+        //if(SampleLoader.instance != null)
+           // SampleLoader.instance.onMenuToggle += Instance_onMenuToggle;
     }
     private void OnDisable()
     {
-        if (SampleLoader.instance != null)
-            SampleLoader.instance.onMenuToggle -= Instance_onMenuToggle;
+        //if (SampleLoader.instance != null)
+            //SampleLoader.instance.onMenuToggle -= Instance_onMenuToggle;
     }
 
     private void Instance_onMenuToggle(bool isOpen)

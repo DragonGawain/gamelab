@@ -176,7 +176,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
@@ -257,7 +257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2866329257
+  GlobalObjectIdHash: 152582282
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -278,10 +278,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f53c2ac09a7b74245b2fa87eb318dd53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lightPlayer: {fileID: 595387465054001676}
+  darkPlayer: {fileID: 6164403967038991240, guid: 6b6963baaf6ff464e878ab1daf530a0a,
+    type: 3}
   health: 100
   invincibleSeconds: 1
   smoothTime: 0.05
-  camObject: {fileID: 0}
+  camObject: {fileID: 7854156560825185214, guid: 84f8c9cf3b1e61e44a87203533676282,
+    type: 3}
   maxVelocity: 5
   acceleration: 10
   flamethrower: {fileID: 7830794301040452377, guid: dd97550bf21267b4f8292058257c906a,
