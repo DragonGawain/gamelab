@@ -912,12 +912,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48cbf000e3f570d42a94f0685015c7bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnPoints: []
   voidHolePrefab: {fileID: -5582418092171601750, guid: 3412cbc85eebefd49b2f64d65f316190,
     type: 3}
   soTargetManager: {fileID: 11400000, guid: b38df5e0b75d0c94b81eccf7e41d650c, type: 2}
   darkPlayer: {fileID: 0}
   lightPlayer: {fileID: 0}
   level: {fileID: 11400000, guid: bad695871f5c77d4ab90a549eb391d43, type: 2}
+  spawnTime: 0
+  levelNumber: 1
 --- !u!1 &400297219
 GameObject:
   m_ObjectHideFlags: 0
@@ -1227,7 +1230,7 @@ PrefabInstance:
     - target: {fileID: 218685244246835382, guid: 64fbb6de6daaa614a8c9ebac0239daea,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.82
+      value: 14.74
       objectReference: {fileID: 0}
     - target: {fileID: 218685244246835382, guid: 64fbb6de6daaa614a8c9ebac0239daea,
         type: 3}
@@ -1237,7 +1240,7 @@ PrefabInstance:
     - target: {fileID: 218685244246835382, guid: 64fbb6de6daaa614a8c9ebac0239daea,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.7
+      value: -0.81
       objectReference: {fileID: 0}
     - target: {fileID: 218685244246835382, guid: 64fbb6de6daaa614a8c9ebac0239daea,
         type: 3}
