@@ -20,12 +20,6 @@ public class ColorDegradation : MonoBehaviour
     {
         GetMats(GameObject.FindGameObjectWithTag("House").transform);
 
-        // mats = GetComponent<MeshRenderer>().materials;
-        // foreach (Material mat in mats)
-        // {
-        //     initColors.Add(mat.GetColor("_Color"));
-        // }
-
         foreach (GameObject core in GameObject.FindGameObjectsWithTag("DreamCore"))
         {
             totalHP += core.GetComponent<DCore>().GetHealth;
@@ -33,20 +27,8 @@ public class ColorDegradation : MonoBehaviour
         currentHP = totalHP;
     }
 
-    // Update is called once per frame
-    // TODO:: make this not called every update frame, but instead only get called when the saturation (core HP) value changes.
     // Can also make it so that this script goes on a parent of everything that gets hue shifted (i.e. environment) and have the script extract all the children.
     // That way, we only need to make one call for this when the core takes damage instead of looping through all the environment objects then.
-    void Update()
-    {
-        // Debug.Log("saturation: " + (float)currentHP / (float)totalHP);
-        int i = 0;
-        foreach (Material mat in mats)
-        {
-            mat.color = Color.Lerp(drained, initColors[i], (float)currentHP / (float)totalHP);
-            i++;
-        }
-    }
 
     void GetMats(Transform go)
     {
@@ -60,6 +42,8 @@ public class ColorDegradation : MonoBehaviour
         else
         {
             // A single mesh can have multiple materials, so we need to get all of them
+            if (!go.GetComponent<Renderer>())
+                return;
             Material[] materials = go.GetComponent<Renderer>().materials;
             foreach (Material mat in materials)
             {
@@ -72,5 +56,11 @@ public class ColorDegradation : MonoBehaviour
     public static void UpdateGlobalHP(int dmg)
     {
         currentHP -= dmg;
+        int i = 0;
+        foreach (Material mat in mats)
+        {
+            mat.color = Color.Lerp(drained, initColors[i], (float)currentHP / (float)totalHP);
+            i++;
+        }
     }
 }
