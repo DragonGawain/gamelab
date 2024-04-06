@@ -22,6 +22,7 @@ public class Grenade : MonoBehaviour
     private float blastRadius;
 
     private Renderer rend;
+    public AudioSource soundEffect;
     private Color originalColor;
     static readonly int dmg = 30;
     bool hitGround = false;
@@ -32,6 +33,7 @@ public class Grenade : MonoBehaviour
     void Start()
     {
         rend = GetComponent<Renderer>();
+        soundEffect = GetComponent<AudioSource>();
         originalColor = rend.material.color;
     }
 
@@ -52,6 +54,12 @@ public class Grenade : MonoBehaviour
         // 0.3 seconds = 15 FU's
         if (isExploding)
         {
+            if (!soundEffect.isPlaying)
+            {
+                // Play sound effect
+                soundEffect.PlayScheduled(0.1);
+            }
+            
             // Debug.Log((float)timer / 15);
             transform.localScale = Vector3.Lerp(
                 Vector3.one,
@@ -63,15 +71,13 @@ public class Grenade : MonoBehaviour
             {
                 //Create a ball the size of grenade to find all enemy colliders
                 exploded = true;
+                
+                
                 Collider[] colliders = Physics.OverlapSphere(transform.position, blastRadius / 2);
                 foreach (Collider hit in colliders)
                 {
                     if (!hit.CompareTag("BasicEnemy"))
                         continue;
-                    // Check if the collider belongs to an enemy
-
-                    //Debug.Log("WEAPON REFFFFFF: " + weaponRef.GetWeaponName());
-                    // Passing the weapon reference to the bullet so the enemy can handle weapon info
 
                     hit.GetComponent<Enemy>().OnHit(dmg, "DarkPlayer");
 
@@ -79,8 +85,16 @@ public class Grenade : MonoBehaviour
                     if (rb != null)
                         rb.AddExplosionForce(100, transform.position, blastRadius);
                 }
-                Destroy(this.gameObject);
+
+                rend.enabled = false;
                 exploded = false;
+                isExploding = false;
+                if (!soundEffect.isPlaying)
+                {
+                    Destroy(this.gameObject);
+                }
+                
+                
             }
         }
     }

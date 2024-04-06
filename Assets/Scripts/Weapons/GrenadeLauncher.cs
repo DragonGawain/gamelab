@@ -21,6 +21,8 @@ namespace Weapons
         [SerializeField]
         private float fireRate;
 
+        private AudioSource soundEffect;
+
         //because of multiple inputs;
         private float fireTime;
 
@@ -28,12 +30,14 @@ namespace Weapons
         {
             transform.localEulerAngles = new Vector3(0, -90, -angle);
             SetWeaponName("GrenadeLauncher");
+            soundEffect = GetComponent<AudioSource>();
         }
 
         public override void OnFire()
         {
             if (Time.time > fireTime)
             {
+                soundEffect.Play();
                 GameObject grenade = Instantiate(
                     grenadePrefab,
                     transform.position,
