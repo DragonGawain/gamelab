@@ -98,7 +98,7 @@ public class WaveManager : MonoBehaviour
                 ET2 = 0;
                 ET3 = 0;
                 nbVoid = 2;
-                totalWaveTime = 1000; // 3000 FUs = 60 seconds = 1 minute
+                totalWaveTime = 3000; // 3000 FUs = 60 seconds = 1 minute
                 break;
             case 2:
                 ET1 = 7;

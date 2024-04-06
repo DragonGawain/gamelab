@@ -7,7 +7,7 @@ using Weapons;
 
 public class Bullet : MonoBehaviour
 {
-    readonly int dmg = 1000;
+    readonly int dmg = 10;
 
     public void Explode()
     {
