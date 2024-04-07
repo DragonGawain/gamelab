@@ -95,6 +95,7 @@ public class Enemy : MonoBehaviour
         if (isVoid)
         {
             GameObject vo = Instantiate(voidHolePrefab, transform.position, Quaternion.identity);
+            vo.transform.localScale = vo.transform.localScale;
             WaveManager.VoidEnemyDied(vo);
         }
         Destroy(this.gameObject);

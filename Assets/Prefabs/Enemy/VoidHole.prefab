@@ -11,10 +11,9 @@ GameObject:
   - component: {fileID: 8210051221840437769}
   - component: {fileID: 5618261821358215732}
   - component: {fileID: 1973431790813609805}
-  - component: {fileID: -5582418092171601750}
   m_Layer: 0
   m_Name: VoidHole
-  m_TagString: Untagged
+  m_TagString: VoidHole
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,8 +28,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.7135, y: 0.2, z: 3.7135}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.85675, y: 0.1, z: 1.85675}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -84,23 +83,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &-5582418092171601750
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6480600198031667789}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d6f9a56b0ed1b34b85a5be442553525, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  soTargetManager: {fileID: 11400000, guid: b38df5e0b75d0c94b81eccf7e41d650c, type: 2}
-  basicEnemyPrefab: {fileID: 1789292037031486079, guid: cc2998546cf0146b8a0886dcdc5c22f0,
-    type: 3}
-  comboEnemyPrefab: {fileID: 1789292037031486079, guid: f00d9351c43dd400e9a090b2c59ac909,
-    type: 3}
-  voidEnemyPrefab: {fileID: 1789292037031486079, guid: 9a9f98adecdf24cf2b703cc35c0c8fee,
-    type: 3}
-  level: {fileID: 0}

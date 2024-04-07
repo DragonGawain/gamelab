@@ -36,15 +36,14 @@ public class WaveManager : MonoBehaviour
 
     private void Start()
     {
-        // prime oldVoidHoles with some
-        GameObject temp = new GameObject("VO");
-        temp.transform.position = new(0, 1, 0);
-        newVoidHoles.Add(temp);
+        // prime oldVoidHoles with the VOs in the scene
+        GameObject[] vos = GameObject.FindGameObjectsWithTag("VoidHole");
+        foreach (GameObject vo in vos)
+        {
+            newVoidHoles.Add(vo);
+        }
         StartNextWave();
     }
-
-    // Update is called once per frame
-    void Update() { }
 
     static void StartNextWave()
     {
@@ -52,7 +51,12 @@ public class WaveManager : MonoBehaviour
         {
             Destroy(oldVo);
         }
-        oldVoidHoles = newVoidHoles;
+        oldVoidHoles = new();
+        foreach (GameObject newVo in newVoidHoles)
+        {
+            newVo.transform.localScale = newVo.transform.localScale * 2f;
+            oldVoidHoles.Add(newVo);
+        }
         newVoidHoles = new();
         currentWave++;
         GetWaveInfo(currentWave);
@@ -64,6 +68,8 @@ public class WaveManager : MonoBehaviour
         {
             randomEnemyOrder.Add(i);
         }
+        // We shufle and take the first n entries to be the void enemies.
+        // This is to avoid needing to do some funky stuff to ensure that Random.Range gives unique values.
         Shuffle(randomEnemyOrder);
         for (int i = 0; i < nbVoid; i++)
         {
@@ -82,6 +88,7 @@ public class WaveManager : MonoBehaviour
         {
             enemyList.Add(i, enemyType3);
         }
+        // Shuffle the enemy order again so that the void enemies aren't the first to spawn
         Shuffle(randomEnemyOrder);
     }
 
@@ -123,9 +130,9 @@ public class WaveManager : MonoBehaviour
         }
     }
 
+    // Knuth shuffle algorithm: courtesy of Wikipedia and the unity docs forums
     static void Shuffle(List<int> items)
     {
-        // Knuth shuffle algorithm :: courtesy of Wikipedia : -> and the unity docs forum)
         for (int i = 0; i < items.Count; i++)
         {
             int tmp = items[i];

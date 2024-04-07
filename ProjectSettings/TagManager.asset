@@ -25,6 +25,7 @@ TagManager:
   - DarkSelect
   - LightSelect
   - DreamCore
+  - VoidHole
   layers:
   - Default
   - TransparentFX
