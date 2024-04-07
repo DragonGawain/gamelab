@@ -58,9 +58,6 @@ public class ComboAttackManager : MonoBehaviour
     {
         bulletBarragePrefab = Resources.Load<GameObject>("BulletBarrage");
         dotCloudPrefab = Resources.Load<GameObject>("DOTCloud");
-        superHammerPrefab = Resources.Load<GameObject>("SuperHammer Handle"); // don't need this
-        superBlasterPrefab = Resources.Load<GameObject>("SuperBlaster"); // don't need this
-        superBulletPrefab = Resources.Load<GameObject>("SuperBullet"); // don't need this
     }
 
     private void FixedUpdate()
@@ -95,8 +92,6 @@ public class ComboAttackManager : MonoBehaviour
         if (bgTimer > 0)
             return;
         bgTimer = 50;
-        Debug.Log(" WE INNNNN ");
-
         // It's VERY important to delete the grenade object first. Otherwise, it's theoretically possible that the spawned bullets collide with the same grenade.
         // This will not only result in more bullets being spawned, but can also potentially crash the game (trying to destroy a gameobject that already destroyed -> nullObjectReference)
         //Destroy(bullet.transform.parent.gameObject);
@@ -123,8 +118,6 @@ public class ComboAttackManager : MonoBehaviour
             );
             tempRb.velocity = direction * 10f;
         }
-
-        Debug.Log("SPAWN BULLET BARRAGE");
     }
 
     public static void SpawnSuperBlaster()
@@ -143,7 +136,6 @@ public class ComboAttackManager : MonoBehaviour
 
         //Instantiate(superHammerPrefab, hammer.transform.position, Quaternion.identity);
         darkPlayer.SetIsHammerSuper(true);
-        Debug.Log("SPAWN SUPER HAMMER");
     }
 
     public static void SpawnSuperBullet(GameObject bullet)
@@ -161,8 +153,6 @@ public class ComboAttackManager : MonoBehaviour
         superRb.velocity = bullet.GetComponentInParent<Rigidbody>().velocity;
         //Destroy(bullet.transform.parent.gameObject);
         Destroy(bullet);
-
-        Debug.Log("SPAWN SUPER BULLET");
     }
 
     public static void SpawnDOTCloud(GameObject grenade)
@@ -173,47 +163,7 @@ public class ComboAttackManager : MonoBehaviour
 
         // Instantiate the cloud at the grenade's position
         Instantiate(dotCloudPrefab, grenade.transform.position, Quaternion.identity);
-        // cloud.transform.localScale = Vector3.zero; // Start with a tiny size
-
-        // nah, we ain't doing this no more.
-        // Start the coroutine on the cloud GameObject
-        // cloud.AddComponent<DOTCloudController>(); // Add a script component that can run coroutines
 
         Destroy(grenade); // Destroy the grenade
-        Debug.Log("SPAWN DOT CLOUD");
     }
-
-    // You'll need to create a new script called DOTCloudController with the following content:
-    // public class DOTCloudController : MonoBehaviour
-    // {
-    //     public float growDuration = 3f; // Duration in seconds over which the cloud grows
-    //     public float maxSize = 8f; // Maximum size the cloud should grow to
-
-    //     private void Start()
-    //     {
-    //         StartCoroutine(GrowAndDisappear()); // Start the coroutine when the cloud is created
-    //     }
-
-    //     IEnumerator GrowAndDisappear()
-    //     {
-    //         float elapsedTime = 0;
-
-    //         // Gradually increase the cloud's size over time
-    //         while (elapsedTime < growDuration)
-    //         {
-    //             transform.localScale = Vector3.Lerp(
-    //                 Vector3.zero,
-    //                 Vector3.one * maxSize,
-    //                 elapsedTime / growDuration
-    //             );
-    //             elapsedTime += Time.deltaTime;
-    //             yield return null;
-    //         }
-
-    //         // Optionally wait for a duration before the cloud disappears
-    //         yield return new WaitForSeconds(1f); // Wait for 1 second after it has reached its max size
-
-    //         Destroy(gameObject); // Destroy the cloud GameObject
-    //     }
-    // }
 }

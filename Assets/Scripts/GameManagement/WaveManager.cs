@@ -54,7 +54,6 @@ public class WaveManager : MonoBehaviour
         }
         oldVoidHoles = newVoidHoles;
         newVoidHoles = new();
-        Debug.Log("ovo count: " + oldVoidHoles.Count);
         currentWave++;
         GetWaveInfo(currentWave);
         nbEnemies = ET1 + ET2 + ET3;
