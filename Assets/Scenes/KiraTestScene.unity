@@ -3084,6 +3084,74 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08a1bb9dd6544c74db5b9a971bd10c35, type: 3}
+--- !u!1001 &8620435375064118991
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8317552184594251528, guid: 2ada62aa1d3826846bdae6f40c4cd66c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8317552184594251528, guid: 2ada62aa1d3826846bdae6f40c4cd66c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8317552184594251528, guid: 2ada62aa1d3826846bdae6f40c4cd66c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 8317552184594251528, guid: 2ada62aa1d3826846bdae6f40c4cd66c,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8317552184594251528, guid: 2ada62aa1d3826846bdae6f40c4cd66c,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8317552184594251528, guid: 2ada62aa1d3826846bdae6f40c4cd66c,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8317552184594251528, guid: 2ada62aa1d3826846bdae6f40c4cd66c,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8317552184594251528, guid: 2ada62aa1d3826846bdae6f40c4cd66c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8317552184594251528, guid: 2ada62aa1d3826846bdae6f40c4cd66c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8317552184594251528, guid: 2ada62aa1d3826846bdae6f40c4cd66c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8603162453665530638, guid: 2ada62aa1d3826846bdae6f40c4cd66c,
+        type: 3}
+      propertyPath: m_Name
+      value: HammerSlamVFX
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2ada62aa1d3826846bdae6f40c4cd66c, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -3100,3 +3168,4 @@ SceneRoots:
   - {fileID: 168578423}
   - {fileID: 861719481}
   - {fileID: 1733410833}
+  - {fileID: 8620435375064118991}
