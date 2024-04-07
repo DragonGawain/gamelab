@@ -112,6 +112,6 @@ public class Enemy : MonoBehaviour
         isVoid = true;
         health = 200;
         // set color stuff
-        transform.localScale = new(2, 2, 2); // temp debug thing
+        transform.localScale = new(2, 2, 2); // temp debug thing to differentiate what a void enemy is
     }
 }
