@@ -164,7 +164,15 @@ public class WaveManager : MonoBehaviour
     {
         nbEnemiesKilledThisWave++;
         if (nbEnemiesKilledThisWave == nbEnemies)
-            StartNextWave();
+        {
+            if (currentWave == 4)
+            {
+                // TODO: actually implement this
+                GameManager.SetYouWin();
+            }
+            else
+                StartNextWave();
+        }
     }
 
     public static void VoidEnemyDied(GameObject vo)

@@ -62,7 +62,8 @@ public class PlayerManager : MonoBehaviour
         {
             if (isDarkPlayerDead)
             {
-                // REPLACE THIS WITH SOME METHOD CALL (i guess to the gm?) TO TRIGGER THE LOSE UI
+                // TODO: actually implement this
+                GameManager.SetYouWin();
             }
             lightRespawnTimer--;
             if (lightRespawnTimer <= 0)

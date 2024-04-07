@@ -53,4 +53,17 @@ public class GameManager : MonoBehaviour
     {
         return new Vector3(mousePosition.x, 0, mousePosition.y);
     }
+
+    public static void SetYouWin()
+    {
+        // called from WaveManager.EnemyDied
+        Debug.Log("players win!");
+    }
+
+    public static void SetYouLose()
+    {
+        // Called from PlayerManager.FixedUpdate
+        // Called from ColorDegradation.UpdateGlobalHP
+        Debug.Log("players lose :(");
+    }
 }

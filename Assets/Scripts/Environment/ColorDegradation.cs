@@ -56,6 +56,11 @@ public class ColorDegradation : MonoBehaviour
     public static void UpdateGlobalHP(int dmg)
     {
         currentHP -= dmg;
+        if (currentHP <= 0)
+        {
+            // TODO: actually implement this
+            GameManager.SetYouWin();
+        }
         int i = 0;
         foreach (Material mat in mats)
         {
