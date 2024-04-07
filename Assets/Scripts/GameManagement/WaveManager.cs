@@ -140,7 +140,6 @@ public class WaveManager : MonoBehaviour
         waveTimer++;
         if (nbEnemiesSpawnedThisWave < nbEnemies && (waveTimer % (totalWaveTime / nbEnemies)) == 0)
         {
-            Debug.Log("SPAWN ENEMY");
             // instead of instatiating at transform.position, it should be the void hole position
             GameObject enemy = Instantiate(
                 enemyList[randomEnemyOrder[nbEnemiesSpawnedThisWave]],
