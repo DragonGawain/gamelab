@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class PlayerSelect : MonoBehaviour
 {
-
-    private GameObject currentPlayer;
-    private GameObject otherPlayer;
-
+    public GameObject currentPlayer;
+    public GameObject otherPlayer;
+    public Transform frontLocation; // Assign this in the inspector to the front location empty GameObject
+    public Transform backLocation;  // Assign this in the inspector to the back location empty GameObject
 
     void Start()
     {
-
-        // Initialize current and other players
-        currentPlayer = GameObject.FindGameObjectWithTag("DarkSelect");
-        otherPlayer = GameObject.FindGameObjectWithTag("LightSelect");
+        // Initialize current and other players if not set in inspector
+        if (currentPlayer == null)
+            currentPlayer = GameObject.FindGameObjectWithTag("DarkSelect");
+        if (otherPlayer == null)
+            otherPlayer = GameObject.FindGameObjectWithTag("LightSelect");
     }
 
-    // Update is called once per frame
     void Update()
     {
         // Check for player toggle input (e.g., pressing the 'Space' key)
@@ -29,17 +29,17 @@ public class PlayerSelect : MonoBehaviour
 
     private void TogglePlayer()
     {
-        // Swap references
+        // Swap the positions by moving the current player to the back and the other player to the front
+        currentPlayer.transform.position = backLocation.position;
+        otherPlayer.transform.position = frontLocation.position;
+
+        // Swap references so the other player becomes the current one and vice versa
         GameObject temp = currentPlayer;
         currentPlayer = otherPlayer;
         otherPlayer = temp;
 
-        // Swap positions
-        Vector3 tempPosition = currentPlayer.transform.position;
-        currentPlayer.transform.position = otherPlayer.transform.position;
-        otherPlayer.transform.position = tempPosition;
 
-        // Play celebrate animation on the current (front) player
+        // Play celebrate animation on the new current (front) player
         Animator currentAnimator = currentPlayer.GetComponent<Animator>();
         if (currentAnimator != null)
         {
@@ -50,6 +50,5 @@ public class PlayerSelect : MonoBehaviour
         {
             Debug.LogError("Animator not found on " + currentPlayer.name);
         }
-
     }
 }
