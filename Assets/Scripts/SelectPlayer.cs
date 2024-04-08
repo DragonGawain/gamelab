@@ -80,7 +80,8 @@ public class SelectPlayer : MonoBehaviour
         if (animator != null)
         {
             animator.SetTrigger("Celebrate");
-            Debug.Log(" animated");
+
+            Debug.Log(selectedPlayer + " animated");
 
         }
         else
