@@ -34,8 +34,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button backButton4;
     [SerializeField] private Button backButton5;
 
-    GameObject test;
-
 
 
     private void Start()
