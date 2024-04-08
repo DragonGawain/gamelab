@@ -5,6 +5,14 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    [Header("CAMERAS")]
+
+    [SerializeField] private Camera MainCamera;
+    [SerializeField] private Camera SelectCamera;
+
+
+    [Header("CANVASES")]
+
     [SerializeField] private GameObject MainMenuCanvas;
     [SerializeField] private GameObject HostCanvas;
     [SerializeField] private GameObject JoinCanvas;
@@ -14,15 +22,19 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject PlayerSelectCanvas;
     [SerializeField] private GameObject PauseCanvas;
     [SerializeField] private GameObject GameCanvas;
+    [SerializeField] private GameObject WinScreen;
+    [SerializeField] private GameObject LoseScreen;
+
+    [Header("POP UP")]
+
     [SerializeField] private GameObject Enemy1Popup;
     [SerializeField] private GameObject Enemy2Popup;
     [SerializeField] private GameObject Enemy3Popup;
     [SerializeField] private GameObject WavePopup;
     [SerializeField] private GameObject RespawnPopup;
-    [SerializeField] private GameObject WinScreen;
-    [SerializeField] private GameObject LoseScreen;
 
-    
+    [Header("BUTTONS")]
+
     [SerializeField] private Button hostButton;
     [SerializeField] private Button joinButton;
     [SerializeField] private Button settingsButton;
@@ -33,11 +45,15 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button backButton3;
     [SerializeField] private Button backButton4;
     [SerializeField] private Button backButton5;
+    [SerializeField] private Button selectButton;
+
 
 
 
     private void Start()
     {
+        MainCamera.enabled = true;
+        SelectCamera.enabled = false;
         hostButton.onClick.AddListener(ShowHost);
         joinButton.onClick.AddListener(ShowJoin);
         settingsButton.onClick.AddListener(ShowSettings);
@@ -48,13 +64,16 @@ public class UIManager : MonoBehaviour
         backButton3.onClick.AddListener(BackToMenu);
         backButton4.onClick.AddListener(BackToMenu);
         backButton5.onClick.AddListener(BackToMenu);
+        selectButton.onClick.AddListener(ShowGameUI);
+
+        ShowCanvas(MainMenuCanvas);
 
     }
 
 
     private void Awake()
     {
-        ShowCanvas(MainMenuCanvas);
+       
     }
 
     public void ShowCanvas(GameObject canvas)
@@ -89,7 +108,12 @@ public class UIManager : MonoBehaviour
 
     public void ShowHost()
     {
+        MainMenuCanvas.SetActive(false);
         ShowCanvas(HostCanvas);
+        MainCamera.enabled = false;
+        SelectCamera.enabled = true;
+
+        // TODO:: Connect selection player to host and other to client
     }
 
     public void ShowJoin()
@@ -120,6 +144,8 @@ public class UIManager : MonoBehaviour
     public void ShowGameUI()
     {
         ShowCanvas(GameCanvas);
+        MainCamera.enabled = true;
+        SelectCamera.enabled = false;
     }
 
     public void ShowWinScreen()
@@ -152,6 +178,7 @@ public class UIManager : MonoBehaviour
     public void ShowEnemy1Popup()
     {
         Enemy1Popup.SetActive(true);
+        PauseGame();
         HideEnemyPopupAfterDelay(Enemy1Popup, 5f);
 
     }
@@ -159,6 +186,7 @@ public class UIManager : MonoBehaviour
     public void ShowEnemy2Popup()
     {
         Enemy2Popup.SetActive(true);
+        PauseGame();
         HideEnemyPopupAfterDelay(Enemy2Popup, 5f);
 
     }
@@ -166,6 +194,7 @@ public class UIManager : MonoBehaviour
     public void ShowEnemy3Popup()
     {
         Enemy3Popup.SetActive(true);
+        PauseGame();
         HideEnemyPopupAfterDelay(Enemy3Popup, 5f);
     }
 
@@ -173,19 +202,22 @@ public class UIManager : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         enemyPopup.SetActive(false);
+        ResumeGame();
     }
 
     public void ShowWavePopup()
     {
         WavePopup.SetActive(true);
+        PauseGame();
         HideWavePopupAfterDelay(5f);
-
+        
     }
 
     private IEnumerator HideWavePopupAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
         WavePopup.SetActive(false); // Assuming WavePopup is a GameObject reference to the wave popup
+        ResumeGame();
     }
 
     public void ShowRespawnPopup()

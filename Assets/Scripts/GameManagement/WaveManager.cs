@@ -47,6 +47,7 @@ public class WaveManager : MonoBehaviour
 
     static void StartNextWave()
     {
+        //  TODO:: at the start of each wave, show a new wave pop up
         //UIManager.ShowWavePopup();
 
         foreach (GameObject oldVo in oldVoidHoles)
@@ -149,6 +150,13 @@ public class WaveManager : MonoBehaviour
         waveTimer++;
         if (nbEnemiesSpawnedThisWave < nbEnemies && (waveTimer % (totalWaveTime / nbEnemies)) == 0)
         {
+            //  TODO:: CALL THESE - only once (first time the enemy type spawns)
+            //UIManager.ShowEnemy1Popup();
+            //UIManager.ShowEnemy2Popup();
+            //UIManager.ShowEnemy3Popup();
+
+
+
             // instead of instatiating at transform.position, it should be the void hole position
             GameObject enemy = Instantiate(
                 enemyList[randomEnemyOrder[nbEnemiesSpawnedThisWave]],

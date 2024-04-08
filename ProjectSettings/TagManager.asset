@@ -26,6 +26,7 @@ TagManager:
   - LightSelect
   - DreamCore
   - VoidHole
+  - Settings
   layers:
   - Default
   - TransparentFX
@@ -40,7 +41,7 @@ TagManager:
   - 
   - Player 1
   - Player 2
-  - 
+  - Player Select
   - 
   - 
   - 
