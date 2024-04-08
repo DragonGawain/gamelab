@@ -51,7 +51,7 @@ namespace Players
 
         private void Start()
         {
-            Initialize();
+            //Initialize();
         }
 
         void Initialize()

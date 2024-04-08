@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class PlayerSpawner : NetworkBehaviour
@@ -15,7 +16,14 @@ public class PlayerSpawner : NetworkBehaviour
 
     public override void OnNetworkSpawn()
     {
-        SpawnPlayerServerRpc(OwnerClientId, choice);
+        if (!IsOwner)
+            enabled = false;
+
+        var clientId = NetworkManager.Singleton.LocalClientId;
+
+        Debug.Log("ClientId: " + clientId);
+
+        SpawnPlayerServerRpc(clientId, choice);
         choice++;
     }
 
@@ -30,12 +38,12 @@ public class PlayerSpawner : NetworkBehaviour
         if (prefabId == 0)
         {
             //choice++;
-            Debug.Log("dark player");
+            Debug.Log("light player");
             newPlayer = Instantiate(playerPrefabA);
         }
         else
         {
-            Debug.Log("light player");
+            Debug.Log("dark player");
             newPlayer = Instantiate(playerPrefabB);
         }
 
