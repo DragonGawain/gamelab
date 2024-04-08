@@ -20,9 +20,6 @@ public class PlayerSpawner : NetworkBehaviour
             enabled = false;
 
         var clientId = NetworkManager.Singleton.LocalClientId;
-
-        Debug.Log("ClientId: " + clientId);
-
         SpawnPlayerServerRpc(clientId, choice);
         choice++;
     }
@@ -30,20 +27,16 @@ public class PlayerSpawner : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)] //server owns this object but client can request a spawn
     public void SpawnPlayerServerRpc(ulong clientId, int prefabId)
     {
-        Debug.Log(choice);
         prefabId = choice;
         _networkPrefabsList.PrefabList.Equals(prefabId);
         GameObject newPlayer;
 
         if (prefabId == 0)
         {
-            //choice++;
-            Debug.Log("light player");
             newPlayer = Instantiate(playerPrefabA);
         }
         else
         {
-            Debug.Log("dark player");
             newPlayer = Instantiate(playerPrefabB);
         }
 

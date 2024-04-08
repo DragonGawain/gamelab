@@ -22,6 +22,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject WinScreen;
     [SerializeField] private GameObject LoseScreen;
 
+    
     [SerializeField] private Button hostButton;
     [SerializeField] private Button joinButton;
     [SerializeField] private Button settingsButton;
@@ -33,7 +34,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button backButton4;
     [SerializeField] private Button backButton5;
 
-
+    GameObject test;
 
 
 
@@ -50,8 +51,6 @@ public class UIManager : MonoBehaviour
         backButton4.onClick.AddListener(BackToMenu);
         backButton5.onClick.AddListener(BackToMenu);
 
-
-
     }
 
 
@@ -60,7 +59,7 @@ public class UIManager : MonoBehaviour
         ShowCanvas(MainMenuCanvas);
     }
 
-    private void ShowCanvas(GameObject canvas)
+    public void ShowCanvas(GameObject canvas)
     {
         MainMenuCanvas.SetActive(false);
         HostCanvas.SetActive(false);
