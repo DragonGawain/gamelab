@@ -47,6 +47,8 @@ public class WaveManager : MonoBehaviour
 
     static void StartNextWave()
     {
+        //UIManager.ShowWavePopup();
+
         foreach (GameObject oldVo in oldVoidHoles)
         {
             Destroy(oldVo);

@@ -58,6 +58,8 @@ public class GameManager : MonoBehaviour
     {
         // called from WaveManager.EnemyDied
         Debug.Log("players win!");
+        //UIManager.ShowWinScreen();
+
     }
 
     public static void SetYouLose()
@@ -65,5 +67,7 @@ public class GameManager : MonoBehaviour
         // Called from PlayerManager.FixedUpdate
         // Called from ColorDegradation.UpdateGlobalHP
         Debug.Log("players lose :(");
+        //UIManager.ShowLoseScreen();
+
     }
 }
