@@ -7,8 +7,8 @@ public class UIManager : MonoBehaviour
 {
     [Header("CAMERAS")]
 
-    [SerializeField] private Camera MainCamera;
-    [SerializeField] private Camera SelectCamera;
+    //[SerializeField] private Camera MainCamera;
+    //[SerializeField] private Camera SelectCamera;
 
 
     [Header("CANVASES")]
@@ -52,10 +52,10 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        MainCamera.enabled = true;
-        SelectCamera.enabled = false;
-        hostButton.onClick.AddListener(ShowHost);
-        joinButton.onClick.AddListener(ShowJoin);
+        //MainCamera.enabled = true;
+        //SelectCamera.enabled = false;
+        hostButton.onClick.AddListener(ShowPlayerSelect);
+        joinButton.onClick.AddListener(ShowPlayerSelect);
         settingsButton.onClick.AddListener(ShowSettings);
         controlsButton.onClick.AddListener(ShowControls);
         creditsButton.onClick.AddListener(ShowCredits);
@@ -106,20 +106,20 @@ public class UIManager : MonoBehaviour
         ShowCanvas(MainMenuCanvas);
     }
 
-    public void ShowHost()
-    {
-        MainMenuCanvas.SetActive(false);
-        ShowCanvas(HostCanvas);
-        MainCamera.enabled = false;
-        SelectCamera.enabled = true;
+    //public void ShowHost()
+    //{
+    //    MainMenuCanvas.SetActive(false);
+    //    ShowCanvas(HostCanvas);
+    //    //MainCamera.enabled = false;
+    //    //SelectCamera.enabled = true;
 
-        // TODO:: Connect selection player to host and other to client
-    }
+    //    // TODO:: Connect selection player to host and other to client
+    //}
 
-    public void ShowJoin()
-    {
-        ShowCanvas(JoinCanvas);
-    }
+    //public void ShowJoin()
+    //{
+    //    ShowCanvas(JoinCanvas);
+    //}
 
     public void ShowSettings()
     {
@@ -144,8 +144,8 @@ public class UIManager : MonoBehaviour
     public void ShowGameUI()
     {
         ShowCanvas(GameCanvas);
-        MainCamera.enabled = true;
-        SelectCamera.enabled = false;
+        //MainCamera.enabled = true;
+        //SelectCamera.enabled = false;
     }
 
     public void ShowWinScreen()
@@ -233,13 +233,6 @@ public class UIManager : MonoBehaviour
         yield return new WaitForSeconds(delay);
         RespawnPopup.SetActive(false);
     }
-
-
-    
-
- 
- 
-
 
 
 }
