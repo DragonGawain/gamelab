@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -55,7 +56,9 @@ public class UIManager : MonoBehaviour
         //MainCamera.enabled = true;
         //SelectCamera.enabled = false;
         hostButton.onClick.AddListener(ShowPlayerSelect);
+        hostButton.onClick.AddListener(() => { NetworkManager.Singleton.StartHost();});
         joinButton.onClick.AddListener(ShowPlayerSelect);
+        joinButton.onClick.AddListener(() => { NetworkManager.Singleton.StartClient();});
         settingsButton.onClick.AddListener(ShowSettings);
         controlsButton.onClick.AddListener(ShowControls);
         creditsButton.onClick.AddListener(ShowCredits);
