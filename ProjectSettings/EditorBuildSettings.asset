@@ -14,6 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SarahScene.unity
     guid: e633cd390b967b045a6f9cd626b2936c
+  - enabled: 1
+    path: Assets/Scenes/BUILD-SCENE.unity
+    guid: e322cd554852f0948bd5562588fdf11e
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 65f2d7530e1c8c644b929785552cdda9,
       type: 2}
