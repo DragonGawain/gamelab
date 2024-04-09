@@ -42,6 +42,9 @@ namespace Players
 
         public void LightFire(InputAction.CallbackContext ctx)
         {
+            //Prevent players from swapping each others weapons
+            if (!IsOwner) return;
+            
             base.Fire(ctx);
 
             // If they fire with the Flamethrower
@@ -70,6 +73,10 @@ namespace Players
 
         public void LightSwap(InputAction.CallbackContext ctx)
         {
+            
+            //Prevent players from swapping each others weapons
+            if (!IsOwner) return;
+            
             Debug.Log("light swapped");
             isBlasterSuper = false;
 

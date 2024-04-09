@@ -48,6 +48,10 @@ namespace Players
 
         public void DarkFire(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
         {
+            //Prevent players from swapping each others weapons
+            if (!IsOwner) return;
+            
+            
             //Debug.Log(currentWeapon);
             base.Fire(ctx);
             currentWeapon.OnFire();
@@ -79,6 +83,9 @@ namespace Players
 
         public void DarkSwap(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
         {
+            //Prevent players from swapping each others weapons
+            if (!IsOwner) return;
+            
             Debug.Log("dark swapped");
             isHammerSuper = false;
 
