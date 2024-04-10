@@ -49,7 +49,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button selectButton;
 
 
-
+    public static bool closePlayerSelect = false;
 
     private void Start()
     {
@@ -73,6 +73,13 @@ public class UIManager : MonoBehaviour
 
     }
 
+    public void Update()
+    {
+        if (closePlayerSelect)
+        {
+            PlayerSelectCanvas.SetActive(false);
+        }
+    }
 
     private void Awake()
     {

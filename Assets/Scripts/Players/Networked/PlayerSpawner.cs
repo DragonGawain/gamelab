@@ -15,12 +15,22 @@ public class PlayerSpawner : NetworkBehaviour
     GameObject newPlayer;
     NetworkObject netObj;
 
+    private int hostOption;
+    private int clientOption;
+
     public void Update()
     {
-        if(Input.GetKeyDown(KeyCode.X))
+        hostOption = SelectPlayer.hostSelection;
+
+        if (hostOption == 0) { clientOption = 1; }
+        else { clientOption = 0; }
+
+        if(SelectPlayer.confirm)
         {
-            SpawnPlayerServerRpc(0, 1);
-            SpawnPlayerServerRpc(1, 0);
+            Debug.Log("Spawning players...");
+            SpawnPlayerServerRpc(0, hostOption);
+            SpawnPlayerServerRpc(1, clientOption);
+            SelectPlayer.confirm = false;
         }
     }
 
