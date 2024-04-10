@@ -67,7 +67,8 @@ namespace Players
         {
             physicalInputs = new Inputs();
             physicalInputs.Player.Enable();
-            cam = camObject.GetComponent<Camera>();
+            // cam = camObject.GetComponent<Camera>();
+            cam = Camera.main;
             OnAwake();
 
             //For Changing Color when hit
@@ -273,7 +274,16 @@ namespace Players
             }*/
 
             if (!IsOwner)
+            {
                 enabled = false;
+                return;
+            }
+
+            
+            //Set camera to follow this player
+            CameraFollow cameraFollow = cam.GetComponent<CameraFollow>();
+            cameraFollow.enabled = true;
+            cameraFollow.SetPlayer(this.transform);
             //Destroy(this);
         }
     }

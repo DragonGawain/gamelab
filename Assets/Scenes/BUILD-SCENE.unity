@@ -7363,11 +7363,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 608b174e4054a46a4b66014336be72dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  health: 100
-  maxHealth: 100
-  healthBarUI: {fileID: 286940214}
-  slider: {fileID: 1194074338}
 --- !u!114 &1194074338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10185,11 +10180,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 608b174e4054a46a4b66014336be72dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  health: 100
-  maxHealth: 100
-  healthBarUI: {fileID: 286940214}
-  slider: {fileID: 1662341159}
 --- !u!114 &1662341159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12323,6 +12313,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DarkPlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 6164403967038991240, guid: 6b6963baaf6ff464e878ab1daf530a0a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6829581377356067122, guid: 6b6963baaf6ff464e878ab1daf530a0a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12957,6 +12952,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 2000313024}
+    - target: {fileID: 2035909533753356562, guid: 84f8c9cf3b1e61e44a87203533676282,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3098069265019789175, guid: 84f8c9cf3b1e61e44a87203533676282,
         type: 3}
       propertyPath: m_ClearFlags
@@ -14076,6 +14076,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LightPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 595387465054001676, guid: 64fbb6de6daaa614a8c9ebac0239daea,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2146905481754870711, guid: 64fbb6de6daaa614a8c9ebac0239daea,
         type: 3}
