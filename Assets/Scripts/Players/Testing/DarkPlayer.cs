@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Players;
 using TMPro;
+using Unity.Netcode;
 using UnityEngine.UI;
 using Weapons;
 using Unity.VisualScripting;
@@ -86,11 +87,22 @@ namespace Players
             //Prevent players from swapping each others weapons
             if (!IsOwner) return;
             
-            Debug.Log("dark swapped");
+            
             isHammerSuper = false;
-
             base.SwapWeapon(ctx);
+            Debug.Log("dark swapped");
+            DarkSwapServerRpc();
+        }
 
+        [ServerRpc]
+        void DarkSwapServerRpc()
+        {
+            DarkSwapClientRpc();
+        }
+        [ClientRpc]
+        void DarkSwapClientRpc()
+        {
+            Debug.Log("WHY DONT YOU RUN FFS");
             // Despawn current weapon
             Destroy(currentWeapon.gameObject);
             // If the current weapon is the hammer

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Players;
 using TMPro;
+using Unity.Netcode;
 using UnityEngine.UI;
 using Weapons;
 
@@ -79,9 +80,19 @@ namespace Players
             
             Debug.Log("light swapped");
             isBlasterSuper = false;
-
             base.SwapWeapon(ctx);
+            LightSwapServerRpc();
+            
+        }
 
+        [ServerRpc]
+        public void LightSwapServerRpc()
+        {
+            LightSwapClientRpc();
+        }
+        [ClientRpc]
+        public void LightSwapClientRpc()
+        {
             // Despawn current weapon
             Destroy(currentWeapon.gameObject);
             // If the current weapon is flamethrower
@@ -102,6 +113,7 @@ namespace Players
                 // UpdateText("Flamethrower");
             }
         }
+        
 
         public override void SetIsBlasterSuper(bool status)
         {
