@@ -25,7 +25,6 @@ public class SelectPlayer : NetworkBehaviour
     private GameObject player1;
     private GameObject player2;
     private GameObject selectedPlayer;
-    private GameObject selectedPlayer2;
 
     public static int hostSelection = 0;
     public static bool player1Confirm = false;
@@ -87,18 +86,13 @@ public class SelectPlayer : NetworkBehaviour
             if (clientId == 0)
             {
                 hostSelection = 1;
-                selectedPlayer = player1;
             }
-            else
-            {
-                selectedPlayer2 = player1;
-            }
+            selectedPlayer = player1;
 
         }
         else if (selectionIcon.position == rightPosition.position) // If on right, move to middle
         {
             selectedPlayer = null;
-            selectedPlayer2 = null;
             selectionIcon.position = middlePosition.position;
             isInMiddle = true;
         }
@@ -115,18 +109,13 @@ public class SelectPlayer : NetworkBehaviour
             if (clientId == 0)
             {
                 hostSelection = 0;
-                selectedPlayer = player2;
             }
-            else
-            {
-                selectedPlayer2 = player2;
-            }
+            selectedPlayer = player2;
 
         }
         else if (selectionIcon.position == leftPosition.position) // If on left, move to middle
         {
             selectedPlayer = null;
-            selectedPlayer2 = null;
             selectionIcon.position = middlePosition.position;
             isInMiddle = true;
         }
@@ -157,17 +146,13 @@ public class SelectPlayer : NetworkBehaviour
                 player1Confirm = true;
                 return true;
             }
-        }
 
-        if(selectedPlayer2 != null)
-        {
             if (clientId == 1)
             {
                 player2Confirm = true;
                 return true;
             }
         }
-
         return false;
     }
 }
