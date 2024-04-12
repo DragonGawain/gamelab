@@ -79,6 +79,10 @@ namespace Players
 
             animator = GetComponent<Animator>();
             body = GetComponent<Rigidbody>();
+
+            physicalInputs.Player.Fire.performed += Fire;
+            physicalInputs.Player.Fire.canceled += Fire;
+            physicalInputs.Player.SwapWeapon.performed += SwapWeapon;
         }
 
         private void FixedUpdate()
@@ -169,7 +173,7 @@ namespace Players
         }
 
         // Called when the player fires with LMB or RT on controller
-        virtual public void Fire(InputAction.CallbackContext ctx)
+        virtual public void Fire(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
         {
             if (!currentWeapon)
                 return;
@@ -177,7 +181,7 @@ namespace Players
         }
 
         // Called when the player swaps weapons with Q or RB on controller
-        virtual public void SwapWeapon(InputAction.CallbackContext ctx)
+        virtual public void SwapWeapon(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
         {
             // despawn current weapon
             // add other weapon
@@ -227,7 +231,18 @@ namespace Players
 
         abstract protected void OnDeath();
         abstract protected void OnAwake();
-        abstract protected Vector3 GetMoveInput();
+
+        virtual protected Vector3 GetMoveInput()
+        {
+            Vector2 moveInput = physicalInputs.Player.Move.ReadValue<Vector2>();
+            Vector3 dir =
+                new(
+                    moveInput.x * acceleration + body.velocity.x,
+                    0.0f,
+                    moveInput.y * acceleration + body.velocity.z
+                );
+            return dir;
+        }
 
         public Vector3 GetScreenCoordinates()
         {
@@ -279,16 +294,23 @@ namespace Players
                 return;
             }
 
-            
             //Set camera to follow this player
-            
+
             CameraFollow cameraFollow = cam.GetComponent<CameraFollow>();
             if (cameraFollow == null)
             {
                 cameraFollow.enabled = true;
-                cameraFollow.SetPlayer(this.transform);    
+                cameraFollow.SetPlayer(this.transform);
             }
             //Destroy(this);
+        }
+
+        public override void OnDestroy()
+        {
+            base.OnDestroy();
+            physicalInputs.Player.Fire.performed += Fire;
+            physicalInputs.Player.Fire.canceled += Fire;
+            physicalInputs.Player.SwapWeapon.performed += SwapWeapon;
         }
     }
 }

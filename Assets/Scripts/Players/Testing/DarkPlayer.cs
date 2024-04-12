@@ -32,27 +32,27 @@ namespace Players
         protected override void OnAwake()
         {
             AttachWeapon(hammer, new(-0.3f, 0, 0), true);
-            physicalInputs.Player.DarkFire.performed += DarkFire;
-            physicalInputs.Player.DarkSwap.performed += DarkSwap;
+            // physicalInputs.Player.DarkFire.performed += DarkFire;
+            // physicalInputs.Player.DarkSwap.performed += DarkSwap;
 
             ComboAttackManager.SetDarkPlayer(this);
             SO_TargetManager.darkPlayer = this;
             PlayerManager.SetDarkPlayer(this);
         }
 
-        public override void OnDestroy()
-        {
-            base.OnDestroy();
-            physicalInputs.Player.DarkFire.performed -= DarkFire;
-            physicalInputs.Player.DarkSwap.performed -= DarkSwap;
-        }
+        // public override void OnDestroy()
+        // {
+        //     base.OnDestroy();
+        //     physicalInputs.Player.DarkFire.performed -= DarkFire;
+        //     physicalInputs.Player.DarkSwap.performed -= DarkSwap;
+        // }
 
-        public void DarkFire(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
+        public override void Fire(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
         {
             //Prevent players from swapping each others weapons
-            if (!IsOwner) return;
-            
-            
+            if (!IsOwner)
+                return;
+
             //Debug.Log(currentWeapon);
             base.Fire(ctx);
             currentWeapon.OnFire();
@@ -82,12 +82,12 @@ namespace Players
             }
         }
 
-        public void DarkSwap(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
+        public override void SwapWeapon(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
         {
             //Prevent players from swapping each others weapons
-            if (!IsOwner) return;
-            
-            
+            if (!IsOwner)
+                return;
+
             isHammerSuper = false;
             base.SwapWeapon(ctx);
             Debug.Log("dark swapped");
@@ -99,6 +99,7 @@ namespace Players
         {
             DarkSwapClientRpc();
         }
+
         [ClientRpc]
         void DarkSwapClientRpc()
         {
@@ -120,18 +121,6 @@ namespace Players
                 // Switch to the hammer
                 AttachWeapon(hammer, new(-0.3f, 0, 0), true);
             }
-        }
-
-        protected override Vector3 GetMoveInput()
-        {
-            Vector2 moveInput = physicalInputs.Player.DarkMove.ReadValue<Vector2>();
-            Vector3 dir =
-                new(
-                    moveInput.x * acceleration + body.velocity.x,
-                    0.0f,
-                    moveInput.y * acceleration + body.velocity.z
-                );
-            return dir;
         }
 
         public override void SetIsHammerSuper(bool status)
@@ -166,7 +155,19 @@ namespace Players
                     AttachWeapon(hammer, new(-0.3f, 0, 0), true);
             }
         }
-    
+
+        // protected override Vector3 GetMoveInput()
+        // {
+        //     Vector2 moveInput = physicalInputs.Player.DarkMove.ReadValue<Vector2>();
+        //     Vector3 dir =
+        //         new(
+        //             moveInput.x * acceleration + body.velocity.x,
+        //             0.0f,
+        //             moveInput.y * acceleration + body.velocity.z
+        //         );
+        //     return dir;
+        // }
+
         protected override void OnDeath()
         {
             PlayerManager.OnDarkPlayerDeath();

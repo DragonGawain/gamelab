@@ -24,28 +24,29 @@ namespace Players
         {
             // Start with this weapon
             AttachWeapon(flamethrower);
-            physicalInputs.Player.LightFire.performed += LightFire;
-            physicalInputs.Player.LightSwap.performed += LightSwap;
-            physicalInputs.Player.LightFire.canceled += LightFire;
+            // physicalInputs.Player.LightFire.performed += LightFire;
+            // physicalInputs.Player.LightSwap.performed += LightSwap;
+            // physicalInputs.Player.LightFire.canceled += LightFire;
 
             ComboAttackManager.SetLightPlayer(this);
             SO_TargetManager.lightPlayer = this;
             PlayerManager.SetLightPlayer(this);
         }
 
-        public override void OnDestroy()
-        {
-            base.OnDestroy();
-            physicalInputs.Player.LightFire.performed -= LightFire;
-            physicalInputs.Player.LightSwap.performed -= LightSwap;
-            physicalInputs.Player.LightFire.canceled -= LightFire;
-        }
+        // public override void OnDestroy()
+        // {
+        //     base.OnDestroy();
+        //     physicalInputs.Player.LightFire.performed -= LightFire;
+        //     physicalInputs.Player.LightSwap.performed -= LightSwap;
+        //     physicalInputs.Player.LightFire.canceled -= LightFire;
+        // }
 
-        public void LightFire(InputAction.CallbackContext ctx)
+        public override void Fire(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
         {
             //Prevent players from swapping each others weapons
-            if (!IsOwner) return;
-            
+            if (!IsOwner)
+                return;
+
             base.Fire(ctx);
 
             // If they fire with the Flamethrower
@@ -72,17 +73,16 @@ namespace Players
             }
         }
 
-        public void LightSwap(InputAction.CallbackContext ctx)
+        public override void SwapWeapon(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
         {
-            
             //Prevent players from swapping each others weapons
-            if (!IsOwner) return;
-            
+            if (!IsOwner)
+                return;
+
             Debug.Log("light swapped");
             isBlasterSuper = false;
             base.SwapWeapon(ctx);
             LightSwapServerRpc();
-            
         }
 
         [ServerRpc]
@@ -90,6 +90,7 @@ namespace Players
         {
             LightSwapClientRpc();
         }
+
         [ClientRpc]
         public void LightSwapClientRpc()
         {
@@ -113,7 +114,6 @@ namespace Players
                 // UpdateText("Flamethrower");
             }
         }
-        
 
         public override void SetIsBlasterSuper(bool status)
         {
@@ -144,6 +144,7 @@ namespace Players
         {
             PlayerManager.OnLightPlayerDeath();
         }
+
         // To be deleted later, this is just for show
         private void UpdateText(string weaponName)
         {
@@ -154,16 +155,16 @@ namespace Players
                 text.color = Color.blue;
         }
 
-        protected override Vector3 GetMoveInput()
-        {
-            Vector2 moveInput = physicalInputs.Player.LightMove.ReadValue<Vector2>();
-            Vector3 dir =
-                new(
-                    moveInput.x * acceleration + body.velocity.x,
-                    0.0f,
-                    moveInput.y * acceleration + body.velocity.z
-                );
-            return dir;
-        }
+        // protected override Vector3 GetMoveInput()
+        // {
+        //     Vector2 moveInput = physicalInputs.Player.LightMove.ReadValue<Vector2>();
+        //     Vector3 dir =
+        //         new(
+        //             moveInput.x * acceleration + body.velocity.x,
+        //             0.0f,
+        //             moveInput.y * acceleration + body.velocity.z
+        //         );
+        //     return dir;
+        // }
     }
 }
