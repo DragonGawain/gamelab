@@ -217,6 +217,8 @@ public class UIManager : MonoBehaviour
 
     public void ShowWavePopup()
     {
+
+        //TODO:: DEPEND ON WAVE NUMBER
         WavePopup.SetActive(true);
         PauseGame();
         HideWavePopupAfterDelay(5f);
