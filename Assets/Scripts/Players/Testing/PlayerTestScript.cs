@@ -297,7 +297,7 @@ namespace Players
             //Set camera to follow this player
 
             CameraFollow cameraFollow = cam.GetComponent<CameraFollow>();
-            if (cameraFollow == null)
+            if (cameraFollow != null)
             {
                 cameraFollow.enabled = true;
                 cameraFollow.SetPlayer(this.transform);

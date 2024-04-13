@@ -95,6 +95,7 @@ public class EnemyAI : MonoBehaviour
         // to get the closest one.
 
         dCoreTarget = soTargetManager.GetClosestDCore(transform.position);
+        print(dCoreTarget);
         if (dCoreTarget == null)
             return;
         target = dCoreTarget.transform; // don't forget to set transform component of the target

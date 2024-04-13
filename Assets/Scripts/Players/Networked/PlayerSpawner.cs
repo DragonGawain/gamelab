@@ -20,20 +20,24 @@ public class PlayerSpawner : NetworkBehaviour
 
     public void Update()
     {
-        hostOption = SelectPlayer.hostSelection;
-
-        if (hostOption == 0) { clientOption = 1; }
-        else { clientOption = 0; }
-
-        if(SelectPlayer.confirm)
-        {
-            Debug.Log("Spawning players...");
-            SpawnPlayerServerRpc(0, hostOption);
-            SpawnPlayerServerRpc(1, clientOption);
-            SelectPlayer.confirm = false;
-        }
+        
+        // REMOVE COMMENTS AFTER UI to GAME SCENE IS FIXED
+        
+        // hostOption = SelectPlayer.hostSelection;
+        //
+        // if (hostOption == 0) { clientOption = 1; }
+        // else { clientOption = 0; }
+        //
+        // if(SelectPlayer.confirm)
+        // {
+        //     Debug.Log("Spawning players...");
+        //     SpawnPlayerServerRpc(0, hostOption);
+        //     SpawnPlayerServerRpc(1, clientOption);
+        //     SelectPlayer.confirm = false;
+        // }
 
         //For Zaid to test weapon stuff
+        //DELETE CODE AFTER UI IS FIXED
         if (Input.GetKeyDown(KeyCode.X))
         {
             SpawnPlayerServerRpc(0, 0);
