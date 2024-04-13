@@ -17,6 +17,9 @@ using UnityEngine;
 
 public class SelectPlayer : NetworkBehaviour
 {
+
+    private UIManager uiManager;
+
     [SerializeField] private Transform selectionIcon; // The transform of the selection icon
     [SerializeField] private Transform leftPosition; // Position for Player 1 selection
     [SerializeField] private Transform middlePosition; // Position for no selection
@@ -36,6 +39,8 @@ public class SelectPlayer : NetworkBehaviour
 
     void Start()
     {
+        uiManager = FindObjectOfType<UIManager>();
+
         // Initialize player GameObjects
         player1 = GameObject.FindGameObjectWithTag("DarkSelect");
         player2 = GameObject.FindGameObjectWithTag("LightSelect");
@@ -70,6 +75,7 @@ public class SelectPlayer : NetworkBehaviour
             {
                 Debug.Log("both players confirmed");
                 confirm = true;
+                uiManager.ShowGameUI();
             }
         }
 
