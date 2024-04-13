@@ -32,6 +32,13 @@ public class PlayerSpawner : NetworkBehaviour
             SpawnPlayerServerRpc(1, clientOption);
             SelectPlayer.confirm = false;
         }
+
+        //For Zaid to test weapon stuff
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            SpawnPlayerServerRpc(0, 0);
+            SpawnPlayerServerRpc(1, 1);
+        }
     }
 
     public override void OnNetworkSpawn()
