@@ -15,8 +15,6 @@ public class UIManager : MonoBehaviour
     [Header("CANVASES")]
 
     [SerializeField] private GameObject MainMenuCanvas;
-    [SerializeField] private GameObject HostCanvas;
-    [SerializeField] private GameObject JoinCanvas;
     [SerializeField] private GameObject SettingsCanvas;
     [SerializeField] private GameObject ControlsCanvas;
     [SerializeField] private GameObject CreditsCanvas;
@@ -89,8 +87,6 @@ public class UIManager : MonoBehaviour
     public void ShowCanvas(GameObject canvas)
     {
         MainMenuCanvas.SetActive(false);
-        HostCanvas.SetActive(false);
-        JoinCanvas.SetActive(false);
         SettingsCanvas.SetActive(false);
         ControlsCanvas.SetActive(false);
         CreditsCanvas.SetActive(false);
