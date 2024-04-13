@@ -40,8 +40,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button controlsButton;
     [SerializeField] private Button creditsButton;
     [SerializeField] private Button pauseButton;
-
-    [SerializeField] private Button selectButton;
+    [SerializeField] private Button continueButton;
 
 
     public static bool closePlayerSelect = false;
@@ -58,8 +57,7 @@ public class UIManager : MonoBehaviour
         controlsButton.onClick.AddListener(ShowControls);
         creditsButton.onClick.AddListener(ShowCredits);
         pauseButton.onClick.AddListener(ShowPause);
-
-        selectButton.onClick.AddListener(ShowGameUI);
+        continueButton.onClick.AddListener(unPause);
 
         ShowCanvas(MainMenuCanvas);
 
@@ -149,10 +147,18 @@ public class UIManager : MonoBehaviour
         PauseGame();
     }
 
+    public void unPause()
+    {
+        ShowCanvas(GameCanvas);
+        ResumeGame();
+    }
+
+    //CURRENTLY THESE DONT DO ANYTHING
     public void PauseGame()
     {
         Time.timeScale = 0;
     }
+    //CURRENTLY THESE DONT DO ANYTHING
 
     public void ResumeGame()
     {
