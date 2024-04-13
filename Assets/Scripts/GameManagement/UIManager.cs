@@ -39,8 +39,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button settingsButton;
     [SerializeField] private Button controlsButton;
     [SerializeField] private Button creditsButton;
-    [SerializeField] private Button pauseButton;
-
+    [SerializeField] private Button backButton1;
+    [SerializeField] private Button backButton2;
+    [SerializeField] private Button backButton3;
+    [SerializeField] private Button backButton4;
+    [SerializeField] private Button backButton5;
     [SerializeField] private Button selectButton;
 
 
@@ -57,8 +60,11 @@ public class UIManager : MonoBehaviour
         settingsButton.onClick.AddListener(ShowSettings);
         controlsButton.onClick.AddListener(ShowControls);
         creditsButton.onClick.AddListener(ShowCredits);
-        pauseButton.onClick.AddListener(ShowPause);
-
+        backButton1.onClick.AddListener(BackToMenu);
+        backButton2.onClick.AddListener(BackToMenu);
+        backButton3.onClick.AddListener(BackToMenu);
+        backButton4.onClick.AddListener(BackToMenu);
+        backButton5.onClick.AddListener(BackToMenu);
         selectButton.onClick.AddListener(ShowGameUI);
 
         ShowCanvas(MainMenuCanvas);
@@ -106,6 +112,21 @@ public class UIManager : MonoBehaviour
         ShowCanvas(MainMenuCanvas);
     }
 
+    //public void ShowHost()
+    //{
+    //    MainMenuCanvas.SetActive(false);
+    //    ShowCanvas(HostCanvas);
+    //    //MainCamera.enabled = false;
+    //    //SelectCamera.enabled = true;
+
+    //    // TODO:: Connect selection player to host and other to client
+    //}
+
+    //public void ShowJoin()
+    //{
+    //    ShowCanvas(JoinCanvas);
+    //}
+
     public void ShowSettings()
     {
         ShowCanvas(SettingsCanvas);
@@ -143,11 +164,6 @@ public class UIManager : MonoBehaviour
         ShowCanvas(LoseScreen);
     }
 
-    public void ShowPause()
-    {
-        ShowCanvas(PauseCanvas);
-        PauseGame();
-    }
 
     public void PauseGame()
     {
