@@ -26,10 +26,14 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         mousePosition = physicalInputs.Player.MousePos.ReadValue<Vector2>();
-        controllerMouseInput = physicalInputs.Player.MoveMouse.ReadValue<Vector2>();
-        mousePosition += controllerMouseInput;
+        mousePosition = new(
+            mousePosition.x - (Screen.width / 2),
+            mousePosition.y - (Screen.height / 2)
+        );
         if (Application.isFocused)
         {
+            controllerMouseInput = physicalInputs.Player.MoveMouse.ReadValue<Vector2>();
+            mousePosition += controllerMouseInput;
             // // Lock mouse within window
             // if (mousePosition.x > Screen.width)
             //     mousePosition.x = Screen.width;
@@ -42,10 +46,6 @@ public class GameManager : MonoBehaviour
             //     mousePosition.y = 0;
             Mouse.current.WarpCursorPosition(mousePosition);
         }
-        mousePosition = new(
-            mousePosition.x - (Screen.width / 2),
-            mousePosition.y - (Screen.height / 2)
-        );
     }
 
     public static Vector2 GetMousePosition()
