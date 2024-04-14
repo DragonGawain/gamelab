@@ -28,18 +28,20 @@ public class GameManager : MonoBehaviour
         mousePosition = physicalInputs.Player.MousePos.ReadValue<Vector2>();
         controllerMouseInput = physicalInputs.Player.MoveMouse.ReadValue<Vector2>();
         mousePosition += controllerMouseInput;
-        // // Lock mouse within window
-        // DO NOT USE
-        // if (mousePosition.x > Screen.width)
-        //     mousePosition.x = Screen.width;
-        // if (mousePosition.x < 0)
-        //     mousePosition.x = 0;
+        if (Application.isFocused)
+        {
+            // // Lock mouse within window
+            // if (mousePosition.x > Screen.width)
+            //     mousePosition.x = Screen.width;
+            // if (mousePosition.x < 0)
+            //     mousePosition.x = 0;
 
-        // if (mousePosition.y > Screen.height)
-        //     mousePosition.y = Screen.height;
-        // if (mousePosition.y < 0)
-        //     mousePosition.y = 0;
-        Mouse.current.WarpCursorPosition(mousePosition);
+            // if (mousePosition.y > Screen.height)
+            //     mousePosition.y = Screen.height;
+            // if (mousePosition.y < 0)
+            //     mousePosition.y = 0;
+            Mouse.current.WarpCursorPosition(mousePosition);
+        }
         mousePosition = new(
             mousePosition.x - (Screen.width / 2),
             mousePosition.y - (Screen.height / 2)
