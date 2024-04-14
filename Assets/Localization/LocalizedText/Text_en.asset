@@ -19,11 +19,91 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 168021614592
-    m_Localized: english
+    m_Localized: HOST
     m_Metadata:
       m_Items: []
   - m_Id: 723372630016
-    m_Localized: english 2
+    m_Localized: JOIN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16573234642632704
+    m_Localized: Controls
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16573253093376000
+    m_Localized: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16573267655999488
+    m_Localized: Credits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16573290372349952
+    m_Localized: Quit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16573352464826368
+    m_Localized: 'Language:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16573374006771712
+    m_Localized: 'Music:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16573422941716480
+    m_Localized: 'Brightness:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16573453002293248
+    m_Localized: BACK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16573495083745280
+    m_Localized: RETURN TO MAIN MENU
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16573542638764032
+    m_Localized: Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16573604907401216
+    m_Localized: Pause
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16573622557032448
+    m_Localized: Swap Weapon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16573769730965504
+    m_Localized: Shoot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16573793797881856
+    m_Localized: Move
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16573818443612160
+    m_Localized: Ready!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16573885657333760
+    m_Localized: DREAM AGENT SELECT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16574008479137792
+    m_Localized: MISSION SUCCEESS!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16574027651301376
+    m_Localized: MISSION FAILED...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16577312479199232
+    m_Localized: MAIN MENU
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16583275227594752
+    m_Localized: English
     m_Metadata:
       m_Items: []
   references:
