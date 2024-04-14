@@ -60,7 +60,7 @@ public class WaveManager : NetworkBehaviour
 
     static void StartNextWave()
     {
-        Debug.Log("GAME START");
+        
         //  TODO:: at the start of each wave, show a new wave pop up
         //UIManager.ShowWavePopup();
         
@@ -162,7 +162,7 @@ public class WaveManager : NetworkBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log(gameStart);
+        //Only runs when players have spawned
         if (!gameStart){ return;}
         
         waveTimer++;

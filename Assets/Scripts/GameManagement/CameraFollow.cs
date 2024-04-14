@@ -27,7 +27,7 @@ public class CameraFollow : MonoBehaviour
 
     void LateUpdate()
     {
-        
+        if (player == null) {return;}
         Vector3 desiredPosition = player.transform.position + offset;
         Vector3 smoothedPosition = Vector3.SmoothDamp(transform.position, desiredPosition, ref playerVelocity,
             smoothSpeed * Time.deltaTime);

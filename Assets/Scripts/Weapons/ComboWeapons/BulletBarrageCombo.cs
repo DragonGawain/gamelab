@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Weapons;
 
-namespace Weapons
+namespace Weapons.ComboWeapons
 {
     public class BulletBarrageCombo : Blaster
     {
