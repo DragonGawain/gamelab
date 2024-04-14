@@ -8,9 +8,9 @@ public class GameManager : MonoBehaviour
 {
     Inputs physicalInputs;
     static Vector2 mousePosition;
+    static Vector2 mousePositionInput;
+    static Vector2 altMousePositionInput;
     static Vector2 controllerMouseInput;
-
-    // static VirtualMouseInput vMouse;
 
     static RectTransform rTransform;
 
@@ -25,37 +25,42 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(this);
         physicalInputs = new Inputs();
         physicalInputs.Player.Enable(); // TODO:: for the record, this is a BAD idea - we do NOT want the player inptus enabled by default
-        // vMouse = GetComponent<VirtualMouseInput>();
         rTransform = GetComponent<RectTransform>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        mousePosition = physicalInputs.Player.MousePos.ReadValue<Vector2>();
+        mousePositionInput = physicalInputs.Player.MousePos.ReadValue<Vector2>();
         controllerMouseInput = physicalInputs.Player.MoveMouse.ReadValue<Vector2>();
-        // mousePosition = new(
-        //     Mouse.current.position.x.ReadValue(),
-        //     Mouse.current.position.y.ReadValue()
-        // );
+        altMousePositionInput = new(
+            Mouse.current.position.x.ReadValue(),
+            Mouse.current.position.y.ReadValue()
+        );
+
         if (controllerMouseInput.magnitude > 0)
         {
-            Debug.Log(
-                "CONTROLER WAS USED THIS IS A REALLY LONG MESSAGE TO MAKE SURE THAT IT STANDS OUT AND THAT I SEE IT SO I'M JUST GOING TO KEEP ON TYPING FOR A WHILE AND TALK ABOUT SILLY THINGS OK I THINK THIS IS LONG ENOUGH."
-            );
-            mousePosition = new(rTransform.position.x, rTransform.position.y);
+            mousePositionInput = new(rTransform.position.x, rTransform.position.y);
             if (Application.isFocused)
             {
-                Mouse.current.WarpCursorPosition(mousePosition);
+                Mouse.current.WarpCursorPosition(mousePositionInput);
             }
         }
 
-        rTransform.position = new(mousePosition.x, mousePosition.y, 0);
-        // mousePosition = new(
-        //     mousePosition.x - (Screen.width / 2),
-        //     mousePosition.y - (Screen.height / 2)
-        // );
-        Debug.Log(mousePosition);
+        if (
+            Mathf.Abs(mousePositionInput.x - altMousePositionInput.x) > 1
+            || Mathf.Abs(mousePositionInput.y - altMousePositionInput.y) > 1
+        )
+        {
+            mousePositionInput = new(altMousePositionInput.x, altMousePositionInput.y);
+        }
+
+        rTransform.position = new(mousePositionInput.x, mousePositionInput.y, 0);
+
+        mousePosition = new(
+            mousePositionInput.x - (Screen.width / 2),
+            mousePositionInput.y - (Screen.height / 2)
+        );
     }
 
     public static Vector2 GetMousePosition()
