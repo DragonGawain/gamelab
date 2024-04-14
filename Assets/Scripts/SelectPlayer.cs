@@ -25,8 +25,10 @@ public class SelectPlayer : NetworkBehaviour
     [SerializeField] private GameObject lightLight;
     [SerializeField] private GameObject darkReady;
     [SerializeField] private GameObject lightReady;
-    [SerializeField] private GameObject hostControllerIcon;
-    [SerializeField] private GameObject clientControllerIcon;
+
+    public bool lightConfrimed = false;
+    public bool darkConfrimed = false;
+
 
     private GameObject player1;
     private GameObject player2;
@@ -43,16 +45,6 @@ public class SelectPlayer : NetworkBehaviour
     void Start()
     {
 
-        if (IsHost)
-        {
-            // Find and assign the host controller icon
-            hostControllerIcon = GameObject.FindGameObjectWithTag("HostController");
-        }
-        else if (IsClient)
-        {
-            // Find and assign the client controller icon
-            clientControllerIcon = GameObject.FindGameObjectWithTag("ClientController");
-        }
 
         uiManager = FindObjectOfType<UIManager>();
 
@@ -72,8 +64,8 @@ public class SelectPlayer : NetworkBehaviour
     void Update()
     {
         clientId = NetworkManager.Singleton.LocalClientId;
-        Debug.Log("Host:" + Confirm(0));
-        Debug.Log("Client:" + Confirm(1));
+        //Debug.Log("Host:" + Confirm(0));
+        //Debug.Log("Client:" + Confirm(1));
 
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
@@ -86,20 +78,31 @@ public class SelectPlayer : NetworkBehaviour
             MoveRight();
         }
 
-        if (!isInMiddle && Input.GetKeyDown(KeyCode.X))
+        if (selectedPlayer == player1 && Input.GetKeyDown(KeyCode.X))
         {
-            //if(Confirm(clientId))
-            //{
-            //    UIManager.closePlayerSelect = true;
-            //}
+            darkReady.SetActive(true);
+            darkConfrimed = true;
+        }
 
-            if (Confirm(0) && Confirm(1)) //(Confirm(0) && (clientId == 1 && Confirm(1)))
+        if (selectedPlayer == player2 && Input.GetKeyDown(KeyCode.X))
+        {
+            lightReady.SetActive(true);
+            lightConfrimed = true;
+        }
+
+
+        {
+
+        if (lightConfrimed && darkConfrimed)
             {
                 Debug.Log("both players confirmed");
                 UIManager.closePlayerSelect = true;
                 confirm = true;
                 uiManager.ShowGameUI();
+
             }
+                
+            
         }
 
     }
@@ -202,14 +205,12 @@ public class SelectPlayer : NetworkBehaviour
         {
             if (clientId == 0)
             {
-                darkReady.SetActive(true);
                 player1Confirm = true;
                 return true;
             }
 
             if (clientId == 1)
             {
-                lightReady.SetActive(false);
                 player2Confirm = true;
                 return true;
             }
