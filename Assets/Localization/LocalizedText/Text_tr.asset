@@ -19,11 +19,91 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 168021614592
-    m_Localized: turkish
+    m_Localized: EV SAHIBI
     m_Metadata:
       m_Items: []
   - m_Id: 723372630016
-    m_Localized: turkish 2
+    m_Localized: KATILMAK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16573234642632704
+    m_Localized: Kontroller
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16573253093376000
+    m_Localized: Ayarlar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16573267655999488
+    m_Localized: Kredi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16573290372349952
+    m_Localized: "\xC7\u0131k\u0131\u015F yapmak"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16573352464826368
+    m_Localized: 'Dil:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16573374006771712
+    m_Localized: "M\xFCzik:"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16573422941716480
+    m_Localized: "Parlakl\u0131k:"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16573453002293248
+    m_Localized: "GER\u0130 D\xD6NMEK"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16573495083745280
+    m_Localized: "ANA MEN\xDCYE D\xD6N"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16573542638764032
+    m_Localized: Devam etmek
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16573604907401216
+    m_Localized: Duraklat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16573622557032448
+    m_Localized: "Silah\u0131 de\u011Fi\u015Ftir"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16573769730965504
+    m_Localized: "Ate\u015F et"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16573793797881856
+    m_Localized: "Ta\u015F\u0131nmak"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16573818443612160
+    m_Localized: "Haz\u0131r!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16573885657333760
+    m_Localized: "R\xDCYA AJAN SE\xC7\u0130M\u0130"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16574008479137792
+    m_Localized: "G\xD6REV BA\u015EARILI!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16574027651301376
+    m_Localized: "G\xD6REV BA\u015EARISIZ..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16577312479199232
+    m_Localized: "ANA MEN\xDC"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16583275227594752
+    m_Localized: "T\xFCrk\xE7e"
     m_Metadata:
       m_Items: []
   references:

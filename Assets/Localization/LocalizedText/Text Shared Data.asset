@@ -16,11 +16,91 @@ MonoBehaviour:
   m_TableCollectionNameGuidString: 4500ed950e3a9ff44bc2eb1a4ccfe59d
   m_Entries:
   - m_Id: 168021614592
-    m_Key: test
+    m_Key: host
     m_Metadata:
       m_Items: []
   - m_Id: 723372630016
-    m_Key: another test
+    m_Key: join
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16573234642632704
+    m_Key: controls
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16573253093376000
+    m_Key: settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16573267655999488
+    m_Key: credits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16573290372349952
+    m_Key: quit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16573352464826368
+    m_Key: language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16573374006771712
+    m_Key: music
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16573422941716480
+    m_Key: brightness
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16573453002293248
+    m_Key: back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16573495083745280
+    m_Key: returnToMainMenu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16573542638764032
+    m_Key: continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16573604907401216
+    m_Key: pause
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16573622557032448
+    m_Key: swapWeapon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16573769730965504
+    m_Key: shoot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16573793797881856
+    m_Key: move
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16573818443612160
+    m_Key: ready
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16573885657333760
+    m_Key: characterSelect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16574008479137792
+    m_Key: win
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16574027651301376
+    m_Key: lose
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16577312479199232
+    m_Key: mainMenu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16583275227594752
+    m_Key: locale
     m_Metadata:
       m_Items: []
   m_Metadata:
