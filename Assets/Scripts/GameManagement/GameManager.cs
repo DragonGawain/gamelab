@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
     public static void SetYouWin()
     {
         // called from WaveManager.EnemyDied
-        Debug.Log("players win!");
+        //Debug.Log("players win!");
         //  TODO:: call this when you win to show the win screen
         //UIManager.ShowWinScreen();
     }
