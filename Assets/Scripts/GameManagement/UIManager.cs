@@ -4,14 +4,14 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum PauseState
+{
+    ISONMAINMENU,
+    ISPLAYING
+}
+
 public class UIManager : MonoBehaviour
 {
-    private enum PauseState
-    {
-        ISONMAINMENU,
-        ISPLAYING
-    }
-
     [Header("CAMERAS")]
     //[SerializeField] private Camera MainCamera;
     //[SerializeField] private Camera SelectCamera;
@@ -85,7 +85,7 @@ public class UIManager : MonoBehaviour
 
     public static bool closePlayerSelect = false;
 
-    static PauseState pauseState = PauseState.ISONMAINMENU;
+    public static PauseState pauseState = PauseState.ISONMAINMENU;
 
     public static UIManager UISingleton;
 
@@ -172,6 +172,9 @@ public class UIManager : MonoBehaviour
     public void ShowPlayerSelect()
     {
         ShowCanvas(PlayerSelectCanvas);
+        // TODO:: pauseState should be set to ISPLAYING when the game actually starts, not when you've clicked the host/join button.
+        // Alt: if the host/join screen has a back button, make it call a different method that also sets the pauseState
+        pauseState = PauseState.ISPLAYING;
     }
 
     public void ShowGameUI()
@@ -203,23 +206,33 @@ public class UIManager : MonoBehaviour
         ResumeGame();
     }
 
-    //CURRENTLY THESE DONT DO ANYTHING - should work now (tee hee :P)
-
     public void PauseGame()
     {
         Time.timeScale = 0;
     }
-
-    //CURRENTLY THESE DONT DO ANYTHING - should work now (tee hee :P)
 
     public void ResumeGame()
     {
         Time.timeScale = 1;
     }
 
-    public void BackToMenu()
+    public void BackButton()
     {
         ResumeGame();
+        switch (pauseState)
+        {
+            case PauseState.ISONMAINMENU:
+                ShowMainMenu();
+                break;
+            case PauseState.ISPLAYING:
+                ShowPause();
+                break;
+        }
+    }
+
+    public void ReturnToMainMenu()
+    {
+        pauseState = PauseState.ISONMAINMENU;
         ShowMainMenu();
     }
 
