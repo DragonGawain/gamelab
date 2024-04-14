@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
     Inputs physicalInputs;
     static Vector2 mousePosition;
+    static Vector2 controllerMouseInput;
 
     public static GameManager GMSingleton;
 
@@ -24,6 +26,26 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         mousePosition = physicalInputs.Player.MousePos.ReadValue<Vector2>();
+        if (Application.isFocused)
+        {
+            controllerMouseInput = (physicalInputs.Player.MoveMouse.ReadValue<Vector2>()).normalized;
+            mousePosition += controllerMouseInput;
+            // mousePosition = new(
+            //     mousePosition.x + controllerMouseInput.x,
+            //     mousePosition.y + controllerMouseInput.y
+            // );
+            // // Lock mouse within window
+            // if (mousePosition.x > Screen.width)
+            //     mousePosition.x = Screen.width;
+            // if (mousePosition.x < 0)
+            //     mousePosition.x = 0;
+
+            // if (mousePosition.y > Screen.height)
+            //     mousePosition.y = Screen.height;
+            // if (mousePosition.y < 0)
+            //     mousePosition.y = 0;
+            Mouse.current.WarpCursorPosition(mousePosition);
+        }
         mousePosition = new(
             mousePosition.x - (Screen.width / 2),
             mousePosition.y - (Screen.height / 2)

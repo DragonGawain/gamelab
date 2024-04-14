@@ -91,24 +91,6 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""LightSwap"",
-                    ""type"": ""Button"",
-                    ""id"": ""867a9082-f529-46eb-be29-331397244d9b"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""DarkSwap"",
-                    ""type"": ""Button"",
-                    ""id"": ""454255e9-f780-421f-a842-36158ce00cf0"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""MousePos"",
                     ""type"": ""Value"",
                     ""id"": ""9d6c6c02-0e03-402b-9a30-e1eb205a00b2"",
@@ -121,6 +103,15 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
                     ""name"": ""Look"",
                     ""type"": ""Value"",
                     ""id"": ""c698e79b-bca2-4efb-9dbe-bcdc0b9037c5"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""MoveMouse"",
+                    ""type"": ""Value"",
+                    ""id"": ""ab95dfc1-c343-4c68-8077-fc2b02d32be5"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -460,33 +451,33 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""1992d817-9985-45fb-83d6-8eacb5d20a2e"",
-                    ""path"": ""<Keyboard>/q"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""LightSwap"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""70843382-b6bc-4af7-986d-5e878973d73f"",
-                    ""path"": ""<Keyboard>/e"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""DarkSwap"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""7ecab38e-6518-4b44-9d41-34e6d968cc11"",
                     ""path"": ""<Mouse>/position"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
+                    ""action"": ""MousePos"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e3c42d4f-fe08-41db-bafa-282b5150a7da"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""MousePos"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""50ea1c11-3dd4-4190-a28c-3eb081fbd25e"",
+                    ""path"": ""<DualShockGamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""MousePos"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -509,6 +500,28 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
+                    ""action"": ""DarkFire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b1b9d46d-6ce8-4604-be87-03d19ebf8719"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""DarkFire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""31d0beb7-d936-4aff-8311-74784b22e6c4"",
+                    ""path"": ""<DualShockGamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""DarkFire"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -543,6 +556,28 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Joystick"",
                     ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4563c68e-b1f6-455a-bbd9-28176c3efa83"",
+                    ""path"": ""<DualShockGamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""580f0bf6-f9d4-4dc5-a32a-9037b79a52cb"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""MoveMouse"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1137,10 +1172,9 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
         m_Player_LightFire = m_Player.FindAction("LightFire", throwIfNotFound: true);
         m_Player_DarkFire = m_Player.FindAction("DarkFire", throwIfNotFound: true);
         m_Player_SwapWeapon = m_Player.FindAction("SwapWeapon", throwIfNotFound: true);
-        m_Player_LightSwap = m_Player.FindAction("LightSwap", throwIfNotFound: true);
-        m_Player_DarkSwap = m_Player.FindAction("DarkSwap", throwIfNotFound: true);
         m_Player_MousePos = m_Player.FindAction("MousePos", throwIfNotFound: true);
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
+        m_Player_MoveMouse = m_Player.FindAction("MoveMouse", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1221,10 +1255,9 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_LightFire;
     private readonly InputAction m_Player_DarkFire;
     private readonly InputAction m_Player_SwapWeapon;
-    private readonly InputAction m_Player_LightSwap;
-    private readonly InputAction m_Player_DarkSwap;
     private readonly InputAction m_Player_MousePos;
     private readonly InputAction m_Player_Look;
+    private readonly InputAction m_Player_MoveMouse;
     public struct PlayerActions
     {
         private @Inputs m_Wrapper;
@@ -1236,10 +1269,9 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
         public InputAction @LightFire => m_Wrapper.m_Player_LightFire;
         public InputAction @DarkFire => m_Wrapper.m_Player_DarkFire;
         public InputAction @SwapWeapon => m_Wrapper.m_Player_SwapWeapon;
-        public InputAction @LightSwap => m_Wrapper.m_Player_LightSwap;
-        public InputAction @DarkSwap => m_Wrapper.m_Player_DarkSwap;
         public InputAction @MousePos => m_Wrapper.m_Player_MousePos;
         public InputAction @Look => m_Wrapper.m_Player_Look;
+        public InputAction @MoveMouse => m_Wrapper.m_Player_MoveMouse;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1270,18 +1302,15 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
             @SwapWeapon.started += instance.OnSwapWeapon;
             @SwapWeapon.performed += instance.OnSwapWeapon;
             @SwapWeapon.canceled += instance.OnSwapWeapon;
-            @LightSwap.started += instance.OnLightSwap;
-            @LightSwap.performed += instance.OnLightSwap;
-            @LightSwap.canceled += instance.OnLightSwap;
-            @DarkSwap.started += instance.OnDarkSwap;
-            @DarkSwap.performed += instance.OnDarkSwap;
-            @DarkSwap.canceled += instance.OnDarkSwap;
             @MousePos.started += instance.OnMousePos;
             @MousePos.performed += instance.OnMousePos;
             @MousePos.canceled += instance.OnMousePos;
             @Look.started += instance.OnLook;
             @Look.performed += instance.OnLook;
             @Look.canceled += instance.OnLook;
+            @MoveMouse.started += instance.OnMoveMouse;
+            @MoveMouse.performed += instance.OnMoveMouse;
+            @MoveMouse.canceled += instance.OnMoveMouse;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1307,18 +1336,15 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
             @SwapWeapon.started -= instance.OnSwapWeapon;
             @SwapWeapon.performed -= instance.OnSwapWeapon;
             @SwapWeapon.canceled -= instance.OnSwapWeapon;
-            @LightSwap.started -= instance.OnLightSwap;
-            @LightSwap.performed -= instance.OnLightSwap;
-            @LightSwap.canceled -= instance.OnLightSwap;
-            @DarkSwap.started -= instance.OnDarkSwap;
-            @DarkSwap.performed -= instance.OnDarkSwap;
-            @DarkSwap.canceled -= instance.OnDarkSwap;
             @MousePos.started -= instance.OnMousePos;
             @MousePos.performed -= instance.OnMousePos;
             @MousePos.canceled -= instance.OnMousePos;
             @Look.started -= instance.OnLook;
             @Look.performed -= instance.OnLook;
             @Look.canceled -= instance.OnLook;
+            @MoveMouse.started -= instance.OnMoveMouse;
+            @MoveMouse.performed -= instance.OnMoveMouse;
+            @MoveMouse.canceled -= instance.OnMoveMouse;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1508,10 +1534,9 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
         void OnLightFire(InputAction.CallbackContext context);
         void OnDarkFire(InputAction.CallbackContext context);
         void OnSwapWeapon(InputAction.CallbackContext context);
-        void OnLightSwap(InputAction.CallbackContext context);
-        void OnDarkSwap(InputAction.CallbackContext context);
         void OnMousePos(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
+        void OnMoveMouse(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
