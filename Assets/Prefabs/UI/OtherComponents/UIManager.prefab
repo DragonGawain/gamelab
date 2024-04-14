@@ -64,6 +64,7 @@ MonoBehaviour:
   RespawnPopup: {fileID: 8831722395849001436}
   hostButton: {fileID: 3034601218911400125}
   joinButton: {fileID: 7605920276750934576}
+  selectPlayer: {fileID: 0}
 --- !u!1001 &4886109876777270485
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -166,6 +167,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ShowControls
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235745498322005071, guid: 192b8ff3643441b488f2227283314051,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6659637372275666350}
+    - target: {fileID: 4235745498322005071, guid: 192b8ff3643441b488f2227283314051,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ReturnToMainMenu
       objectReference: {fileID: 0}
     - target: {fileID: 4246557776107509612, guid: 192b8ff3643441b488f2227283314051,
         type: 3}
