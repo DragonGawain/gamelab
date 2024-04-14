@@ -4,7 +4,7 @@ namespace Weapons
 {
     public class Bullet : MonoBehaviour
     {
-        readonly int dmg = 10;
+        readonly int dmg = 20;
 
         public void Explode()
         {

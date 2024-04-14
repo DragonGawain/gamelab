@@ -43,8 +43,8 @@ public class PlayerSpawner : NetworkBehaviour
         if (Input.GetKeyDown(KeyCode.X))
         {
             SpawnPlayerServerRpc(0, 0);
-            Debug.Log("ZAID UNCOMMENT THIS - Zaid");
-            // SpawnPlayerServerRpc(1, 1);
+            
+            SpawnPlayerServerRpc(1, 1);
             PlayerSpawn();
         }
     }

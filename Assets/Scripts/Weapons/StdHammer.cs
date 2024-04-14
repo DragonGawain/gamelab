@@ -12,7 +12,7 @@ namespace Weapons
         [SerializeField] private VisualEffect vfx;
         private void Start()
         {
-            dmg = 20;
+            dmg = 25;
             SetWeaponName("Hammer");
             soundEffect = GetComponent<AudioSource>();
         }
