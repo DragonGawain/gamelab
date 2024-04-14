@@ -82,6 +82,8 @@ public class SelectPlayer : NetworkBehaviour
         {
             darkReady.SetActive(true);
             darkConfrimed = true;
+            uiManager.ShowGameUI();
+
         }
 
         if (selectedPlayer == player2 && Input.GetKeyDown(KeyCode.X))
@@ -93,7 +95,9 @@ public class SelectPlayer : NetworkBehaviour
 
         {
 
-        if (lightConfrimed && darkConfrimed)
+            //    if (Confirm(0) && Confirm(1)) //(Confirm(0) && (clientId == 1 && Confirm(1)))
+            
+                if (lightConfrimed && darkConfrimed)
             {
                 Debug.Log("both players confirmed");
                 UIManager.closePlayerSelect = true;
