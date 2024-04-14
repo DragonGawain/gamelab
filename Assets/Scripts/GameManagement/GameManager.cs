@@ -7,8 +7,15 @@ public class GameManager : MonoBehaviour
     Inputs physicalInputs;
     static Vector2 mousePosition;
 
+    public static GameManager GMSingleton;
+
     private void Awake()
     {
+        if (GMSingleton == null)
+            GMSingleton = this;
+        if (this != GMSingleton)
+            Destroy(this);
+        DontDestroyOnLoad(this);
         physicalInputs = new Inputs();
         physicalInputs.Player.Enable(); // TODO:: for the record, this is a BAD idea - we do NOT want the player inptus enabled by default
     }
