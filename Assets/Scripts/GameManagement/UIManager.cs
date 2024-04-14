@@ -110,15 +110,9 @@ public class UIManager : MonoBehaviour
         //MainCamera.enabled = true;
         //SelectCamera.enabled = false;
         hostButton.onClick.AddListener(ShowPlayerSelect);
-        hostButton.onClick.AddListener(() =>
-        {
-            NetworkManager.Singleton.StartHost();
-        });
+        hostButton.onClick.AddListener(() =>{NetworkManager.Singleton.StartHost();});
         joinButton.onClick.AddListener(ShowPlayerSelect);
-        joinButton.onClick.AddListener(() =>
-        {
-            NetworkManager.Singleton.StartClient();
-        });
+        joinButton.onClick.AddListener(() =>{NetworkManager.Singleton.StartClient();});
         // settingsButton.onClick.AddListener(ShowSettings);
         // controlsButton.onClick.AddListener(ShowControls);
         // creditsButton.onClick.AddListener(ShowCredits);
@@ -246,6 +240,7 @@ public class UIManager : MonoBehaviour
     public void ReturnToMainMenu()
     {
         pauseState = PauseState.ISONMAINMENU;
+        NetworkManager.Singleton.Shutdown();
         ShowMainMenu();
         SceneManager.LoadScene("UI");
     }

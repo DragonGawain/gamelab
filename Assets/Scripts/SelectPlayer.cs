@@ -8,10 +8,10 @@ using UnityEngine;
 
 public class SelectPlayer : NetworkBehaviour
 {
-
     private UIManager uiManager;
 
-    [SerializeField] private RectTransform selectionIcon; // The transform of the selection icon
+    //Host Stuff
+    [SerializeField] private RectTransform hostIcon; // The transform of the selection icon
     [SerializeField] private RectTransform leftPosition; // Position for Player 1 selection
     [SerializeField] private RectTransform middlePosition; // Position for no selection
     [SerializeField] private RectTransform rightPosition; // Position for Player 2 selection
@@ -21,13 +21,26 @@ public class SelectPlayer : NetworkBehaviour
     [SerializeField] private RectTransform rightArrowMiddle;
     [SerializeField] private RectTransform leftArrowRight;
     [SerializeField] private RectTransform rightArrowLeft;
+
+    //Client Stuff
+    [SerializeField] private RectTransform clientIcon; // The RectTransform of the client icon
+    [SerializeField] private RectTransform leftPositionClient; // Position for Player 1 selection
+    [SerializeField] private RectTransform middlePositionClient; // Position for no selection
+    [SerializeField] private RectTransform rightPositionClient; // Position for Player 2 selection
+    [SerializeField] private RectTransform leftArrowClient;
+    [SerializeField] private RectTransform rightArrowClient;
+    [SerializeField] private RectTransform leftArrowMiddleClient;
+    [SerializeField] private RectTransform rightArrowMiddleClient;
+    [SerializeField] private RectTransform leftArrowRightClient;
+    [SerializeField] private RectTransform rightArrowLeftClient;
+
     [SerializeField] private GameObject darkLight;
     [SerializeField] private GameObject lightLight;
     [SerializeField] private GameObject darkReady;
     [SerializeField] private GameObject lightReady;
 
-    public bool lightConfrimed = false;
-    public bool darkConfrimed = false;
+    public bool lightConfirmed = false;
+    public bool darkConfirmed = false;
 
 
     private GameObject player1;
@@ -44,16 +57,12 @@ public class SelectPlayer : NetworkBehaviour
 
     void Start()
     {
-
-
         uiManager = FindObjectOfType<UIManager>();
 
         // Initialize player GameObjects
         player1 = GameObject.FindGameObjectWithTag("DarkSelect");
         player2 = GameObject.FindGameObjectWithTag("LightSelect");
-        selectionIcon.position = middlePosition.position; // Start in the middle
-        leftArrow.position = leftArrowMiddle.position; // Start in the middle
-        rightArrow.position = rightArrowMiddle.position; // Start in the middle
+
         lightLight.SetActive(false);
         darkLight.SetActive(false);
         lightReady.SetActive(false);
@@ -63,50 +72,65 @@ public class SelectPlayer : NetworkBehaviour
 
     void Update()
     {
+        //Set proper buttons/images
+        if(NetworkManager.Singleton.LocalClientId == 0)
+        {
+            hostIcon.position = middlePosition.position; // Start in the middle
+            leftArrow.position = leftArrowMiddle.position; // Start in the middle
+            rightArrow.position = rightArrowMiddle.position; // Start in the middle
+
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                Debug.Log("Move left");
+                MoveLeft();
+
+            }
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                MoveRight();
+                Debug.Log("Move right");
+            }
+        }
+        else
+        {
+            clientIcon.position = middlePositionClient.position; // Start in the middle
+            leftArrowClient.position = leftArrowMiddleClient.position; // Start in the middle
+            rightArrowClient.position = rightArrowMiddleClient.position; // Start in the middle
+
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                MoveLeftClient();
+
+            }
+            else if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                MoveRightClient();
+            }
+        }
+
         clientId = NetworkManager.Singleton.LocalClientId;
-        //Debug.Log("Host:" + Confirm(0));
-        //Debug.Log("Client:" + Confirm(1));
-
-
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            MoveLeft();
-
-        }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            MoveRight();
-        }
 
         if (selectedPlayer == player1 && Input.GetKeyDown(KeyCode.X))
         {
             darkReady.SetActive(true);
-            darkConfrimed = true;
-            uiManager.ShowGameUI();
-
+            darkConfirmed = true;
         }
 
         if (selectedPlayer == player2 && Input.GetKeyDown(KeyCode.X))
         {
             lightReady.SetActive(true);
-            lightConfrimed = true;
+            lightConfirmed = true;
         }
 
+        //    if (Confirm(0) && Confirm(1)) //(Confirm(0) && (clientId == 1 && Confirm(1)))
 
+        if (lightConfirmed && darkConfirmed)
         {
+            Debug.Log("both players confirmed");
+            UIManager.closePlayerSelect = true;
+            confirm = true;
+            uiManager.ShowGameUI();
 
-            //    if (Confirm(0) && Confirm(1)) //(Confirm(0) && (clientId == 1 && Confirm(1)))
-            
-                if (lightConfrimed && darkConfrimed)
-            {
-                Debug.Log("both players confirmed");
-                UIManager.closePlayerSelect = true;
-                confirm = true;
-                uiManager.ShowGameUI();
-
-            }
-                
-            
         }
 
     }
@@ -115,7 +139,7 @@ public class SelectPlayer : NetworkBehaviour
     {
         if (isInMiddle) // Move to left only if currently in middle
         {
-            selectionIcon.position = leftPosition.position;
+            hostIcon.position = leftPosition.position;
             rightArrow.position = rightArrowLeft.position;
             leftArrow.gameObject.SetActive(false);
             darkLight.SetActive(true);
@@ -123,22 +147,17 @@ public class SelectPlayer : NetworkBehaviour
             isInMiddle = false;
             Selected(player1);
 
-
-            if (clientId == 0)
-            {
-                hostSelection = 1;
-            }
+            hostSelection = 1;
             selectedPlayer = player1;
 
         }
-        else if (selectionIcon.position == rightPosition.position) // If on right, move to middle
+        else if (hostIcon.position == rightPosition.position) // If on right, move to middle
         {
-
             selectedPlayer = null;
-            selectionIcon.position = middlePosition.position;
+            hostIcon.position = middlePosition.position;
             isInMiddle = true;
-            leftArrow.position = leftArrowMiddle.position; 
-            rightArrow.position = rightArrowMiddle.position; 
+            leftArrow.position = leftArrowMiddle.position;
+            rightArrow.position = rightArrowMiddle.position;
             leftArrow.gameObject.SetActive(true);
             rightArrow.gameObject.SetActive(true);
             lightReady.SetActive(false);
@@ -153,7 +172,7 @@ public class SelectPlayer : NetworkBehaviour
     {
         if (isInMiddle) // Move to right only if currently in middle
         {
-            selectionIcon.position = rightPosition.position;
+            hostIcon.position = rightPosition.position;
             leftArrow.position = leftArrowRight.position;
             rightArrow.gameObject.SetActive(false);
             lightLight.SetActive(true);
@@ -161,18 +180,15 @@ public class SelectPlayer : NetworkBehaviour
             isInMiddle = false;
             Selected(player2);
 
-            if (clientId == 0)
-            {
-                hostSelection = 0;
-            }
+            hostSelection = 0;
             selectedPlayer = player2;
 
         }
-        else if (selectionIcon.position == leftPosition.position) // If on left, move to middle
+        else if (hostIcon.position == leftPosition.position) // If on left, move to middle
         {
 
             selectedPlayer = null;
-            selectionIcon.position = middlePosition.position;
+            hostIcon.position = middlePosition.position;
             isInMiddle = true;
             leftArrow.position = leftArrowMiddle.position;
             rightArrow.position = rightArrowMiddle.position;
@@ -183,9 +199,73 @@ public class SelectPlayer : NetworkBehaviour
             lightLight.SetActive(false);
             darkLight.SetActive(false);
 
+        }
+    }
+
+    private void MoveLeftClient()
+    {
+        if (isInMiddle) // Move to left only if currently in middle
+        {
+            clientIcon.position = leftPositionClient.position;
+            rightArrowClient.position = rightArrowLeftClient.position;
+            leftArrowClient.gameObject.SetActive(false);
+            darkLight.SetActive(true);
+
+            isInMiddle = false;
+            Selected(player1);
+            selectedPlayer = player1;
+
+        }
+        else if (clientIcon.position == rightPositionClient.position) // If on right, move to middle
+        {
+
+            selectedPlayer = null;
+            hostIcon.position = middlePositionClient.position;
+            isInMiddle = true;
+            leftArrowClient.position = leftArrowMiddleClient.position;
+            rightArrowClient.position = rightArrowMiddleClient.position;
+            leftArrowClient.gameObject.SetActive(true);
+            rightArrowClient.gameObject.SetActive(true);
+            lightReady.SetActive(false);
+            darkReady.SetActive(false);
+            darkLight.SetActive(false);
+            lightLight.SetActive(false);
 
         }
     }
+
+    private void MoveRightClient()
+    {
+        if (isInMiddle) // Move to right only if currently in middle
+        {
+            clientIcon.position = rightPositionClient.position;
+            leftArrowClient.position = leftArrowRightClient.position;
+            rightArrowClient.gameObject.SetActive(false);
+            lightLight.SetActive(true);
+
+            isInMiddle = false;
+            Selected(player2);
+            selectedPlayer = player2;
+
+        }
+        else if (clientIcon.position == leftPositionClient.position) // If on left, move to middle
+        {
+
+            selectedPlayer = null;
+            clientIcon.position = middlePositionClient.position;
+            isInMiddle = true;
+            leftArrowClient.position = leftArrowMiddleClient.position;
+            rightArrowClient.position = rightArrowMiddleClient.position;
+            leftArrowClient.gameObject.SetActive(true);
+            rightArrowClient.gameObject.SetActive(true);
+            lightReady.SetActive(false);
+            darkReady.SetActive(false);
+            lightLight.SetActive(false);
+            darkLight.SetActive(false);
+
+        }
+    }
+
 
     private void Selected(GameObject selectedPlayer)
     {
