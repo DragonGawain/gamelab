@@ -43,7 +43,6 @@ public class PlayerSpawner : NetworkBehaviour
         if (Input.GetKeyDown(KeyCode.X))
         {
             SpawnPlayerServerRpc(0, 0);
-            
             SpawnPlayerServerRpc(1, 1);
             PlayerSpawn();
         }
