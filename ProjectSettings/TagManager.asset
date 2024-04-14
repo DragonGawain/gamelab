@@ -27,6 +27,8 @@ TagManager:
   - DreamCore
   - VoidHole
   - Settings
+  - HostController
+  - ClientController
   layers:
   - Default
   - TransparentFX
