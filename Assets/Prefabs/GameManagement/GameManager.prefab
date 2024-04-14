@@ -22,14 +22,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
---- !u!4 &2608125527145251105
-Transform:
+--- !u!224 &2608125527145251105
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4848864759472370196}
-  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -37,6 +36,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2397493749135597554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,9 +115,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 424b6720ff5999446843ba414e58a907, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CursorMode: 1
+  m_CursorMode: 0
   m_CursorGraphic: {fileID: 0}
-  m_CursorTransform: {fileID: 0}
+  m_CursorTransform: {fileID: 2608125527145251105}
   m_CursorSpeed: 400
   m_ScrollSpeed: 45
   m_StickAction:

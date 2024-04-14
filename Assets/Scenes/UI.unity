@@ -645,7 +645,7 @@ PrefabInstance:
     - target: {fileID: 2608125527145251105, guid: 1498db2abb30bc64fab3bf9d73a04f41,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.36
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2608125527145251105, guid: 1498db2abb30bc64fab3bf9d73a04f41,
         type: 3}
@@ -712,8 +712,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1498db2abb30bc64fab3bf9d73a04f41, type: 3}
---- !u!4 &305371857 stripped
-Transform:
+--- !u!224 &305371857 stripped
+RectTransform:
   m_CorrespondingSourceObject: {fileID: 2608125527145251105, guid: 1498db2abb30bc64fab3bf9d73a04f41,
     type: 3}
   m_PrefabInstance: {fileID: 305371856}
@@ -1742,6 +1742,7 @@ MonoBehaviour:
     type: 3}
   _networkPrefabsList: {fileID: 11400000, guid: a372b02f209e2544ea49525b31fab2e4,
     type: 2}
+  TM: {fileID: 0}
 --- !u!114 &744292521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13139,7 +13140,7 @@ PrefabInstance:
     - target: {fileID: 999410068770951093, guid: 1498db2abb30bc64fab3bf9d73a04f41,
         type: 3}
       propertyPath: m_CursorMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2608125527145251105, guid: 1498db2abb30bc64fab3bf9d73a04f41,
         type: 3}

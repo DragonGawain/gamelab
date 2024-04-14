@@ -10,6 +10,10 @@ public class GameManager : MonoBehaviour
     static Vector2 mousePosition;
     static Vector2 controllerMouseInput;
 
+    // static VirtualMouseInput vMouse;
+
+    static RectTransform rTransform;
+
     public static GameManager GMSingleton;
 
     private void Awake()
@@ -21,40 +25,37 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(this);
         physicalInputs = new Inputs();
         physicalInputs.Player.Enable(); // TODO:: for the record, this is a BAD idea - we do NOT want the player inptus enabled by default
+        // vMouse = GetComponent<VirtualMouseInput>();
+        rTransform = GetComponent<RectTransform>();
     }
 
     // Update is called once per frame
     void Update()
     {
         mousePosition = physicalInputs.Player.MousePos.ReadValue<Vector2>();
+        controllerMouseInput = physicalInputs.Player.MoveMouse.ReadValue<Vector2>();
         // mousePosition = new(
         //     Mouse.current.position.x.ReadValue(),
         //     Mouse.current.position.y.ReadValue()
         // );
-        // if (Application.isFocused)
-        // {
-        //     Vector2 oldMousePos = mousePosition;
-        //     controllerMouseInput = physicalInputs.Player.MoveMouse.ReadValue<Vector2>().normalized;
-        //     mousePosition += controllerMouseInput;
-        //     Debug.Log("C-input: " + controllerMouseInput);
-        //     // Debug.Log("diff: " + (mousePosition - oldMousePos));
-        //     Debug.Log("current mouse pos: " + mousePosition);
-        //     // // Lock mouse within window
-        //     // if (mousePosition.x > Screen.width)
-        //     //     mousePosition.x = Screen.width;
-        //     // if (mousePosition.x < 0)
-        //     //     mousePosition.x = 0;
+        if (controllerMouseInput.magnitude > 0)
+        {
+            Debug.Log(
+                "CONTROLER WAS USED THIS IS A REALLY LONG MESSAGE TO MAKE SURE THAT IT STANDS OUT AND THAT I SEE IT SO I'M JUST GOING TO KEEP ON TYPING FOR A WHILE AND TALK ABOUT SILLY THINGS OK I THINK THIS IS LONG ENOUGH."
+            );
+            mousePosition = new(rTransform.position.x, rTransform.position.y);
+            if (Application.isFocused)
+            {
+                Mouse.current.WarpCursorPosition(mousePosition);
+            }
+        }
 
-        //     // if (mousePosition.y > Screen.height)
-        //     //     mousePosition.y = Screen.height;
-        //     // if (mousePosition.y < 0)
-        //     //     mousePosition.y = 0;
-        //     Mouse.current.WarpCursorPosition(mousePosition);
-        // }
-        mousePosition = new(
-            mousePosition.x - (Screen.width / 2),
-            mousePosition.y - (Screen.height / 2)
-        );
+        rTransform.position = new(mousePosition.x, mousePosition.y, 0);
+        // mousePosition = new(
+        //     mousePosition.x - (Screen.width / 2),
+        //     mousePosition.y - (Screen.height / 2)
+        // );
+        Debug.Log(mousePosition);
     }
 
     public static Vector2 GetMousePosition()
