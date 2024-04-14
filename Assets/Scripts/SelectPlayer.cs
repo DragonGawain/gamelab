@@ -5,7 +5,6 @@ using Unity.Netcode;
 using UnityEditor.PackageManager;
 using UnityEngine;
 
-
 public class SelectPlayer : NetworkBehaviour
 {
     private UIManager uiManager;
@@ -42,7 +41,6 @@ public class SelectPlayer : NetworkBehaviour
     public bool lightConfirmed = false;
     public bool darkConfirmed = false;
 
-
     private GameObject player1;
     private GameObject player2;
     private GameObject selectedPlayer;
@@ -67,7 +65,6 @@ public class SelectPlayer : NetworkBehaviour
         darkLight.SetActive(false);
         lightReady.SetActive(false);
         darkReady.SetActive(false);
-
     }
 
     void Update()
@@ -149,7 +146,6 @@ public class SelectPlayer : NetworkBehaviour
 
             hostSelection = 1;
             selectedPlayer = player1;
-
         }
         else if (hostIcon.position == rightPosition.position) // If on right, move to middle
         {
@@ -164,7 +160,6 @@ public class SelectPlayer : NetworkBehaviour
             darkReady.SetActive(false);
             darkLight.SetActive(false);
             lightLight.SetActive(false);
-
         }
     }
 
@@ -182,11 +177,9 @@ public class SelectPlayer : NetworkBehaviour
 
             hostSelection = 0;
             selectedPlayer = player2;
-
         }
         else if (hostIcon.position == leftPosition.position) // If on left, move to middle
         {
-
             selectedPlayer = null;
             hostIcon.position = middlePosition.position;
             isInMiddle = true;
@@ -275,7 +268,6 @@ public class SelectPlayer : NetworkBehaviour
             animator.SetTrigger("Celebrate");
 
             Debug.Log(selectedPlayer + " animated");
-
         }
         else
         {
@@ -285,7 +277,7 @@ public class SelectPlayer : NetworkBehaviour
 
     private bool Confirm(ulong clientID)
     {
-        if(selectedPlayer != null)
+        if (selectedPlayer != null)
         {
             if (clientId == 0)
             {

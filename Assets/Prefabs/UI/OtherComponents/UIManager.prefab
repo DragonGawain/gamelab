@@ -45,8 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 545266784c9b2104fbe6b8c651102848, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainMenuCanvas: {fileID: 7446289835325007608, guid: 7721f585acbb8aa4e8a0a1c124a50616,
-    type: 3}
+  MainMenuCanvas: {fileID: 3730665949726729732}
   SettingsCanvas: {fileID: 1823369044455690042}
   ControlsCanvas: {fileID: 4198521412931627369}
   CreditsCanvas: {fileID: 9022850114125235575}
@@ -65,11 +64,6 @@ MonoBehaviour:
   RespawnPopup: {fileID: 8831722395849001436}
   hostButton: {fileID: 3034601218911400125}
   joinButton: {fileID: 7605920276750934576}
-  settingsButton: {fileID: 0}
-  controlsButton: {fileID: 0}
-  creditsButton: {fileID: 0}
-  pauseButton: {fileID: 0}
-  continueButton: {fileID: 0}
 --- !u!1001 &4886109876777270485
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -151,7 +145,7 @@ PrefabInstance:
     - target: {fileID: 3615781844141952671, guid: 192b8ff3643441b488f2227283314051,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ReturnToMainMenu
+      value: BackButton
       objectReference: {fileID: 0}
     - target: {fileID: 3675427998048098364, guid: 192b8ff3643441b488f2227283314051,
         type: 3}
@@ -383,6 +377,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: AllTheCanvases
       objectReference: {fileID: 0}
+    - target: {fileID: 8073564219385928401, guid: 192b8ff3643441b488f2227283314051,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -442,6 +441,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &3730665949726729732 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8073564219385928401, guid: 192b8ff3643441b488f2227283314051,
+    type: 3}
+  m_PrefabInstance: {fileID: 4886109876777270485}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4090869409073906062 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8866253984668253531, guid: 192b8ff3643441b488f2227283314051,
