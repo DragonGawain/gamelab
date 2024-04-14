@@ -12,9 +12,10 @@ using Sequence = DG.Tweening.Sequence;
 
 public class Enemy : NetworkBehaviour
 {
+    
     [SerializeField]
     public int health = 100;
-
+    
     [SerializeField]
     private int damage;
 
@@ -43,7 +44,7 @@ public class Enemy : NetworkBehaviour
         material = Instantiate(_renderer.material);
         _renderer.material = material;
         originalColor = material.color;
-
+        
         enemyAI = GetComponent<EnemyAI>();
     }
 
@@ -69,7 +70,18 @@ public class Enemy : NetworkBehaviour
     //Called by weapons/projectiles
     public virtual void OnHit(int dmg, string playerTag)
     {
+        print("ENEMY HIT");
+        if (IsServer)
+            onHitServerRpc(dmg, playerTag);
+    }
+
+    
+    
+    [ServerRpc]
+    void onHitServerRpc(int dmg, string playerTag)
+    {
         health -= dmg;
+        
         if (playerTag.CompareTo("DarkPlayer") == 0)
             enemyAI.setDarkPlayerTarget();
         else if (playerTag.CompareTo("LightPlayer") == 0)

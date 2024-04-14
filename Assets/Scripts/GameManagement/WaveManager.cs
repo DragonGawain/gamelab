@@ -58,6 +58,17 @@ public class WaveManager : NetworkBehaviour
     }
 
 
+    public override void OnNetworkSpawn()
+    {
+        base.OnNetworkSpawn();
+        if (!IsServer)
+        {
+            
+            enabled = false;
+            return;
+        }
+    }
+
     static void StartNextWave()
     {
         
@@ -185,6 +196,7 @@ public class WaveManager : NetworkBehaviour
             NetworkObject enemyNetwork = enemy.GetComponent<NetworkObject>();
             enemyNetwork.Spawn();
             
+            
             if (!hasET1Appeared && enemy.CompareTag("BasicEnemy"))
             {
                 hasET1Appeared = true;
@@ -202,7 +214,8 @@ public class WaveManager : NetworkBehaviour
             }
             if (voidIndeces.Contains(randomEnemyOrder[nbEnemiesSpawnedThisWave]))
                 enemy.GetComponent<Enemy>().ThisEnemyIsVoid();
-
+            
+            
             nbEnemiesSpawnedThisWave++;
         }
     }
