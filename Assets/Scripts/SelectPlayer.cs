@@ -4,39 +4,85 @@ using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEditor.PackageManager;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SelectPlayer : NetworkBehaviour
 {
     private UIManager uiManager;
 
     //Host Stuff
-    [SerializeField] private RectTransform hostIcon; // The transform of the selection icon
-    [SerializeField] private RectTransform leftPosition; // Position for Player 1 selection
-    [SerializeField] private RectTransform middlePosition; // Position for no selection
-    [SerializeField] private RectTransform rightPosition; // Position for Player 2 selection
-    [SerializeField] private RectTransform leftArrow;
-    [SerializeField] private RectTransform rightArrow;
-    [SerializeField] private RectTransform leftArrowMiddle;
-    [SerializeField] private RectTransform rightArrowMiddle;
-    [SerializeField] private RectTransform leftArrowRight;
-    [SerializeField] private RectTransform rightArrowLeft;
+    [SerializeField]
+    private RectTransform hostIcon; // The transform of the selection icon
+
+    [SerializeField]
+    private RectTransform leftPosition; // Position for Player 1 selection
+
+    [SerializeField]
+    private RectTransform middlePosition; // Position for no selection
+
+    [SerializeField]
+    private RectTransform rightPosition; // Position for Player 2 selection
+
+    [SerializeField]
+    private RectTransform leftArrow;
+
+    [SerializeField]
+    private RectTransform rightArrow;
+
+    [SerializeField]
+    private RectTransform leftArrowMiddle;
+
+    [SerializeField]
+    private RectTransform rightArrowMiddle;
+
+    [SerializeField]
+    private RectTransform leftArrowRight;
+
+    [SerializeField]
+    private RectTransform rightArrowLeft;
 
     //Client Stuff
-    [SerializeField] private RectTransform clientIcon; // The RectTransform of the client icon
-    [SerializeField] private RectTransform leftPositionClient; // Position for Player 1 selection
-    [SerializeField] private RectTransform middlePositionClient; // Position for no selection
-    [SerializeField] private RectTransform rightPositionClient; // Position for Player 2 selection
-    [SerializeField] private RectTransform leftArrowClient;
-    [SerializeField] private RectTransform rightArrowClient;
-    [SerializeField] private RectTransform leftArrowMiddleClient;
-    [SerializeField] private RectTransform rightArrowMiddleClient;
-    [SerializeField] private RectTransform leftArrowRightClient;
-    [SerializeField] private RectTransform rightArrowLeftClient;
+    [SerializeField]
+    private RectTransform clientIcon; // The RectTransform of the client icon
 
-    [SerializeField] private GameObject darkLight;
-    [SerializeField] private GameObject lightLight;
-    [SerializeField] private GameObject darkReady;
-    [SerializeField] private GameObject lightReady;
+    [SerializeField]
+    private RectTransform leftPositionClient; // Position for Player 1 selection
+
+    [SerializeField]
+    private RectTransform middlePositionClient; // Position for no selection
+
+    [SerializeField]
+    private RectTransform rightPositionClient; // Position for Player 2 selection
+
+    [SerializeField]
+    private RectTransform leftArrowClient;
+
+    [SerializeField]
+    private RectTransform rightArrowClient;
+
+    [SerializeField]
+    private RectTransform leftArrowMiddleClient;
+
+    [SerializeField]
+    private RectTransform rightArrowMiddleClient;
+
+    [SerializeField]
+    private RectTransform leftArrowRightClient;
+
+    [SerializeField]
+    private RectTransform rightArrowLeftClient;
+
+    [SerializeField]
+    private GameObject darkLight;
+
+    [SerializeField]
+    private GameObject lightLight;
+
+    [SerializeField]
+    private GameObject darkReady;
+
+    [SerializeField]
+    private GameObject lightReady;
 
     public bool lightConfirmed = false;
     public bool darkConfirmed = false;
@@ -70,7 +116,7 @@ public class SelectPlayer : NetworkBehaviour
     void Update()
     {
         //Set proper buttons/images
-        if(NetworkManager.Singleton.LocalClientId == 0)
+        if (NetworkManager.Singleton.LocalClientId == 0)
         {
             hostIcon.position = middlePosition.position; // Start in the middle
             leftArrow.position = leftArrowMiddle.position; // Start in the middle
@@ -80,7 +126,6 @@ public class SelectPlayer : NetworkBehaviour
             {
                 Debug.Log("Move left");
                 MoveLeft();
-
             }
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
@@ -97,7 +142,6 @@ public class SelectPlayer : NetworkBehaviour
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 MoveLeftClient();
-
             }
             else if (Input.GetKeyDown(KeyCode.RightArrow))
             {
@@ -126,10 +170,11 @@ public class SelectPlayer : NetworkBehaviour
             Debug.Log("both players confirmed");
             UIManager.closePlayerSelect = true;
             confirm = true;
+            darkConfirmed = false;
+            lightConfirmed = false;
             uiManager.ShowGameUI();
-
+            SceneManager.LoadScene("BUILD-SCENE");
         }
-
     }
 
     private void MoveLeft()
@@ -191,7 +236,6 @@ public class SelectPlayer : NetworkBehaviour
             darkReady.SetActive(false);
             lightLight.SetActive(false);
             darkLight.SetActive(false);
-
         }
     }
 
@@ -207,11 +251,9 @@ public class SelectPlayer : NetworkBehaviour
             isInMiddle = false;
             Selected(player1);
             selectedPlayer = player1;
-
         }
         else if (clientIcon.position == rightPositionClient.position) // If on right, move to middle
         {
-
             selectedPlayer = null;
             hostIcon.position = middlePositionClient.position;
             isInMiddle = true;
@@ -223,7 +265,6 @@ public class SelectPlayer : NetworkBehaviour
             darkReady.SetActive(false);
             darkLight.SetActive(false);
             lightLight.SetActive(false);
-
         }
     }
 
@@ -239,11 +280,9 @@ public class SelectPlayer : NetworkBehaviour
             isInMiddle = false;
             Selected(player2);
             selectedPlayer = player2;
-
         }
         else if (clientIcon.position == leftPositionClient.position) // If on left, move to middle
         {
-
             selectedPlayer = null;
             clientIcon.position = middlePositionClient.position;
             isInMiddle = true;
@@ -255,10 +294,8 @@ public class SelectPlayer : NetworkBehaviour
             darkReady.SetActive(false);
             lightLight.SetActive(false);
             darkLight.SetActive(false);
-
         }
     }
-
 
     private void Selected(GameObject selectedPlayer)
     {

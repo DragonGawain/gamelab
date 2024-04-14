@@ -28,6 +28,10 @@ public class WaveManager : MonoBehaviour
 
     static UIManager uim;
 
+    static bool hasET1Appeared = false;
+    static bool hasET2Appeared = false;
+    static bool hasET3Appeared = false;
+
     void Awake()
     {
         currentWave = 0;
@@ -167,6 +171,21 @@ public class WaveManager : MonoBehaviour
                 oldVoidHoles[Random.Range(0, oldVoidHoles.Count)].transform.position + Vector3.up,
                 Quaternion.identity
             );
+            if (!hasET1Appeared && enemy.CompareTag("BasicEnemy"))
+            {
+                hasET1Appeared = true;
+                uim.ShowEnemy1Popup();
+            }
+            if (!hasET2Appeared && enemy.CompareTag("ComboEnemy"))
+            {
+                hasET2Appeared = true;
+                uim.ShowEnemy2Popup();
+            }
+            if (!hasET3Appeared && enemy.CompareTag("VoidEnemy"))
+            {
+                hasET3Appeared = true;
+                uim.ShowEnemy3Popup();
+            }
             if (voidIndeces.Contains(randomEnemyOrder[nbEnemiesSpawnedThisWave]))
                 enemy.GetComponent<Enemy>().ThisEnemyIsVoid();
 

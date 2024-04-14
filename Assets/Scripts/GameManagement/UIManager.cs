@@ -110,17 +110,63 @@ public class UIManager : MonoBehaviour
         //MainCamera.enabled = true;
         //SelectCamera.enabled = false;
         hostButton.onClick.AddListener(ShowPlayerSelect);
-        hostButton.onClick.AddListener(() =>{NetworkManager.Singleton.StartHost();});
+        hostButton.onClick.AddListener(() =>
+        {
+            NetworkManager.Singleton.StartHost();
+        });
         joinButton.onClick.AddListener(ShowPlayerSelect);
-        joinButton.onClick.AddListener(() =>{NetworkManager.Singleton.StartClient();});
+        joinButton.onClick.AddListener(() =>
+        {
+            NetworkManager.Singleton.StartClient();
+        });
+        SceneManager.sceneLoaded += OnSceneLoaded;
         // settingsButton.onClick.AddListener(ShowSettings);
         // controlsButton.onClick.AddListener(ShowControls);
         // creditsButton.onClick.AddListener(ShowCredits);
         // pauseButton.onClick.AddListener(ShowPause);
         // continueButton.onClick.AddListener(unPause);
 
-        ShowCanvas(MainMenuCanvas);
-        pauseState = PauseState.ISONMAINMENU;
+        if (SceneManager.GetActiveScene().name.Equals("UI"))
+        {
+            Debug.Log("UI");
+            ShowCanvas(MainMenuCanvas);
+            pauseState = PauseState.ISONMAINMENU;
+        }
+        else if (SceneManager.GetActiveScene().name.Equals("BUILD-SCENE"))
+        {
+            Debug.Log("build");
+            ShowCanvas(GameCanvas);
+            pauseState = PauseState.ISPLAYING;
+        }
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        switch (scene.name)
+        {
+            case "UI":
+                Debug.Log("UI");
+                ShowCanvas(MainMenuCanvas);
+                pauseState = PauseState.ISONMAINMENU;
+                break;
+            case "BUILD-SCENE":
+                Debug.Log("build");
+                ShowCanvas(GameCanvas);
+                pauseState = PauseState.ISPLAYING;
+                break;
+        }
+        // if (scene.name.Equals("UI"))
+        // {
+        //     Debug.Log("UI");
+        //     ShowCanvas(MainMenuCanvas);
+        //     pauseState = PauseState.ISONMAINMENU;
+        // }
+        // else if (scene.name.Equals("BUILD-SCENE"))
+        // {
+        //     Debug.Log("build");
+        //     ShowCanvas(GameCanvas);
+        //     pauseState = PauseState.ISPLAYING;
+        // }
     }
 
     public void Update()
@@ -241,8 +287,8 @@ public class UIManager : MonoBehaviour
     {
         pauseState = PauseState.ISONMAINMENU;
         NetworkManager.Singleton.Shutdown();
-        ShowMainMenu();
         SceneManager.LoadScene("UI");
+        ShowMainMenu();
     }
 
     public void QuitGame()
@@ -254,21 +300,21 @@ public class UIManager : MonoBehaviour
     {
         Enemy1Popup.SetActive(true);
         PauseGame();
-        HideEnemyPopupAfterDelay(Enemy1Popup, 5f);
+        StartCoroutine(HideEnemyPopupAfterDelay(Enemy1Popup, 5f));
     }
 
     public void ShowEnemy2Popup()
     {
         Enemy2Popup.SetActive(true);
         PauseGame();
-        HideEnemyPopupAfterDelay(Enemy2Popup, 5f);
+        StartCoroutine(HideEnemyPopupAfterDelay(Enemy2Popup, 5f));
     }
 
     public void ShowEnemy3Popup()
     {
         Enemy3Popup.SetActive(true);
         PauseGame();
-        HideEnemyPopupAfterDelay(Enemy3Popup, 5f);
+        StartCoroutine(HideEnemyPopupAfterDelay(Enemy3Popup, 5f));
     }
 
     private IEnumerator HideEnemyPopupAfterDelay(GameObject enemyPopup, float delay)
