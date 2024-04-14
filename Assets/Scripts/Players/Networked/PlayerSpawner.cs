@@ -20,6 +20,8 @@ public class PlayerSpawner : NetworkBehaviour
 
     public static Action PlayerSpawn;
 
+    public TestingManager TM;
+
     public void Update()
     {
         
@@ -43,8 +45,10 @@ public class PlayerSpawner : NetworkBehaviour
         if (Input.GetKeyDown(KeyCode.X))
         {
             SpawnPlayerServerRpc(0, 0);
-            SpawnPlayerServerRpc(1, 1);
+            //SpawnPlayerServerRpc(1, 1);
             PlayerSpawn();
+            if (TM!=null){TM.enabled = true;}
+            
         }
     }
 
@@ -61,6 +65,7 @@ public class PlayerSpawner : NetworkBehaviour
     {
         _networkPrefabsList.PrefabList.Equals(prefabId);
 
+        
         if (prefabId == 0)
         {
             newPlayer = Instantiate(playerPrefabA);
@@ -68,6 +73,11 @@ public class PlayerSpawner : NetworkBehaviour
         else
         {
             newPlayer = Instantiate(playerPrefabB);
+        }
+        
+        if (clientId == 0 && TM != null)
+        {
+            TM.serverPlayer = newPlayer.GetComponent<PlayerTestScript>();
         }
 
         netObj = newPlayer.GetComponent<NetworkObject>();

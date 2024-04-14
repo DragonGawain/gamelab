@@ -293,14 +293,22 @@ namespace Players
                 enabled = false;
                 return;
             }
-
+            
             //Set camera to follow this player
-
             CameraFollow cameraFollow = cam.GetComponent<CameraFollow>();
             if (cameraFollow != null)
             {
                 cameraFollow.enabled = true;
                 cameraFollow.SetPlayer(this.transform);
+            }
+
+            if (IsServer)
+            {
+                
+            }
+            else
+            {
+                
             }
             //Destroy(this);
         }

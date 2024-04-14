@@ -70,7 +70,7 @@ public class Enemy : NetworkBehaviour
     //Called by weapons/projectiles
     public virtual void OnHit(int dmg, string playerTag)
     {
-        DisplayEnemyHealth.enemy = this;
+        
         
         if (IsServer)
             onHitServerRpc(dmg, playerTag);
@@ -81,6 +81,7 @@ public class Enemy : NetworkBehaviour
     [ServerRpc]
     void onHitServerRpc(int dmg, string playerTag)
     {
+        TestingManager.enemy = this;
         health -= dmg;
         
         if (playerTag.CompareTo("DarkPlayer") == 0)
@@ -90,6 +91,7 @@ public class Enemy : NetworkBehaviour
 
         if (health <= 0)
             OnDeath();
+        
 
         FlashRedClientRPC();
     }
