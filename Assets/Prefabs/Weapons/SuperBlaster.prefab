@@ -43,6 +43,8 @@ GameObject:
   - component: {fileID: 6219481544275177149}
   - component: {fileID: 3074997224190351735}
   - component: {fileID: 1512822032134379445}
+  - component: {fileID: -1366914263788376894}
+  - component: {fileID: -7096828896618493755}
   m_Layer: 0
   m_Name: SuperBlaster
   m_TagString: Untagged
@@ -80,7 +82,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84cad7d61a4e3c4488a5beef5bf1c1da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
   particles: {fileID: 8739562680303120971}
   bulletObject: {fileID: 619358578417660589, guid: bfd279b1eb9103246b50c5d42bd01aef,
     type: 3}
@@ -117,6 +118,58 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1.6773317, z: 3.206628}
   m_Center: {x: 0, y: 0.077997684, z: -0.50621617}
+--- !u!114 &-1366914263788376894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8973999602560017180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 3414095761
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 1
+  SceneMigrationSynchronization: 0
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 0
+--- !u!114 &-7096828896618493755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8973999602560017180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df2868252ab5c4d1da357e8f11f1b524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UseUnreliableDeltas: 0
+  SyncPositionX: 1
+  SyncPositionY: 1
+  SyncPositionZ: 1
+  SyncRotAngleX: 1
+  SyncRotAngleY: 1
+  SyncRotAngleZ: 1
+  SyncScaleX: 1
+  SyncScaleY: 1
+  SyncScaleZ: 1
+  PositionThreshold: 0.001
+  RotAngleThreshold: 0.01
+  ScaleThreshold: 0.01
+  UseQuaternionSynchronization: 0
+  UseQuaternionCompression: 0
+  UseHalfFloatPrecision: 0
+  InLocalSpace: 0
+  Interpolate: 1
+  SlerpPosition: 0
 --- !u!1001 &469696065056190118
 PrefabInstance:
   m_ObjectHideFlags: 0

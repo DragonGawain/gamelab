@@ -7,20 +7,17 @@ public class GameManager : MonoBehaviour
     Inputs physicalInputs;
     static Vector2 mousePosition;
 
-    // TODO:: THIS IS PURELY A DEBUG THING AND ***SHOULD NOT*** BE IN THE FINAL BUILD
-    [SerializeField, Range(0.001f, 2)]
-    float debugTimescale = 1;
+    public static GameManager GMSingleton;
 
     private void Awake()
     {
+        if (GMSingleton == null)
+            GMSingleton = this;
+        if (this != GMSingleton)
+            Destroy(this);
+        DontDestroyOnLoad(this);
         physicalInputs = new Inputs();
         physicalInputs.Player.Enable(); // TODO:: for the record, this is a BAD idea - we do NOT want the player inptus enabled by default
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        Time.timeScale = debugTimescale;
     }
 
     // Update is called once per frame
@@ -31,7 +28,6 @@ public class GameManager : MonoBehaviour
             mousePosition.x - (Screen.width / 2),
             mousePosition.y - (Screen.height / 2)
         );
-        Time.timeScale = debugTimescale;
     }
 
     public static Vector2 GetMousePosition()
@@ -60,7 +56,6 @@ public class GameManager : MonoBehaviour
         Debug.Log("players win!");
         //  TODO:: call this when you win to show the win screen
         //UIManager.ShowWinScreen();
-
     }
 
     public static void SetYouLose()
@@ -70,6 +65,5 @@ public class GameManager : MonoBehaviour
         Debug.Log("players lose :(");
         // TODO::  call this when you lose to show the lose screen
         //UIManager.ShowLoseScreen();
-
     }
 }

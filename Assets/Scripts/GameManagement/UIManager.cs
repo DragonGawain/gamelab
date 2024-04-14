@@ -6,54 +6,109 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    [Header("CAMERAS")]
+    private enum PauseState
+    {
+        ISONMAINMENU,
+        ISPLAYING
+    }
 
+    [Header("CAMERAS")]
     //[SerializeField] private Camera MainCamera;
     //[SerializeField] private Camera SelectCamera;
 
 
     [Header("CANVASES")]
+    [SerializeField]
+    private GameObject MainMenuCanvas;
 
-    [SerializeField] private GameObject MainMenuCanvas;
-    [SerializeField] private GameObject SettingsCanvas;
-    [SerializeField] private GameObject ControlsCanvas;
-    [SerializeField] private GameObject CreditsCanvas;
-    [SerializeField] private GameObject PlayerSelectCanvas;
-    [SerializeField] private GameObject PauseCanvas;
-    [SerializeField] private GameObject GameCanvas;
-    [SerializeField] private GameObject WinScreen;
-    [SerializeField] private GameObject LoseScreen;
+    [SerializeField]
+    private GameObject SettingsCanvas;
+
+    [SerializeField]
+    private GameObject ControlsCanvas;
+
+    [SerializeField]
+    private GameObject CreditsCanvas;
+
+    [SerializeField]
+    private GameObject PlayerSelectCanvas;
+
+    [SerializeField]
+    private GameObject PauseCanvas;
+
+    [SerializeField]
+    private GameObject GameCanvas;
+
+    [SerializeField]
+    private GameObject WinScreen;
+
+    [SerializeField]
+    private GameObject LoseScreen;
 
     [Header("POP UP")]
+    [SerializeField]
+    private GameObject Enemy1Popup;
 
-    [SerializeField] private GameObject Enemy1Popup;
-    [SerializeField] private GameObject Enemy2Popup;
-    [SerializeField] private GameObject Enemy3Popup;
-    [SerializeField] private GameObject WavePopup;
-    [SerializeField] private GameObject RespawnPopup;
+    [SerializeField]
+    private GameObject Enemy2Popup;
+
+    [SerializeField]
+    private GameObject Enemy3Popup;
+
+    [SerializeField]
+    private GameObject WavePopup;
+
+    [SerializeField]
+    private GameObject RespawnPopup;
 
     [Header("BUTTONS")]
+    [SerializeField]
+    private Button hostButton;
 
-    [SerializeField] private Button hostButton;
-    [SerializeField] private Button joinButton;
-    [SerializeField] private Button settingsButton;
-    [SerializeField] private Button controlsButton;
-    [SerializeField] private Button creditsButton;
-    [SerializeField] private Button pauseButton;
-    [SerializeField] private Button continueButton;
+    [SerializeField]
+    private Button joinButton;
 
+    [SerializeField]
+    private Button settingsButton;
 
+    [SerializeField]
+    private Button controlsButton;
+
+    [SerializeField]
+    private Button creditsButton;
+
+    [SerializeField]
+    private Button pauseButton;
+
+    [SerializeField]
+    private Button continueButton;
 
     public static bool closePlayerSelect = false;
 
+    static PauseState pauseState = PauseState.ISONMAINMENU;
+
+    public static UIManager UISingleton;
+
     private void Start()
     {
+        if (UISingleton == null)
+            UISingleton = this;
+        if (this != UISingleton)
+            Destroy(this);
+        DontDestroyOnLoad(this);
+
         //MainCamera.enabled = true;
         //SelectCamera.enabled = false;
         hostButton.onClick.AddListener(ShowPlayerSelect);
-        hostButton.onClick.AddListener(() => { NetworkManager.Singleton.StartHost();});
+        hostButton.onClick.AddListener(() =>
+        {
+            NetworkManager.Singleton.StartHost();
+        });
         joinButton.onClick.AddListener(ShowPlayerSelect);
-        joinButton.onClick.AddListener(() => { NetworkManager.Singleton.StartClient();});
+        joinButton.onClick.AddListener(() =>
+        {
+            NetworkManager.Singleton.StartClient();
+        });
         settingsButton.onClick.AddListener(ShowSettings);
         controlsButton.onClick.AddListener(ShowControls);
         creditsButton.onClick.AddListener(ShowCredits);
@@ -61,7 +116,7 @@ public class UIManager : MonoBehaviour
         continueButton.onClick.AddListener(unPause);
 
         ShowCanvas(MainMenuCanvas);
-
+        pauseState = PauseState.ISONMAINMENU;
     }
 
     public void Update()
@@ -72,10 +127,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    private void Awake()
-    {
-       
-    }
+    private void Awake() { }
 
     public void ShowCanvas(GameObject canvas)
     {
@@ -94,17 +146,13 @@ public class UIManager : MonoBehaviour
         WinScreen.SetActive(false);
         LoseScreen.SetActive(false);
 
-
         canvas.SetActive(true);
     }
-
- 
 
     public void ShowMainMenu()
     {
         ShowCanvas(MainMenuCanvas);
     }
-
 
     public void ShowSettings()
     {
@@ -143,7 +191,6 @@ public class UIManager : MonoBehaviour
         ShowCanvas(LoseScreen);
     }
 
-
     public void ShowPause()
     {
         ShowCanvas(PauseCanvas);
@@ -156,14 +203,14 @@ public class UIManager : MonoBehaviour
         ResumeGame();
     }
 
-    //CURRENTLY THESE DONT DO ANYTHING
+    //CURRENTLY THESE DONT DO ANYTHING - should work now (tee hee :P)
 
     public void PauseGame()
     {
         Time.timeScale = 0;
     }
 
-    //CURRENTLY THESE DONT DO ANYTHING
+    //CURRENTLY THESE DONT DO ANYTHING - should work now (tee hee :P)
 
     public void ResumeGame()
     {
@@ -176,12 +223,16 @@ public class UIManager : MonoBehaviour
         ShowMainMenu();
     }
 
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
     public void ShowEnemy1Popup()
     {
         Enemy1Popup.SetActive(true);
         PauseGame();
         HideEnemyPopupAfterDelay(Enemy1Popup, 5f);
-
     }
 
     public void ShowEnemy2Popup()
@@ -189,7 +240,6 @@ public class UIManager : MonoBehaviour
         Enemy2Popup.SetActive(true);
         PauseGame();
         HideEnemyPopupAfterDelay(Enemy2Popup, 5f);
-
     }
 
     public void ShowEnemy3Popup()
@@ -208,12 +258,10 @@ public class UIManager : MonoBehaviour
 
     public void ShowWavePopup()
     {
-
         //TODO:: DEPEND ON WAVE NUMBER
         WavePopup.SetActive(true);
         PauseGame();
         HideWavePopupAfterDelay(5f);
-        
     }
 
     private IEnumerator HideWavePopupAfterDelay(float delay)
@@ -227,15 +275,11 @@ public class UIManager : MonoBehaviour
     {
         RespawnPopup.SetActive(true);
         HideRespawnPopupAfterDelay(RespawnPopup, 5f);
-
     }
-
 
     private IEnumerator HideRespawnPopupAfterDelay(GameObject RespawnPopup, float delay)
     {
         yield return new WaitForSeconds(delay);
         RespawnPopup.SetActive(false);
     }
-
-
 }

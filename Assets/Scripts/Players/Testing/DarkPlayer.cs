@@ -55,30 +55,29 @@ namespace Players
 
             //Debug.Log(currentWeapon);
             base.Fire(ctx);
-            currentWeapon.OnFire();
+            RequestDarkFireServerRpc();
+        }
 
-            // If they fire with the Hammer
+        [ServerRpc]
+        void RequestDarkFireServerRpc()
+        {
+            DarkFireClientRpc();
+        }
+
+        [ClientRpc]
+        void DarkFireClientRpc()
+        {
             if (currentWeapon as StdHammer)
             {
-                // Player holds to fire
-                if (ctx.performed)
-                {
-                    //Debug.Log("on hammer attack");
-                    //this.animator.SetTrigger("OnHammerAttack");
-                    (currentWeapon as StdHammer).OnFire();
-                }
+                (currentWeapon as StdHammer).OnFire();
             }
             else if (currentWeapon as SuperHammer)
             {
-                // Player holds to fire
-                if (ctx.performed)
-                    (currentWeapon as SuperHammer).OnFire();
+                (currentWeapon as SuperHammer).OnFire();
             }
-            // If they fire with the grenadeLauncher
             else
             {
-                if (ctx.performed)
-                    (currentWeapon as GrenadeLauncher).OnFire();
+                (currentWeapon as GrenadeLauncher).OnFire();
             }
         }
 
@@ -91,11 +90,11 @@ namespace Players
             isHammerSuper = false;
             base.SwapWeapon(ctx);
             Debug.Log("dark swapped");
-            DarkSwapServerRpc();
+            RequestDarkSwapServerRpc();
         }
 
         [ServerRpc]
-        void DarkSwapServerRpc()
+        void RequestDarkSwapServerRpc()
         {
             DarkSwapClientRpc();
         }
@@ -103,16 +102,12 @@ namespace Players
         [ClientRpc]
         void DarkSwapClientRpc()
         {
-            Debug.Log("WHY DONT YOU RUN FFS");
             // Despawn current weapon
             Destroy(currentWeapon.gameObject);
+
             // If the current weapon is the hammer
             if (currentWeapon as Hammer)
             {
-                // Despawn current weapon
-
-                // (currentWeapon as Hammer).Destroy();
-
                 // Switch to the Grenade Launcher
                 AttachWeapon(grenadeLauncher, new(-1.1f, 3, -0.75f));
             }
@@ -155,18 +150,6 @@ namespace Players
                     AttachWeapon(hammer, new(-0.3f, 0, 0), true);
             }
         }
-
-        // protected override Vector3 GetMoveInput()
-        // {
-        //     Vector2 moveInput = physicalInputs.Player.DarkMove.ReadValue<Vector2>();
-        //     Vector3 dir =
-        //         new(
-        //             moveInput.x * acceleration + body.velocity.x,
-        //             0.0f,
-        //             moveInput.y * acceleration + body.velocity.z
-        //         );
-        //     return dir;
-        // }
 
         protected override void OnDeath()
         {

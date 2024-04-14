@@ -41,6 +41,7 @@ namespace Players
         //     physicalInputs.Player.LightFire.canceled -= LightFire;
         // }
 
+        bool firing = true;
         public override void Fire(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
         {
             //Prevent players from swapping each others weapons
@@ -48,28 +49,39 @@ namespace Players
                 return;
 
             base.Fire(ctx);
+            RequestLightFireServerRpc();
+        }
 
+        [ServerRpc]
+        void RequestLightFireServerRpc()
+        {
+            LightFireClientRpc();
+        }
+
+        [ClientRpc]
+        void LightFireClientRpc()
+        {
             // If they fire with the Flamethrower
             if (currentWeapon as Flamethrower)
             {
-                // Player holds to fire
-                if (ctx.performed)
+                if (firing)
                 {
+                    firing = false;
+                    Debug.Log("firing");
                     (currentWeapon as Flamethrower).OnFire();
                 }
                 // Player releases
-                else if (ctx.canceled)
+                else
                 {
+                    firing = true;
+                    Debug.Log("stoping");
                     (currentWeapon as Flamethrower).StopFire();
                 }
             }
             // If they fire with the Blaster
             else
             {
-                if (ctx.performed)
-                {
-                    (currentWeapon as Blaster).OnFire();
-                }
+                (currentWeapon as Blaster).OnFire();
             }
         }
 
