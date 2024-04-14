@@ -5,11 +5,12 @@ using DG.Tweening;
 using Unity.VisualScripting;
 using UnityEngine;
 using Players;
+using Unity.Netcode;
 using Weapons;
 using static ComboAttackManager;
 using Sequence = DG.Tweening.Sequence;
 
-public class Enemy : MonoBehaviour
+public class Enemy : NetworkBehaviour
 {
     [SerializeField]
     public int health = 100;

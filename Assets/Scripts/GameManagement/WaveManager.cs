@@ -181,6 +181,10 @@ public class WaveManager : NetworkBehaviour
                 oldVoidHoles[Random.Range(0, oldVoidHoles.Count)].transform.position + Vector3.up,
                 Quaternion.identity
             );
+
+            NetworkObject enemyNetwork = enemy.GetComponent<NetworkObject>();
+            enemyNetwork.Spawn();
+            
             if (!hasET1Appeared && enemy.CompareTag("BasicEnemy"))
             {
                 hasET1Appeared = true;
