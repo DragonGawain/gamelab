@@ -25,8 +25,7 @@ namespace Weapons
             soundEffect.Play();
             
             // play VFX
-            vfx.Play();
-            
+            vfx.Play();      
             
         }
     }
