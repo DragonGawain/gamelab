@@ -64,13 +64,14 @@ public class Enemy : NetworkBehaviour
     public virtual void OnHitByCombo(ComboAttackType attackType, int damage)
     {
         // Base implementation does nothing by default
-        FlashRed();
+        FlashRedClientRPC();
     }
 
     //Called by weapons/projectiles
     public virtual void OnHit(int dmg, string playerTag)
     {
-        print("ENEMY HIT");
+        DisplayEnemyHealth.enemy = this;
+        
         if (IsServer)
             onHitServerRpc(dmg, playerTag);
     }
@@ -90,9 +91,14 @@ public class Enemy : NetworkBehaviour
         if (health <= 0)
             OnDeath();
 
-        FlashRed();
+        FlashRedClientRPC();
     }
 
+    [ClientRpc]
+    void FlashRedClientRPC()
+    {
+        FlashRed();
+    }
     protected void FlashRed()
     {
         Sequence sequence = DOTween.Sequence();
@@ -109,6 +115,10 @@ public class Enemy : NetworkBehaviour
         {
             GameObject vo = Instantiate(voidHolePrefab, transform.position, Quaternion.identity);
             vo.transform.localScale = vo.transform.localScale;
+            
+            NetworkObject net_voidHole = vo.GetComponent<NetworkObject>();
+            net_voidHole.Spawn();
+
             WaveManager.VoidEnemyDied(vo);
         }
         Destroy(this.gameObject);
