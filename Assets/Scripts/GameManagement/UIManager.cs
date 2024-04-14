@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public enum PauseState
 {
@@ -56,7 +57,16 @@ public class UIManager : MonoBehaviour
     private GameObject Enemy3Popup;
 
     [SerializeField]
-    private GameObject WavePopup;
+    private GameObject WavePopup1;
+
+    [SerializeField]
+    private GameObject WavePopup2;
+
+    [SerializeField]
+    private GameObject WavePopup3;
+
+    [SerializeField]
+    private GameObject WavePopup4;
 
     [SerializeField]
     private GameObject RespawnPopup;
@@ -141,7 +151,10 @@ public class UIManager : MonoBehaviour
         Enemy1Popup.SetActive(false);
         Enemy2Popup.SetActive(false);
         Enemy3Popup.SetActive(false);
-        WavePopup.SetActive(false);
+        WavePopup1.SetActive(false);
+        WavePopup2.SetActive(false);
+        WavePopup3.SetActive(false);
+        WavePopup4.SetActive(false);
         RespawnPopup.SetActive(false);
         WinScreen.SetActive(false);
         LoseScreen.SetActive(false);
@@ -174,7 +187,7 @@ public class UIManager : MonoBehaviour
         ShowCanvas(PlayerSelectCanvas);
         // TODO:: pauseState should be set to ISPLAYING when the game actually starts, not when you've clicked the host/join button.
         // Alt: if the host/join screen has a back button, make it call a different method that also sets the pauseState
-        pauseState = PauseState.ISPLAYING;
+        // pauseState = PauseState.ISPLAYING;
     }
 
     public void ShowGameUI()
@@ -234,6 +247,7 @@ public class UIManager : MonoBehaviour
     {
         pauseState = PauseState.ISONMAINMENU;
         ShowMainMenu();
+        SceneManager.LoadScene("UI");
     }
 
     public void QuitGame()
@@ -269,25 +283,54 @@ public class UIManager : MonoBehaviour
         ResumeGame();
     }
 
-    public void ShowWavePopup()
+    public void ShowWavePopup(int waveNb)
     {
-        //TODO:: DEPEND ON WAVE NUMBER
-        WavePopup.SetActive(true);
+        switch (waveNb)
+        {
+            case 1:
+                WavePopup1.SetActive(true);
+                break;
+            case 2:
+                WavePopup2.SetActive(true);
+                break;
+            case 3:
+                WavePopup3.SetActive(true);
+                break;
+            case 4:
+                WavePopup4.SetActive(true);
+                break;
+        }
+
         PauseGame();
-        HideWavePopupAfterDelay(5f);
+        StartCoroutine(HideWavePopupAfterDelay(5f, waveNb));
     }
 
-    private IEnumerator HideWavePopupAfterDelay(float delay)
+    private IEnumerator HideWavePopupAfterDelay(float delay, int waveNb)
     {
         yield return new WaitForSeconds(delay);
-        WavePopup.SetActive(false); // Assuming WavePopup is a GameObject reference to the wave popup
+        // Assuming WavePopupX is a GameObject reference to the wave popup
+        switch (waveNb)
+        {
+            case 1:
+                WavePopup1.SetActive(false);
+                break;
+            case 2:
+                WavePopup2.SetActive(false);
+                break;
+            case 3:
+                WavePopup3.SetActive(false);
+                break;
+            case 4:
+                WavePopup4.SetActive(false);
+                break;
+        }
         ResumeGame();
     }
 
     public void ShowRespawnPopup()
     {
         RespawnPopup.SetActive(true);
-        HideRespawnPopupAfterDelay(RespawnPopup, 5f);
+        StartCoroutine(HideRespawnPopupAfterDelay(RespawnPopup, 5f));
     }
 
     private IEnumerator HideRespawnPopupAfterDelay(GameObject RespawnPopup, float delay)

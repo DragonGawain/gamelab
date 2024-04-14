@@ -26,12 +26,15 @@ public class WaveManager : MonoBehaviour
     static List<GameObject> oldVoidHoles = new();
     static List<GameObject> newVoidHoles = new();
 
+    static UIManager uim;
+
     void Awake()
     {
         currentWave = 0;
         enemyType1 = Resources.Load<GameObject>("EnemyType1");
         enemyType2 = Resources.Load<GameObject>("EnemyType2");
         enemyType3 = Resources.Load<GameObject>("EnemyType3");
+        uim = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
     }
 
     private void Start()
@@ -100,6 +103,7 @@ public class WaveManager : MonoBehaviour
         waveTimer = 0;
         nbEnemiesKilledThisWave = 0;
         nbEnemiesSpawnedThisWave = 0;
+        uim.ShowWavePopup(wave);
         switch (wave)
         {
             case 1:
