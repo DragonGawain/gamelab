@@ -29,7 +29,11 @@ public class GameManager : MonoBehaviour
         if (Application.isFocused)
         {
             controllerMouseInput = physicalInputs.Player.MoveMouse.ReadValue<Vector2>();
-            mousePosition += controllerMouseInput;
+            // mousePosition += controllerMouseInput;
+            mousePosition = new(
+                mousePosition.x + controllerMouseInput.x,
+                mousePosition.y + controllerMouseInput.y
+            );
             // // Lock mouse within window
             // if (mousePosition.x > Screen.width)
             //     mousePosition.x = Screen.width;
