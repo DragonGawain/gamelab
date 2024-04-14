@@ -9,7 +9,7 @@ public class DisplayEnemyHealth : NetworkBehaviour
 {
     // Start is called before the first frame update
 
-    private Enemy enemy;
+    public static Enemy enemy;
     
     private TextMeshProUGUI TMP;
     
@@ -28,13 +28,13 @@ public class DisplayEnemyHealth : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (enemy == null)
+        if (enemy != null)
         {
-            enemy = FindObjectOfType<Enemy>();
+            UpdateTextClientRpc(enemy.health);
         }
         else
         {
-            UpdateTextClientRpc(enemy.health);
+            UpdateTextClientRpc(0);
         }
     }
 
