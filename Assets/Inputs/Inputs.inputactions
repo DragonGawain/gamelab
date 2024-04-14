@@ -69,24 +69,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "LightSwap",
-                    "type": "Button",
-                    "id": "867a9082-f529-46eb-be29-331397244d9b",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "DarkSwap",
-                    "type": "Button",
-                    "id": "454255e9-f780-421f-a842-36158ce00cf0",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "MousePos",
                     "type": "Value",
                     "id": "9d6c6c02-0e03-402b-9a30-e1eb205a00b2",
@@ -438,33 +420,33 @@
                 },
                 {
                     "name": "",
-                    "id": "1992d817-9985-45fb-83d6-8eacb5d20a2e",
-                    "path": "<Keyboard>/q",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "LightSwap",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "70843382-b6bc-4af7-986d-5e878973d73f",
-                    "path": "<Keyboard>/e",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "DarkSwap",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "7ecab38e-6518-4b44-9d41-34e6d968cc11",
                     "path": "<Mouse>/position",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
+                    "action": "MousePos",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e3c42d4f-fe08-41db-bafa-282b5150a7da",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "MousePos",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "50ea1c11-3dd4-4190-a28c-3eb081fbd25e",
+                    "path": "<DualShockGamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
                     "action": "MousePos",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -487,6 +469,28 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
+                    "action": "DarkFire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b1b9d46d-6ce8-4604-be87-03d19ebf8719",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "DarkFire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "31d0beb7-d936-4aff-8311-74784b22e6c4",
+                    "path": "<DualShockGamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
                     "action": "DarkFire",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -520,6 +524,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Joystick",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4563c68e-b1f6-455a-bbd9-28176c3efa83",
+                    "path": "<DualShockGamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
                     "action": "Look",
                     "isComposite": false,
                     "isPartOfComposite": false
