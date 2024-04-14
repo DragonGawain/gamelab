@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -26,26 +27,30 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         mousePosition = physicalInputs.Player.MousePos.ReadValue<Vector2>();
-        if (Application.isFocused)
-        {
-            controllerMouseInput = (physicalInputs.Player.MoveMouse.ReadValue<Vector2>()).normalized;
-            mousePosition += controllerMouseInput;
-            // mousePosition = new(
-            //     mousePosition.x + controllerMouseInput.x,
-            //     mousePosition.y + controllerMouseInput.y
-            // );
-            // // Lock mouse within window
-            // if (mousePosition.x > Screen.width)
-            //     mousePosition.x = Screen.width;
-            // if (mousePosition.x < 0)
-            //     mousePosition.x = 0;
+        // mousePosition = new(
+        //     Mouse.current.position.x.ReadValue(),
+        //     Mouse.current.position.y.ReadValue()
+        // );
+        // if (Application.isFocused)
+        // {
+        //     Vector2 oldMousePos = mousePosition;
+        //     controllerMouseInput = physicalInputs.Player.MoveMouse.ReadValue<Vector2>().normalized;
+        //     mousePosition += controllerMouseInput;
+        //     Debug.Log("C-input: " + controllerMouseInput);
+        //     // Debug.Log("diff: " + (mousePosition - oldMousePos));
+        //     Debug.Log("current mouse pos: " + mousePosition);
+        //     // // Lock mouse within window
+        //     // if (mousePosition.x > Screen.width)
+        //     //     mousePosition.x = Screen.width;
+        //     // if (mousePosition.x < 0)
+        //     //     mousePosition.x = 0;
 
-            // if (mousePosition.y > Screen.height)
-            //     mousePosition.y = Screen.height;
-            // if (mousePosition.y < 0)
-            //     mousePosition.y = 0;
-            Mouse.current.WarpCursorPosition(mousePosition);
-        }
+        //     // if (mousePosition.y > Screen.height)
+        //     //     mousePosition.y = Screen.height;
+        //     // if (mousePosition.y < 0)
+        //     //     mousePosition.y = 0;
+        //     Mouse.current.WarpCursorPosition(mousePosition);
+        // }
         mousePosition = new(
             mousePosition.x - (Screen.width / 2),
             mousePosition.y - (Screen.height / 2)

@@ -12148,6 +12148,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3730665949726729732, guid: ffff310cd6cd9df4487f5fff607940b4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4095694120614459773, guid: ffff310cd6cd9df4487f5fff607940b4,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -12407,6 +12412,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9165599204768329142, guid: ffff310cd6cd9df4487f5fff607940b4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9200841305514507329, guid: ffff310cd6cd9df4487f5fff607940b4,
         type: 3}
@@ -13126,6 +13136,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 999410068770951093, guid: 1498db2abb30bc64fab3bf9d73a04f41,
+        type: 3}
+      propertyPath: m_CursorMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2608125527145251105, guid: 1498db2abb30bc64fab3bf9d73a04f41,
         type: 3}
       propertyPath: m_LocalPosition.x
