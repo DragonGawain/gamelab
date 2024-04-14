@@ -230,6 +230,7 @@ public class UIManager : MonoBehaviour
     {
         ShowCanvas(PlayerSelectCanvas);
         selectPlayer.ResetPositions();
+        SceneManager.LoadScene("BUILD-SCENE");
         // TODO:: pauseState should be set to ISPLAYING when the game actually starts, not when you've clicked the host/join button.
         // Alt: if the host/join screen has a back button, make it call a different method that also sets the pauseState
         // pauseState = PauseState.ISPLAYING;
