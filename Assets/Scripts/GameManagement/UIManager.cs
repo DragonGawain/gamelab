@@ -78,20 +78,20 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private Button joinButton;
 
-    [SerializeField]
-    private Button settingsButton;
+    // [SerializeField]
+    // private Button settingsButton;
 
-    [SerializeField]
-    private Button controlsButton;
+    // [SerializeField]
+    // private Button controlsButton;
 
-    [SerializeField]
-    private Button creditsButton;
+    // [SerializeField]
+    // private Button creditsButton;
 
-    [SerializeField]
-    private Button pauseButton;
+    // [SerializeField]
+    // private Button pauseButton;
 
-    [SerializeField]
-    private Button continueButton;
+    // [SerializeField]
+    // private Button continueButton;
 
     public static bool closePlayerSelect = false;
 
@@ -119,11 +119,11 @@ public class UIManager : MonoBehaviour
         {
             NetworkManager.Singleton.StartClient();
         });
-        settingsButton.onClick.AddListener(ShowSettings);
-        controlsButton.onClick.AddListener(ShowControls);
-        creditsButton.onClick.AddListener(ShowCredits);
-        pauseButton.onClick.AddListener(ShowPause);
-        continueButton.onClick.AddListener(unPause);
+        // settingsButton.onClick.AddListener(ShowSettings);
+        // controlsButton.onClick.AddListener(ShowControls);
+        // creditsButton.onClick.AddListener(ShowCredits);
+        // pauseButton.onClick.AddListener(ShowPause);
+        // continueButton.onClick.AddListener(unPause);
 
         ShowCanvas(MainMenuCanvas);
         pauseState = PauseState.ISONMAINMENU;
