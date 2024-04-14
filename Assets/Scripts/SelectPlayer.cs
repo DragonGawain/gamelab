@@ -4,31 +4,56 @@ using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEditor.PackageManager;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 public class SelectPlayer : NetworkBehaviour
 {
-
     private UIManager uiManager;
 
-    [SerializeField] private RectTransform selectionIcon; // The transform of the selection icon
-    [SerializeField] private RectTransform leftPosition; // Position for Player 1 selection
-    [SerializeField] private RectTransform middlePosition; // Position for no selection
-    [SerializeField] private RectTransform rightPosition; // Position for Player 2 selection
-    [SerializeField] private RectTransform leftArrow;
-    [SerializeField] private RectTransform rightArrow;
-    [SerializeField] private RectTransform leftArrowMiddle;
-    [SerializeField] private RectTransform rightArrowMiddle;
-    [SerializeField] private RectTransform leftArrowRight;
-    [SerializeField] private RectTransform rightArrowLeft;
-    [SerializeField] private GameObject darkLight;
-    [SerializeField] private GameObject lightLight;
-    [SerializeField] private GameObject darkReady;
-    [SerializeField] private GameObject lightReady;
+    [SerializeField]
+    private RectTransform selectionIcon; // The transform of the selection icon
+
+    [SerializeField]
+    private RectTransform leftPosition; // Position for Player 1 selection
+
+    [SerializeField]
+    private RectTransform middlePosition; // Position for no selection
+
+    [SerializeField]
+    private RectTransform rightPosition; // Position for Player 2 selection
+
+    [SerializeField]
+    private RectTransform leftArrow;
+
+    [SerializeField]
+    private RectTransform rightArrow;
+
+    [SerializeField]
+    private RectTransform leftArrowMiddle;
+
+    [SerializeField]
+    private RectTransform rightArrowMiddle;
+
+    [SerializeField]
+    private RectTransform leftArrowRight;
+
+    [SerializeField]
+    private RectTransform rightArrowLeft;
+
+    [SerializeField]
+    private GameObject darkLight;
+
+    [SerializeField]
+    private GameObject lightLight;
+
+    [SerializeField]
+    private GameObject darkReady;
+
+    [SerializeField]
+    private GameObject lightReady;
 
     public bool lightConfrimed = false;
     public bool darkConfrimed = false;
-
 
     private GameObject player1;
     private GameObject player2;
@@ -44,9 +69,8 @@ public class SelectPlayer : NetworkBehaviour
 
     void Start()
     {
-
-
-        uiManager = FindObjectOfType<UIManager>();
+        // uiManager = FindObjectOfType<UIManager>();
+        uiManager = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
 
         // Initialize player GameObjects
         player1 = GameObject.FindGameObjectWithTag("DarkSelect");
@@ -58,7 +82,6 @@ public class SelectPlayer : NetworkBehaviour
         darkLight.SetActive(false);
         lightReady.SetActive(false);
         darkReady.SetActive(false);
-
     }
 
     void Update()
@@ -71,7 +94,6 @@ public class SelectPlayer : NetworkBehaviour
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             MoveLeft();
-
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
@@ -83,7 +105,6 @@ public class SelectPlayer : NetworkBehaviour
             darkReady.SetActive(true);
             darkConfrimed = true;
             uiManager.ShowGameUI();
-
         }
 
         if (selectedPlayer == player2 && Input.GetKeyDown(KeyCode.X))
@@ -92,23 +113,20 @@ public class SelectPlayer : NetworkBehaviour
             lightConfrimed = true;
         }
 
-
         {
-
             //    if (Confirm(0) && Confirm(1)) //(Confirm(0) && (clientId == 1 && Confirm(1)))
-            
-                if (lightConfrimed && darkConfrimed)
+
+            if (lightConfrimed && darkConfrimed)
             {
                 Debug.Log("both players confirmed");
                 UIManager.closePlayerSelect = true;
                 confirm = true;
                 uiManager.ShowGameUI();
-
+                lightConfrimed = false;
+                darkConfrimed = false;
+                SceneManager.LoadScene("BUILD-SCENE");
             }
-                
-            
         }
-
     }
 
     private void MoveLeft()
@@ -123,29 +141,25 @@ public class SelectPlayer : NetworkBehaviour
             isInMiddle = false;
             Selected(player1);
 
-
             if (clientId == 0)
             {
                 hostSelection = 1;
             }
             selectedPlayer = player1;
-
         }
         else if (selectionIcon.position == rightPosition.position) // If on right, move to middle
         {
-
             selectedPlayer = null;
             selectionIcon.position = middlePosition.position;
             isInMiddle = true;
-            leftArrow.position = leftArrowMiddle.position; 
-            rightArrow.position = rightArrowMiddle.position; 
+            leftArrow.position = leftArrowMiddle.position;
+            rightArrow.position = rightArrowMiddle.position;
             leftArrow.gameObject.SetActive(true);
             rightArrow.gameObject.SetActive(true);
             lightReady.SetActive(false);
             darkReady.SetActive(false);
             darkLight.SetActive(false);
             lightLight.SetActive(false);
-
         }
     }
 
@@ -166,11 +180,9 @@ public class SelectPlayer : NetworkBehaviour
                 hostSelection = 0;
             }
             selectedPlayer = player2;
-
         }
         else if (selectionIcon.position == leftPosition.position) // If on left, move to middle
         {
-
             selectedPlayer = null;
             selectionIcon.position = middlePosition.position;
             isInMiddle = true;
@@ -182,8 +194,6 @@ public class SelectPlayer : NetworkBehaviour
             darkReady.SetActive(false);
             lightLight.SetActive(false);
             darkLight.SetActive(false);
-
-
         }
     }
 
@@ -195,7 +205,6 @@ public class SelectPlayer : NetworkBehaviour
             animator.SetTrigger("Celebrate");
 
             Debug.Log(selectedPlayer + " animated");
-
         }
         else
         {
@@ -205,7 +214,7 @@ public class SelectPlayer : NetworkBehaviour
 
     private bool Confirm(ulong clientID)
     {
-        if(selectedPlayer != null)
+        if (selectedPlayer != null)
         {
             if (clientId == 0)
             {

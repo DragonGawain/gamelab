@@ -119,14 +119,54 @@ public class UIManager : MonoBehaviour
         {
             NetworkManager.Singleton.StartClient();
         });
+        SceneManager.sceneLoaded += OnSceneLoaded;
         // settingsButton.onClick.AddListener(ShowSettings);
         // controlsButton.onClick.AddListener(ShowControls);
         // creditsButton.onClick.AddListener(ShowCredits);
         // pauseButton.onClick.AddListener(ShowPause);
         // continueButton.onClick.AddListener(unPause);
 
-        ShowCanvas(MainMenuCanvas);
-        pauseState = PauseState.ISONMAINMENU;
+        if (SceneManager.GetActiveScene().name.Equals("UI"))
+        {
+            Debug.Log("UI");
+            ShowCanvas(MainMenuCanvas);
+            pauseState = PauseState.ISONMAINMENU;
+        }
+        else if (SceneManager.GetActiveScene().name.Equals("BUILD-SCENE"))
+        {
+            Debug.Log("build");
+            ShowCanvas(GameCanvas);
+            pauseState = PauseState.ISPLAYING;
+        }
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        switch (scene.name)
+        {
+            case "UI":
+                Debug.Log("UI");
+                ShowCanvas(MainMenuCanvas);
+                pauseState = PauseState.ISONMAINMENU;
+                break;
+            case "BUILD-SCENE":
+                Debug.Log("build");
+                ShowCanvas(GameCanvas);
+                pauseState = PauseState.ISPLAYING;
+                break;
+        }
+        // if (scene.name.Equals("UI"))
+        // {
+        //     Debug.Log("UI");
+        //     ShowCanvas(MainMenuCanvas);
+        //     pauseState = PauseState.ISONMAINMENU;
+        // }
+        // else if (scene.name.Equals("BUILD-SCENE"))
+        // {
+        //     Debug.Log("build");
+        //     ShowCanvas(GameCanvas);
+        //     pauseState = PauseState.ISPLAYING;
+        // }
     }
 
     public void Update()
