@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class WaveManager : MonoBehaviour
+public class WaveManager : NetworkBehaviour
 {
     static int currentWave = 0;
     static Dictionary<int, GameObject> enemyList = new();
@@ -32,16 +33,21 @@ public class WaveManager : MonoBehaviour
     static bool hasET2Appeared = false;
     static bool hasET3Appeared = false;
 
+    private bool gameStart = false;
+
     void Awake()
     {
         currentWave = 0;
         enemyType1 = Resources.Load<GameObject>("EnemyType1");
         enemyType2 = Resources.Load<GameObject>("EnemyType2");
         enemyType3 = Resources.Load<GameObject>("EnemyType3");
-        uim = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
-    }
+        //uim = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
 
-    private void Start()
+        PlayerSpawner.PlayerSpawn += StartNextWave;
+        PlayerSpawner.PlayerSpawn += () => gameStart = true;
+    }
+    
+    void Start()
     {
         // prime oldVoidHoles with the VOs in the scene
         GameObject[] vos = GameObject.FindGameObjectsWithTag("VoidHole");
@@ -49,14 +55,15 @@ public class WaveManager : MonoBehaviour
         {
             newVoidHoles.Add(vo);
         }
-        StartNextWave();
     }
+
 
     static void StartNextWave()
     {
+        Debug.Log("GAME START");
         //  TODO:: at the start of each wave, show a new wave pop up
         //UIManager.ShowWavePopup();
-
+        
         foreach (GameObject oldVo in oldVoidHoles)
         {
             Destroy(oldVo);
@@ -107,7 +114,7 @@ public class WaveManager : MonoBehaviour
         waveTimer = 0;
         nbEnemiesKilledThisWave = 0;
         nbEnemiesSpawnedThisWave = 0;
-        uim.ShowWavePopup(wave);
+        //uim.ShowWavePopup(wave);
         switch (wave)
         {
             case 1:
@@ -155,6 +162,9 @@ public class WaveManager : MonoBehaviour
 
     private void FixedUpdate()
     {
+        Debug.Log(gameStart);
+        if (!gameStart){ return;}
+        
         waveTimer++;
         if (nbEnemiesSpawnedThisWave < nbEnemies && (waveTimer % (totalWaveTime / nbEnemies)) == 0)
         {
@@ -174,17 +184,17 @@ public class WaveManager : MonoBehaviour
             if (!hasET1Appeared && enemy.CompareTag("BasicEnemy"))
             {
                 hasET1Appeared = true;
-                uim.ShowEnemy1Popup();
+                //uim.ShowEnemy1Popup();
             }
             if (!hasET2Appeared && enemy.CompareTag("ComboEnemy"))
             {
                 hasET2Appeared = true;
-                uim.ShowEnemy2Popup();
+                //uim.ShowEnemy2Popup();
             }
             if (!hasET3Appeared && enemy.CompareTag("VoidEnemy"))
             {
                 hasET3Appeared = true;
-                uim.ShowEnemy3Popup();
+                //uim.ShowEnemy3Popup();
             }
             if (voidIndeces.Contains(randomEnemyOrder[nbEnemiesSpawnedThisWave]))
                 enemy.GetComponent<Enemy>().ThisEnemyIsVoid();

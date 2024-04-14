@@ -18,6 +18,8 @@ public class PlayerSpawner : NetworkBehaviour
     private int hostOption;
     private int clientOption;
 
+    public static Action PlayerSpawn;
+
     public void Update()
     {
         
@@ -42,6 +44,7 @@ public class PlayerSpawner : NetworkBehaviour
         {
             SpawnPlayerServerRpc(0, 1);
             SpawnPlayerServerRpc(1, 0);
+            PlayerSpawn();
         }
     }
 
