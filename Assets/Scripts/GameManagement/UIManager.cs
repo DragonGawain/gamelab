@@ -78,6 +78,10 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private Button joinButton;
 
+    [Header("OTHER")]
+    [SerializeField]
+    private SelectPlayer selectPlayer;
+
     // [SerializeField]
     // private Button settingsButton;
 
@@ -225,6 +229,7 @@ public class UIManager : MonoBehaviour
     public void ShowPlayerSelect()
     {
         ShowCanvas(PlayerSelectCanvas);
+        selectPlayer.ResetPositions();
         // TODO:: pauseState should be set to ISPLAYING when the game actually starts, not when you've clicked the host/join button.
         // Alt: if the host/join screen has a back button, make it call a different method that also sets the pauseState
         // pauseState = PauseState.ISPLAYING;

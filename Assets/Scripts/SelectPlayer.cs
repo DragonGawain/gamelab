@@ -102,9 +102,6 @@ public class SelectPlayer : NetworkBehaviour
     private bool DarkSelected = false;
     private bool LightSelected = false;
 
-
-
-
     void Start()
     {
         uiManager = FindObjectOfType<UIManager>();
@@ -126,42 +123,48 @@ public class SelectPlayer : NetworkBehaviour
         darkReady.SetActive(false);
     }
 
+    public void ResetPositions()
+    {
+        hostIcon.position = middlePosition.position; // Start in the middle
+        leftArrow.position = leftArrowMiddle.position; // Start in the middle
+        rightArrow.position = rightArrowMiddle.position; // Start in the middle
+        clientIcon.position = middlePositionClient.position; // Start in the middle
+        leftArrowClient.position = leftArrowMiddleClient.position; // Start in the middle
+        rightArrowClient.position = rightArrowMiddleClient.position; // Start in the middle
+
+        lightLight.SetActive(false);
+        darkLight.SetActive(false);
+        lightReady.SetActive(false);
+        darkReady.SetActive(false);
+    }
+
     void Update()
     {
         //Set proper buttons/images
         if (NetworkManager.Singleton.LocalClientId == 0)
         {
-           
-
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 Debug.Log("Move left");
                 MoveLeft();
-
             }
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
                 MoveRight();
                 Debug.Log("Move right");
-
-              
             }
         }
         else
         {
-            
-
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 MoveLeftClient();
                 Debug.Log("client Move left");
-
             }
             else if (Input.GetKeyDown(KeyCode.RightArrow))
             {
                 MoveRightClient();
                 Debug.Log("client Move right");
-
             }
         }
 

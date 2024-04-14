@@ -726,6 +726,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1363191360}
     m_Modifications:
+    - target: {fileID: 2445563050489154412, guid: 3412cbc85eebefd49b2f64d65f316190,
+        type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 358423210
+      objectReference: {fileID: 0}
     - target: {fileID: 6480600198031667789, guid: 3412cbc85eebefd49b2f64d65f316190,
         type: 3}
       propertyPath: m_Name
@@ -7040,6 +7045,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1363191360}
     m_Modifications:
+    - target: {fileID: 2445563050489154412, guid: 3412cbc85eebefd49b2f64d65f316190,
+        type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 1759021543
+      objectReference: {fileID: 0}
     - target: {fileID: 6480600198031667789, guid: 3412cbc85eebefd49b2f64d65f316190,
         type: 3}
       propertyPath: m_Name
@@ -11993,6 +12003,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 599975534}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1632910948 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5626191699776909358, guid: ffff310cd6cd9df4487f5fff607940b4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1658019352}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52d7e670e9c4744fc999790dcc22e077, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1658019352
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12096,6 +12118,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3330010360131345909, guid: ffff310cd6cd9df4487f5fff607940b4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4121089198218821099, guid: ffff310cd6cd9df4487f5fff607940b4,
         type: 3}
       propertyPath: m_IsActive
@@ -12176,6 +12203,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6659637372275666350, guid: ffff310cd6cd9df4487f5fff607940b4,
+        type: 3}
+      propertyPath: selectPlayer
+      value: 
+      objectReference: {fileID: 1632910948}
     - target: {fileID: 6681552950954911143, guid: ffff310cd6cd9df4487f5fff607940b4,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
