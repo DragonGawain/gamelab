@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Localization.Settings;
 
 public class LanguageSettings : MonoBehaviour
 {
@@ -8,7 +9,8 @@ public class LanguageSettings : MonoBehaviour
     public Button rightArrow;
     public TextMeshProUGUI currentLanguageText;
 
-    private string [] languages = {"English", "French", "Turkish"};
+    // private string[] languages = { "English", "French" };
+    int localeID = 0;
 
     void Start()
     {
@@ -24,34 +26,39 @@ public class LanguageSettings : MonoBehaviour
 
     public void ChangeLanguageLeft()
     {
-       if(currentLanguageText.text == languages[0])
-        {
-            currentLanguageText.text = languages[1];
-        }
-       if(currentLanguageText.text == languages[1])
-        {
-            currentLanguageText.text = languages[2];
-        }
-        if (currentLanguageText.text == languages[2])
-        {
-            currentLanguageText.text = languages[0];
-        }
+        localeID--;
+        if (localeID < 0)
+            localeID = 1;
+        SetLocale(localeID);
     }
 
     public void ChangeLanguageRight()
     {
-        if (currentLanguageText.text == languages[0])
-        {
-            currentLanguageText.text = languages[2];
-        }
-        if (currentLanguageText.text == languages[1])
-        {
-            currentLanguageText.text = languages[0];
-        }
-        if (currentLanguageText.text == languages[2])
-        {
-            currentLanguageText.text = languages[1];
-        }
+        localeID++;
+        if (localeID > 2)
+            localeID = 0;
+        SetLocale(localeID);
     }
 
+    void SetLocale(int locale)
+    {
+        switch (locale)
+        {
+            case 0:
+                LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[
+                    0
+                ];
+                break;
+            case 1:
+                LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[
+                    1
+                ];
+                break;
+            case 2:
+                LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[
+                    2
+                ];
+                break;
+        }
+    }
 }

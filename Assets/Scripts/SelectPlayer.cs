@@ -192,7 +192,6 @@ public class SelectPlayer : NetworkBehaviour
             darkConfirmed = false;
             lightConfirmed = false;
             uiManager.ShowGameUI();
-            SceneManager.LoadScene("BUILD-SCENE");
         }
     }
 
