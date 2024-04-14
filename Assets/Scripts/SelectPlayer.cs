@@ -194,6 +194,7 @@ public class SelectPlayer : NetworkBehaviour
         }
         else if (hostIcon.position == rightPosition.position) // If on right, move to middle
         {
+            Debug.Log("Move left - From Right to Middle");
             selectedPlayer = null;
             hostIcon.position = middlePosition.position;
             isInMiddle = true;
@@ -225,6 +226,8 @@ public class SelectPlayer : NetworkBehaviour
         }
         else if (hostIcon.position == leftPosition.position) // If on left, move to middle
         {
+            Debug.Log("Move right - From Left to Middle");
+
             selectedPlayer = null;
             hostIcon.position = middlePosition.position;
             isInMiddle = true;
@@ -254,6 +257,8 @@ public class SelectPlayer : NetworkBehaviour
         }
         else if (clientIcon.position == rightPositionClient.position) // If on right, move to middle
         {
+            Debug.Log("CLIENT Move left - From Right to Middle");
+
             selectedPlayer = null;
             hostIcon.position = middlePositionClient.position;
             isInMiddle = true;
@@ -283,6 +288,8 @@ public class SelectPlayer : NetworkBehaviour
         }
         else if (clientIcon.position == leftPositionClient.position) // If on left, move to middle
         {
+            Debug.Log("CLIENT Move right - From Left to Middle");
+
             selectedPlayer = null;
             clientIcon.position = middlePositionClient.position;
             isInMiddle = true;
