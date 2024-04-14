@@ -11,16 +11,16 @@ public class SelectPlayer : NetworkBehaviour
 
     private UIManager uiManager;
 
-    [SerializeField] private Transform selectionIcon; // The transform of the selection icon
-    [SerializeField] private Transform leftPosition; // Position for Player 1 selection
-    [SerializeField] private Transform middlePosition; // Position for no selection
-    [SerializeField] private Transform rightPosition; // Position for Player 2 selection
-    [SerializeField] private Transform leftArrow;
-    [SerializeField] private Transform rightArrow;
-    [SerializeField] private Transform leftArrowMiddle;
-    [SerializeField] private Transform rightArrowMiddle;
-    [SerializeField] private Transform leftArrowRight;
-    [SerializeField] private Transform rightArrowLeft;
+    [SerializeField] private RectTransform selectionIcon; // The transform of the selection icon
+    [SerializeField] private RectTransform leftPosition; // Position for Player 1 selection
+    [SerializeField] private RectTransform middlePosition; // Position for no selection
+    [SerializeField] private RectTransform rightPosition; // Position for Player 2 selection
+    [SerializeField] private RectTransform leftArrow;
+    [SerializeField] private RectTransform rightArrow;
+    [SerializeField] private RectTransform leftArrowMiddle;
+    [SerializeField] private RectTransform rightArrowMiddle;
+    [SerializeField] private RectTransform leftArrowRight;
+    [SerializeField] private RectTransform rightArrowLeft;
     [SerializeField] private GameObject darkLight;
     [SerializeField] private GameObject lightLight;
     [SerializeField] private GameObject darkReady;
