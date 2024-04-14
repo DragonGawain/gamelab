@@ -29,6 +29,7 @@ TagManager:
   - Settings
   - HostController
   - ClientController
+  - UIManager
   layers:
   - Default
   - TransparentFX
