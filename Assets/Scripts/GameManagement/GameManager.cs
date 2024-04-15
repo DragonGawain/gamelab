@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     static RectTransform rTransform;
 
     public static GameManager GMSingleton;
-    
+
     private void Awake()
     {
         if (GMSingleton == null)
@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
         //     Mouse.current.position.y.ReadValue()
         // );
 
-        if (Mathf.Abs(controllerMouseInput.magnitude) > 0)
+        if (controllerMouseInput.magnitude > 0)
         {
             // Debug.Log("CONTROLLER MOUSE INPUT OBSERVED");
             mousePositionInput = new(rTransform.position.x, rTransform.position.y);
@@ -49,7 +49,6 @@ public class GameManager : MonoBehaviour
                 Mouse.current.WarpCursorPosition(mousePositionInput);
             }
         }
-
         else if (
             Mathf.Abs(mousePositionInput.x - mousePosInputSave.x) > 1
             || Mathf.Abs(mousePositionInput.y - mousePosInputSave.y) > 1
@@ -71,8 +70,8 @@ public class GameManager : MonoBehaviour
         // Debug.Log("mouse pos: " + mousePosition);
 
         mousePosition = new(
-            mousePosInputSave.x - (Screen.width / 2),
-            mousePosInputSave.y - (Screen.height / 2)
+            mousePositionInput.x - (Screen.width / 2),
+            mousePositionInput.y - (Screen.height / 2)
         );
     }
 
