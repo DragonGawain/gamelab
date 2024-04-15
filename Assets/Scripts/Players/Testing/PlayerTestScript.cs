@@ -42,7 +42,7 @@ namespace Players
 
         protected Inputs physicalInputs;
 
-        int rotationTimer = 0;
+        protected int rotationTimer = 0;
 
         public GameObject camObject; // this should be the cam specific to this player
         protected Camera cam;
