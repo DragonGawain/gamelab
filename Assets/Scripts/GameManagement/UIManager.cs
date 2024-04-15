@@ -35,6 +35,12 @@ public class UIManager : MonoBehaviour
     private GameObject PlayerSelectCanvas;
 
     [SerializeField]
+    private GameObject HostCanvas;
+
+    [SerializeField]
+    private GameObject JoinCanvas;
+
+    [SerializeField]
     private GameObject PauseCanvas;
 
     [SerializeField]
@@ -194,6 +200,8 @@ public class UIManager : MonoBehaviour
         ControlsCanvas.SetActive(false);
         CreditsCanvas.SetActive(false);
         PlayerSelectCanvas.SetActive(false);
+        HostCanvas.SetActive(false);
+        JoinCanvas.SetActive(false);
         PauseCanvas.SetActive(false);
         GameCanvas.SetActive(false);
         Enemy1Popup.SetActive(false);
@@ -228,6 +236,16 @@ public class UIManager : MonoBehaviour
     public void ShowCredits()
     {
         ShowCanvas(CreditsCanvas);
+    }
+
+    public void ShowHost()
+    {
+        ShowCanvas(HostCanvas);
+    }
+
+    public void ShowJoin()
+    {
+        ShowCanvas(JoinCanvas);
     }
 
     public void ShowPlayerSelect()
