@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     static RectTransform rTransform;
 
     public static GameManager GMSingleton;
-
+    
     private void Awake()
     {
         if (GMSingleton == null)
@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
         //     Mouse.current.position.y.ReadValue()
         // );
 
-        if (controllerMouseInput.magnitude > 0)
+        if (Mathf.Abs(controllerMouseInput.magnitude) > 0)
         {
             // Debug.Log("CONTROLLER MOUSE INPUT OBSERVED");
             mousePositionInput = new(rTransform.position.x, rTransform.position.y);
@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (
+        else if (
             Mathf.Abs(mousePositionInput.x - mousePosInputSave.x) > 1
             || Mathf.Abs(mousePositionInput.y - mousePosInputSave.y) > 1
         )
