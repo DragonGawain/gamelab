@@ -119,13 +119,13 @@ namespace Players
                     GameManager.GetMousePosition3NotNormalized()
                     - GetScreenCoordinatesNotNormalized()
                 ).normalized;
-                Debug.Log(
-                    "Mouse pos: "
-                        + GameManager.GetMousePosition3NotNormalized()
-                        + "screen coords: "
-                        + GetScreenCoordinatesNotNormalized()
-                );
-            }
+            //     Debug.Log(
+            //         "Mouse pos: "
+            //             + GameManager.GetMousePosition3NotNormalized()
+            //             + "screen coords: "
+            //             + GetScreenCoordinatesNotNormalized()
+            //     );
+            // }
             else
                 direction = desiredVelocity.normalized;
 
