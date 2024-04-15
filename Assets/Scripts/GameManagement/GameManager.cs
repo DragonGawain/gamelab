@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
 
         if (controllerMouseInput.magnitude > 0)
         {
+            Debug.Log("CONTROLLER MOUSE INPUT OBSERVED");
             mousePositionInput = new(rTransform.position.x, rTransform.position.y);
             if (Application.isFocused)
             {
@@ -58,7 +59,7 @@ public class GameManager : MonoBehaviour
 
         rTransform.position = new(mousePositionInput.x, mousePositionInput.y, 0);
 
-        Debug.Log("mouse pos: " + mousePosition);
+        // Debug.Log("mouse pos: " + mousePosition);
 
         mousePosition = new(
             mousePositionInput.x - (Screen.width / 2),
