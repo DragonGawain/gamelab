@@ -12264,11 +12264,6 @@ PrefabInstance:
       propertyPath: rightArrowMiddleClient
       value: 
       objectReference: {fileID: 1658019355}
-    - target: {fileID: 5730795234705791008, guid: ffff310cd6cd9df4487f5fff607940b4,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6031488229493392457, guid: ffff310cd6cd9df4487f5fff607940b4,
         type: 3}
       propertyPath: m_AnchorMax.x
