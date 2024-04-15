@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.VFX;
 using Weapons;
 
 namespace Weapons
@@ -11,6 +12,7 @@ namespace Weapons
     {
         [SerializeField]
         private ParticleSystem particles;
+        [SerializeField] private VisualEffect vfx;
 
         [SerializeField]
         private CapsuleCollider flameHitbox;
@@ -25,14 +27,14 @@ namespace Weapons
         public override void OnFire()
         {
             firing = true;
-            particles.Play();
+            vfx.Play();
             flameHitbox.enabled = true;
         }
 
         public override void StopFire()
         {
             firing = false;
-            particles.Stop();
+            vfx.Stop();
             flameHitbox.enabled = false;
         }
     }
