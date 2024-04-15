@@ -155,7 +155,7 @@ public class UIManager : MonoBehaviour
                 break;
             case "BUILD-SCENE":
                 Debug.Log("build");
-                ShowCanvas(GameCanvas);
+                ShowCanvas(PlayerSelectCanvas);
                 pauseState = PauseState.ISPLAYING;
                 break;
         }
