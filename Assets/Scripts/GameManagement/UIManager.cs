@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
@@ -110,10 +109,6 @@ public class UIManager : MonoBehaviour
 
     public static UIManager UISingleton;
 
-    private Task<string> joinCode;
-
-    private ConnectToServer relayConnect; 
-
     [SerializeField] AudioSource confirmAudio;
 
     private void Start()
@@ -126,25 +121,18 @@ public class UIManager : MonoBehaviour
 
         confirmAudio = GetComponent<AudioSource>();
 
-        relayConnect = GetComponent<ConnectToServer>();
-
         //MainCamera.enabled = true;
         //SelectCamera.enabled = false;
-        
-        // Host page
         hostButton.onClick.AddListener(ShowHost);
-        Debug.Log("showing the host page");
-        Debug.Log(HostCanvas);
         hostButton.onClick.AddListener(() =>
         {
-            joinCode = relayConnect.StartHostWithRelay();
+            NetworkManager.Singleton.StartHost();
         });
-        
-        // Join page
         joinButton.onClick.AddListener(ShowJoin);
-        
-        // Text input
-        
+        joinButton.onClick.AddListener(() =>
+        {
+            NetworkManager.Singleton.StartClient();
+        });
         SceneManager.sceneLoaded += OnSceneLoaded;
         // settingsButton.onClick.AddListener(ShowSettings);
         // controlsButton.onClick.AddListener(ShowControls);
@@ -227,7 +215,6 @@ public class UIManager : MonoBehaviour
         WinScreen.SetActive(false);
         LoseScreen.SetActive(false);
 
-        Debug.Log(canvas.name);
         canvas.SetActive(true);
     }
 
