@@ -103,6 +103,8 @@ public class UIManager : MonoBehaviour
 
     public static UIManager UISingleton;
 
+    [SerializeField] AudioSource confirmAudio;
+
     private void Start()
     {
         if (UISingleton == null)
@@ -110,6 +112,8 @@ public class UIManager : MonoBehaviour
         if (this != UISingleton)
             Destroy(this);
         DontDestroyOnLoad(this);
+
+        confirmAudio = GetComponent<AudioSource>();
 
         //MainCamera.enabled = true;
         //SelectCamera.enabled = false;
@@ -238,12 +242,24 @@ public class UIManager : MonoBehaviour
 
     public void ShowGameUI()
     {
-        ShowCanvas(GameCanvas);
-        //MainCamera.enabled = true;
-        //SelectCamera.enabled = false;
+
+        confirmAudio.Play();
+
+        StartCoroutine(bothSelected());
+
     }
 
-    public void ShowWinScreen()
+
+IEnumerator bothSelected()
+{
+        yield return new WaitForSeconds(2f);
+
+        ShowCanvas(GameCanvas);
+
+
+}
+
+public void ShowWinScreen()
     {
         ShowCanvas(WinScreen);
     }
