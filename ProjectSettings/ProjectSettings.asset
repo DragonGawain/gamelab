@@ -927,11 +927,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: 7b62c3b4-c5cf-4bb5-b364-8650f85361cc
+  cloudProjectId: 146fbf88-ec23-4415-b645-241d084f0993
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: HelloWorld
-  organizationId: shinykiwi
+  projectName: gamelab
+  organizationId: gamelabteam
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
