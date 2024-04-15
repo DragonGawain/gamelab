@@ -58,6 +58,8 @@ public class GameManager : MonoBehaviour
 
         rTransform.position = new(mousePositionInput.x, mousePositionInput.y, 0);
 
+        Debug.Log("mouse pos: " + mousePosition);
+
         mousePosition = new(
             mousePositionInput.x - (Screen.width / 2),
             mousePositionInput.y - (Screen.height / 2)
