@@ -114,10 +114,18 @@ namespace Players
 
             // if you have fired within the past 5 seconds, rotate to look in the direction of fire
             if (rotationTimer > 0)
+            {
                 direction = (
                     GameManager.GetMousePosition3NotNormalized()
                     - GetScreenCoordinatesNotNormalized()
                 ).normalized;
+                Debug.Log(
+                    "Mouse pos: "
+                        + GameManager.GetMousePosition3NotNormalized()
+                        + "screen coords: "
+                        + GetScreenCoordinatesNotNormalized()
+                );
+            }
             else
                 direction = desiredVelocity.normalized;
 
@@ -293,7 +301,7 @@ namespace Players
                 enabled = false;
                 return;
             }
-            
+
             //Set camera to follow this player
             CameraFollow cameraFollow = cam.GetComponent<CameraFollow>();
             if (cameraFollow != null)
@@ -302,14 +310,8 @@ namespace Players
                 cameraFollow.SetPlayer(this.transform);
             }
 
-            if (IsServer)
-            {
-                
-            }
-            else
-            {
-                
-            }
+            if (IsServer) { }
+            else { }
             //Destroy(this);
         }
 
