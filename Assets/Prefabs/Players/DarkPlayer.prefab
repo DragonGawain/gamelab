@@ -301,10 +301,6 @@ MonoBehaviour:
     m_ActionId: 0518d658-0463-4cf5-9e6f-94745aa5866c
     m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: c698e79b-bca2-4efb-9dbe-bcdc0b9037c5
-    m_ActionName: Player/Look[/Mouse/delta,/Pen/delta]
-  - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Players.DarkPlayer, Assembly-CSharp
@@ -378,32 +374,12 @@ MonoBehaviour:
     m_ActionName: Player/SwapWeapon[/Keyboard/q,/DualShock4GamepadHID/rightShoulder]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: c1dd1074-3d2c-45cc-9a0e-e8bb74389260
-    m_ActionName: Player/LightMove[/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: cc7cf766-4292-4fc0-86ff-4469521a853f
-    m_ActionName: Player/DarkMove[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 6d9afcc2-fa95-41e2-bb69-47a6fa233a68
-    m_ActionName: Player/LightFire[/Mouse/leftButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 0bbf2f1f-8d4e-4221-96b5-4eb065f7d069
-    m_ActionName: Player/DarkFire[/Mouse/rightButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 867a9082-f529-46eb-be29-331397244d9b
-    m_ActionName: Player/LightSwap[/Keyboard/q]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 454255e9-f780-421f-a842-36158ce00cf0
-    m_ActionName: Player/DarkSwap[/Keyboard/e]
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: 9d6c6c02-0e03-402b-9a30-e1eb205a00b2
     m_ActionName: Player/MousePos[/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ab95dfc1-c343-4c68-8077-fc2b02d32be5
+    m_ActionName: Player/MoveMouse[/XInputControllerWindows/rightStick,/Keyboard/i,/Keyboard/k,/Keyboard/j,/Keyboard/l]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

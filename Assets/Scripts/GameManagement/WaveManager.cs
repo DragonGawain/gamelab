@@ -130,7 +130,7 @@ public class WaveManager : NetworkBehaviour
         switch (wave)
         {
             case 1:
-                ET1 = 15;
+                ET1 = 12;
                 ET2 = 0;
                 ET3 = 0;
                 nbVoid = 2;

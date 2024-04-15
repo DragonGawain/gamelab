@@ -68,12 +68,14 @@ namespace Players
                 {
                     firing = false;
                     (currentWeapon as Flamethrower).OnFire();
+                    rotationTimer = 100000;
                 }
                 // Player releases
                 else
                 {
                     firing = true;
                     (currentWeapon as Flamethrower).StopFire();
+                    rotationTimer = 200;
                 }
             }
             // If they fire with the Blaster
