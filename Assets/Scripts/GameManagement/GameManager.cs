@@ -41,12 +41,18 @@ public class GameManager : MonoBehaviour
 
         if (controllerMouseInput.magnitude > 0)
         {
-            Debug.Log("CONTROLLER MOUSE INPUT OBSERVED");
+            // Debug.Log("CONTROLLER MOUSE INPUT OBSERVED");
             mousePositionInput = new(rTransform.position.x, rTransform.position.y);
             if (Application.isFocused)
             {
                 Mouse.current.WarpCursorPosition(mousePositionInput);
             }
+            Debug.Log(
+                "X diff: "
+                    + Mathf.Abs(mousePositionInput.x - altMousePositionInput.x)
+                    + "Y diff: "
+                    + Mathf.Abs(mousePositionInput.y - altMousePositionInput.y)
+            );
         }
 
         if (
