@@ -49,23 +49,11 @@ public class GameManager : MonoBehaviour
                 Mouse.current.WarpCursorPosition(mousePositionInput);
             }
         }
-        else if (
-            Mathf.Abs(mousePositionInput.x - mousePosInputSave.x) > 1
-            || Mathf.Abs(mousePositionInput.y - mousePosInputSave.y) > 1
-        )
-        {
-            mousePositionInput = new(mousePosInputSave.x, mousePosInputSave.y);
-        }
+       
 
         rTransform.position = new(mousePositionInput.x, mousePositionInput.y, 0);
-        Debug.Log(
-            "MPOS: "
-                + mousePositionInput
-                + "MPOS SAVE: "
-                + mousePosInputSave
-                + " - RT POS: "
-                + rTransform.position
-        );
+      
+     
 
         // Debug.Log("mouse pos: " + mousePosition);
 
