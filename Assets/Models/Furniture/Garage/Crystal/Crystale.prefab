@@ -724,6 +724,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2552100961507070028}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: be5a10b625c5ee146b5ae85a292abd46,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2782730906676653634}
   m_SourcePrefab: {fileID: 100100000, guid: be5a10b625c5ee146b5ae85a292abd46, type: 3}
 --- !u!4 &1636894818130589477 stripped
 Transform:
@@ -786,3 +790,26 @@ MonoBehaviour:
   maxHealth: 0
   healthBarUI: {fileID: 5897189733468325561}
   slider: {fileID: 6355079922860391408}
+--- !u!136 &2782730906676653634
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2160808107644136863}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.025
+  m_Height: 0.06
+  m_Direction: 2
+  m_Center: {x: 0.00009188149, y: -0.00000047194763, z: 0.0065827495}
