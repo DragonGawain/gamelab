@@ -47,12 +47,13 @@ public class GameManager : MonoBehaviour
             {
                 Mouse.current.WarpCursorPosition(mousePositionInput);
             }
-            Debug.Log(
-                "X diff: "
-                    + Mathf.Abs(mousePositionInput.x - altMousePositionInput.x)
-                    + "Y diff: "
-                    + Mathf.Abs(mousePositionInput.y - altMousePositionInput.y)
-            );
+            // Debug.Log(
+            //     "X diff: "
+            //         + Mathf.Abs(mousePositionInput.x - altMousePositionInput.x)
+            //         + "Y diff: "
+            //         + Mathf.Abs(mousePositionInput.y - altMousePositionInput.y)
+            // );
+            Debug.Log("AMP: " + altMousePositionInput);
         }
 
         if (
