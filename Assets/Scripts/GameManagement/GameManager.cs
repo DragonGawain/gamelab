@@ -65,7 +65,14 @@ public class GameManager : MonoBehaviour
         }
 
         rTransform.position = new(mousePositionInput.x, mousePositionInput.y, 0);
-        Debug.Log("MPOS: " + mousePositionInput + " - RT POS: " + rTransform.position);
+        Debug.Log(
+            "MPOS: "
+                + mousePositionInput
+                + " - RT POS: "
+                + rTransform.position
+                + " - AMP: "
+                + altMousePositionInput
+        );
 
         // Debug.Log("mouse pos: " + mousePosition);
 
