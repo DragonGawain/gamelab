@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.VFX;
 using Weapons;
 
 namespace Weapons
@@ -10,6 +11,7 @@ namespace Weapons
     {
         [SerializeField]
         protected ParticleSystem particles;
+        [SerializeField] private VisualEffect vfx;
 
         protected Transform firePoint;
 
@@ -54,6 +56,9 @@ namespace Weapons
                 ).normalized * bulletForce,
                 ForceMode.Impulse
             );
+            
+            // playing vfx
+            vfx.Play();
         }
 
         public override void StopFire()

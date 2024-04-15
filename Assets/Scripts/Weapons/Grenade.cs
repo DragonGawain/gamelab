@@ -3,10 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.VFX;
 using Weapons;
 
 public class Grenade : MonoBehaviour
 {
+    
+    [SerializeField] private VisualEffect vfx;
+    
     [SerializeField]
     private Rigidbody rb;
 
@@ -58,6 +62,9 @@ public class Grenade : MonoBehaviour
             {
                 // Play sound effect
                 soundEffect.PlayScheduled(0.1);
+                
+                // Play VFX
+                vfx.Play();
             }
             
             // Debug.Log((float)timer / 15);
