@@ -72,8 +72,8 @@ namespace Health
         private void UpdateHealthBar(float newHealth)
         {
             slider.value = newHealth;
-            Debug.Log("NEW " + newHealth);
-            Debug.Log("SLV " + slider.value);
+            //Debug.Log("NEW " + newHealth);
+            //Debug.Log("SLV " + slider.value);
 
             if (health < maxHealth)
             {
