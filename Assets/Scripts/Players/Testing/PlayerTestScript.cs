@@ -125,7 +125,7 @@ namespace Players
             //             + "screen coords: "
             //             + GetScreenCoordinatesNotNormalized()
             //     );
-            // }
+            }
             else
                 direction = desiredVelocity.normalized;
 
