@@ -106,9 +106,13 @@ public class SelectPlayer : NetworkBehaviour
     private NetworkVariable<bool> clientConfirmed = new NetworkVariable<bool>(false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
     private NetworkVariable<int> hostChoice = new NetworkVariable<int>(-1, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
 
+    [SerializeField] AudioSource confirmAudio;
+
     public override void OnNetworkSpawn()
     {
         uiManager = FindObjectOfType<UIManager>();
+
+        confirmAudio = GetComponent<AudioSource>();
 
         // Initialize player GameObjects
         player1 = GameObject.FindGameObjectWithTag("DarkSelect");
@@ -151,6 +155,7 @@ public class SelectPlayer : NetworkBehaviour
     {
         if (hostChoice.Value == 0)
         {
+
             Debug.Log("host done");
             lightReady.SetActive(true);
         }
@@ -218,12 +223,14 @@ public class SelectPlayer : NetworkBehaviour
             {
                 if (clientId == 1)
                 {
+                    confirmAudio.Play();
                     clientConfirmed.Value = true;
                     darkReady.SetActive(true);
                     canSelect = false;
                 }
                 else
                 {
+                    confirmAudio.Play();
                     hostSelection = 1;
                     hostChoice.Value = 1;
                     hostConfirmed.Value = true;
@@ -236,12 +243,14 @@ public class SelectPlayer : NetworkBehaviour
             {
                 if (clientId == 1)
                 {
+                    confirmAudio.Play();
                     clientConfirmed.Value = true;
                     lightReady.SetActive(true);
                     canSelect = false;
                 }
                 else
                 {
+                    confirmAudio.Play();
                     hostSelection = 0;
                     hostChoice.Value = 0;
                     hostConfirmed.Value = true;
