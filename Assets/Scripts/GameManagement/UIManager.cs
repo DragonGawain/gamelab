@@ -123,12 +123,12 @@ public class UIManager : MonoBehaviour
 
         //MainCamera.enabled = true;
         //SelectCamera.enabled = false;
-        hostButton.onClick.AddListener(ShowPlayerSelect);
+        hostButton.onClick.AddListener(ShowHost);
         hostButton.onClick.AddListener(() =>
         {
             NetworkManager.Singleton.StartHost();
         });
-        joinButton.onClick.AddListener(ShowPlayerSelect);
+        joinButton.onClick.AddListener(ShowJoin);
         joinButton.onClick.AddListener(() =>
         {
             NetworkManager.Singleton.StartClient();
