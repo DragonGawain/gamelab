@@ -163,11 +163,11 @@ public class UIManager : MonoBehaviour
                 ShowCanvas(MainMenuCanvas);
                 pauseState = PauseState.ISONMAINMENU;
                 break;
-            case "BUILD-SCENE":
-                Debug.Log("build");
-                ShowCanvas(PlayerSelectCanvas);
-                pauseState = PauseState.ISPLAYING;
-                break;
+                //    case "BUILD-SCENE":
+                //        Debug.Log("build");
+                //        ShowCanvas(PlayerSelectCanvas);
+                //        pauseState = PauseState.ISPLAYING;
+                //        break;
         }
         // if (scene.name.Equals("UI"))
         // {
