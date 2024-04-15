@@ -38,6 +38,9 @@ public class Enemy : NetworkBehaviour
     [SerializeField]
     GameObject voidHolePrefab;
 
+    [SerializeField] AudioSource voidAudio;
+
+
     private void Awake()
     {
         //For Changing Color when hit
@@ -48,6 +51,13 @@ public class Enemy : NetworkBehaviour
         enemyAI = GetComponent<EnemyAI>();
     }
 
+    // Start is called before the first frame update
+    void Start()
+    {
+        voidAudio = GetComponent<AudioSource>();
+
+        
+    }
     private void FixedUpdate()
     {
         if (isTakingDOTDamage)
@@ -122,6 +132,8 @@ public class Enemy : NetworkBehaviour
             net_voidHole.Spawn();
 
             WaveManager.VoidEnemyDied(vo);
+            voidAudio.Play();
+
         }
         Destroy(this.gameObject);
     }

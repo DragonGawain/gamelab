@@ -17,6 +17,9 @@ Flamethrower + Grenade: cloud bomb:
 Flamethrower + Hammer: super hammer: (doo-doo da-dee da-deee!)
     Hammer gets BEEG.
 */
+
+
+
 public class ComboAttackManager : MonoBehaviour
 {
     [SerializeField]
@@ -37,6 +40,7 @@ public class ComboAttackManager : MonoBehaviour
     static DarkPlayer darkPlayer;
     static LightPlayer lightPlayer;
 
+
     public enum WeaponType
     {
         BULLET,
@@ -56,6 +60,7 @@ public class ComboAttackManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         bulletBarragePrefab = Resources.Load<GameObject>("BulletBarrage");
         dotCloudPrefab = Resources.Load<GameObject>("DOTCloud");
     }
