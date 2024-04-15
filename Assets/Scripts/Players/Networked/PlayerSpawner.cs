@@ -25,7 +25,7 @@ public class PlayerSpawner : NetworkBehaviour
     public void Update()
     {
         
-        // REMOVE COMMENTS AFTER UI to GAME SCENE IS FIXED
+        // REMOVE COMMENTS AFTER UI to GAME SCENE IS FIXED, Done
         
          // hostOption = SelectPlayer.hostSelection;
          //
@@ -44,8 +44,8 @@ public class PlayerSpawner : NetworkBehaviour
         //DELETE CODE AFTER UI IS FIXED
         if (Input.GetKeyDown(KeyCode.X))
         {
-            SpawnPlayerServerRpc(0, 0);
-            SpawnPlayerServerRpc(1, 1);
+            SpawnPlayerServerRpc(0, 1);
+            SpawnPlayerServerRpc(1, 0);
             PlayerSpawn();
             if (TM!=null){TM.enabled = true;}
             

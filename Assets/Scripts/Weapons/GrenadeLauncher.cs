@@ -28,7 +28,7 @@ namespace Weapons
 
         void Start()
         {
-            transform.localEulerAngles = new Vector3(0, -90, -angle);
+            transform.localEulerAngles = new Vector3(0, -90, 0);
             SetWeaponName("GrenadeLauncher");
             soundEffect = GetComponent<AudioSource>();
         }
@@ -49,10 +49,7 @@ namespace Weapons
                 Rigidbody rb = grenade.GetComponent<Rigidbody>();
                 // Debug.Log("GRENADE RB: " + rb);
                 rb.AddForce(
-                    (
-                        GameManager.GetMousePosition3NotNormalized()
-                        - player.GetScreenCoordinatesNotNormalized()
-                    ).normalized * grenadeForce,
+                    transform.right * grenadeForce, // Use transform.forward instead of mouse direction
                     ForceMode.Impulse
                 );
                 fireTime = fireRate + Time.time;

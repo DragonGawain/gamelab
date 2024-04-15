@@ -33,46 +33,23 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         mousePositionInput = physicalInputs.Player.MousePos.ReadValue<Vector2>();
-        Vector2 mousePosInputSave = mousePositionInput;
         controllerMouseInput = physicalInputs.Player.MoveMouse.ReadValue<Vector2>();
-        // altMousePositionInput = new(
-        //     Mouse.current.position.x.ReadValue(),
-        //     Mouse.current.position.y.ReadValue()
-        // );
 
         if (controllerMouseInput.magnitude > 0)
         {
-            // Debug.Log("CONTROLLER MOUSE INPUT OBSERVED");
             mousePositionInput = new(rTransform.position.x, rTransform.position.y);
             if (Application.isFocused)
-            {
                 Mouse.current.WarpCursorPosition(mousePositionInput);
-            }
-        }
-        else if (
-            Mathf.Abs(mousePositionInput.x - mousePosInputSave.x) > 1
-            || Mathf.Abs(mousePositionInput.y - mousePosInputSave.y) > 1
-        )
-        {
-            mousePositionInput = new(mousePosInputSave.x, mousePosInputSave.y);
         }
 
         rTransform.position = new(mousePositionInput.x, mousePositionInput.y, 0);
-        Debug.Log(
-            "MPOS: "
-                + mousePositionInput
-                + "MPOS SAVE: "
-                + mousePosInputSave
-                + " - RT POS: "
-                + rTransform.position
-        );
-
-        // Debug.Log("mouse pos: " + mousePosition);
-
         mousePosition = new(
             mousePositionInput.x - (Screen.width / 2),
             mousePositionInput.y - (Screen.height / 2)
         );
+
+        if (Application.isFocused)
+            Cursor.lockState = CursorLockMode.Confined;
     }
 
     public static Vector2 GetMousePosition()

@@ -56,15 +56,11 @@ namespace Weapons
 
             // rb.velocity = GameManager.GetMousePosition3() * bulletForce; // TODO:: this may not work over the network
             // target - source
-
+            
             rb.AddForce(
-                (
-                    GameManager.GetMousePosition3NotNormalized()
-                    - player.GetScreenCoordinatesNotNormalized()
-                ).normalized * bulletForce,
+                -transform.forward * bulletForce, // Use transform.forward instead of mouse direction
                 ForceMode.Impulse
             );
-            
             // playing vfx
             vfx.Play();
         }
