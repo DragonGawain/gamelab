@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Players;
@@ -15,6 +16,14 @@ public class PlayerManager : MonoBehaviour
 
     static readonly Vector3 lightRespawnPoint = new(0, 0, 0);
     static readonly Vector3 darkRespawnPoint = new(0, 0, 0);
+
+    private DebugUI debugUI;
+
+    private void Start()
+    {
+        debugUI = (DebugUI) GameObject.FindObjectOfType<DebugUI>();
+        
+    }
 
     public static void SetLightPlayer(PlayerTestScript lp)
     {
@@ -75,6 +84,19 @@ public class PlayerManager : MonoBehaviour
             darkRespawnTimer--;
             if (darkRespawnTimer <= 0)
                 RespawnDarkPlayer();
+        }
+
+        // if its in the scene and enabled
+        if (debugUI && debugUI.enabled)
+        {
+            if (lightPlayer && darkPlayer)
+            {
+                // i know this is expensive to do each frame instead of only when their health actually changes
+                // but i dont care rn
+                debugUI.SetHostHealth(lightPlayer.GetHealth());
+                debugUI.SetClientHealth(darkPlayer.GetHealth());
+            }
+            
         }
     }
 }

@@ -10,8 +10,7 @@ namespace Weapons
 {
     public class Flamethrower : Weapon
     {
-        [SerializeField]
-        private ParticleSystem particles;
+       
         [SerializeField] private VisualEffect vfx;
 
         [SerializeField]
