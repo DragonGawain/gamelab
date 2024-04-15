@@ -67,14 +67,14 @@ namespace Players
                 if (firing)
                 {
                     firing = false;
-                    Debug.Log("firing");
+                    //Debug.Log("firing");
                     (currentWeapon as Flamethrower).OnFire();
                 }
                 // Player releases
                 else
                 {
                     firing = true;
-                    Debug.Log("stoping");
+                    //Debug.Log("stoping");
                     (currentWeapon as Flamethrower).StopFire();
                 }
             }
