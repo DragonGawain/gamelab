@@ -139,7 +139,7 @@ public class UIManager : MonoBehaviour
         else if (SceneManager.GetActiveScene().name.Equals("BUILD-SCENE"))
         {
             Debug.Log("build");
-            ShowCanvas(GameCanvas);
+            ShowCanvas(PlayerSelectCanvas);
             pauseState = PauseState.ISPLAYING;
         }
     }
