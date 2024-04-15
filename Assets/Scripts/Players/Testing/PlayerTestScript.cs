@@ -55,8 +55,8 @@ namespace Players
         protected Rigidbody body;
 
         // movement
-        [SerializeField, Range(1, 10)]
-        float maxVelocity = 5;
+        // [SerializeField, Range(1, 10)]
+        float maxVelocity = 7;
 
         [SerializeField, Range(1, 50)]
         protected float acceleration = 10;

@@ -12,10 +12,9 @@ using Sequence = DG.Tweening.Sequence;
 
 public class Enemy : NetworkBehaviour
 {
-    
     [SerializeField]
     public int health = 100;
-    
+
     [SerializeField]
     private int damage;
 
@@ -38,8 +37,8 @@ public class Enemy : NetworkBehaviour
     [SerializeField]
     GameObject voidHolePrefab;
 
-    [SerializeField] AudioSource voidAudio;
-
+    [SerializeField]
+    AudioSource voidAudio;
 
     private void Awake()
     {
@@ -47,7 +46,7 @@ public class Enemy : NetworkBehaviour
         material = Instantiate(_renderer.material);
         _renderer.material = material;
         originalColor = material.color;
-        
+
         enemyAI = GetComponent<EnemyAI>();
     }
 
@@ -55,9 +54,8 @@ public class Enemy : NetworkBehaviour
     void Start()
     {
         voidAudio = GetComponent<AudioSource>();
-
-        
     }
+
     private void FixedUpdate()
     {
         if (isTakingDOTDamage)
@@ -80,20 +78,16 @@ public class Enemy : NetworkBehaviour
     //Called by weapons/projectiles
     public virtual void OnHit(int dmg, string playerTag)
     {
-        
-        
         if (IsServer)
             onHitServerRpc(dmg, playerTag);
     }
 
-    
-    
     [ServerRpc]
     void onHitServerRpc(int dmg, string playerTag)
     {
         TestingManager.enemy = this;
         health -= dmg;
-        
+
         if (playerTag.CompareTo("DarkPlayer") == 0)
             enemyAI.setDarkPlayerTarget();
         else if (playerTag.CompareTo("LightPlayer") == 0)
@@ -101,7 +95,6 @@ public class Enemy : NetworkBehaviour
 
         if (health <= 0)
             OnDeath();
-        
 
         FlashRedClientRPC();
     }
@@ -111,6 +104,7 @@ public class Enemy : NetworkBehaviour
     {
         FlashRed();
     }
+
     protected void FlashRed()
     {
         Sequence sequence = DOTween.Sequence();
@@ -127,13 +121,12 @@ public class Enemy : NetworkBehaviour
         {
             GameObject vo = Instantiate(voidHolePrefab, transform.position, Quaternion.identity);
             vo.transform.localScale = vo.transform.localScale;
-            
+
             NetworkObject net_voidHole = vo.GetComponent<NetworkObject>();
             net_voidHole.Spawn();
 
             WaveManager.VoidEnemyDied(vo);
             voidAudio.Play();
-
         }
         Destroy(this.gameObject);
     }

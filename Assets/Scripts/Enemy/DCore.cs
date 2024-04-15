@@ -45,6 +45,7 @@ public class DCore : NetworkBehaviour
         // first remove itself from the dream core list managed by soTargetManager
         SO_TargetManager.RemoveDCore(this);
         // then destroy itself
+        // Debug.Log("DESTROYED BY DCORE");
         Destroy(this.gameObject);
     }
     [ServerRpc]
