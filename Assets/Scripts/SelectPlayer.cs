@@ -262,11 +262,21 @@ public class SelectPlayer : NetworkBehaviour
 
         if (hostConfirmed.Value == true && clientConfirmed.Value == true)
         {
+
             Debug.Log("both players confirmed");
-            confirm = true;
-            uiManager.ShowGameUI();
-            gameObject.SetActive(false);
+            StartCoroutine(bothSelected());
+
         }
+    }
+
+    IEnumerator bothSelected()
+    {
+
+        confirm = true;
+        uiManager.ShowGameUI();
+        gameObject.SetActive(false);
+        yield return new WaitForSeconds(2f);
+
     }
 
     private void MoveLeft()
