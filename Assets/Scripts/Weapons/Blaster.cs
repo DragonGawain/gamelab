@@ -23,9 +23,14 @@ namespace Weapons
 
         protected static int fireDelay = 0;
 
+        [SerializeField] AudioSource shootAudio;
+
+       
         // Start is called before the first frame update
         void Start()
         {
+            shootAudio = GetComponent<AudioSource>();
+
             SetWeaponName("Blaster");
             // This is not a 'safe' way, but it will work. Just make sure that the fire point is alwayse the 0th child.
             firePoint = transform.GetChild(0);
@@ -41,6 +46,7 @@ namespace Weapons
 
         public override void OnFire()
         {
+            shootAudio.Play();
             if (fireDelay > 0)
                 return;
             fireDelay = 25;

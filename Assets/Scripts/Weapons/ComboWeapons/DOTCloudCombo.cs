@@ -7,7 +7,15 @@ namespace Weapons
 {
     public class DOTCloudCombo : MonoBehaviour
     {
-        
+        [SerializeField] AudioSource DOTAudio;
+
+        public void Start()
+        {
+
+            DOTAudio = GetComponent<AudioSource>();
+
+        }
+
         private void OnTriggerStay(Collider other)
         {
 
@@ -23,6 +31,8 @@ namespace Weapons
                     //Debug.Log("here  ZAID: " + other.gameObject + " and " + this.gameObject);
 
                     ComboAttackManager.SpawnDOTCloud(other.gameObject);
+                    DOTAudio.Play();
+
                 }
                 else
                 {

@@ -35,6 +35,7 @@ public class WaveManager : NetworkBehaviour
 
     private bool gameStart = false;
 
+
     void Awake()
     {
         currentWave = 0;
