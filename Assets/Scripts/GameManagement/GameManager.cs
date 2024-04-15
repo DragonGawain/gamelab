@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
             //         + "Y diff: "
             //         + Mathf.Abs(mousePositionInput.y - altMousePositionInput.y)
             // );
-            Debug.Log("AMP: " + altMousePositionInput);
+            // Debug.Log("AMP: " + altMousePositionInput);
         }
 
         if (
@@ -65,6 +65,7 @@ public class GameManager : MonoBehaviour
         }
 
         rTransform.position = new(mousePositionInput.x, mousePositionInput.y, 0);
+        Debug.Log("RT POS: " + rTransform.position);
 
         // Debug.Log("mouse pos: " + mousePosition);
 
