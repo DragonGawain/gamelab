@@ -75,7 +75,7 @@ public class PlayerSpawner : NetworkBehaviour
             newPlayer = Instantiate(playerPrefabB);
         }
         
-        /*
+        
         if (clientId == 0 && TM != null)
         {
             TM.serverPlayer = newPlayer.GetComponent<PlayerTestScript>();
@@ -83,7 +83,7 @@ public class PlayerSpawner : NetworkBehaviour
         else if (clientId == 1 && TM != null)
         {
             TM.clientPlayer = newPlayer.GetComponent<PlayerTestScript>();
-        }*/
+        }
 
         netObj = newPlayer.GetComponent<NetworkObject>();
         newPlayer.SetActive(true);
