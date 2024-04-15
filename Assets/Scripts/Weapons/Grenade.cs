@@ -97,10 +97,8 @@ public class Grenade : MonoBehaviour
                 rend.enabled = false;
                 exploded = false;
                 isExploding = false;
-                if (!soundEffect.isPlaying)
-                {
-                    Destroy(this.gameObject);
-                }
+                
+                Destroy(this.gameObject);
                 
                 
             }
