@@ -35,10 +35,10 @@ public class GameManager : MonoBehaviour
         mousePositionInput = physicalInputs.Player.MousePos.ReadValue<Vector2>();
         Vector2 mousePosInputSave = mousePositionInput;
         controllerMouseInput = physicalInputs.Player.MoveMouse.ReadValue<Vector2>();
-        altMousePositionInput = new(
-            Mouse.current.position.x.ReadValue(),
-            Mouse.current.position.y.ReadValue()
-        );
+        // altMousePositionInput = new(
+        //     Mouse.current.position.x.ReadValue(),
+        //     Mouse.current.position.y.ReadValue()
+        // );
 
         if (controllerMouseInput.magnitude > 0)
         {
@@ -48,21 +48,14 @@ public class GameManager : MonoBehaviour
             {
                 Mouse.current.WarpCursorPosition(mousePositionInput);
             }
-            // Debug.Log(
-            //     "X diff: "
-            //         + Mathf.Abs(mousePositionInput.x - altMousePositionInput.x)
-            //         + "Y diff: "
-            //         + Mathf.Abs(mousePositionInput.y - altMousePositionInput.y)
-            // );
-            // Debug.Log("AMP: " + altMousePositionInput);
         }
 
         if (
-            Mathf.Abs(mousePositionInput.x - altMousePositionInput.x) > 1
-            || Mathf.Abs(mousePositionInput.y - altMousePositionInput.y) > 1
+            Mathf.Abs(mousePositionInput.x - mousePosInputSave.x) > 1
+            || Mathf.Abs(mousePositionInput.y - mousePosInputSave.y) > 1
         )
         {
-            mousePositionInput = new(altMousePositionInput.x, altMousePositionInput.y);
+            mousePositionInput = new(mousePosInputSave.x, mousePosInputSave.y);
         }
 
         rTransform.position = new(mousePositionInput.x, mousePositionInput.y, 0);
@@ -73,15 +66,13 @@ public class GameManager : MonoBehaviour
                 + mousePosInputSave
                 + " - RT POS: "
                 + rTransform.position
-                + " - AMP: "
-                + altMousePositionInput
         );
 
         // Debug.Log("mouse pos: " + mousePosition);
 
         mousePosition = new(
-            mousePositionInput.x - (Screen.width / 2),
-            mousePositionInput.y - (Screen.height / 2)
+            mousePosInputSave.x - (Screen.width / 2),
+            mousePosInputSave.y - (Screen.height / 2)
         );
     }
 
