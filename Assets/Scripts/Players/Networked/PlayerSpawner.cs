@@ -27,29 +27,30 @@ public class PlayerSpawner : NetworkBehaviour
         
         // REMOVE COMMENTS AFTER UI to GAME SCENE IS FIXED
         
-        // hostOption = SelectPlayer.hostSelection;
-        //
-        // if (hostOption == 0) { clientOption = 1; }
-        // else { clientOption = 0; }
-        //
-        // if(SelectPlayer.confirm)
-        // {
-        //     Debug.Log("Spawning players...");
-        //     SpawnPlayerServerRpc(0, hostOption);
-        //     SpawnPlayerServerRpc(1, clientOption);
-        //     SelectPlayer.confirm = false;
-        // }
+         hostOption = SelectPlayer.hostSelection;
+        
+         if (hostOption == 0) { clientOption = 1; }
+         else { clientOption = 0; }
+        
+         if(SelectPlayer.confirm)
+         {
+             Debug.Log("Spawning players...");
+             SpawnPlayerServerRpc(0, hostOption);
+             SpawnPlayerServerRpc(1, clientOption);
+
+             SelectPlayer.confirm = false;
+         }
 
         //For Zaid to test weapon stuff
         //DELETE CODE AFTER UI IS FIXED
-        if (Input.GetKeyDown(KeyCode.X))
+        /*if (Input.GetKeyDown(KeyCode.X))
         {
             SpawnPlayerServerRpc(0, 0);
             SpawnPlayerServerRpc(1, 1);
             PlayerSpawn();
             if (TM!=null){TM.enabled = true;}
             
-        }
+        }*/
     }
 
     public override void OnNetworkSpawn()
@@ -75,6 +76,7 @@ public class PlayerSpawner : NetworkBehaviour
             newPlayer = Instantiate(playerPrefabB);
         }
         
+        /*
         if (clientId == 0 && TM != null)
         {
             TM.serverPlayer = newPlayer.GetComponent<PlayerTestScript>();
@@ -82,7 +84,7 @@ public class PlayerSpawner : NetworkBehaviour
         else if (clientId == 1 && TM != null)
         {
             TM.clientPlayer = newPlayer.GetComponent<PlayerTestScript>();
-        }
+        }*/
 
         netObj = newPlayer.GetComponent<NetworkObject>();
         newPlayer.SetActive(true);

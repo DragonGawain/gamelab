@@ -53,7 +53,6 @@ namespace Players
             if (!IsOwner)
                 return;
 
-            //Debug.Log(currentWeapon);
             base.Fire(ctx);
             RequestDarkFireServerRpc();
         }

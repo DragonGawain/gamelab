@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
+using Unity.VisualScripting;
 using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,7 +13,7 @@ public class SelectPlayer : NetworkBehaviour
 
     //Host Stuff
     [SerializeField]
-    private RectTransform hostIcon; // The transform of the selection icon
+    private RectTransform hostIcon;
 
     [SerializeField]
     private RectTransform leftPosition; // Position for Player 1 selection
@@ -43,7 +44,7 @@ public class SelectPlayer : NetworkBehaviour
 
     //Client Stuff
     [SerializeField]
-    private RectTransform clientIcon; // The RectTransform of the client icon
+    private RectTransform clientIcon;
 
     [SerializeField]
     private RectTransform leftPositionClient; // Position for Player 1 selection
@@ -84,16 +85,12 @@ public class SelectPlayer : NetworkBehaviour
     [SerializeField]
     private GameObject lightReady;
 
-    public bool lightConfirmed = false;
-    public bool darkConfirmed = false;
 
     private GameObject player1;
     private GameObject player2;
     private GameObject selectedPlayer;
 
-    public static int hostSelection = 0;
-    public static bool player1Confirm = false;
-    public static bool player2Confirm = false;
+    public static int hostSelection = -1;
     public static bool confirm = false;
     private ulong clientId;
 
@@ -101,8 +98,15 @@ public class SelectPlayer : NetworkBehaviour
     private bool isInMiddleClient = true;
     private bool DarkSelected = false;
     private bool LightSelected = false;
+    private bool left = false;
+    private bool right = false;
+    bool canSelect = true;
 
-    void Start()
+    private NetworkVariable<bool> hostConfirmed = new NetworkVariable<bool>(false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+    private NetworkVariable<bool> clientConfirmed = new NetworkVariable<bool>(false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+    private NetworkVariable<int> hostChoice = new NetworkVariable<int>(-1, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+
+    public override void OnNetworkSpawn()
     {
         uiManager = FindObjectOfType<UIManager>();
 
@@ -121,6 +125,11 @@ public class SelectPlayer : NetworkBehaviour
         darkLight.SetActive(false);
         lightReady.SetActive(false);
         darkReady.SetActive(false);
+
+        Debug.Log("All can read:" + hostChoice.CanClientRead(1));
+
+        hostConfirmed.OnValueChanged += (bool previous, bool next) => { Debug.Log("Host changed"); };
+        clientConfirmed.OnValueChanged += (bool previous, bool next) => { Debug.Log("Client changed"); uiManager.ShowGameUI(); };
     }
 
     public void ResetPositions()
@@ -140,8 +149,28 @@ public class SelectPlayer : NetworkBehaviour
 
     void Update()
     {
+        if (hostChoice.Value == 0)
+        {
+            Debug.Log("host done");
+            lightReady.SetActive(true);
+        }
+        if (hostChoice.Value == 1)
+        {
+            Debug.Log("host done");
+            darkReady.SetActive(true);
+        }
+
+        clientId = NetworkManager.Singleton.LocalClientId;
+
+        if (IsServer && hostConfirmed.Value)
+        {
+            GetComponent<NetworkObject>().ChangeOwnership(1);
+            //GetComponent<NetworkObject>().SpawnWithOwnership(0);
+            //GetComponent<NetworkObject>().SpawnWithOwnership(1);
+        }
+
         //Set proper buttons/images
-        if (NetworkManager.Singleton.LocalClientId == 0)
+        /*if (NetworkManager.Singleton.LocalClientId == 0)
         {
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
@@ -166,32 +195,68 @@ public class SelectPlayer : NetworkBehaviour
                 MoveRightClient();
                 Debug.Log("client Move right");
             }
+        }*/
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow) && canSelect)
+        {
+            left = true;
+            right = false;
+            RequestSelectPlayerServerRpc();
+        }
+        if (Input.GetKeyDown(KeyCode.RightArrow) && canSelect)
+        {
+            right = true;
+            left = false;
+            RequestSelectPlayerServerRpc();
         }
 
         clientId = NetworkManager.Singleton.LocalClientId;
 
-        if (selectedPlayer == player1 && Input.GetKeyDown(KeyCode.X))
+        if (IsOwner)
         {
-            darkReady.SetActive(true);
-            darkConfirmed = true;
+            if (selectedPlayer == player1 && Input.GetKeyDown(KeyCode.X))
+            {
+                if (clientId == 1)
+                {
+                    clientConfirmed.Value = true;
+                    darkReady.SetActive(true);
+                    canSelect = false;
+                }
+                else
+                {
+                    hostSelection = 1;
+                    hostChoice.Value = 1;
+                    hostConfirmed.Value = true;
+                    darkReady.SetActive(true);
+                    canSelect = false;
+                }
+            }
+
+            if (selectedPlayer == player2 && Input.GetKeyDown(KeyCode.X))
+            {
+                if (clientId == 1)
+                {
+                    clientConfirmed.Value = true;
+                    lightReady.SetActive(true);
+                    canSelect = false;
+                }
+                else
+                {
+                    hostSelection = 0;
+                    hostChoice.Value = 0;
+                    hostConfirmed.Value = true;
+                    lightReady.SetActive(true);
+                    canSelect = false;
+                }
+            }
         }
 
-        if (selectedPlayer == player2 && Input.GetKeyDown(KeyCode.X))
-        {
-            lightReady.SetActive(true);
-            lightConfirmed = true;
-        }
-
-        //    if (Confirm(0) && Confirm(1)) //(Confirm(0) && (clientId == 1 && Confirm(1)))
-
-        if (lightConfirmed && darkConfirmed)
+        if (hostConfirmed.Value == true && clientConfirmed.Value == true)
         {
             Debug.Log("both players confirmed");
-            UIManager.closePlayerSelect = true;
             confirm = true;
-            darkConfirmed = false;
-            lightConfirmed = false;
             uiManager.ShowGameUI();
+            gameObject.SetActive(false);
         }
     }
 
@@ -199,8 +264,7 @@ public class SelectPlayer : NetworkBehaviour
     {
         if (isInMiddle && !DarkSelected) // Move to left only if currently in middle
         {
-            Debug.Log("Move left - From middle to left");
-
+            //Debug.Log("Move left - From middle to left");
             hostIcon.position = leftPosition.position;
             rightArrow.position = rightArrowLeft.position;
             leftArrow.gameObject.SetActive(false);
@@ -209,15 +273,14 @@ public class SelectPlayer : NetworkBehaviour
             isInMiddle = false;
             DarkSelected = true;
             Selected(player1);
-
-            hostSelection = 1;
             selectedPlayer = player1;
         }
-        else if (hostIcon.position == rightPosition.position) // If on right, move to middle
+        else if (hostIcon.position == rightPosition.position) // If on right, move to middle //hostIcon.Value.gameObject.transform.position
         {
-            Debug.Log("Move left - From Right to Middle");
+            //Debug.Log("Move left - From Right to Middle");
             selectedPlayer = null;
             hostIcon.position = middlePosition.position;
+
             isInMiddle = true;
             DarkSelected = false;
             leftArrow.position = leftArrowMiddle.position;
@@ -235,8 +298,7 @@ public class SelectPlayer : NetworkBehaviour
     {
         if (isInMiddle && !LightSelected) // Move to right only if currently in middle
         {
-            Debug.Log("Move right - From middle to right");
-
+            //Debug.Log("Move right - From middle to right");
             hostIcon.position = rightPosition.position;
             leftArrow.position = leftArrowRight.position;
             rightArrow.gameObject.SetActive(false);
@@ -246,13 +308,11 @@ public class SelectPlayer : NetworkBehaviour
             LightSelected = true;
 
             Selected(player2);
-
-            hostSelection = 0;
             selectedPlayer = player2;
         }
-        else if (hostIcon.position == leftPosition.position) // If on left, move to middle
+        else if (hostIcon.position == leftPosition.position) // If on left, move to middle //hostIcon.Value.gameObject.transform.position
         {
-            Debug.Log("Move right - From Left to Middle");
+            //Debug.Log("Move right - From Left to Middle");
 
             selectedPlayer = null;
             hostIcon.position = middlePosition.position;
@@ -285,11 +345,12 @@ public class SelectPlayer : NetworkBehaviour
             Selected(player1);
             selectedPlayer = player1;
         }
-        else if (clientIcon.position == rightPositionClient.position) // If on right, move to middle
+        else if (clientIcon.position == rightPositionClient.position) // If on right, move to middle // clientIcon.Value.gameObject.transform.position
         {
-            Debug.Log("CLIENT Move left - From Right to Middle");
+            //Debug.Log("CLIENT Move left - From Right to Middle");
 
             selectedPlayer = null;
+            //clientIcon.Value.gameObject.transform.position = middlePositionClient.position;
             clientIcon.position = middlePositionClient.position;
             isInMiddleClient = true;
             DarkSelected = false;
@@ -320,10 +381,9 @@ public class SelectPlayer : NetworkBehaviour
             Selected(player2);
             selectedPlayer = player2;
         }
-        else if (clientIcon.position == leftPositionClient.position) // If on left, move to middle
+        else if (clientIcon.position == leftPositionClient.position) // If on left, move to middle //clientIcon.Value.gameObject.transform.position
         {
-            Debug.Log("CLIENT Move right - From Left to Middle");
-
+            //Debug.Log("CLIENT Move right - From Left to Middle");
             selectedPlayer = null;
             clientIcon.position = middlePositionClient.position;
             isInMiddleClient = true;
@@ -355,22 +415,37 @@ public class SelectPlayer : NetworkBehaviour
         }
     }
 
-    private bool Confirm(ulong clientID)
-    {
-        if (selectedPlayer != null)
-        {
-            if (clientId == 0)
-            {
-                player1Confirm = true;
-                return true;
-            }
 
-            if (clientId == 1)
+    [ServerRpc(RequireOwnership = false)]
+    void RequestSelectPlayerServerRpc()
+    {
+        SelectPlayerClientRpc();
+    }
+
+    [ClientRpc]
+    void SelectPlayerClientRpc()
+    {
+        if (clientId == 0)
+        {
+            if (left)
             {
-                player2Confirm = true;
-                return true;
+                MoveLeft();
+            }
+            if (right)
+            {
+                MoveRight();
             }
         }
-        return false;
+        else
+        {
+            if (left)
+            {
+                MoveLeftClient();
+            }
+            if (right)
+            {
+                MoveRightClient();
+            }
+        }
     }
 }
