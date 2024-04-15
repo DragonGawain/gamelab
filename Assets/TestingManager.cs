@@ -25,6 +25,7 @@ public class TestingManager : NetworkBehaviour
     public static Enemy enemy;
     
 
+    
     public void UpdateHealth(TextMeshProUGUI TMP, int health)
     {
         TMP.text = health.ToString();
@@ -32,10 +33,10 @@ public class TestingManager : NetworkBehaviour
 
     public void Update()
     {
-        if (!IsSpawned) return;
+        if (!IsSpawned && !IsServer) return;
         
-        UpdateServerHealthClientRpc();
-        UpdateClientHealthClientRpc();
+        UpdateServerHealthClientRpc(serverPlayer.GetHealth());
+        UpdateClientHealthClientRpc(clientPlayer.GetHealth());
 
         for (int i = 0; i < 4; i++)
         {
@@ -56,17 +57,18 @@ public class TestingManager : NetworkBehaviour
             UpdateEnemyHealthClientRpc(-1);
         }
     }
-
+    
+    
     [ClientRpc]
-    void UpdateServerHealthClientRpc()
+    void UpdateServerHealthClientRpc(int value)
     {
-        ServerHealthTMP.text = serverPlayer.GetHealth().ToString();
+        ServerHealthTMP.text = value.ToString();
     }
     
     [ClientRpc]
-    void UpdateClientHealthClientRpc()
+    void UpdateClientHealthClientRpc(int value)
     {
-        ClientHealthTMP.text = clientPlayer.GetHealth().ToString();
+        ClientHealthTMP.text = value.ToString();
     }
 
     [ClientRpc]
