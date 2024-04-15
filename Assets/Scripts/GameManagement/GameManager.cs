@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         mousePositionInput = physicalInputs.Player.MousePos.ReadValue<Vector2>();
+        Vector2 mousePosInputSave = mousePositionInput;
         controllerMouseInput = physicalInputs.Player.MoveMouse.ReadValue<Vector2>();
         altMousePositionInput = new(
             Mouse.current.position.x.ReadValue(),
@@ -68,6 +69,8 @@ public class GameManager : MonoBehaviour
         Debug.Log(
             "MPOS: "
                 + mousePositionInput
+                + "MPOS SAVE: "
+                + mousePosInputSave
                 + " - RT POS: "
                 + rTransform.position
                 + " - AMP: "
