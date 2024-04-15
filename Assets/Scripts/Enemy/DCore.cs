@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Unity.Netcode;
 
-public class DCore : MonoBehaviour
+public class DCore : NetworkBehaviour
 {
     // I created a custom event which will be triggered when the core is destroyed
     public delegate void DCoreDelegate();
@@ -33,7 +34,7 @@ public class DCore : MonoBehaviour
         SO_TargetManager.AddDCore(this);
     }
 
-    private void OnDestroy()
+    public override void OnDestroy()
     {
         // we need to de-assign methods otherwise you may see errors
         OnCoreDestroyed -= DestructibleByEnemy_OnDestroyed;
@@ -46,8 +47,8 @@ public class DCore : MonoBehaviour
         // then destroy itself
         Destroy(this.gameObject);
     }
-
-    public bool GetDamage(int amount)
+    [ServerRpc]
+    void GetDamageServerRpc(int amount)
     {
         health -= amount;
         ColorDegradation.UpdateGlobalHP(amount);
@@ -57,6 +58,13 @@ public class DCore : MonoBehaviour
         // dream core gets damage with this method
         // it returns true if the dream core is destroyed
         // or it returns false if dream core is still alive after the damage
+        
+    }
+    public bool GetDamage(int amount)
+    {
+        if (IsServer)
+            GetDamageServerRpc(amount); 
+        
         if (health < 0)
         {
             // triggering the event

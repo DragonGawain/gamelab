@@ -34,28 +34,51 @@ public class TestingManager : NetworkBehaviour
     {
         if (!IsSpawned) return;
         
-        UpdateHealth(ServerHealthTMP, serverPlayer.GetHealth());
-        //UpdateHealth(ClientHealthTMP, clientPlayer.GetHealth());
+        UpdateServerHealthClientRpc();
+        UpdateClientHealthClientRpc();
 
         for (int i = 0; i < 4; i++)
         {
             if (dCores[i] != null)
-                UpdateHealth(dCoresTMP[i], dCores[i].GetHealth);
+                UpdateDreamCoreClientRpc(i, dCores[i].GetHealth);
             else
             {
-                UpdateHealth(dCoresTMP[i], -1);
+                UpdateDreamCoreClientRpc(i, -1);
             }
         }
 
         if (enemy != null)
         {
-            UpdateHealth(EnemyHealthTMP, enemy.health);    
+            UpdateEnemyHealthClientRpc(enemy.health);
         }
         else
         {
-            UpdateHealth(EnemyHealthTMP, -1);
+            UpdateEnemyHealthClientRpc(-1);
         }
     }
+
+    [ClientRpc]
+    void UpdateServerHealthClientRpc()
+    {
+        ServerHealthTMP.text = serverPlayer.GetHealth().ToString();
+    }
     
-    
+    [ClientRpc]
+    void UpdateClientHealthClientRpc()
+    {
+        ClientHealthTMP.text = clientPlayer.GetHealth().ToString();
+    }
+
+    [ClientRpc]
+    void UpdateDreamCoreClientRpc(int index, int value)
+    {
+        
+        dCoresTMP[index].text = value.ToString();
+    }
+
+    [ClientRpc]
+    void UpdateEnemyHealthClientRpc(int value)
+    {
+        EnemyHealthTMP.text = value.ToString();
+    }
 }

@@ -45,7 +45,7 @@ public class PlayerSpawner : NetworkBehaviour
         if (Input.GetKeyDown(KeyCode.X))
         {
             SpawnPlayerServerRpc(0, 0);
-            //SpawnPlayerServerRpc(1, 1);
+            SpawnPlayerServerRpc(1, 1);
             PlayerSpawn();
             if (TM!=null){TM.enabled = true;}
             
@@ -78,6 +78,10 @@ public class PlayerSpawner : NetworkBehaviour
         if (clientId == 0 && TM != null)
         {
             TM.serverPlayer = newPlayer.GetComponent<PlayerTestScript>();
+        }
+        else if (clientId == 1 && TM != null)
+        {
+            TM.clientPlayer = newPlayer.GetComponent<PlayerTestScript>();
         }
 
         netObj = newPlayer.GetComponent<NetworkObject>();

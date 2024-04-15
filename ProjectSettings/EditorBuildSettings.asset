@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/UI.unity
     guid: cbe4aa6c6241145e2af686a7016a658c
+  - enabled: 1
+    path: Assets/Scenes/Zaid Scene.unity
+    guid: e5f168c1f4f4685489290df881f7e334
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 65f2d7530e1c8c644b929785552cdda9,
       type: 2}
