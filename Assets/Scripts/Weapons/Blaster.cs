@@ -29,6 +29,8 @@ namespace Weapons
             SetWeaponName("Blaster");
             // This is not a 'safe' way, but it will work. Just make sure that the fire point is alwayse the 0th child.
             firePoint = transform.GetChild(0);
+            
+            vfx.Stop();
         }
 
         private void FixedUpdate()

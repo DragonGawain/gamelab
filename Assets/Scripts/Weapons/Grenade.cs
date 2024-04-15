@@ -39,6 +39,7 @@ public class Grenade : MonoBehaviour
         rend = GetComponent<Renderer>();
         soundEffect = GetComponent<AudioSource>();
         originalColor = rend.material.color;
+        vfx.Stop();
     }
 
     private Weapon weaponRef; // passed from the weapon its firing from

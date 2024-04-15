@@ -3495,7 +3495,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!154 &341244036
 TerrainCollider:
   m_ObjectHideFlags: 0
@@ -8719,7 +8719,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &864320639
 Transform:
   m_ObjectHideFlags: 0
@@ -15573,7 +15573,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1491398715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17202,7 +17202,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1696035366
 Transform:
   m_ObjectHideFlags: 0
@@ -18227,27 +18227,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5594745451197694663}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1805969111
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2615865163
-  InScenePlacedSourceGlobalObjectIdHash: 0
-  AlwaysReplicateAsRoot: 0
-  SynchronizeTransform: 1
-  ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 1
-  SpawnWithObservers: 1
-  DontDestroyWithOwner: 0
-  AutoObjectParentSync: 1
 --- !u!1 &1819511414
 GameObject:
   m_ObjectHideFlags: 0
@@ -20861,7 +20840,7 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2105892853}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -22483,11 +22462,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 339357223}
     m_Modifications:
-    - target: {fileID: 2160808107644136863, guid: 5e295c8cd90394f46a4f3c34068496f6,
-        type: 3}
-      propertyPath: m_Name
-      value: Dream Core (3)
-      objectReference: {fileID: 0}
     - target: {fileID: 1636894818130589477, guid: 5e295c8cd90394f46a4f3c34068496f6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -22551,11 +22525,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2160808107644136863, guid: 5e295c8cd90394f46a4f3c34068496f6,
-        type: 3}
-      insertIndex: 3
-      addedObject: {fileID: 1805969111}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e295c8cd90394f46a4f3c34068496f6, type: 3}
 --- !u!1001 &5758277133997527931
 PrefabInstance:

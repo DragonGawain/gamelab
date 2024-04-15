@@ -22,6 +22,7 @@ namespace Weapons
         void Start()
         {
             SetWeaponName("Flamethrower");
+            vfx.Stop();
         }
 
         public override void OnFire()
