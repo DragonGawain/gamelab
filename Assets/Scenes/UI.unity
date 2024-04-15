@@ -1213,6 +1213,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &461620879 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4707110232430408254, guid: ffff310cd6cd9df4487f5fff607940b4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1658019352}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &461620880 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4351319246237511924, guid: ffff310cd6cd9df4487f5fff607940b4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1658019352}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &461665625
 GameObject:
   m_ObjectHideFlags: 0
@@ -12522,6 +12534,16 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 6659637372275666350, guid: ffff310cd6cd9df4487f5fff607940b4,
+        type: 3}
+      propertyPath: HostCanvas
+      value: 
+      objectReference: {fileID: 461620880}
+    - target: {fileID: 6659637372275666350, guid: ffff310cd6cd9df4487f5fff607940b4,
+        type: 3}
+      propertyPath: JoinCanvas
+      value: 
+      objectReference: {fileID: 461620879}
     - target: {fileID: 6659637372275666350, guid: ffff310cd6cd9df4487f5fff607940b4,
         type: 3}
       propertyPath: confirmAudio
