@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -30,7 +31,14 @@ public class GameManager : MonoBehaviour
         rTransform = GetComponent<RectTransform>();
         Cursor.lockState = CursorLockMode.Confined;
         uim = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
+
+        // physicalInputs.Player.ControllerClick.performed += VirtualMouseClick;
     }
+
+    // private void VirtualMouseClick(InputAction.CallbackContext context)
+    // {
+    //     GetComponent<VirtualMouseInput>().leftButtonAction;
+    // }
 
     // Update is called once per frame
     void Update()

@@ -4,35 +4,49 @@ using UnityEngine;
 
 public class setCursor : MonoBehaviour
 {
-
     public Texture2D crosshair;
-    public Texture2D mouseCursor;
+    public Texture2D uiCursor;
     private Vector2 cursorOffset;
-    
+    bool cursorIsUI = true;
+
     // Start is called before the first frame update
     void Start()
     {
-        enableGameCursor();
+        EnableUICursor();
     }
 
-    private void settingNewCursor()
+    public void EnableGameCursor()
     {
-        // center the cursor's origin cause by default its in the top left corner
-        Vector2 cursorOffset = new Vector2(crosshair.width / 2, crosshair.height / 2);
-    }
-    public void enableGameCursor()
-    {
-        
-        settingNewCursor();
-        Cursor.SetCursor(crosshair, cursorOffset, CursorMode.Auto);
-        
+        Cursor.SetCursor(
+            crosshair,
+            new(crosshair.width / 2, crosshair.height / 2),
+            CursorMode.Auto
+        );
     }
 
-    public void enableUICursor()
+    public void EnableUICursor()
     {
-        settingNewCursor();
-        
-        Cursor.SetCursor(crosshair, cursorOffset, CursorMode.Auto);
+        Cursor.SetCursor(uiCursor, new(uiCursor.width / 2, uiCursor.height / 2), CursorMode.Auto);
     }
 
+    private void Update()
+    {
+        switch (UIManager.pauseState)
+        {
+            case PauseState.ISONMAINMENU:
+                if (!cursorIsUI)
+                {
+                    EnableUICursor();
+                    cursorIsUI = true;
+                }
+                break;
+            case PauseState.ISPLAYING:
+                if (cursorIsUI)
+                {
+                    EnableGameCursor();
+                    cursorIsUI = false;
+                }
+                break;
+        }
+    }
 }
