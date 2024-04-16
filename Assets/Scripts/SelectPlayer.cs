@@ -13,85 +13,36 @@ public class SelectPlayer : NetworkBehaviour
     private UIManager uiManager;
 
     //Host Stuff
-    [SerializeField]
-    private RectTransform hostIcon;
-
-    [SerializeField]
-    private RectTransform leftPosition; // Position for Player 1 selection
-
-    [SerializeField]
-    private RectTransform middlePosition; // Position for no selection
-
-    [SerializeField]
-    private RectTransform rightPosition; // Position for Player 2 selection
-
-    [SerializeField]
-    private RectTransform leftArrow;
-
-    [SerializeField]
-    private RectTransform rightArrow;
-
-    [SerializeField]
-    private RectTransform leftArrowMiddle;
-
-    [SerializeField]
-    private RectTransform rightArrowMiddle;
-
-    [SerializeField]
-    private RectTransform leftArrowRight;
-
-    [SerializeField]
-    private RectTransform rightArrowLeft;
+    [SerializeField] private RectTransform hostIcon;
+    [SerializeField] private RectTransform leftPosition; // Position for Player 1 selection
+    [SerializeField] private RectTransform middlePosition; // Position for no selection
+    [SerializeField] private RectTransform rightPosition; // Position for Player 2 selection
+    [SerializeField] private RectTransform leftArrow;
+    [SerializeField] private RectTransform rightArrow;
+    [SerializeField] private RectTransform leftArrowMiddle;
+    [SerializeField] private RectTransform rightArrowMiddle;
+    [SerializeField] private RectTransform leftArrowRight;
+    [SerializeField] private RectTransform rightArrowLeft;
 
     //Client Stuff
-    [SerializeField]
-    private RectTransform clientIcon;
+    [SerializeField] private RectTransform clientIcon;
+    [SerializeField] private RectTransform leftPositionClient; // Position for Player 1 selection
+    [SerializeField] private RectTransform middlePositionClient; // Position for no selection
+    [SerializeField] private RectTransform rightPositionClient; // Position for Player 2 selection
+    [SerializeField] private RectTransform leftArrowClient;
+    [SerializeField] private RectTransform rightArrowClient;
+    [SerializeField] private RectTransform leftArrowMiddleClient;
+    [SerializeField] private RectTransform rightArrowMiddleClient;
+    [SerializeField] private RectTransform leftArrowRightClient;
+    [SerializeField] private RectTransform rightArrowLeftClient;
+    [SerializeField] private GameObject darkLight;
+    [SerializeField] private GameObject lightLight;
+    [SerializeField] private GameObject darkReady;
+    [SerializeField] private GameObject lightReady;
 
-    [SerializeField]
-    private RectTransform leftPositionClient; // Position for Player 1 selection
-
-    [SerializeField]
-    private RectTransform middlePositionClient; // Position for no selection
-
-    [SerializeField]
-    private RectTransform rightPositionClient; // Position for Player 2 selection
-
-    [SerializeField]
-    private RectTransform leftArrowClient;
-
-    [SerializeField]
-    private RectTransform rightArrowClient;
-
-    [SerializeField]
-    private RectTransform leftArrowMiddleClient;
-
-    [SerializeField]
-    private RectTransform rightArrowMiddleClient;
-
-    [SerializeField]
-    private RectTransform leftArrowRightClient;
-
-    [SerializeField]
-    private RectTransform rightArrowLeftClient;
-
-    [SerializeField]
-    private GameObject darkLight;
-
-    [SerializeField]
-    private GameObject lightLight;
-
-    [SerializeField]
-    private GameObject darkReady;
-
-    [SerializeField]
-    private GameObject lightReady;
-
-    [SerializeField]
-    private TextMeshProUGUI x1;
-
- 
-    [SerializeField]
-    private TextMeshProUGUI x2;
+    //Other
+    [SerializeField] private TextMeshProUGUI x1;
+    [SerializeField] private TextMeshProUGUI x2;
 
     private GameObject player1;
     private GameObject player2;
@@ -109,16 +60,15 @@ public class SelectPlayer : NetworkBehaviour
     private bool right = false;
     bool canSelect = true;
 
-    private NetworkVariable<bool> hostConfirmed = new NetworkVariable<bool>(false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
-    private NetworkVariable<bool> clientConfirmed = new NetworkVariable<bool>(false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
-    private NetworkVariable<int> hostChoice = new NetworkVariable<int>(-1, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+    public static NetworkVariable<bool> hostConfirmed = new NetworkVariable<bool>(false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+    public static NetworkVariable<bool> clientConfirmed = new NetworkVariable<bool>(false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+    public static NetworkVariable<int> hostChoice = new NetworkVariable<int>(-1, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
 
     [SerializeField] AudioSource confirmAudio;
 
     public override void OnNetworkSpawn()
     {
         uiManager = FindObjectOfType<UIManager>();
-
         confirmAudio = GetComponent<AudioSource>();
 
         // Initialize player GameObjects
@@ -142,6 +92,18 @@ public class SelectPlayer : NetworkBehaviour
 
         hostConfirmed.OnValueChanged += (bool previous, bool next) => { Debug.Log("Host changed"); };
         clientConfirmed.OnValueChanged += (bool previous, bool next) => { Debug.Log("Client changed"); uiManager.ShowGameUI(); };
+        hostChoice.OnValueChanged += (int previous, int next) => 
+        {
+            if (hostChoice.Value == 0)
+            {
+                lightReady.SetActive(true);
+            }
+            if (hostChoice.Value == 1)
+            {
+                darkReady.SetActive(true);
+            }
+            Debug.Log("host selected player"); 
+        };
     }
 
     public void ResetPositions()
@@ -162,55 +124,70 @@ public class SelectPlayer : NetworkBehaviour
 
     void Update()
     {
+        clientId = NetworkManager.Singleton.LocalClientId;
+        x2.enabled = true;
+        x1.enabled = true;
+
         if (hostChoice.Value == 0)
         {
-
-            Debug.Log("host done");
+            //.Log("host done");
             lightReady.SetActive(true);
         }
         if (hostChoice.Value == 1)
         {
-            Debug.Log("host done");
+            //Debug.Log("host done");
             darkReady.SetActive(true);
         }
-
-        clientId = NetworkManager.Singleton.LocalClientId;
 
         if (IsServer && hostConfirmed.Value)
         {
             GetComponent<NetworkObject>().ChangeOwnership(1);
-            //GetComponent<NetworkObject>().SpawnWithOwnership(0);
-            //GetComponent<NetworkObject>().SpawnWithOwnership(1);
         }
 
-        //Set proper buttons/images
-        /*if (NetworkManager.Singleton.LocalClientId == 0)
+        if (Input.GetKeyDown(KeyCode.Q))
         {
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            if (clientId == 1 && hostChoice.Value == 1)
             {
-                Debug.Log("Move left");
-                MoveLeft();
+                confirmAudio.Play();
+                Selected(player2);
+                clientConfirmed.Value = true;
+                darkReady.SetActive(true);
+                x1.text = "";
             }
-            if (Input.GetKeyDown(KeyCode.RightArrow))
+            else
             {
-                MoveRight();
-                Debug.Log("Move right");
+                confirmAudio.Play();
+                Selected(player1);
+                hostSelection = 1;
+                hostChoice.Value = 1;
+                hostConfirmed.Value = true;
+                darkReady.SetActive(true);
+                x2.text = "";
             }
         }
-        else
+        if(Input.GetKeyDown(KeyCode.E))
         {
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            if (clientId == 1 && hostChoice.Value == 1)
             {
-                MoveLeftClient();
-                Debug.Log("client Move left");
+                confirmAudio.Play();
+                Selected(player2);
+                clientConfirmed.Value = true;
+                lightReady.SetActive(true);
+                x1.text = "";
             }
-            else if (Input.GetKeyDown(KeyCode.RightArrow))
+            else
             {
-                MoveRightClient();
-                Debug.Log("client Move right");
+                confirmAudio.Play();
+                Selected(player2);
+                hostSelection = 0;
+                hostChoice.Value = 0;
+                hostConfirmed.Value = true;
+                lightReady.SetActive(true);
+                x2.text = "";
             }
-        }*/
+        }
 
+        /*
         if (Input.GetKeyDown(KeyCode.LeftArrow) && canSelect)
         {
             left = true;
@@ -222,11 +199,11 @@ public class SelectPlayer : NetworkBehaviour
             right = true;
             left = false;
             RequestSelectPlayerServerRpc();
-        }
+        }*/
 
         clientId = NetworkManager.Singleton.LocalClientId;
 
-        if (IsOwner)
+        /*if (IsOwner)
         {
             if (selectedPlayer == player1 && Input.GetKeyDown(KeyCode.X))
             {
@@ -246,6 +223,7 @@ public class SelectPlayer : NetworkBehaviour
                     confirmAudio.Play();
                     hostSelection = 1;
                     hostChoice.Value = 1;
+                   // darkPlayerSelectable.Value = false;
                     hostConfirmed.Value = true;
                     darkReady.SetActive(true);
                     canSelect = false;
@@ -270,31 +248,28 @@ public class SelectPlayer : NetworkBehaviour
                     confirmAudio.Play();
                     hostSelection = 0;
                     hostChoice.Value = 0;
+                    //lightPlayerSelectable.Value = false;
                     hostConfirmed.Value = true;
                     lightReady.SetActive(true);
                     canSelect = false;
                     x2.text = "";
                 }
             }
-        }
+        }*/
 
         if (hostConfirmed.Value == true && clientConfirmed.Value == true)
         {
-
             Debug.Log("both players confirmed");
             StartCoroutine(bothSelected());
-
         }
     }
 
     IEnumerator bothSelected()
     {
-
         confirm = true;
         uiManager.ShowGameUI();
         gameObject.SetActive(false);
         yield return new WaitForSeconds(2f);
-
     }
 
     private void MoveLeft()
@@ -375,7 +350,7 @@ public class SelectPlayer : NetworkBehaviour
 
     private void MoveLeftClient()
     {
-        if (isInMiddleClient && !DarkSelected) // Move to left only if currently in middle
+        if (isInMiddleClient && !DarkSelected && clientId == 1) // Move to left only if currently in middle //&& darkPlayerSelectable.Value == true
         {
             clientIcon.position = leftPositionClient.position;
             rightArrowClient.position = rightArrowLeftClient.position;
@@ -390,12 +365,11 @@ public class SelectPlayer : NetworkBehaviour
             x1.enabled = true;
 
         }
-        else if (clientIcon.position == rightPositionClient.position) // If on right, move to middle // clientIcon.Value.gameObject.transform.position
+        else if (clientIcon.position == rightPositionClient.position) // If on right, move to middle
         {
             //Debug.Log("CLIENT Move left - From Right to Middle");
 
             selectedPlayer = null;
-            //clientIcon.Value.gameObject.transform.position = middlePositionClient.position;
             clientIcon.position = middlePositionClient.position;
             isInMiddleClient = true;
             DarkSelected = false;
@@ -415,7 +389,7 @@ public class SelectPlayer : NetworkBehaviour
 
     private void MoveRightClient()
     {
-        if (isInMiddleClient && !LightSelected) // Move to right only if currently in middle
+        if (isInMiddleClient && !LightSelected && clientId == 1) // Move to right only if currently in middle //&& lightPlayerSelectable.Value == true
         {
             clientIcon.position = rightPositionClient.position;
             leftArrowClient.position = leftArrowRightClient.position;
@@ -430,7 +404,7 @@ public class SelectPlayer : NetworkBehaviour
             x2.enabled = true;
 
         }
-        else if (clientIcon.position == leftPositionClient.position) // If on left, move to middle //clientIcon.Value.gameObject.transform.position
+        else if (clientIcon.position == leftPositionClient.position) // If on left, move to middle
         {
             //Debug.Log("CLIENT Move right - From Left to Middle");
             selectedPlayer = null;

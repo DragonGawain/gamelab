@@ -123,12 +123,12 @@ public class UIManager : MonoBehaviour
 
         //MainCamera.enabled = true;
         //SelectCamera.enabled = false;
-        hostButton.onClick.AddListener(ShowHost);
+        hostButton.onClick.AddListener(ShowPlayerSelect);
         hostButton.onClick.AddListener(() =>
         {
             NetworkManager.Singleton.StartHost();
         });
-        joinButton.onClick.AddListener(ShowJoin);
+        joinButton.onClick.AddListener(ShowPlayerSelect);
         joinButton.onClick.AddListener(() =>
         {
             NetworkManager.Singleton.StartClient();
@@ -252,7 +252,7 @@ public class UIManager : MonoBehaviour
     {
         ShowCanvas(PlayerSelectCanvas);
         selectPlayer.ResetPositions();
-        SceneManager.LoadScene("BUILD-SCENE");
+        //SceneManager.LoadScene("BUILD-SCENE");
         // TODO:: pauseState should be set to ISPLAYING when the game actually starts, not when you've clicked the host/join button.
         // Alt: if the host/join screen has a back button, make it call a different method that also sets the pauseState
         // pauseState = PauseState.ISPLAYING;
@@ -327,7 +327,7 @@ public void ShowWinScreen()
     {
         pauseState = PauseState.ISONMAINMENU;
         NetworkManager.Singleton.Shutdown();
-        SceneManager.LoadScene("UI");
+        //SceneManager.LoadScene("UI");
         ShowMainMenu();
     }
 

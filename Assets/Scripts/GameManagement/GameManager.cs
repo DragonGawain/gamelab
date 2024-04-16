@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
         physicalInputs = new Inputs();
         physicalInputs.Player.Enable(); // TODO:: for the record, this is a BAD idea - we do NOT want the player inptus enabled by default
         rTransform = GetComponent<RectTransform>();
-        Cursor.lockState = CursorLockMode.Confined;
+       // Cursor.lockState = CursorLockMode.Confined;
     }
 
     // Update is called once per frame
@@ -48,8 +48,8 @@ public class GameManager : MonoBehaviour
             mousePositionInput.y - (Screen.height / 2)
         );
 
-        if (Application.isFocused)
-            Cursor.lockState = CursorLockMode.Confined;
+        /*if (Application.isFocused)
+            Cursor.lockState = CursorLockMode.Confined;*/
     }
 
     public static Vector2 GetMousePosition()

@@ -290,7 +290,6 @@ MonoBehaviour:
   smoothTime: 0.05
   camObject: {fileID: 7854156560825185214, guid: 84f8c9cf3b1e61e44a87203533676282,
     type: 3}
-  maxVelocity: 5
   acceleration: 10
   flamethrower: {fileID: 7830794301040452377, guid: dd97550bf21267b4f8292058257c906a,
     type: 3}
