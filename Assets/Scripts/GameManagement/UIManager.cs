@@ -120,9 +120,7 @@ public class UIManager : NetworkBehaviour
     private RelayConnect relayConnect;
 
     private string joinCode = null;
-
-    //To check if client connected to game session
-    bool result = false;
+    
 
     private void Start()
     {
@@ -165,7 +163,7 @@ public class UIManager : NetworkBehaviour
         {
             Debug.Log(inputField.text.ToUpper());
 
-            
+            bool result = false;
             
             try
             {
@@ -201,6 +199,7 @@ public class UIManager : NetworkBehaviour
         ShowMainMenu();
     }
 
+    private bool switched = false;
     public void Update()
     {
         if (closePlayerSelect)
@@ -208,13 +207,10 @@ public class UIManager : NetworkBehaviour
             PlayerSelectCanvas.SetActive(false);
         }
 
-        if (result && IsServer)
+        if (!switched && IsServer && NetworkManager.ConnectedClients.Count == 2)
         {
-            if (NetworkManager.ConnectedClients.Count == 2)
-            {
-                result = false;
-                ShowPlayerSelectServerRpc();
-            }
+            ShowPlayerSelectServerRpc();
+            switched = true;
         }
     }
 
