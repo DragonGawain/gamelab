@@ -17,7 +17,8 @@ public class SO_TargetManager : ScriptableObject
     // DCore (Dream core) objects will use this method to add themselves into the dCoreList.
     public static void AddDCore(DCore _dCore)
     {
-        dCoreList.Add(_dCore);
+        if (!dCoreList.Contains(_dCore))
+            dCoreList.Add(_dCore);
     }
 
     // When a dream core is destroyed, destroyed DCore object will call this to remove itself from the dCoreList.

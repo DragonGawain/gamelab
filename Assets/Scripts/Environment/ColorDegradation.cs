@@ -59,7 +59,7 @@ public class ColorDegradation : MonoBehaviour
         if (currentHP <= 0)
         {
             // TODO: actually implement this
-            GameManager.SetYouWin();
+            GameManager.SetYouLose();
         }
         int i = 0;
         foreach (Material mat in mats)

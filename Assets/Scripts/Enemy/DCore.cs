@@ -34,6 +34,13 @@ public class DCore : NetworkBehaviour
 
         // adding itself to the dream core list manager by soTargetManager
         SO_TargetManager.AddDCore(this);
+        GameManager.AddToMasterDCoreList(this);
+    }
+
+    public void DCoreMasterReset()
+    {
+        SO_TargetManager.AddDCore(this);
+        health = 100;
     }
 
     public override void OnDestroy()
@@ -47,9 +54,10 @@ public class DCore : NetworkBehaviour
         // first remove itself from the dream core list managed by soTargetManager
         SO_TargetManager.RemoveDCore(this);
         // then destroy itself
-        // Debug.Log("DESTROYED BY DCORE");
-        Destroy(this.gameObject);
+        this.gameObject.SetActive(false);
+        // Destroy(this.gameObject);
     }
+
     [ServerRpc]
     void GetDamageServerRpc(int amount)
     {
@@ -61,13 +69,13 @@ public class DCore : NetworkBehaviour
         // dream core gets damage with this method
         // it returns true if the dream core is destroyed
         // or it returns false if dream core is still alive after the damage
-        
     }
+
     public bool GetDamage(int amount)
     {
         if (IsServer)
-            GetDamageServerRpc(amount); 
-        
+            GetDamageServerRpc(amount);
+
         if (health < 0)
         {
             // triggering the event
@@ -87,7 +95,6 @@ public class DCore : NetworkBehaviour
         {
             healers += 1;
         }
-        
     }
 
     private void OnTriggerExit(Collider other)
@@ -98,9 +105,11 @@ public class DCore : NetworkBehaviour
         }
     }
 
-
+    // Why snake case :hands:
+    // Why define variables not at the top :hands:
     private float heal_tick_rate = 0.5f;
     private float heal_time = 0;
+
     private void FixedUpdate()
     {
         if (healers > 0)
@@ -111,6 +120,5 @@ public class DCore : NetworkBehaviour
                 heal_time = Time.time + heal_tick_rate;
             }
         }
-        
     }
 }
