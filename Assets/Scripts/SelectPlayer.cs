@@ -127,7 +127,7 @@ public class SelectPlayer : NetworkBehaviour
 
     Inputs physicalInputs;
 
-    private void Awake()
+    private void Start()
     {
         physicalInputs = GameManager.GetInputActionsAsset();
     }
