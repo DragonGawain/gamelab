@@ -11,6 +11,16 @@ public class MusicPlayer : MonoBehaviour
 
     ParticleSystem lightParticles = null;
     ParticleSystem darkParticles = null;
+    DCore core;
+
+    private void Awake()
+    {
+        core = GetComponent<DCore>();
+        if (core != null)
+        {
+            core.OnHealthChanged += DeathCheck; // Subscribe to the OnHealthChanged event
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -50,11 +60,14 @@ public class MusicPlayer : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
+    void DeathCheck(float coreHP)
     {
-        if (lightParticles != null)
-            lightParticles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
-        if (darkParticles != null)
-            darkParticles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        if (coreHP <= 0)
+        {
+            if (lightParticles != null)
+                lightParticles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            if (darkParticles != null)
+                darkParticles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        }
     }
 }
