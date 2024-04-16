@@ -66,8 +66,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 172dd75cc9af929409b3dd68cea8cd67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crosshair: {fileID: 2800000, guid: 3ee3fd65e809c1a42b5a3bc82985aac8, type: 3}
-  mouseCursor: {fileID: 2800000, guid: 808e0b54e45649948be1beb8c268cd5e, type: 3}
+  crosshair: {fileID: 2800000, guid: 6aab2b8dd40db4e10b446db1b1333228, type: 3}
+  uiCursor: {fileID: 2800000, guid: 2efb8c0ead81662439a1ae5adb170fb5, type: 3}
 --- !u!114 &3262249305173299680
 MonoBehaviour:
   m_ObjectHideFlags: 0
