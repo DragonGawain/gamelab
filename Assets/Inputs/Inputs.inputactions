@@ -60,7 +60,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ConfirmX",
+                    "name": "UIConfirm",
                     "type": "Button",
                     "id": "9a9e9887-daa7-4f4a-9e84-fd40b690f1ee",
                     "expectedControlType": "Button",
@@ -69,22 +69,13 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "UILeft",
-                    "type": "Button",
+                    "name": "UISelect",
+                    "type": "Value",
                     "id": "db795bd5-00be-491a-83ed-6cddb32beba6",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Axis",
                     "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "UIRight",
-                    "type": "Button",
-                    "id": "afbafa71-9b6e-4077-98f1-094c8879e4ab",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
+                    "interactions": "Press",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -414,7 +405,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ConfirmX",
+                    "action": "UIConfirm",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -425,7 +416,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ConfirmX",
+                    "action": "UIConfirm",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -436,53 +427,75 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ConfirmX",
+                    "action": "UIConfirm",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "d2edc145-75bc-438f-93fa-5d1adbb86f57",
+                    "name": "1D Axis",
+                    "id": "a375be09-7820-45a1-908f-27ec1e724cfa",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UISelect",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "93bd5c0c-9c9b-42e4-a32b-e9d6b8d97e38",
                     "path": "<Keyboard>/leftArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "UILeft",
+                    "action": "UISelect",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
                 },
                 {
-                    "name": "",
-                    "id": "a4f6329e-ef8a-434a-b296-1891723abc8c",
-                    "path": "<Gamepad>/dpad/left",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "UILeft",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "b0d79725-2411-48db-a62f-f76af5be7d03",
+                    "name": "positive",
+                    "id": "1b993613-f015-4d50-a16c-d5e8eb01c927",
                     "path": "<Keyboard>/rightArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "UIRight",
+                    "action": "UISelect",
                     "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "8663e400-459f-4acb-9565-a02be27062c9",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UISelect",
+                    "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "511deb0b-1ac9-4159-a280-457c3e4bfa7c",
+                    "name": "negative",
+                    "id": "7937e025-807a-4c19-a4a3-a88343f308f3",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UISelect",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "715dc8db-7557-42de-84a3-ebb719e832a5",
                     "path": "<Gamepad>/dpad/right",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "UIRight",
+                    "action": "UISelect",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
                 }
             ]
         },
