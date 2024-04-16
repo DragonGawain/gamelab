@@ -263,8 +263,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1192206708823396996}
-  - component: {fileID: 6659637372275666350}
   - component: {fileID: 1178129450199690298}
+  - component: {fileID: 6659637372275666350}
   - component: {fileID: 8582053981702699715}
   - component: {fileID: 2156159141011529784}
   m_Layer: 0
@@ -290,6 +290,27 @@ Transform:
   - {fileID: 2082829019804173931}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1178129450199690298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 452341737833685654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 3401839100
+  InScenePlacedSourceGlobalObjectIdHash: 2638320591
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
 --- !u!114 &6659637372275666350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -328,27 +349,6 @@ MonoBehaviour:
   hostCodeText: {fileID: 5273407682304504126}
   inputField: {fileID: 8870833681597960976}
   confirmAudio: {fileID: 8582053981702699715}
---- !u!114 &1178129450199690298
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 452341737833685654}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 1025909888
-  InScenePlacedSourceGlobalObjectIdHash: 2638320591
-  AlwaysReplicateAsRoot: 0
-  SynchronizeTransform: 1
-  ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 1
-  SpawnWithObservers: 1
-  DontDestroyWithOwner: 0
-  AutoObjectParentSync: 1
 --- !u!82 &8582053981702699715
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2037,7 +2037,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6452240639608858767
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3619,7 +3619,7 @@ PrefabInstance:
     - target: {fileID: 5665662283791037607, guid: 192b8ff3643441b488f2227283314051,
         type: 3}
       propertyPath: GlobalObjectIdHash
-      value: 120436131
+      value: 1299767500
       objectReference: {fileID: 0}
     - target: {fileID: 5665662283791037607, guid: 192b8ff3643441b488f2227283314051,
         type: 3}
@@ -5096,7 +5096,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 753740251
+  GlobalObjectIdHash: 2535077217
   InScenePlacedSourceGlobalObjectIdHash: 2638320591
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 0
