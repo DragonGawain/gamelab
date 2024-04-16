@@ -31,6 +31,9 @@ public class UIManager : NetworkBehaviour
     private GameObject ControlsCanvas;
 
     [SerializeField]
+    private GameObject CombosCanvas;
+
+    [SerializeField]
     private GameObject CreditsCanvas;
 
     [SerializeField]
@@ -111,7 +114,7 @@ public class UIManager : NetworkBehaviour
     private RelayConnect relayConnect;
 
     private string joinCode = null;
-    
+
     //To check if client connected to game session
     bool result = false;
 
@@ -146,8 +149,6 @@ public class UIManager : NetworkBehaviour
         joinCodeButton.onClick.AddListener(async () =>
         {
             Debug.Log(inputField.text.ToUpper());
-
-            
 
             try
             {
@@ -190,7 +191,6 @@ public class UIManager : NetworkBehaviour
                 ShowPlayerSelectServerRpc();
             }
         }
-        
     }
 
     public void ShowCanvas(GameObject canvas)
@@ -234,6 +234,11 @@ public class UIManager : NetworkBehaviour
         ShowCanvas(ControlsCanvas);
     }
 
+    public void ShowCombos()
+    {
+        ShowCanvas(CombosCanvas);
+    }
+
     public void ShowCredits()
     {
         ShowCanvas(CreditsCanvas);
@@ -254,13 +259,13 @@ public class UIManager : NetworkBehaviour
     {
         ShowPlayerSelectClientRpc();
     }
-    
+
     [ClientRpc]
     public void ShowPlayerSelectClientRpc()
     {
         ShowPlayerSelect();
     }
-    
+
     public void ShowPlayerSelect()
     {
         ShowCanvas(PlayerSelectCanvas);
