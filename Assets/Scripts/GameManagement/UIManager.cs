@@ -187,6 +187,7 @@ public class UIManager : NetworkBehaviour
             if (NetworkManager.ConnectedClients.Count == 2)
             {
                 result = false;
+                
                 ShowPlayerSelectServerRpc();
             }
         }
@@ -258,6 +259,7 @@ public class UIManager : NetworkBehaviour
     [ClientRpc]
     public void ShowPlayerSelectClientRpc()
     {
+        
         ShowPlayerSelect();
     }
     

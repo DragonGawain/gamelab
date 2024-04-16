@@ -44,8 +44,7 @@ public class WaveManager : NetworkBehaviour
         uim = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
         
         currentWave = 0;
-        PlayerSpawner.PlayerSpawn += StartNextWave;
-        PlayerSpawner.PlayerSpawn += () => gameStart = true;
+        
     }
 
     void Start()
@@ -57,6 +56,10 @@ public class WaveManager : NetworkBehaviour
             // GameObject voClone = Instantiate(vo);
             newVoidHoles.Add(vo);
         }
+        
+        Debug.Log("Wave Manager Started");
+        PlayerSpawner.PlayerSpawn += StartNextWave;
+        PlayerSpawner.PlayerSpawn += () => gameStart = true;
     }
 
     public static void WaveManagerMasterReset()
@@ -99,6 +102,7 @@ public class WaveManager : NetworkBehaviour
         }
         newVoidHoles = new();
         currentWave++;
+        
         uim.ShowWavePopup(currentWave);
         GetWaveInfo(currentWave);
         nbEnemies = ET1 + ET2 + ET3;
