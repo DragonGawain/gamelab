@@ -6,7 +6,6 @@ using UnityEngine.TextCore.Text;
 using UnityEngine.UIElements;
 using Weapons;
 using DG.Tweening;
-using UnityEditor.Animations;
 using Sequence = DG.Tweening.Sequence;
 using System;
 using Unity.Netcode;
