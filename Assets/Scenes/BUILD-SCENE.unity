@@ -3888,6 +3888,11 @@ PrefabInstance:
       propertyPath: GlobalObjectIdHash
       value: 1299767500
       objectReference: {fileID: 0}
+    - target: {fileID: 1178129450199690298, guid: ffff310cd6cd9df4487f5fff607940b4,
+        type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 3401839100
+      objectReference: {fileID: 0}
     - target: {fileID: 1192206708823396996, guid: ffff310cd6cd9df4487f5fff607940b4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4023,6 +4028,54 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffff310cd6cd9df4487f5fff607940b4, type: 3}
+--- !u!114 &364408769 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 433533534255746383, guid: ffff310cd6cd9df4487f5fff607940b4,
+    type: 3}
+  m_PrefabInstance: {fileID: 364408768}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &364408770 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7992333265888894903, guid: ffff310cd6cd9df4487f5fff607940b4,
+    type: 3}
+  m_PrefabInstance: {fileID: 364408768}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &364408771 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 652109914063327806, guid: ffff310cd6cd9df4487f5fff607940b4,
+    type: 3}
+  m_PrefabInstance: {fileID: 364408768}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &364408772 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4717648657232634408, guid: ffff310cd6cd9df4487f5fff607940b4,
+    type: 3}
+  m_PrefabInstance: {fileID: 364408768}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &385199735
 GameObject:
   m_ObjectHideFlags: 0
@@ -13274,7 +13327,7 @@ PrefabInstance:
     - target: {fileID: 2160808107644136863, guid: 5e295c8cd90394f46a4f3c34068496f6,
         type: 3}
       propertyPath: m_Name
-      value: Dream Core (2)
+      value: Dream Core BR
       objectReference: {fileID: 0}
     - target: {fileID: 2178669442068669356, guid: 5e295c8cd90394f46a4f3c34068496f6,
         type: 3}
@@ -13296,6 +13349,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4954720767601638317, guid: 5e295c8cd90394f46a4f3c34068496f6,
+        type: 3}
+      propertyPath: Warning
+      value: 
+      objectReference: {fileID: 364408770}
     - target: {fileID: 8317677549156890635, guid: 5e295c8cd90394f46a4f3c34068496f6,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -16112,7 +16170,7 @@ PrefabInstance:
     - target: {fileID: 2160808107644136863, guid: 5e295c8cd90394f46a4f3c34068496f6,
         type: 3}
       propertyPath: m_Name
-      value: Dream Core (1)
+      value: Dream Core TR
       objectReference: {fileID: 0}
     - target: {fileID: 2178669442068669356, guid: 5e295c8cd90394f46a4f3c34068496f6,
         type: 3}
@@ -16134,6 +16192,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4954720767601638317, guid: 5e295c8cd90394f46a4f3c34068496f6,
+        type: 3}
+      propertyPath: Warning
+      value: 
+      objectReference: {fileID: 364408771}
     - target: {fileID: 8317677549156890635, guid: 5e295c8cd90394f46a4f3c34068496f6,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -22397,7 +22460,7 @@ PrefabInstance:
     - target: {fileID: 2160808107644136863, guid: 5e295c8cd90394f46a4f3c34068496f6,
         type: 3}
       propertyPath: m_Name
-      value: Dream Core
+      value: Dream Core TL
       objectReference: {fileID: 0}
     - target: {fileID: 2178669442068669356, guid: 5e295c8cd90394f46a4f3c34068496f6,
         type: 3}
@@ -22419,6 +22482,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4954720767601638317, guid: 5e295c8cd90394f46a4f3c34068496f6,
+        type: 3}
+      propertyPath: Warning
+      value: 
+      objectReference: {fileID: 364408772}
     - target: {fileID: 8317677549156890635, guid: 5e295c8cd90394f46a4f3c34068496f6,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -22694,7 +22762,7 @@ PrefabInstance:
     - target: {fileID: 2160808107644136863, guid: 5e295c8cd90394f46a4f3c34068496f6,
         type: 3}
       propertyPath: m_Name
-      value: Dream Core (3)
+      value: Dream Core BL
       objectReference: {fileID: 0}
     - target: {fileID: 2178669442068669356, guid: 5e295c8cd90394f46a4f3c34068496f6,
         type: 3}
@@ -22716,6 +22784,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4954720767601638317, guid: 5e295c8cd90394f46a4f3c34068496f6,
+        type: 3}
+      propertyPath: Warning
+      value: 
+      objectReference: {fileID: 364408769}
     - target: {fileID: 8317677549156890635, guid: 5e295c8cd90394f46a4f3c34068496f6,
         type: 3}
       propertyPath: m_AnchorMax.x
