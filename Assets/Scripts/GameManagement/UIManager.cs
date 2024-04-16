@@ -209,7 +209,7 @@ public class UIManager : NetworkBehaviour
 
         if (!switched && IsServer && NetworkManager.ConnectedClients.Count == 2)
         {
-            ShowPlayerSelectServerRpc();
+            ShowPlayerSelect();
             switched = true;
         }
     }
@@ -275,17 +275,7 @@ public class UIManager : NetworkBehaviour
         ShowCanvas(JoinCanvas);
     }
 
-    [ServerRpc]
-    public void ShowPlayerSelectServerRpc()
-    {
-        ShowPlayerSelectClientRpc();
-    }
-
-    [ClientRpc]
-    public void ShowPlayerSelectClientRpc()
-    {
-        ShowPlayerSelect();
-    }
+    
 
     public void ShowPlayerSelect()
     {
