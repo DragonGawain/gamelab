@@ -16,7 +16,7 @@ public class ColorDegradation : MonoBehaviour
     static int totalHP = 100;
     static int currentHP = 100;
 
-    private void Awake()
+    private void Start()
     {
         totalHP = 0;
         totalHP = 0;
