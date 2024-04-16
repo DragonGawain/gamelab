@@ -5,8 +5,8 @@ using UnityEngine;
 public class MusicPlayer : MonoBehaviour
 {
 
-    public ParticleSystem crystalParticles1; // Reference to the Particle System component
-    public ParticleSystem crystalParticles2; // Reference to the Particle System component
+    // public ParticleSystem crystalParticles1; // Reference to the Particle System component
+    // public ParticleSystem crystalParticles2; // Reference to the Particle System component
 
     public AudioSource musicAudioSource; // Reference to the AudioSource component for playing music
 
