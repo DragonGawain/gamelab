@@ -328,7 +328,7 @@ MonoBehaviour:
   MainMenuCanvas: {fileID: 3730665949726729732}
   SettingsCanvas: {fileID: 1823369044455690042}
   ControlsCanvas: {fileID: 4198521412931627369}
-  CombosCanvas: {fileID: 0}
+  CombosCanvas: {fileID: 8345910637863686426}
   CreditsCanvas: {fileID: 9022850114125235575}
   PlayerSelectCanvas: {fileID: 5730795234705791008}
   HostCanvas: {fileID: 6616072720169487799}
@@ -2638,7 +2638,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6659637372275666350}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: BackButton
+        m_MethodName: ReturnToMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

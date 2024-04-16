@@ -305,7 +305,7 @@ public class UIManager : NetworkBehaviour
         confirmAudio.Play();
 
         StartCoroutine(bothSelected());
-        pauseState = PauseState.ISONMAINMENU;
+        pauseState = PauseState.ISPLAYING;
     }
 
     IEnumerator bothSelected()
