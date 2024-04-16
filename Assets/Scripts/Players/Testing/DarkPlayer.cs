@@ -8,7 +8,6 @@ using Unity.Netcode;
 using UnityEngine.UI;
 using Weapons;
 using Unity.VisualScripting;
-using UnityEditor.Localization.Plugins.XLIFF.V12;
 
 namespace Players
 {

@@ -4,10 +4,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using TMPro;
 using Unity.Netcode;
-using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public enum PauseState
 {
@@ -15,7 +13,7 @@ public enum PauseState
     ISPLAYING
 }
 
-public class UIManager : MonoBehaviour
+public class UIManager : NetworkBehaviour
 {
     [Header("CAMERAS")]
     //[SerializeField] private Camera MainCamera;
@@ -88,32 +86,18 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private Button joinButton;
 
+    [SerializeField]
+    private Button joinCodeButton;
+
     [Header("OTHER")]
     [SerializeField]
     private SelectPlayer selectPlayer;
-    
+
     [SerializeField]
     private TextMeshProUGUI hostCodeText;
 
-    [SerializeField] private Button joinCodeButton;
-    
-    [SerializeField] private TMP_InputField inputField;
-    
-
-    // [SerializeField]
-    // private Button settingsButton;
-
-    // [SerializeField]
-    // private Button controlsButton;
-
-    // [SerializeField]
-    // private Button creditsButton;
-
-    // [SerializeField]
-    // private Button pauseButton;
-
-    // [SerializeField]
-    // private Button continueButton;
+    [SerializeField]
+    private TMP_InputField inputField;
 
     public static bool closePlayerSelect = false;
 
@@ -121,15 +105,16 @@ public class UIManager : MonoBehaviour
 
     public static UIManager UISingleton;
 
-    [SerializeField] AudioSource confirmAudio;
+    [SerializeField]
+    AudioSource confirmAudio;
 
     private RelayConnect relayConnect;
 
     private string joinCode = null;
     
-    
+    //To check if client connected to game session
+    bool result = false;
 
-    
     private void Start()
     {
         if (UISingleton == null)
@@ -144,7 +129,7 @@ public class UIManager : MonoBehaviour
 
         //MainCamera.enabled = true;
         //SelectCamera.enabled = false;
-        
+
         // Starting the game as a host
         hostButton.onClick.AddListener(ShowHost);
         hostButton.onClick.AddListener(async () =>
@@ -153,84 +138,41 @@ public class UIManager : MonoBehaviour
             joinCode = await relayConnect.StartHostWithRelay();
             Debug.Log("join code: " + joinCode);
             hostCodeText.SetText(joinCode); // updating the UI with the code
-
         });
-        
+
         // When the player presses 'Join' button, take to join canvas
         joinButton.onClick.AddListener(ShowJoin);
-        
-        joinCodeButton.onClick.AddListener(async() =>
+
+        joinCodeButton.onClick.AddListener(async () =>
         {
             Debug.Log(inputField.text.ToUpper());
 
-            bool result = false;
+            
 
             try
             {
                 result = await relayConnect.StartClientWithRelay(inputField.text.ToUpper());
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 inputField.image.color = Color.red;
                 throw;
             }
-            
-            
+
             if (result)
+            {
                 inputField.image.color = Color.green;
-            
-                
-            
-            
+                ShowPlayerSelect();
+            }
         });
-        SceneManager.sceneLoaded += OnSceneLoaded;
         // settingsButton.onClick.AddListener(ShowSettings);
         // controlsButton.onClick.AddListener(ShowControls);
         // creditsButton.onClick.AddListener(ShowCredits);
         // pauseButton.onClick.AddListener(ShowPause);
         // continueButton.onClick.AddListener(unPause);
 
-        if (SceneManager.GetActiveScene().name.Equals("UI"))
-        {
-            Debug.Log("UI");
-            ShowCanvas(MainMenuCanvas);
-            pauseState = PauseState.ISONMAINMENU;
-        }
-        else if (SceneManager.GetActiveScene().name.Equals("BUILD-SCENE"))
-        {
-            Debug.Log("build");
-            ShowCanvas(PlayerSelectCanvas);
-            pauseState = PauseState.ISPLAYING;
-        }
-    }
 
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        switch (scene.name)
-        {
-            case "UI":
-                Debug.Log("UI");
-                ShowCanvas(MainMenuCanvas);
-                pauseState = PauseState.ISONMAINMENU;
-                break;
-                //    case "BUILD-SCENE":
-                //        Debug.Log("build");
-                //        ShowCanvas(PlayerSelectCanvas);
-                //        pauseState = PauseState.ISPLAYING;
-                //        break;
-        }
-        // if (scene.name.Equals("UI"))
-        // {
-        //     Debug.Log("UI");
-        //     ShowCanvas(MainMenuCanvas);
-        //     pauseState = PauseState.ISONMAINMENU;
-        // }
-        // else if (scene.name.Equals("BUILD-SCENE"))
-        // {
-        //     Debug.Log("build");
-        //     ShowCanvas(GameCanvas);
-        //     pauseState = PauseState.ISPLAYING;
-        // }
+        ShowMainMenu();
     }
 
     public void Update()
@@ -239,9 +181,17 @@ public class UIManager : MonoBehaviour
         {
             PlayerSelectCanvas.SetActive(false);
         }
-    }
 
-    private void Awake() { }
+        if (result && IsServer)
+        {
+            if (NetworkManager.ConnectedClients.Count == 2)
+            {
+                result = false;
+                ShowPlayerSelectServerRpc();
+            }
+        }
+        
+    }
 
     public void ShowCanvas(GameObject canvas)
     {
@@ -271,6 +221,7 @@ public class UIManager : MonoBehaviour
     public void ShowMainMenu()
     {
         ShowCanvas(MainMenuCanvas);
+        pauseState = PauseState.ISONMAINMENU;
     }
 
     public void ShowSettings()
@@ -298,11 +249,22 @@ public class UIManager : MonoBehaviour
         ShowCanvas(JoinCanvas);
     }
 
+    [ServerRpc]
+    public void ShowPlayerSelectServerRpc()
+    {
+        ShowPlayerSelectClientRpc();
+    }
+    
+    [ClientRpc]
+    public void ShowPlayerSelectClientRpc()
+    {
+        ShowPlayerSelect();
+    }
+    
     public void ShowPlayerSelect()
     {
         ShowCanvas(PlayerSelectCanvas);
         selectPlayer.ResetPositions();
-        SceneManager.LoadScene("BUILD-SCENE");
         // TODO:: pauseState should be set to ISPLAYING when the game actually starts, not when you've clicked the host/join button.
         // Alt: if the host/join screen has a back button, make it call a different method that also sets the pauseState
         // pauseState = PauseState.ISPLAYING;
@@ -310,24 +272,20 @@ public class UIManager : MonoBehaviour
 
     public void ShowGameUI()
     {
-
         confirmAudio.Play();
 
         StartCoroutine(bothSelected());
-
+        pauseState = PauseState.ISONMAINMENU;
     }
 
-
-IEnumerator bothSelected()
-{
+    IEnumerator bothSelected()
+    {
         yield return new WaitForSeconds(2f);
 
         ShowCanvas(GameCanvas);
+    }
 
-
-}
-
-public void ShowWinScreen()
+    public void ShowWinScreen()
     {
         ShowCanvas(WinScreen);
     }
@@ -375,9 +333,7 @@ public void ShowWinScreen()
 
     public void ReturnToMainMenu()
     {
-        pauseState = PauseState.ISONMAINMENU;
         NetworkManager.Singleton.Shutdown();
-        SceneManager.LoadScene("UI");
         ShowMainMenu();
     }
 

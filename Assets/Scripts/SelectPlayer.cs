@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
 using Unity.VisualScripting;
-using UnityEditor.PackageManager;
 using UnityEngine;
 using TMPro;
 
@@ -88,7 +87,6 @@ public class SelectPlayer : NetworkBehaviour
     [SerializeField]
     private TextMeshProUGUI x1;
 
- 
     [SerializeField]
     private TextMeshProUGUI x2;
 
@@ -108,11 +106,31 @@ public class SelectPlayer : NetworkBehaviour
     private bool right = false;
     bool canSelect = true;
 
-    private NetworkVariable<bool> hostConfirmed = new NetworkVariable<bool>(false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
-    private NetworkVariable<bool> clientConfirmed = new NetworkVariable<bool>(false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
-    private NetworkVariable<int> hostChoice = new NetworkVariable<int>(-1, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+    private NetworkVariable<bool> hostConfirmed = new NetworkVariable<bool>(
+        false,
+        NetworkVariableReadPermission.Everyone,
+        NetworkVariableWritePermission.Owner
+    );
+    private NetworkVariable<bool> clientConfirmed = new NetworkVariable<bool>(
+        false,
+        NetworkVariableReadPermission.Everyone,
+        NetworkVariableWritePermission.Owner
+    );
+    private NetworkVariable<int> hostChoice = new NetworkVariable<int>(
+        -1,
+        NetworkVariableReadPermission.Everyone,
+        NetworkVariableWritePermission.Owner
+    );
 
-    [SerializeField] AudioSource confirmAudio;
+    [SerializeField]
+    AudioSource confirmAudio;
+
+    Inputs physicalInputs;
+
+    private void Start()
+    {
+        physicalInputs = GameManager.GetInputActionsAsset();
+    }
 
     public override void OnNetworkSpawn()
     {
@@ -139,8 +157,15 @@ public class SelectPlayer : NetworkBehaviour
 
         Debug.Log("All can read:" + hostChoice.CanClientRead(1));
 
-        hostConfirmed.OnValueChanged += (bool previous, bool next) => { Debug.Log("Host changed"); };
-        clientConfirmed.OnValueChanged += (bool previous, bool next) => { Debug.Log("Client changed"); uiManager.ShowGameUI(); };
+        hostConfirmed.OnValueChanged += (bool previous, bool next) =>
+        {
+            Debug.Log("Host changed");
+        };
+        clientConfirmed.OnValueChanged += (bool previous, bool next) =>
+        {
+            Debug.Log("Client changed");
+            uiManager.ShowGameUI();
+        };
     }
 
     public void ResetPositions()
@@ -161,9 +186,11 @@ public class SelectPlayer : NetworkBehaviour
 
     void Update()
     {
+        if (physicalInputs == null)
+            physicalInputs = GameManager.GetInputActionsAsset();
+
         if (hostChoice.Value == 0)
         {
-
             Debug.Log("host done");
             lightReady.SetActive(true);
         }
@@ -210,13 +237,13 @@ public class SelectPlayer : NetworkBehaviour
             }
         }*/
 
-        if (Input.GetKeyDown(KeyCode.LeftArrow) && canSelect)
+        if (physicalInputs.Player.UISelect.ReadValue<float>() < 0 && canSelect)
         {
             left = true;
             right = false;
             RequestSelectPlayerServerRpc();
         }
-        if (Input.GetKeyDown(KeyCode.RightArrow) && canSelect)
+        if (physicalInputs.Player.UISelect.ReadValue<float>() > 0 && canSelect)
         {
             right = true;
             left = false;
@@ -227,10 +254,9 @@ public class SelectPlayer : NetworkBehaviour
 
         if (IsOwner)
         {
-            if (selectedPlayer == player1 && Input.GetKeyDown(KeyCode.X))
+            if (selectedPlayer == player1 && physicalInputs.Player.UIConfirm.triggered)
             {
                 x1.enabled = false;
-
 
                 if (clientId == 1)
                 {
@@ -252,7 +278,7 @@ public class SelectPlayer : NetworkBehaviour
                 }
             }
 
-            if (selectedPlayer == player2 && Input.GetKeyDown(KeyCode.X))
+            if (selectedPlayer == player2 && physicalInputs.Player.UIConfirm.triggered)
             {
                 x2.enabled = false;
 
@@ -279,21 +305,17 @@ public class SelectPlayer : NetworkBehaviour
 
         if (hostConfirmed.Value == true && clientConfirmed.Value == true)
         {
-
             Debug.Log("both players confirmed");
             StartCoroutine(bothSelected());
-
         }
     }
 
     IEnumerator bothSelected()
     {
-
         confirm = true;
         uiManager.ShowGameUI();
         gameObject.SetActive(false);
         yield return new WaitForSeconds(2f);
-
     }
 
     private void MoveLeft()
@@ -311,7 +333,6 @@ public class SelectPlayer : NetworkBehaviour
             Selected(player1);
             selectedPlayer = player1;
             x1.enabled = true;
-
         }
         else if (hostIcon.position == rightPosition.position) // If on right, move to middle //hostIcon.Value.gameObject.transform.position
         {
@@ -349,7 +370,6 @@ public class SelectPlayer : NetworkBehaviour
             Selected(player2);
             selectedPlayer = player2;
             x2.enabled = true;
-
         }
         else if (hostIcon.position == leftPosition.position) // If on left, move to middle //hostIcon.Value.gameObject.transform.position
         {
@@ -387,7 +407,6 @@ public class SelectPlayer : NetworkBehaviour
             Selected(player1);
             selectedPlayer = player1;
             x1.enabled = true;
-
         }
         else if (clientIcon.position == rightPositionClient.position) // If on right, move to middle // clientIcon.Value.gameObject.transform.position
         {
@@ -408,7 +427,6 @@ public class SelectPlayer : NetworkBehaviour
             darkReady.SetActive(false);
             darkLight.SetActive(false);
             lightLight.SetActive(false);
-
         }
     }
 
@@ -427,7 +445,6 @@ public class SelectPlayer : NetworkBehaviour
             Selected(player2);
             selectedPlayer = player2;
             x2.enabled = true;
-
         }
         else if (clientIcon.position == leftPositionClient.position) // If on left, move to middle //clientIcon.Value.gameObject.transform.position
         {
@@ -463,7 +480,6 @@ public class SelectPlayer : NetworkBehaviour
             Debug.Log("im not animated");
         }
     }
-
 
     [ServerRpc(RequireOwnership = false)]
     void RequestSelectPlayerServerRpc()

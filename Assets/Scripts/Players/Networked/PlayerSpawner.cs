@@ -3,7 +3,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
-using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class PlayerSpawner : NetworkBehaviour
@@ -26,8 +25,6 @@ public class PlayerSpawner : NetworkBehaviour
     {
         
         // REMOVE COMMENTS AFTER UI to GAME SCENE IS FIXED, Done
-        
-        /*
          hostOption = SelectPlayer.hostSelection;
          
          if (hostOption == 0) { clientOption = 1; }
@@ -39,19 +36,20 @@ public class PlayerSpawner : NetworkBehaviour
              SpawnPlayerServerRpc(0, hostOption);
              SpawnPlayerServerRpc(1, clientOption);
              SelectPlayer.confirm = false;
+             PlayerSpawn();
          }
-         */
+         
 
         //For Zaid to test weapon stuff
         //DELETE CODE AFTER UI IS FIXED
-        if (Input.GetKeyDown(KeyCode.X))
+        /*if (Input.GetKeyDown(KeyCode.X))
         {
             SpawnPlayerServerRpc(0, 1);
             SpawnPlayerServerRpc(1, 0);
             PlayerSpawn();
             if (TM!=null){TM.enabled = true;}
             
-        }
+        }*/
     }
 
     public override void OnNetworkSpawn()
@@ -78,14 +76,14 @@ public class PlayerSpawner : NetworkBehaviour
         }
         
         
-        if (clientId == 0 && TM != null)
+        /*if (clientId == 0 && TM != null)
         {
             TM.serverPlayer = newPlayer.GetComponent<PlayerTestScript>();
         }
         else if (clientId == 1 && TM != null)
         {
             TM.clientPlayer = newPlayer.GetComponent<PlayerTestScript>();
-        }
+        }*/
 
         netObj = newPlayer.GetComponent<NetworkObject>();
         newPlayer.SetActive(true);

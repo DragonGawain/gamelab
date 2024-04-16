@@ -6,7 +6,7 @@ using UnityEngine.InputSystem.UI;
 
 public class GameManager : MonoBehaviour
 {
-    Inputs physicalInputs;
+    static Inputs physicalInputs;
     static Vector2 mousePosition;
     static Vector2 mousePositionInput;
     static Vector2 controllerMouseInput;
@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
         physicalInputs.Player.Enable(); // TODO:: for the record, this is a BAD idea - we do NOT want the player inptus enabled by default
         rTransform = GetComponent<RectTransform>();
         Cursor.lockState = CursorLockMode.Confined;
-        // uim = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
+        uim = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
     }
 
     // Update is called once per frame
@@ -99,11 +99,17 @@ public class GameManager : MonoBehaviour
             core.gameObject.SetActive(true);
             core.DCoreMasterReset();
         }
+        ColorDegradation.ColorDegradationMasterReset();
     }
 
     public static void AddToMasterDCoreList(DCore core)
     {
         masterDCoreList.Add(core);
+    }
+
+    public static Inputs GetInputActionsAsset()
+    {
+        return physicalInputs;
     }
 
     // HOUSE IS ACTIVE FROM BEGINNING -> IT WILL NEVER **NOT** BE ACTIVE -> NO (non-pause) UI SHOULD BE AT ALL TRANSPARENT
