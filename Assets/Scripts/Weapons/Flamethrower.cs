@@ -16,6 +16,10 @@ namespace Weapons
         [SerializeField]
         private CapsuleCollider flameHitbox;
         public bool firing;
+        
+        [SerializeField] AudioSource firingLoopSound;
+        [SerializeField] private AudioSource startupSound;
+        
 
         // Start is called before the first frame update
         void Start()
@@ -28,6 +32,8 @@ namespace Weapons
         {
             firing = true;
             vfx.Play();
+            startupSound.Play();
+            firingLoopSound.Play();
             flameHitbox.enabled = true;
         }
 
@@ -35,6 +41,7 @@ namespace Weapons
         {
             firing = false;
             vfx.Stop();
+            firingLoopSound.Stop();
             flameHitbox.enabled = false;
         }
     }
