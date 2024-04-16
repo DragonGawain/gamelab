@@ -6,7 +6,7 @@ using UnityEngine.InputSystem.UI;
 
 public class GameManager : MonoBehaviour
 {
-    Inputs physicalInputs;
+    static Inputs physicalInputs;
     static Vector2 mousePosition;
     static Vector2 mousePositionInput;
     static Vector2 controllerMouseInput;
@@ -104,6 +104,11 @@ public class GameManager : MonoBehaviour
     public static void AddToMasterDCoreList(DCore core)
     {
         masterDCoreList.Add(core);
+    }
+
+    public static Inputs GetInputActionsAsset()
+    {
+        return physicalInputs;
     }
 
     // HOUSE IS ACTIVE FROM BEGINNING -> IT WILL NEVER **NOT** BE ACTIVE -> NO (non-pause) UI SHOULD BE AT ALL TRANSPARENT
