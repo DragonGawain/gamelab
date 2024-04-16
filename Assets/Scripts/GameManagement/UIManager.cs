@@ -108,9 +108,15 @@ public class UIManager : NetworkBehaviour
 
     public static UIManager UISingleton;
 
-    [SerializeField]
-    AudioSource confirmAudio;
+    
 
+    [Header("AUDIO")]
+    [SerializeField] AudioSource confirmAudio;
+
+    [SerializeField] AudioSource backAudio;
+    
+    [SerializeField] AudioSource confirmLongAudio;
+    
     private RelayConnect relayConnect;
 
     private string joinCode = null;
@@ -137,6 +143,9 @@ public class UIManager : NetworkBehaviour
         hostButton.onClick.AddListener(ShowHost);
         hostButton.onClick.AddListener(async () =>
         {
+            // Playing sound effect
+            confirmAudio.Play();
+            
             // Storing the join code as a string
             joinCode = await relayConnect.StartHostWithRelay();
             Debug.Log("join code: " + joinCode);
@@ -144,26 +153,42 @@ public class UIManager : NetworkBehaviour
         });
 
         // When the player presses 'Join' button, take to join canvas
-        joinButton.onClick.AddListener(ShowJoin);
+        joinButton.onClick.AddListener((() =>
+        {
+            ShowJoin();
+            
+            // Playing sound effect
+            confirmAudio.Play();
+        }));
 
         joinCodeButton.onClick.AddListener(async () =>
         {
             Debug.Log(inputField.text.ToUpper());
 
+            
+            
             try
             {
                 result = await relayConnect.StartClientWithRelay(inputField.text.ToUpper());
             }
             catch (Exception)
             {
+                
+                // Playing sound effect
+                confirmLongAudio.Play();
+                
                 inputField.image.color = Color.red;
                 throw;
             }
 
             if (result)
             {
+                // Playing sound effect
+                confirmLongAudio.Play();
+                
                 inputField.image.color = Color.green;
                 ShowPlayerSelect();
+                
             }
         });
         // settingsButton.onClick.AddListener(ShowSettings);
@@ -334,12 +359,18 @@ public class UIManager : NetworkBehaviour
                 ShowPause();
                 break;
         }
+        
+        // Play sound effect
+        backAudio.Play();
     }
 
     public void ReturnToMainMenu()
     {
         NetworkManager.Singleton.Shutdown();
         ShowMainMenu();
+        
+        // Play sound effect
+        backAudio.Play();
     }
 
     public void QuitGame()
