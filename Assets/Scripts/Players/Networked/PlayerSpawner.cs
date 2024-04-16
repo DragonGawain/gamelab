@@ -36,6 +36,7 @@ public class PlayerSpawner : NetworkBehaviour
              SpawnPlayerServerRpc(0, hostOption);
              SpawnPlayerServerRpc(1, clientOption);
              SelectPlayer.confirm = false;
+             PlayerSpawn();
          }
          
 
