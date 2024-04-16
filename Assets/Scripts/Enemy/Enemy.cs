@@ -39,6 +39,9 @@ public class Enemy : NetworkBehaviour
 
     [SerializeField]
     AudioSource voidAudio;
+    
+    // Animator
+    protected Animator animator;
 
     private void Awake()
     {
@@ -48,12 +51,14 @@ public class Enemy : NetworkBehaviour
         originalColor = material.color;
 
         enemyAI = GetComponent<EnemyAI>();
+        
     }
 
     // Start is called before the first frame update
     void Start()
     {
         voidAudio = GetComponent<AudioSource>();
+        animator = GetComponent<Animator>();
     }
 
     private void FixedUpdate()
@@ -93,6 +98,12 @@ public class Enemy : NetworkBehaviour
         else if (playerTag.CompareTo("LightPlayer") == 0)
             enemyAI.setLightPlayerTarget();
 
+        if (animator != null)
+        {
+            if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Death"))
+                animator.SetTrigger("OnHit");
+        }
+        
         if (health <= 0)
             OnDeath();
 
@@ -116,7 +127,13 @@ public class Enemy : NetworkBehaviour
     protected virtual void OnDeath()
     {
         WaveManager.EnemyDied();
-        // Put some animation player also
+        
+        // Death animation
+        if (animator != null)
+        {
+            animator.SetTrigger("OnDeath");
+        }
+        
         if (isVoid)
         {
             GameObject vo = Instantiate(voidHolePrefab, transform.position, Quaternion.identity);
