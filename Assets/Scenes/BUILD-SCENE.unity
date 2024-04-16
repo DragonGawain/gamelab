@@ -13242,18 +13242,28 @@ PrefabInstance:
     - target: {fileID: 8317677549156890635, guid: 5e295c8cd90394f46a4f3c34068496f6,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8317677549156890635, guid: 5e295c8cd90394f46a4f3c34068496f6,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8317677549156890635, guid: 5e295c8cd90394f46a4f3c34068496f6,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8525616585462208062, guid: 5e295c8cd90394f46a4f3c34068496f6,
+        type: 3}
+      propertyPath: crystalParticles1
+      value: 
+      objectReference: {fileID: 2000313025}
+    - target: {fileID: 8525616585462208062, guid: 5e295c8cd90394f46a4f3c34068496f6,
+        type: 3}
+      propertyPath: crystalParticles2
+      value: 
+      objectReference: {fileID: 5758277133997527932}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -16076,18 +16086,28 @@ PrefabInstance:
     - target: {fileID: 8317677549156890635, guid: 5e295c8cd90394f46a4f3c34068496f6,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8317677549156890635, guid: 5e295c8cd90394f46a4f3c34068496f6,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8317677549156890635, guid: 5e295c8cd90394f46a4f3c34068496f6,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8525616585462208062, guid: 5e295c8cd90394f46a4f3c34068496f6,
+        type: 3}
+      propertyPath: crystalParticles1
+      value: 
+      objectReference: {fileID: 2000313025}
+    - target: {fileID: 8525616585462208062, guid: 5e295c8cd90394f46a4f3c34068496f6,
+        type: 3}
+      propertyPath: crystalParticles2
+      value: 
+      objectReference: {fileID: 5758277133997527932}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20323,6 +20343,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2000313023}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &2000313025 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 408682193613526633, guid: 6b6963baaf6ff464e878ab1daf530a0a,
+    type: 3}
+  m_PrefabInstance: {fileID: 2000313023}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2024852909 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8812882653090251586, guid: 76cea5e2258af454abbf2424c1c73357,
@@ -22460,18 +22486,28 @@ PrefabInstance:
     - target: {fileID: 8317677549156890635, guid: 5e295c8cd90394f46a4f3c34068496f6,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8317677549156890635, guid: 5e295c8cd90394f46a4f3c34068496f6,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8317677549156890635, guid: 5e295c8cd90394f46a4f3c34068496f6,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8525616585462208062, guid: 5e295c8cd90394f46a4f3c34068496f6,
+        type: 3}
+      propertyPath: crystalParticles1
+      value: 
+      objectReference: {fileID: 2000313025}
+    - target: {fileID: 8525616585462208062, guid: 5e295c8cd90394f46a4f3c34068496f6,
+        type: 3}
+      propertyPath: crystalParticles2
+      value: 
+      objectReference: {fileID: 5758277133997527932}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -22747,18 +22783,28 @@ PrefabInstance:
     - target: {fileID: 8317677549156890635, guid: 5e295c8cd90394f46a4f3c34068496f6,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8317677549156890635, guid: 5e295c8cd90394f46a4f3c34068496f6,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8317677549156890635, guid: 5e295c8cd90394f46a4f3c34068496f6,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8525616585462208062, guid: 5e295c8cd90394f46a4f3c34068496f6,
+        type: 3}
+      propertyPath: crystalParticles1
+      value: 
+      objectReference: {fileID: 2000313025}
+    - target: {fileID: 8525616585462208062, guid: 5e295c8cd90394f46a4f3c34068496f6,
+        type: 3}
+      propertyPath: crystalParticles2
+      value: 
+      objectReference: {fileID: 5758277133997527932}
     - target: {fileID: 5857068413468896084, guid: 2517b46ee162c0a42815182ed8f457a1,
         type: 3}
       propertyPath: GlobalObjectIdHash
@@ -22872,6 +22918,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64fbb6de6daaa614a8c9ebac0239daea, type: 3}
+--- !u!198 &5758277133997527932 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2121482418011886498, guid: 64fbb6de6daaa614a8c9ebac0239daea,
+    type: 3}
+  m_PrefabInstance: {fileID: 5758277133997527931}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5797714645256992512
 PrefabInstance:
   m_ObjectHideFlags: 0
