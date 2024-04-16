@@ -186,6 +186,9 @@ public class SelectPlayer : NetworkBehaviour
 
     void Update()
     {
+        if (physicalInputs == null)
+            physicalInputs = GameManager.GetInputActionsAsset();
+
         if (hostChoice.Value == 0)
         {
             Debug.Log("host done");
