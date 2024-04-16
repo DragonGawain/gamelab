@@ -71,6 +71,15 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ControllerClick"",
+                    ""type"": ""Button"",
+                    ""id"": ""245407da-e0ee-4ce3-ae66-9b4aa5adda37"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -381,6 +390,17 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
                     ""action"": ""MoveMouse"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2ae36fc1-2ce0-4947-9474-9b6c70567b09"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ControllerClick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -971,6 +991,7 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
         m_Player_SwapWeapon = m_Player.FindAction("SwapWeapon", throwIfNotFound: true);
         m_Player_MousePos = m_Player.FindAction("MousePos", throwIfNotFound: true);
         m_Player_MoveMouse = m_Player.FindAction("MoveMouse", throwIfNotFound: true);
+        m_Player_ControllerClick = m_Player.FindAction("ControllerClick", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1049,6 +1070,7 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_SwapWeapon;
     private readonly InputAction m_Player_MousePos;
     private readonly InputAction m_Player_MoveMouse;
+    private readonly InputAction m_Player_ControllerClick;
     public struct PlayerActions
     {
         private @Inputs m_Wrapper;
@@ -1058,6 +1080,7 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
         public InputAction @SwapWeapon => m_Wrapper.m_Player_SwapWeapon;
         public InputAction @MousePos => m_Wrapper.m_Player_MousePos;
         public InputAction @MoveMouse => m_Wrapper.m_Player_MoveMouse;
+        public InputAction @ControllerClick => m_Wrapper.m_Player_ControllerClick;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1082,6 +1105,9 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
             @MoveMouse.started += instance.OnMoveMouse;
             @MoveMouse.performed += instance.OnMoveMouse;
             @MoveMouse.canceled += instance.OnMoveMouse;
+            @ControllerClick.started += instance.OnControllerClick;
+            @ControllerClick.performed += instance.OnControllerClick;
+            @ControllerClick.canceled += instance.OnControllerClick;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1101,6 +1127,9 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
             @MoveMouse.started -= instance.OnMoveMouse;
             @MoveMouse.performed -= instance.OnMoveMouse;
             @MoveMouse.canceled -= instance.OnMoveMouse;
+            @ControllerClick.started -= instance.OnControllerClick;
+            @ControllerClick.performed -= instance.OnControllerClick;
+            @ControllerClick.canceled -= instance.OnControllerClick;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1288,6 +1317,7 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
         void OnSwapWeapon(InputAction.CallbackContext context);
         void OnMousePos(InputAction.CallbackContext context);
         void OnMoveMouse(InputAction.CallbackContext context);
+        void OnControllerClick(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

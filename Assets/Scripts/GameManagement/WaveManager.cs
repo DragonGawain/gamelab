@@ -51,11 +51,11 @@ public class WaveManager : NetworkBehaviour
     {
         // prime oldVoidHoles with the VOs in the scene
         GameObject[] vos = GameObject.FindGameObjectsWithTag("VoidHole");
-        foreach (GameObject vo in vos)
-        {
-            GameObject voClone = Instantiate(vo);
-            newVoidHoles.Add(voClone);
-        }
+        // foreach (GameObject vo in vos)
+        // {
+        //     GameObject voClone = Instantiate(vo);
+        //     newVoidHoles.Add(voClone);
+        // }
     }
 
     public static void WaveManagerMasterReset()

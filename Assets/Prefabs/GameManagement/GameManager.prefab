@@ -157,7 +157,7 @@ MonoBehaviour:
     m_Reference: {fileID: -5520053504541708422, guid: f9ce365c4189a416c9d5900ac61d561b,
       type: 3}
   m_LeftButtonAction:
-    m_UseReference: 0
+    m_UseReference: 1
     m_Action:
       m_Name: Left Button
       m_Type: 0
@@ -167,7 +167,8 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
-    m_Reference: {fileID: 0}
+    m_Reference: {fileID: -6554871279012869230, guid: f9ce365c4189a416c9d5900ac61d561b,
+      type: 3}
   m_MiddleButtonAction:
     m_UseReference: 0
     m_Action:

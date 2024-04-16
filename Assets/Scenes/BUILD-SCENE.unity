@@ -21057,6 +21057,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 999410068770951093, guid: 1498db2abb30bc64fab3bf9d73a04f41,
+        type: 3}
+      propertyPath: m_LeftButtonAction.m_UseReference
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2397493749135597554, guid: 1498db2abb30bc64fab3bf9d73a04f41,
         type: 3}
       propertyPath: m_Enabled
