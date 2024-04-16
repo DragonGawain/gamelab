@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
         physicalInputs.Player.Enable(); // TODO:: for the record, this is a BAD idea - we do NOT want the player inptus enabled by default
         rTransform = GetComponent<RectTransform>();
         Cursor.lockState = CursorLockMode.Confined;
-        // uim = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
+        uim = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
     }
 
     // Update is called once per frame

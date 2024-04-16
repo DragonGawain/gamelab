@@ -40,7 +40,7 @@ public class WaveManager : NetworkBehaviour
         enemyType1 = Resources.Load<GameObject>("EnemyType1");
         enemyType2 = Resources.Load<GameObject>("EnemyType2");
         enemyType3 = Resources.Load<GameObject>("EnemyType3");
-        //uim = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
+        uim = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
 
         currentWave = 0;
         PlayerSpawner.PlayerSpawn += StartNextWave;
@@ -83,7 +83,6 @@ public class WaveManager : NetworkBehaviour
     static void StartNextWave()
     {
         //  TODO:: at the start of each wave, show a new wave pop up
-        //UIManager.ShowWavePopup();
 
         foreach (GameObject oldVo in oldVoidHoles)
         {
@@ -97,6 +96,7 @@ public class WaveManager : NetworkBehaviour
         }
         newVoidHoles = new();
         currentWave++;
+        uim.ShowWavePopup(currentWave);
         GetWaveInfo(currentWave);
         nbEnemies = ET1 + ET2 + ET3;
         randomEnemyOrder = new();
@@ -212,17 +212,17 @@ public class WaveManager : NetworkBehaviour
             if (!hasET1Appeared && enemy.CompareTag("BasicEnemy"))
             {
                 hasET1Appeared = true;
-                //uim.ShowEnemy1Popup();
+                uim.ShowEnemy1Popup();
             }
             if (!hasET2Appeared && enemy.CompareTag("ComboEnemy"))
             {
                 hasET2Appeared = true;
-                //uim.ShowEnemy2Popup();
+                uim.ShowEnemy2Popup();
             }
             if (!hasET3Appeared && enemy.CompareTag("VoidEnemy"))
             {
                 hasET3Appeared = true;
-                //uim.ShowEnemy3Popup();
+                uim.ShowEnemy3Popup();
             }
             if (voidIndeces.Contains(randomEnemyOrder[nbEnemiesSpawnedThisWave]))
                 enemy.GetComponent<Enemy>().ThisEnemyIsVoid();

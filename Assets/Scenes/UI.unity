@@ -12087,26 +12087,6 @@ PrefabInstance:
       propertyPath: GlobalObjectIdHash
       value: 753740251
       objectReference: {fileID: 0}
-    - target: {fileID: 6581375388591834347, guid: ffff310cd6cd9df4487f5fff607940b4,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6581375388591834347, guid: ffff310cd6cd9df4487f5fff607940b4,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9200841305514507329, guid: ffff310cd6cd9df4487f5fff607940b4,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9200841305514507329, guid: ffff310cd6cd9df4487f5fff607940b4,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
