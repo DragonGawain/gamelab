@@ -67,6 +67,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crosshair: {fileID: 2800000, guid: 3ee3fd65e809c1a42b5a3bc82985aac8, type: 3}
+  mouseCursor: {fileID: 2800000, guid: 808e0b54e45649948be1beb8c268cd5e, type: 3}
 --- !u!114 &3262249305173299680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104,7 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 311235099
+  GlobalObjectIdHash: 3826809731
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
