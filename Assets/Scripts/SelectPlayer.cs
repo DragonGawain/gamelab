@@ -5,7 +5,6 @@ using Unity.Netcode;
 using Unity.VisualScripting;
 using UnityEditor.PackageManager;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using TMPro;
 
 public class SelectPlayer : NetworkBehaviour
