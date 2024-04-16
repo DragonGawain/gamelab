@@ -63,11 +63,11 @@ public class WaveManager : NetworkBehaviour
         
         currentWave = 0;
         GameObject[] vos = GameObject.FindGameObjectsWithTag("VoidHole");
-        foreach (GameObject vo in vos)
-        {
-            GameObject voClone = Instantiate(vo);
-            newVoidHoles.Add(voClone);
-        }
+        // foreach (GameObject vo in vos)
+        // {
+        //     GameObject voClone = Instantiate(vo);
+        //     newVoidHoles.Add(voClone);
+        // }
         gameStart = false;
     }
 
