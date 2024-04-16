@@ -2638,7 +2638,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6659637372275666350}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: BackButton
+        m_MethodName: ReturnToMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
