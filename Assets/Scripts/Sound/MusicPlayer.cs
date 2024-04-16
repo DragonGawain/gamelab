@@ -27,14 +27,16 @@ public class MusicPlayer : MonoBehaviour
     {
         if (other.CompareTag("LightPlayer")) // Check if the collider belongs to the player
         {
-            crystalParticles1.Play(); // Play the particle system
+            other.gameObject.GetComponent<ParticleSystem>().Play();
+            // crystalParticles1.Play(); // Play the particle system
 
             musicAudioSource.Play(); // Play the music
 
         }
         if (other.CompareTag("DarkPlayer")) // Check if the collider belongs to the player
         {
-            crystalParticles2.Play(); // Play the particle system
+            other.gameObject.GetComponent<ParticleSystem>().Play();
+            // crystalParticles2.Play(); // Play the particle system
 
             musicAudioSource.Play(); // Play the music
 
@@ -45,13 +47,15 @@ public class MusicPlayer : MonoBehaviour
     {
         if (other.CompareTag("LightPlayer")) // Check if the collider belongs to the player
         {
-            crystalParticles1.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear); // Stop the particle system immediately and clear existing particles
+            other.gameObject.GetComponent<ParticleSystem>().Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            // crystalParticles1.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear); // Stop the particle system immediately and clear existing particles
             musicAudioSource.Stop(); // Play the music
 
         }
         if (other.CompareTag("DarkPlayer")) // Check if the collider belongs to the player
         {
-            crystalParticles2.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear); // Stop the particle system immediately and clear existing particles
+            other.gameObject.GetComponent<ParticleSystem>().Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            // crystalParticles2.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear); // Stop the particle system immediately and clear existing particles
             musicAudioSource.Stop(); // Play the music
 
         }
