@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028326, g: 0.22571333, b: 0.30692202, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1991,7 +1991,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -2009,10 +2009,22 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 597058768}
+  m_TargetGraphic: {fileID: 2051400648}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2005762520}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: BackButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &597058768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8146,18 +8158,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1088963836}
   m_SourcePrefab: {fileID: 100100000, guid: 6b6963baaf6ff464e878ab1daf530a0a, type: 3}
---- !u!114 &1088963833 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1274436919136917900, guid: 6b6963baaf6ff464e878ab1daf530a0a,
-    type: 3}
-  m_PrefabInstance: {fileID: 1088963832}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1088963835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d113bfb3c03a9e047a4462b0d39233fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1088963834 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6829581377356067122, guid: 6b6963baaf6ff464e878ab1daf530a0a,
@@ -8182,11 +8182,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 608b174e4054a46a4b66014336be72dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1088963833}
-  health: 100
-  maxHealth: 100
-  healthBarUI: {fileID: 0}
-  slider: {fileID: 0}
 --- !u!1 &1124766774
 GameObject:
   m_ObjectHideFlags: 0

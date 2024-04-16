@@ -14,6 +14,8 @@ public class DCore : NetworkBehaviour
     // default health for a dream core is 100
     private int health = 100;
 
+    private int healers = 0;
+
     // public getter method for health
     public int GetHealth
     {
@@ -77,5 +79,38 @@ public class DCore : NetworkBehaviour
             //Debug.Log($"health left: {health}");
             return false;
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("LightPlayer") || other.CompareTag("DarkPlayer"))
+        {
+            healers += 1;
+        }
+        
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("LightPlayer") || other.CompareTag("DarkPlayer"))
+        {
+            healers -= 1;
+        }
+    }
+
+
+    private float heal_tick_rate = 0.5f;
+    private float heal_time = 0;
+    private void FixedUpdate()
+    {
+        if (healers > 0)
+        {
+            if (Time.time > heal_time)
+            {
+                health += 2;
+                heal_time = Time.time + heal_tick_rate;
+            }
+        }
+        
     }
 }
