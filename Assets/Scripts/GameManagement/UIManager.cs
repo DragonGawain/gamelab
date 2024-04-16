@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TMPro;
 using Unity.Netcode;
+using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -89,11 +91,14 @@ public class UIManager : MonoBehaviour
     [Header("OTHER")]
     [SerializeField]
     private SelectPlayer selectPlayer;
-
+    
     [SerializeField]
     private TextMeshProUGUI hostCodeText;
 
     [SerializeField] private Button joinCodeButton;
+    
+    [SerializeField] private TMP_InputField inputField;
+    
 
     // [SerializeField]
     // private Button settingsButton;
@@ -121,6 +126,8 @@ public class UIManager : MonoBehaviour
     private RelayConnect relayConnect;
 
     private string joinCode = null;
+    
+    
 
     
     private void Start()
@@ -134,12 +141,11 @@ public class UIManager : MonoBehaviour
         confirmAudio = GetComponent<AudioSource>();
 
         relayConnect = GetComponent<RelayConnect>();
-        
 
         //MainCamera.enabled = true;
         //SelectCamera.enabled = false;
         
-        // Starting the game as a ahost
+        // Starting the game as a host
         hostButton.onClick.AddListener(ShowHost);
         hostButton.onClick.AddListener(async () =>
         {
@@ -153,9 +159,29 @@ public class UIManager : MonoBehaviour
         // When the player presses 'Join' button, take to join canvas
         joinButton.onClick.AddListener(ShowJoin);
         
-        joinButton.onClick.AddListener(() =>
+        joinCodeButton.onClick.AddListener(async() =>
         {
-            NetworkManager.Singleton.StartClient();
+            Debug.Log(inputField.text.ToUpper());
+
+            bool result = false;
+
+            try
+            {
+                result = await relayConnect.StartClientWithRelay(inputField.text.ToUpper());
+            }
+            catch (Exception e)
+            {
+                inputField.image.color = Color.red;
+                throw;
+            }
+            
+            
+            if (result)
+                inputField.image.color = Color.green;
+            
+                
+            
+            
         });
         SceneManager.sceneLoaded += OnSceneLoaded;
         // settingsButton.onClick.AddListener(ShowSettings);
