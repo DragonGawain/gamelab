@@ -158,7 +158,10 @@ public class UIManager : MonoBehaviour
             }
 
             if (result)
+            {
                 inputField.image.color = Color.green;
+                ShowPlayerSelect();
+            }
         });
         // settingsButton.onClick.AddListener(ShowSettings);
         // controlsButton.onClick.AddListener(ShowControls);
@@ -222,12 +225,6 @@ public class UIManager : MonoBehaviour
     public void ShowCredits()
     {
         ShowCanvas(CreditsCanvas);
-    }
-
-    // To be used for both host and join
-    public void ContinueToPlayerSelect()
-    {
-        ShowPlayerSelect();
     }
 
     public void ShowHost()
