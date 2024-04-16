@@ -11,33 +11,39 @@ public class FlameHitbox : MonoBehaviour
     readonly int dmg = 15;
 
     List<Enemy> enemies = new();
+    bool semaphore = false;
 
     private void OnTriggerEnter(Collider other)
     {
+        semaphore = true;
         if (other.CompareTag("BasicEnemy"))
             enemies.Add(other.GetComponent<Enemy>());
+        semaphore = false;
     }
 
     private void OnTriggerExit(Collider other)
     {
+        semaphore = true;
         if (other.CompareTag("BasicEnemy") && enemies.Contains(other.GetComponent<Enemy>()))
             enemies.Remove(other.GetComponent<Enemy>());
+        semaphore = false;
     }
 
     private void FixedUpdate()
     {
         if (Time.time < shootTime)
             return;
-        shootTime = Time.time + tick;
-        foreach (Enemy enemy in enemies)
+        if (!semaphore)
         {
-            if (enemy != null)
+            shootTime = Time.time + tick;
+            foreach (Enemy enemy in enemies)
             {
-                enemy.OnHit(dmg, "LightPlayer");
-            }
-            else
-            {
-                enemies.Remove(enemy);
+                if (semaphore)
+                    return;
+                if (enemy != null)
+                    enemy.OnHit(dmg, "LightPlayer");
+                else
+                    enemies.Remove(enemy);
             }
         }
     }
