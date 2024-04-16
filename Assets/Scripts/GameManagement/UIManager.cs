@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using TMPro;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
@@ -88,6 +90,11 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private SelectPlayer selectPlayer;
 
+    [SerializeField]
+    private TextMeshProUGUI hostCodeText;
+
+    [SerializeField] private Button joinCodeButton;
+
     // [SerializeField]
     // private Button settingsButton;
 
@@ -111,6 +118,11 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] AudioSource confirmAudio;
 
+    private RelayConnect relayConnect;
+
+    private string joinCode = null;
+
+    
     private void Start()
     {
         if (UISingleton == null)
@@ -121,14 +133,26 @@ public class UIManager : MonoBehaviour
 
         confirmAudio = GetComponent<AudioSource>();
 
+        relayConnect = GetComponent<RelayConnect>();
+        
+
         //MainCamera.enabled = true;
         //SelectCamera.enabled = false;
+        
+        // Starting the game as a ahost
         hostButton.onClick.AddListener(ShowHost);
-        hostButton.onClick.AddListener(() =>
+        hostButton.onClick.AddListener(async () =>
         {
-            NetworkManager.Singleton.StartHost();
+            // Storing the join code as a string
+            joinCode = await relayConnect.StartHostWithRelay();
+            Debug.Log("join code: " + joinCode);
+            hostCodeText.SetText(joinCode); // updating the UI with the code
+
         });
+        
+        // When the player presses 'Join' button, take to join canvas
         joinButton.onClick.AddListener(ShowJoin);
+        
         joinButton.onClick.AddListener(() =>
         {
             NetworkManager.Singleton.StartClient();
