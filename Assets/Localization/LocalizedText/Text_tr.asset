@@ -106,6 +106,18 @@ MonoBehaviour:
     m_Localized: "T\xFCrk\xE7e"
     m_Metadata:
       m_Items: []
+  - m_Id: 17313868052164608
+    m_Localized: "Kullan\u0131c\u0131 Aray\xFCz\xFC Gezinmesi"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17314349398880256
+    m_Localized: "Ama\xE7"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17315023960403968
+    m_Localized: "Kullan\u0131c\u0131 Aray\xFCz\xFC Se\xE7imi"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
