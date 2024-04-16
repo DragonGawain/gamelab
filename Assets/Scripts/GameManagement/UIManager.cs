@@ -325,12 +325,14 @@ public class UIManager : NetworkBehaviour
 
     public void PauseGame()
     {
+        pauseState = PauseState.ISONMAINMENU;
         Time.timeScale = 0;
     }
 
     public void ResumeGame()
     {
         Time.timeScale = 1;
+        pauseState = PauseState.ISPLAYING;
     }
 
     public void BackButton()
