@@ -14141,7 +14141,7 @@ PrefabInstance:
     - target: {fileID: 202213335041224852, guid: ffff310cd6cd9df4487f5fff607940b4,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 270524079644354909, guid: ffff310cd6cd9df4487f5fff607940b4,
         type: 3}
@@ -14238,6 +14238,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1713840565749069301, guid: ffff310cd6cd9df4487f5fff607940b4,
+        type: 3}
+      propertyPath: m_Name
+      value: DogPlayerSlider
+      objectReference: {fileID: 0}
     - target: {fileID: 1760434364842824144, guid: ffff310cd6cd9df4487f5fff607940b4,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -14256,7 +14261,7 @@ PrefabInstance:
     - target: {fileID: 1823369044455690042, guid: ffff310cd6cd9df4487f5fff607940b4,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2402723681765376037, guid: ffff310cd6cd9df4487f5fff607940b4,
         type: 3}
@@ -14583,6 +14588,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6538090735593123227, guid: ffff310cd6cd9df4487f5fff607940b4,
+        type: 3}
+      propertyPath: m_Name
+      value: CatPlayerSlider
       objectReference: {fileID: 0}
     - target: {fileID: 6572918558573734069, guid: ffff310cd6cd9df4487f5fff607940b4,
         type: 3}
