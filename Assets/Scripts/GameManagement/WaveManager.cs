@@ -37,11 +37,12 @@ public class WaveManager : NetworkBehaviour
 
     void Awake()
     {
+        Debug.Log("Wave Manager Activated");
         enemyType1 = Resources.Load<GameObject>("EnemyType1");
         enemyType2 = Resources.Load<GameObject>("EnemyType2");
         enemyType3 = Resources.Load<GameObject>("EnemyType3");
         uim = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
-
+        
         currentWave = 0;
         PlayerSpawner.PlayerSpawn += StartNextWave;
         PlayerSpawner.PlayerSpawn += () => gameStart = true;
@@ -83,6 +84,7 @@ public class WaveManager : NetworkBehaviour
 
     static void StartNextWave()
     {
+        Debug.Log("WAVE STARTED");
         //  TODO:: at the start of each wave, show a new wave pop up
 
         foreach (GameObject oldVo in oldVoidHoles)
