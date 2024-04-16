@@ -13,7 +13,7 @@ public enum PauseState
     ISPLAYING
 }
 
-public class UIManager : MonoBehaviour
+public class UIManager : NetworkBehaviour
 {
     [Header("CAMERAS")]
     //[SerializeField] private Camera MainCamera;
@@ -111,6 +111,9 @@ public class UIManager : MonoBehaviour
     private RelayConnect relayConnect;
 
     private string joinCode = null;
+    
+    //To check if client connected to game session
+    bool result = false;
 
     private void Start()
     {
@@ -144,7 +147,7 @@ public class UIManager : MonoBehaviour
         {
             Debug.Log(inputField.text.ToUpper());
 
-            bool result = false;
+            
 
             try
             {
@@ -178,6 +181,16 @@ public class UIManager : MonoBehaviour
         {
             PlayerSelectCanvas.SetActive(false);
         }
+
+        if (result && IsServer)
+        {
+            if (NetworkManager.ConnectedClients.Count == 2)
+            {
+                result = false;
+                ShowPlayerSelectServerRpc();
+            }
+        }
+        
     }
 
     public void ShowCanvas(GameObject canvas)
@@ -236,6 +249,18 @@ public class UIManager : MonoBehaviour
         ShowCanvas(JoinCanvas);
     }
 
+    [ServerRpc]
+    public void ShowPlayerSelectServerRpc()
+    {
+        ShowPlayerSelectClientRpc();
+    }
+    
+    [ClientRpc]
+    public void ShowPlayerSelectClientRpc()
+    {
+        ShowPlayerSelect();
+    }
+    
     public void ShowPlayerSelect()
     {
         ShowCanvas(PlayerSelectCanvas);
