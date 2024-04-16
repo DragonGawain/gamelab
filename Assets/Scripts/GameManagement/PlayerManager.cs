@@ -21,8 +21,7 @@ public class PlayerManager : MonoBehaviour
 
     private void Start()
     {
-        debugUI = (DebugUI) GameObject.FindObjectOfType<DebugUI>();
-        
+        debugUI = (DebugUI)GameObject.FindObjectOfType<DebugUI>();
     }
 
     public static void SetLightPlayer(PlayerTestScript lp)
@@ -72,7 +71,7 @@ public class PlayerManager : MonoBehaviour
             if (isDarkPlayerDead)
             {
                 // TODO: actually implement this
-                GameManager.SetYouWin();
+                GameManager.SetYouLose();
             }
             lightRespawnTimer--;
             if (lightRespawnTimer <= 0)
@@ -96,7 +95,12 @@ public class PlayerManager : MonoBehaviour
                 debugUI.SetHostHealth(lightPlayer.GetHealth());
                 debugUI.SetClientHealth(darkPlayer.GetHealth());
             }
-            
         }
+    }
+
+    public static void PlayerManagerMasterReset()
+    {
+        darkPlayer.Revive();
+        lightPlayer.Revive();
     }
 }

@@ -1,5 +1,79 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &41816344491623315
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6829581377356067122}
+    m_Modifications:
+    - target: {fileID: 269573506957349686, guid: ed13c85bac4d94d7dbe244a567561cf5,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 269573506957349686, guid: ed13c85bac4d94d7dbe244a567561cf5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 269573506957349686, guid: ed13c85bac4d94d7dbe244a567561cf5,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 269573506957349686, guid: ed13c85bac4d94d7dbe244a567561cf5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 269573506957349686, guid: ed13c85bac4d94d7dbe244a567561cf5,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 269573506957349686, guid: ed13c85bac4d94d7dbe244a567561cf5,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 269573506957349686, guid: ed13c85bac4d94d7dbe244a567561cf5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 269573506957349686, guid: ed13c85bac4d94d7dbe244a567561cf5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 269573506957349686, guid: ed13c85bac4d94d7dbe244a567561cf5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 269573506957349686, guid: ed13c85bac4d94d7dbe244a567561cf5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9046433954339610438, guid: ed13c85bac4d94d7dbe244a567561cf5,
+        type: 3}
+      propertyPath: m_Name
+      value: Musical Notes
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ed13c85bac4d94d7dbe244a567561cf5, type: 3}
+--- !u!4 &227774911558848677 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 269573506957349686, guid: ed13c85bac4d94d7dbe244a567561cf5,
+    type: 3}
+  m_PrefabInstance: {fileID: 41816344491623315}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6434858191415351001
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -100,7 +174,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: b08c90d30ec3a884d925ed43b0424061,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 227774911558848677}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b08c90d30ec3a884d925ed43b0424061,
         type: 3}
@@ -397,7 +475,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2731943700
+  GlobalObjectIdHash: 3324557488
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -426,7 +504,6 @@ MonoBehaviour:
   smoothTime: 0.05
   camObject: {fileID: 7854156560825185214, guid: 84f8c9cf3b1e61e44a87203533676282,
     type: 3}
-  maxVelocity: 5.25
   acceleration: 4
   superHammer: {fileID: 8047829031987554622, guid: f19ea1917805f3e4580a74160057d334,
     type: 3}
@@ -476,3 +553,9 @@ MonoBehaviour:
   InLocalSpace: 0
   Interpolate: 1
   SlerpPosition: 0
+--- !u!4 &6829581377356067122 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b08c90d30ec3a884d925ed43b0424061,
+    type: 3}
+  m_PrefabInstance: {fileID: 6434858191415351001}
+  m_PrefabAsset: {fileID: 0}

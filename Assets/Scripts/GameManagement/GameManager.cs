@@ -9,12 +9,14 @@ public class GameManager : MonoBehaviour
     Inputs physicalInputs;
     static Vector2 mousePosition;
     static Vector2 mousePositionInput;
-    static Vector2 altMousePositionInput;
     static Vector2 controllerMouseInput;
 
     static RectTransform rTransform;
 
     public static GameManager GMSingleton;
+    public static List<DCore> masterDCoreList = new();
+
+    static UIManager uim;
 
     private void Awake()
     {
@@ -27,6 +29,7 @@ public class GameManager : MonoBehaviour
         physicalInputs.Player.Enable(); // TODO:: for the record, this is a BAD idea - we do NOT want the player inptus enabled by default
         rTransform = GetComponent<RectTransform>();
         Cursor.lockState = CursorLockMode.Confined;
+        // uim = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
     }
 
     // Update is called once per frame
@@ -75,9 +78,8 @@ public class GameManager : MonoBehaviour
     public static void SetYouWin()
     {
         // called from WaveManager.EnemyDied
-        //Debug.Log("players win!");
-        //  TODO:: call this when you win to show the win screen
-        //UIManager.ShowWinScreen();
+        Debug.Log("players win!");
+        uim.ShowWinScreen();
     }
 
     public static void SetYouLose()
@@ -85,7 +87,25 @@ public class GameManager : MonoBehaviour
         // Called from PlayerManager.FixedUpdate
         // Called from ColorDegradation.UpdateGlobalHP
         Debug.Log("players lose :(");
-        // TODO::  call this when you lose to show the lose screen
-        //UIManager.ShowLoseScreen();
+        uim.ShowLoseScreen();
     }
+
+    public static void MasterReset()
+    {
+        PlayerManager.PlayerManagerMasterReset();
+        WaveManager.WaveManagerMasterReset();
+        foreach (DCore core in masterDCoreList)
+        {
+            core.gameObject.SetActive(true);
+            core.DCoreMasterReset();
+        }
+    }
+
+    public static void AddToMasterDCoreList(DCore core)
+    {
+        masterDCoreList.Add(core);
+    }
+
+    // HOUSE IS ACTIVE FROM BEGINNING -> IT WILL NEVER **NOT** BE ACTIVE -> NO (non-pause) UI SHOULD BE AT ALL TRANSPARENT
+    // First wave is kicked off (started) when both players have spawned in (event subscription)
 }

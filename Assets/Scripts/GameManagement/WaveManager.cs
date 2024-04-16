@@ -33,38 +33,48 @@ public class WaveManager : NetworkBehaviour
     static bool hasET2Appeared = false;
     static bool hasET3Appeared = false;
 
-    private bool gameStart = false;
-
+    private static bool gameStart = false;
 
     void Awake()
     {
-        currentWave = 0;
         enemyType1 = Resources.Load<GameObject>("EnemyType1");
         enemyType2 = Resources.Load<GameObject>("EnemyType2");
         enemyType3 = Resources.Load<GameObject>("EnemyType3");
         //uim = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
 
+        currentWave = 0;
         PlayerSpawner.PlayerSpawn += StartNextWave;
         PlayerSpawner.PlayerSpawn += () => gameStart = true;
     }
-    
+
     void Start()
     {
         // prime oldVoidHoles with the VOs in the scene
         GameObject[] vos = GameObject.FindGameObjectsWithTag("VoidHole");
         foreach (GameObject vo in vos)
         {
-            newVoidHoles.Add(vo);
+            GameObject voClone = Instantiate(vo);
+            newVoidHoles.Add(voClone);
         }
     }
 
+    public static void WaveManagerMasterReset()
+    {
+        currentWave = 0;
+        GameObject[] vos = GameObject.FindGameObjectsWithTag("VoidHole");
+        foreach (GameObject vo in vos)
+        {
+            GameObject voClone = Instantiate(vo);
+            newVoidHoles.Add(voClone);
+        }
+        gameStart = false;
+    }
 
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
         if (!IsServer)
         {
-            
             enabled = false;
             return;
         }
@@ -72,10 +82,9 @@ public class WaveManager : NetworkBehaviour
 
     static void StartNextWave()
     {
-        
         //  TODO:: at the start of each wave, show a new wave pop up
         //UIManager.ShowWavePopup();
-        
+
         foreach (GameObject oldVo in oldVoidHoles)
         {
             Destroy(oldVo);
@@ -174,9 +183,12 @@ public class WaveManager : NetworkBehaviour
 
     private void FixedUpdate()
     {
+        // Good code! This gets the Craig stamp of approval!
+        // (except for have squiggly brackets for a 1 statement IF statement)
         //Only runs when players have spawned
-        if (!gameStart){ return;}
-        
+        if (!gameStart)
+            return;
+
         waveTimer++;
         if (nbEnemiesSpawnedThisWave < nbEnemies && (waveTimer % (totalWaveTime / nbEnemies)) == 0)
         {
@@ -196,8 +208,7 @@ public class WaveManager : NetworkBehaviour
 
             NetworkObject enemyNetwork = enemy.GetComponent<NetworkObject>();
             enemyNetwork.Spawn();
-            
-            
+
             if (!hasET1Appeared && enemy.CompareTag("BasicEnemy"))
             {
                 hasET1Appeared = true;
@@ -215,8 +226,7 @@ public class WaveManager : NetworkBehaviour
             }
             if (voidIndeces.Contains(randomEnemyOrder[nbEnemiesSpawnedThisWave]))
                 enemy.GetComponent<Enemy>().ThisEnemyIsVoid();
-            
-            
+
             nbEnemiesSpawnedThisWave++;
         }
     }
