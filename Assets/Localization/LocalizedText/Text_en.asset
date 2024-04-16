@@ -106,6 +106,18 @@ MonoBehaviour:
     m_Localized: English
     m_Metadata:
       m_Items: []
+  - m_Id: 17313868052164608
+    m_Localized: UI Navigation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17314349398880256
+    m_Localized: Aim
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17315023960403968
+    m_Localized: UI Select
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

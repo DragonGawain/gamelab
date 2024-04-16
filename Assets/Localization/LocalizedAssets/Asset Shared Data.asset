@@ -14,14 +14,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_TableCollectionName: Asset
   m_TableCollectionNameGuidString: dbdb1e3a86c30924385788f3011070de
-  m_Entries: []
+  m_Entries:
+  - m_Id: 17297148423958528
+    m_Key: CreditsMain
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17298017517301760
+    m_Key: CreditsTitle
+    m_Metadata:
+      m_Items: []
   m_Metadata:
-    m_Items: []
+    m_Items:
+    - rid: 1238784946251497475
   m_KeyGenerator:
     rid: 6841326932366721031
   references:
     version: 2
     RefIds:
+    - rid: 1238784946251497475
+      type: {class: AssetTypeMetadata, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries:
+        - m_KeyId: 17297148423958528
+          m_TableCodes:
+          - en
+          - fr
+        - m_KeyId: 17298017517301760
+          m_TableCodes:
+          - fr
+          - en
+        m_TypeString: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
     - rid: 6841326932366721031
       type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables,
         asm: Unity.Localization}

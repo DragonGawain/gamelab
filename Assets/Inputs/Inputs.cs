@@ -71,6 +71,33 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ControllerClick"",
+                    ""type"": ""Button"",
+                    ""id"": ""245407da-e0ee-4ce3-ae66-9b4aa5adda37"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""UIConfirm"",
+                    ""type"": ""Button"",
+                    ""id"": ""9a9e9887-daa7-4f4a-9e84-fd40b690f1ee"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""UISelect"",
+                    ""type"": ""Value"",
+                    ""id"": ""db795bd5-00be-491a-83ed-6cddb32beba6"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -379,6 +406,116 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""MoveMouse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2ae36fc1-2ce0-4947-9474-9b6c70567b09"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ControllerClick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0b29b3ec-537f-4be7-8636-ce0f07645fcc"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UIConfirm"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2a489cec-cd72-4fb5-9bf4-a1b4b2eb0fc9"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UIConfirm"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f8be8bd1-8927-4817-aa79-2ffd04794bde"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UIConfirm"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""a375be09-7820-45a1-908f-27ec1e724cfa"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UISelect"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""93bd5c0c-9c9b-42e4-a32b-e9d6b8d97e38"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UISelect"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""1b993613-f015-4d50-a16c-d5e8eb01c927"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UISelect"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""8663e400-459f-4acb-9565-a02be27062c9"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UISelect"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""7937e025-807a-4c19-a4a3-a88343f308f3"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UISelect"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""715dc8db-7557-42de-84a3-ebb719e832a5"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UISelect"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 }
@@ -971,6 +1108,9 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
         m_Player_SwapWeapon = m_Player.FindAction("SwapWeapon", throwIfNotFound: true);
         m_Player_MousePos = m_Player.FindAction("MousePos", throwIfNotFound: true);
         m_Player_MoveMouse = m_Player.FindAction("MoveMouse", throwIfNotFound: true);
+        m_Player_ControllerClick = m_Player.FindAction("ControllerClick", throwIfNotFound: true);
+        m_Player_UIConfirm = m_Player.FindAction("UIConfirm", throwIfNotFound: true);
+        m_Player_UISelect = m_Player.FindAction("UISelect", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1049,6 +1189,9 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_SwapWeapon;
     private readonly InputAction m_Player_MousePos;
     private readonly InputAction m_Player_MoveMouse;
+    private readonly InputAction m_Player_ControllerClick;
+    private readonly InputAction m_Player_UIConfirm;
+    private readonly InputAction m_Player_UISelect;
     public struct PlayerActions
     {
         private @Inputs m_Wrapper;
@@ -1058,6 +1201,9 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
         public InputAction @SwapWeapon => m_Wrapper.m_Player_SwapWeapon;
         public InputAction @MousePos => m_Wrapper.m_Player_MousePos;
         public InputAction @MoveMouse => m_Wrapper.m_Player_MoveMouse;
+        public InputAction @ControllerClick => m_Wrapper.m_Player_ControllerClick;
+        public InputAction @UIConfirm => m_Wrapper.m_Player_UIConfirm;
+        public InputAction @UISelect => m_Wrapper.m_Player_UISelect;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1082,6 +1228,15 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
             @MoveMouse.started += instance.OnMoveMouse;
             @MoveMouse.performed += instance.OnMoveMouse;
             @MoveMouse.canceled += instance.OnMoveMouse;
+            @ControllerClick.started += instance.OnControllerClick;
+            @ControllerClick.performed += instance.OnControllerClick;
+            @ControllerClick.canceled += instance.OnControllerClick;
+            @UIConfirm.started += instance.OnUIConfirm;
+            @UIConfirm.performed += instance.OnUIConfirm;
+            @UIConfirm.canceled += instance.OnUIConfirm;
+            @UISelect.started += instance.OnUISelect;
+            @UISelect.performed += instance.OnUISelect;
+            @UISelect.canceled += instance.OnUISelect;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1101,6 +1256,15 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
             @MoveMouse.started -= instance.OnMoveMouse;
             @MoveMouse.performed -= instance.OnMoveMouse;
             @MoveMouse.canceled -= instance.OnMoveMouse;
+            @ControllerClick.started -= instance.OnControllerClick;
+            @ControllerClick.performed -= instance.OnControllerClick;
+            @ControllerClick.canceled -= instance.OnControllerClick;
+            @UIConfirm.started -= instance.OnUIConfirm;
+            @UIConfirm.performed -= instance.OnUIConfirm;
+            @UIConfirm.canceled -= instance.OnUIConfirm;
+            @UISelect.started -= instance.OnUISelect;
+            @UISelect.performed -= instance.OnUISelect;
+            @UISelect.canceled -= instance.OnUISelect;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1288,6 +1452,9 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
         void OnSwapWeapon(InputAction.CallbackContext context);
         void OnMousePos(InputAction.CallbackContext context);
         void OnMoveMouse(InputAction.CallbackContext context);
+        void OnControllerClick(InputAction.CallbackContext context);
+        void OnUIConfirm(InputAction.CallbackContext context);
+        void OnUISelect(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

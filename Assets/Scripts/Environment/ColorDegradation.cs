@@ -13,11 +13,13 @@ public class ColorDegradation : MonoBehaviour
     static List<Color> initColors = new();
     static List<Material> mats = new();
     static Color drained = new(0.5f, 0.5f, 0.5f);
-    static int totalHP = 0;
-    static int currentHP = 0;
+    static int totalHP = 100;
+    static int currentHP = 100;
 
     private void Awake()
     {
+        totalHP = 0;
+        totalHP = 0;
         GetMats(GameObject.FindGameObjectWithTag("House").transform);
 
         foreach (GameObject core in GameObject.FindGameObjectsWithTag("DreamCore"))
@@ -67,5 +69,10 @@ public class ColorDegradation : MonoBehaviour
             mat.color = Color.Lerp(drained, initColors[i], (float)currentHP / (float)totalHP);
             i++;
         }
+    }
+
+    public static void ColorDegradationMasterReset()
+    {
+        currentHP = 0;
     }
 }
