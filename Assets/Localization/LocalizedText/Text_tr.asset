@@ -118,6 +118,10 @@ MonoBehaviour:
     m_Localized: "Kullan\u0131c\u0131 Aray\xFCz\xFC Se\xE7imi"
     m_Metadata:
       m_Items: []
+  - m_Id: 17338775767085056
+    m_Localized: Kombinasyonlar
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

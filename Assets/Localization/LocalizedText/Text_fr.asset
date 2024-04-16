@@ -118,6 +118,10 @@ MonoBehaviour:
     m_Localized: "S\xE9lection dan l'UI"
     m_Metadata:
       m_Items: []
+  - m_Id: 17338775767085056
+    m_Localized: Combinaisons
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
