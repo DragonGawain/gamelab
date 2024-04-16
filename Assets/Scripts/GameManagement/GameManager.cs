@@ -99,6 +99,7 @@ public class GameManager : MonoBehaviour
             core.gameObject.SetActive(true);
             core.DCoreMasterReset();
         }
+        ColorDegradation.ColorDegradationMasterReset();
     }
 
     public static void AddToMasterDCoreList(DCore core)
