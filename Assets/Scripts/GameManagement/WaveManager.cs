@@ -40,7 +40,7 @@ public class WaveManager : NetworkBehaviour
         enemyType1 = Resources.Load<GameObject>("EnemyType1");
         enemyType2 = Resources.Load<GameObject>("EnemyType2");
         enemyType3 = Resources.Load<GameObject>("EnemyType3");
-        
+
         currentWave = 0;
         PlayerSpawner.PlayerSpawn += StartNextWave;
         PlayerSpawner.PlayerSpawn += () => gameStart = true;
@@ -60,7 +60,6 @@ public class WaveManager : NetworkBehaviour
 
     public static void WaveManagerMasterReset()
     {
-        
         currentWave = 0;
         GameObject[] vos = GameObject.FindGameObjectsWithTag("VoidHole");
         // foreach (GameObject vo in vos)
@@ -211,17 +210,17 @@ public class WaveManager : NetworkBehaviour
             NetworkObject enemyNetwork = enemy.GetComponent<NetworkObject>();
             enemyNetwork.Spawn();
 
-            if (!hasET1Appeared && enemy.CompareTag("BasicEnemy"))
+            if (!hasET1Appeared && enemy.CompareTag(enemyType1.tag))
             {
                 hasET1Appeared = true;
                 uim.ShowEnemy1Popup();
             }
-            if (!hasET2Appeared && enemy.CompareTag("ComboEnemy"))
+            if (!hasET2Appeared && enemy.CompareTag(enemyType2.tag))
             {
                 hasET2Appeared = true;
                 uim.ShowEnemy2Popup();
             }
-            if (!hasET3Appeared && enemy.CompareTag("VoidEnemy"))
+            if (!hasET3Appeared && enemy.CompareTag(enemyType3.tag))
             {
                 hasET3Appeared = true;
                 uim.ShowEnemy3Popup();
