@@ -64,6 +64,7 @@ public class PlayerManager : MonoBehaviour
             if (isDarkPlayerDead)
             {
                 // TODO: actually implement this
+                Debug.Log("BOTH PLAYERS DEAD LOSS");
                 GameManager.SetYouLose();
             }
             lightRespawnTimer--;
