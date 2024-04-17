@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 2305010198420070299}
   - component: {fileID: 392224214406953871}
   - component: {fileID: 5802454483193607565}
-  - component: {fileID: -8443588072998781421}
   - component: {fileID: -1974535567241365514}
+  - component: {fileID: -8443588072998781421}
   - component: {fileID: -375656087766148992}
   m_Layer: 8
   m_Name: Bullet
@@ -153,18 +153,7 @@ MonoBehaviour:
   particles: {fileID: 0}
   vfx: {fileID: 0}
   bulletObject: {fileID: 619358578417660589}
---- !u!114 &-8443588072998781421
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 619358578417660589}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b7f026afd1455641abcfd4de64f73fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  shootAudio: {fileID: 0}
 --- !u!114 &-1974535567241365514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 665313599
+  GlobalObjectIdHash: 3856460222
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -186,6 +175,18 @@ MonoBehaviour:
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 0
+--- !u!114 &-8443588072998781421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619358578417660589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b7f026afd1455641abcfd4de64f73fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &-375656087766148992
 MonoBehaviour:
   m_ObjectHideFlags: 0
