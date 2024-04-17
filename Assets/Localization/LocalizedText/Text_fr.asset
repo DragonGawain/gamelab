@@ -122,6 +122,44 @@ MonoBehaviour:
     m_Localized: Combinaisons
     m_Metadata:
       m_Items: []
+  - m_Id: 17444753351110656
+    m_Localized: 'LUNA
+
+      Lance Balles
+
+      Lance Balles
+
+      Lance Flammes
+
+      Lance
+      Flammes'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17444843142770688
+    m_Localized: 'ORI
+
+      Lance Grenades
+
+      Marteau
+
+      Lance Grenades
+
+      Marteau'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17444870619656192
+    m_Localized: 'COMBO
+
+      Barrage de balles
+
+      Lance Balles Superieur
+
+      Nuage
+      de poison
+
+      Marteau Superieur'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

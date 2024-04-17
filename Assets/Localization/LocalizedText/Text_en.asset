@@ -122,6 +122,43 @@ MonoBehaviour:
     m_Localized: Combos
     m_Metadata:
       m_Items: []
+  - m_Id: 17444753351110656
+    m_Localized: 'LUNA
+
+      Bullet Blaster
+
+      Bullet Blaster
+
+      Flamethrower
+
+      Flamthrower'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17444843142770688
+    m_Localized: 'ORI
+
+      Grenade Launcher
+
+      Hammer
+
+      Grenade Launcher
+
+      Hammer'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17444870619656192
+    m_Localized: 'COMBO
+
+      Bullet Barrage
+
+      Super Blaster
+
+      Poison
+      Cloud
+
+      Super Hammer'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

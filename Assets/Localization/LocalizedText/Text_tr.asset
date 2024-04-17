@@ -122,6 +122,21 @@ MonoBehaviour:
     m_Localized: Kombinasyonlar
     m_Metadata:
       m_Items: []
+  - m_Id: 17444843142770688
+    m_Localized: "ORI\nEl bombas\u0131 f\u0131rlat\u0131c\u0131\n\xC7eki\xE7\nEl
+      bombas\u0131 f\u0131rlat\u0131c\u0131\n\xC7eki\xE7"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17444753351110656
+    m_Localized: "LUNA\nKur\u015Fun P\xFCsk\xFCrt\xFCc\xFC\nKur\u015Fun P\xFCsk\xFCrt\xFCc\xFC\nAlev
+      makinesi\nAlev makinesi"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17444870619656192
+    m_Localized: "KOMBINASYON\nMermi Baraj\u0131\nS\xFCper Patlat\u0131c\u0131\nZehir
+      Bulutu\nS\xFCper \xC7eki\xE7"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
