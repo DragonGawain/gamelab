@@ -319,11 +319,13 @@ public class UIManager : NetworkBehaviour
     public void ShowWinScreen()
     {
         ShowCanvas(WinScreen);
+        Time.timeScale = 0;
     }
 
     public void ShowLoseScreen()
     {
         ShowCanvas(LoseScreen);
+        Time.timeScale = 0;
     }
 
     public void ShowPause()
@@ -372,6 +374,7 @@ public class UIManager : NetworkBehaviour
     {
         NetworkManager.Singleton.Shutdown();
         ShowMainMenu();
+        Time.timeScale = 1;
 
         // Play sound effect
         backAudio.Play();

@@ -19,7 +19,6 @@ public class ColorDegradation : MonoBehaviour
     private void Start()
     {
         totalHP = 0;
-        currentHP = 0;
         GetMats(GameObject.FindGameObjectWithTag("House").transform);
 
         foreach (GameObject core in GameObject.FindGameObjectsWithTag("DreamCore"))
