@@ -20,7 +20,7 @@ namespace Weapons.ComboWeapons
             }
             else
             {
-                //Debug.Log("WTFFFFF: " + other.gameObject + " and " + this.gameObject);
+                
 
             }
 

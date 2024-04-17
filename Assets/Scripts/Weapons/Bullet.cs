@@ -1,8 +1,9 @@
+using Unity.Netcode;
 using UnityEngine;
 
 namespace Weapons
 {
-    public class Bullet : MonoBehaviour
+    public class Bullet : NetworkBehaviour
     {
         readonly int dmg = 20;
 
