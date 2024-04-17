@@ -74,6 +74,6 @@ public class ColorDegradation : MonoBehaviour
 
     public static void ColorDegradationMasterReset()
     {
-        currentHP = 0;
+        currentHP = 400;
     }
 }
