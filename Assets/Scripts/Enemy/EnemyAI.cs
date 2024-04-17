@@ -37,6 +37,9 @@ public class EnemyAI : MonoBehaviour
 
     [SerializeField]
     private Transform target; // transform component of the target
+    
+    // Animator
+    public Animator animator;
 
     //TODO:DELETE LATER IF NEVER USED
     // // creating health variable and getter-setter for health
@@ -119,6 +122,7 @@ public class EnemyAI : MonoBehaviour
         }
         else if (state == EnemyState.ChasingPlayer)
         {
+            
             GetDreamcoreTarget();
         }
 
@@ -127,6 +131,10 @@ public class EnemyAI : MonoBehaviour
             // it means that it is arrived to the wall slot
             if (state == EnemyState.GoingToDreamCore)
             {
+
+                //if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Walk"))
+                animator.SetTrigger("OnWalk");
+                
                 // if enemy were walking to the dream core,
                 state = EnemyState.AtDreamCore;
                 // first attack to the dream core, the first call will be 0.5f
@@ -135,10 +143,12 @@ public class EnemyAI : MonoBehaviour
 
             if (state == EnemyState.ChasingPlayer)
             {
+                animator.SetTrigger("OnWalk");
                 PerformAttackOnPlayer();
             }
             else if (state == EnemyState.NoDreamCoreState)
             {
+                animator.SetTrigger("OnIdle");
                 state = EnemyState.NoDreamCoreState;
             }
         }

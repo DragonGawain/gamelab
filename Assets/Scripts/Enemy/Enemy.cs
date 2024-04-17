@@ -47,7 +47,8 @@ public class Enemy : NetworkBehaviour
         _renderer.material = material;
         originalColor = material.color;
         enemyAI = GetComponent<EnemyAI>();
-        
+        enemyAI.animator = this.animator;
+
     }
 
     // Start is called before the first frame update
@@ -123,12 +124,6 @@ public class Enemy : NetworkBehaviour
     {
         WaveManager.EnemyDied();
         
-        // Death animation
-        if (animator != null)
-        {
-            animator.SetTrigger("OnDeath");
-        }
-        
         if (isVoid)
         {
             GameObject vo = Instantiate(voidHolePrefab, transform.position, Quaternion.identity);
@@ -139,6 +134,14 @@ public class Enemy : NetworkBehaviour
 
             WaveManager.VoidEnemyDied(vo);
         }
+        
+        // Death animation
+        if (animator != null)
+        {
+            animator.SetTrigger("OnDeath");
+            
+        }
+        
         Destroy(this.gameObject);
     }
 

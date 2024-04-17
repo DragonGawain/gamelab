@@ -57,6 +57,7 @@ MonoBehaviour:
   playerTarget: {fileID: 0}
   dCoreTarget: {fileID: 0}
   target: {fileID: 0}
+  animator: {fileID: 0}
   damage: 10
 --- !u!195 &5665598030155847574
 NavMeshAgent:
@@ -134,7 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 395833884
+  GlobalObjectIdHash: 4103437741
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -290,6 +291,22 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: b2031b43ea609694e8e9c8930dd5f97a, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 12aa751007c374343a4397cd2b33c81e,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 1e75e135a88b9e241a742ecd50396c1b, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 12aa751007c374343a4397cd2b33c81e,
+        type: 3}
+      propertyPath: m_WarningMessage
+      value: "\nBinding warning: Some generic clip(s) animate transforms that are
+        already bound by a Humanoid avatar. These transforms can only be changed
+        by Humanoid clips.\n\tTransform 'mixamorig:Hips'\n\tTransform 'mixamorig:LeftFoot'\n\tTransform
+        'mixamorig:LeftHandIndex1'\n\tTransform 'mixamorig:Spine1'\n\tTransform 'mixamorig:LeftToeBase'\n\tTransform
+        'mixamorig:RightArm'\n\tTransform 'mixamorig:LeftLeg'\n\tTransform 'mixamorig:LeftShoulder'\n\tTransform
+        'mixamorig:RightHandIndex3'\n\tTransform 'mixamorig:RightFoot'\n\tand more
+        ...\n\tFrom animation clip 'Hit'\n\tFrom animation clip 'Death'"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
