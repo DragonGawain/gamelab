@@ -130,7 +130,7 @@ public class DCore : NetworkBehaviour
 
     // Why snake case :hands:
     // Why define variables not at the top :hands:
-    private float heal_tick_rate = 0.5f;
+    private float heal_tick_rate = 1f;
     private float heal_time = 0;
 
     private void FixedUpdate()
@@ -139,9 +139,11 @@ public class DCore : NetworkBehaviour
         {
             if (Time.time > heal_time)
             {
-                health += 15;
+                health += 12;
                 health = Math.Min(100, health);
                 heal_time = Time.time + heal_tick_rate;
+                OnHealthChanged?.Invoke((float)health / 1); // Invoke the event, passing the current health percentage
+
             }
         }
 
