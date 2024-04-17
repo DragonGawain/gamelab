@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 4103437741
+  GlobalObjectIdHash: 180487326
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -158,7 +158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   damage: 25
-  _renderer: {fileID: 3637724529450773789}
+  _renderer: {fileID: 0}
   dotTick: 25
   voidHolePrefab: {fileID: 6480600198031667789, guid: 3412cbc85eebefd49b2f64d65f316190,
     type: 3}
@@ -393,12 +393,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12aa751007c374343a4397cd2b33c81e, type: 3}
---- !u!137 &3637724529450773789 stripped
-SkinnedMeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -4196013023752696869, guid: 12aa751007c374343a4397cd2b33c81e,
-    type: 3}
-  m_PrefabInstance: {fileID: 8628632235642037958}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8085569024233095469 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 12aa751007c374343a4397cd2b33c81e,

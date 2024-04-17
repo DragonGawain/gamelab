@@ -159,7 +159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   damage: 12
-  _renderer: {fileID: 7655396042513807873}
+  _renderer: {fileID: 0}
   dotTick: 25
   voidHolePrefab: {fileID: 6480600198031667789, guid: 3412cbc85eebefd49b2f64d65f316190,
     type: 3}
@@ -307,13 +307,7 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
-  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
-    are already bound by a Humanoid avatar. These transforms can only be changed
-    by Humanoid clips.\n\tTransform 'mixamorig:Hips'\n\tTransform 'mixamorig:LeftFoot'\n\tTransform
-    'mixamorig:LeftHandIndex1'\n\tTransform 'mixamorig:Spine1'\n\tTransform 'mixamorig:RightArm'\n\tTransform
-    'mixamorig:LeftLeg'\n\tTransform 'mixamorig:LeftShoulder'\n\tTransform 'mixamorig:RightHandIndex3'\n\tTransform
-    'mixamorig:RightFoot'\n\tTransform 'mixamorig:Head'\n\tand more ...\n\tFrom animation
-    clip 'Hit'"
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
@@ -424,12 +418,6 @@ PrefabInstance:
 --- !u!4 &2914694530513294897 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 24e8b1146fb996043a6a9ae210fed32f,
-    type: 3}
-  m_PrefabInstance: {fileID: 3456981410478928346}
-  m_PrefabAsset: {fileID: 0}
---- !u!137 &7655396042513807873 stripped
-SkinnedMeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -4196013023752696869, guid: 24e8b1146fb996043a6a9ae210fed32f,
     type: 3}
   m_PrefabInstance: {fileID: 3456981410478928346}
   m_PrefabAsset: {fileID: 0}
