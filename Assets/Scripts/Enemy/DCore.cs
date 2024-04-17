@@ -17,10 +17,10 @@ public class DCore : NetworkBehaviour
 
     private int healers = 0;
 
-    [SerializeField]
-    private TextMeshProUGUI Warning;
+    //[SerializeField]
+    //private TextMeshProUGUI Warning;
 
-    private int warningTimer = 0 ;
+    //private int warningTimer = 0 ;
 
     // public getter method for health
     public int GetHealth
@@ -35,7 +35,7 @@ public class DCore : NetworkBehaviour
    
     private void Awake()
     {
-        Warning.enabled = false;
+        //Warning.enabled = false;
 
         // when OnCoreDestroyed event is triggered, run the DestructibleByEnemy_OnDestroyed method
         // (here I assign a method to a event)
@@ -74,8 +74,8 @@ public class DCore : NetworkBehaviour
         ColorDegradation.UpdateGlobalHP(amount);
         //Debug.Log(health);
         OnHealthChanged?.Invoke((float)health / 1); // Invoke the event, passing the current health percentage
-        Warning.enabled = true;
-        warningTimer = 100;
+        //Warning.enabled = true;
+        //warningTimer = 100;
         // dream core gets damage with this method
         // it returns true if the dream core is destroyed
         // or it returns false if dream core is still alive after the damage
@@ -144,14 +144,14 @@ public class DCore : NetworkBehaviour
             }
         }
 
-        if (warningTimer > 0)
-        {
-            warningTimer--;
-        }
+        //if (warningTimer > 0)
+        //{
+        //    warningTimer--;
+        //}
 
-        if (warningTimer <= 0)
-        {
-            Warning.enabled = false;
-        }
+        //if (warningTimer <= 0)
+        //{
+        //    Warning.enabled = false;
+        //}
     }
 }
