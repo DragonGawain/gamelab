@@ -13,8 +13,8 @@ public class ColorDegradation : MonoBehaviour
     static List<Color> initColors = new();
     static List<Material> mats = new();
     static Color drained = new(0.5f, 0.5f, 0.5f);
-    static int totalHP = 100;
-    static int currentHP = 100;
+    static int totalHP = 400;
+    static int currentHP = 400;
 
     private void Start()
     {
@@ -56,6 +56,7 @@ public class ColorDegradation : MonoBehaviour
 
     public static void UpdateGlobalHP(int dmg)
     {
+        Debug.Log("COLOR DEGRAD CURRENT HP: " + currentHP);
         currentHP -= dmg;
         if (currentHP <= 0)
         {
@@ -73,6 +74,6 @@ public class ColorDegradation : MonoBehaviour
 
     public static void ColorDegradationMasterReset()
     {
-        currentHP = 0;
+        currentHP = 400;
     }
 }

@@ -95,7 +95,7 @@ public class GameManager : MonoBehaviour
         // Called from PlayerManager.FixedUpdate
         // Called from ColorDegradation.UpdateGlobalHP
         Debug.Log("players lose :(");
-        uim.ShowLoseScreen();
+        //uim.ShowLoseScreen();
     }
 
     public static void MasterReset()

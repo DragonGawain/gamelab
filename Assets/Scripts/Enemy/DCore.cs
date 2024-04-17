@@ -17,10 +17,10 @@ public class DCore : NetworkBehaviour
 
     private int healers = 0;
 
-    [SerializeField]
-    private TextMeshProUGUI Warning;
+    //[SerializeField]
+    //private TextMeshProUGUI Warning;
 
-    private int warningTimer = 0 ;
+    //private int warningTimer = 0 ;
 
     // public getter method for health
     public int GetHealth
@@ -32,10 +32,10 @@ public class DCore : NetworkBehaviour
     // [SerializeField]
     // private SO_TargetManager soTargetManager;
 
-   
+
     private void Awake()
     {
-        Warning.enabled = false;
+        //Warning.enabled = false;
 
         // when OnCoreDestroyed event is triggered, run the DestructibleByEnemy_OnDestroyed method
         // (here I assign a method to a event)
@@ -74,17 +74,16 @@ public class DCore : NetworkBehaviour
         ColorDegradation.UpdateGlobalHP(amount);
         //Debug.Log(health);
         OnHealthChanged?.Invoke((float)health / 1); // Invoke the event, passing the current health percentage
-        Warning.enabled = true;
-        warningTimer = 100;
+        //Warning.enabled = true;
+        //warningTimer = 100;
         // dream core gets damage with this method
         // it returns true if the dream core is destroyed
         // or it returns false if dream core is still alive after the damage
     }
 
-  
     private float damage_tick_rate = 1.5f;
     private float damage_time = 0;
-    
+
     public bool GetDamage(int amount)
     {
         if (Time.time > damage_time)
@@ -95,7 +94,7 @@ public class DCore : NetworkBehaviour
         {
             return false;
         }
-        
+
         if (IsServer)
             GetDamageServerRpc(amount);
 
@@ -130,7 +129,7 @@ public class DCore : NetworkBehaviour
 
     // Why snake case :hands:
     // Why define variables not at the top :hands:
-    private float heal_tick_rate = 0.5f;
+    private float heal_tick_rate = 1f;
     private float heal_time = 0;
 
     private void FixedUpdate()
@@ -139,19 +138,22 @@ public class DCore : NetworkBehaviour
         {
             if (Time.time > heal_time)
             {
-                health += 15;
+                health += 12;
+                health = Math.Min(100, health);
                 heal_time = Time.time + heal_tick_rate;
+                OnHealthChanged?.Invoke((float)health / 1); // Invoke the event, passing the current health percentage
+                ColorDegradation.UpdateGlobalHP(-12);
             }
         }
 
-        if (warningTimer > 0)
-        {
-            warningTimer--;
-        }
+        //if (warningTimer > 0)
+        //{
+        //    warningTimer--;
+        //}
 
-        if (warningTimer <= 0)
-        {
-            Warning.enabled = false;
-        }
+        //if (warningTimer <= 0)
+        //{
+        //    Warning.enabled = false;
+        //}
     }
 }

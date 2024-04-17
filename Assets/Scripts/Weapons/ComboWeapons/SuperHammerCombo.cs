@@ -11,7 +11,7 @@ namespace Weapons
         private void OnTriggerStay(Collider other)
         {
 
-            if (other.gameObject.CompareTag("FireParticles"))
+            if (other.gameObject.CompareTag("FlameHitBox"))
             {
                 //Debug.Log("here!!!!!!!!!: " + other.gameObject + " and " + this.gameObject);
                 Flamethrower flamethrower = other.gameObject.GetComponentInParent<Flamethrower>();
