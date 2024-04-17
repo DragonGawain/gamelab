@@ -13,7 +13,7 @@ public class DCore : NetworkBehaviour
     public event Action<float> OnHealthChanged; // Added this line for changing the health bar
 
     // default health for a dream core is 100
-    private int health = 100;
+    public int health = 100;
 
     private int healers = 0;
 
@@ -82,9 +82,20 @@ public class DCore : NetworkBehaviour
     }
 
   
-
+    private float damage_tick_rate = 1.5f;
+    private float damage_time = 0;
+    
     public bool GetDamage(int amount)
     {
+        if (Time.time > damage_time)
+        {
+            damage_time = Time.time + damage_tick_rate;
+        }
+        else
+        {
+            return false;
+        }
+        
         if (IsServer)
             GetDamageServerRpc(amount);
 
@@ -128,7 +139,7 @@ public class DCore : NetworkBehaviour
         {
             if (Time.time > heal_time)
             {
-                health += 2;
+                health += 15;
                 heal_time = Time.time + heal_tick_rate;
             }
         }

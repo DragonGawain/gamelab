@@ -122,6 +122,72 @@ MonoBehaviour:
     m_Localized: Combinaisons
     m_Metadata:
       m_Items: []
+  - m_Id: 17444753351110656
+    m_Localized: 'LUNA
+
+      Lance Balles
+
+      Lance Balles
+
+      Lance Flammes
+
+      Lance
+      Flammes'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17444843142770688
+    m_Localized: 'ORI
+
+      Lance Grenades
+
+      Marteau
+
+      Lance Grenades
+
+      Marteau'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17444870619656192
+    m_Localized: 'COMBO
+
+      Barrage de balles
+
+      Lance Balles Superieur
+
+      Nuage
+      de poison
+
+      Marteau Superieur'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17448481630187520
+    m_Localized: Lance Balles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17448500038987776
+    m_Localized: Lance Flammes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17448554082594816
+    m_Localized: Lance Grenades
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17448515088150528
+    m_Localized: Marteau
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17450620490346496
+    m_Localized: "Partagez ce code avec votre ami pour jouer\_!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17450936912834560
+    m_Localized: Entrez votre code ami ici !
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17451258968272896
+    m_Localized: Joindre
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
