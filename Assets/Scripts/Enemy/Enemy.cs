@@ -36,9 +36,6 @@ public class Enemy : NetworkBehaviour
 
     [SerializeField]
     GameObject voidHolePrefab;
-
-    [SerializeField]
-    AudioSource voidAudio;
     
     // Animator
     protected Animator animator;
@@ -49,7 +46,6 @@ public class Enemy : NetworkBehaviour
         material = Instantiate(_renderer.material);
         _renderer.material = material;
         originalColor = material.color;
-
         enemyAI = GetComponent<EnemyAI>();
         
     }
@@ -57,7 +53,6 @@ public class Enemy : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        voidAudio = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
     }
 
@@ -143,7 +138,6 @@ public class Enemy : NetworkBehaviour
             net_voidHole.Spawn();
 
             WaveManager.VoidEnemyDied(vo);
-            voidAudio.Play();
         }
         Destroy(this.gameObject);
     }
