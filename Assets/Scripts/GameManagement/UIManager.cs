@@ -108,19 +108,23 @@ public class UIManager : NetworkBehaviour
 
     public static UIManager UISingleton;
 
-    
-
     [Header("AUDIO")]
-    [SerializeField] AudioSource confirmAudio;
+    [SerializeField]
+    AudioSource confirmAudio;
 
-    [SerializeField] AudioSource backAudio;
-    
-    [SerializeField] AudioSource confirmLongAudio;
-    
+    [SerializeField]
+    AudioSource backAudio;
+
+    [SerializeField]
+    AudioSource confirmLongAudio;
+
     private RelayConnect relayConnect;
 
     private string joinCode = null;
-    
+
+    bool isPuased = false;
+
+    Inputs physicalInputs;
 
     private void Start()
     {
@@ -143,7 +147,7 @@ public class UIManager : NetworkBehaviour
         {
             // Playing sound effect
             confirmAudio.Play();
-            
+
             // Storing the join code as a string
             joinCode = await relayConnect.StartHostWithRelay();
             Debug.Log("join code: " + joinCode);
@@ -151,30 +155,33 @@ public class UIManager : NetworkBehaviour
         });
 
         // When the player presses 'Join' button, take to join canvas
-        joinButton.onClick.AddListener((() =>
-        {
-            ShowJoin();
-            
-            // Playing sound effect
-            confirmAudio.Play();
-        }));
+        joinButton.onClick.AddListener(
+            (
+                () =>
+                {
+                    ShowJoin();
+
+                    // Playing sound effect
+                    confirmAudio.Play();
+                }
+            )
+        );
 
         joinCodeButton.onClick.AddListener(async () =>
         {
             Debug.Log(inputField.text.ToUpper());
 
             bool result = false;
-            
+
             try
             {
                 result = await relayConnect.StartClientWithRelay(inputField.text.ToUpper());
             }
             catch (Exception)
             {
-                
                 // Playing sound effect
                 confirmLongAudio.Play();
-                
+
                 inputField.image.color = Color.red;
                 throw;
             }
@@ -183,10 +190,9 @@ public class UIManager : NetworkBehaviour
             {
                 // Playing sound effect
                 confirmLongAudio.Play();
-                
+
                 inputField.image.color = Color.green;
                 ShowPlayerSelect();
-                
             }
         });
         // settingsButton.onClick.AddListener(ShowSettings);
@@ -197,9 +203,12 @@ public class UIManager : NetworkBehaviour
 
 
         ShowMainMenu();
+        physicalInputs = GameManager.GetInputActionsAsset();
+        physicalInputs.Player.Pause.performed += PauseAction;
     }
 
     private bool switched = false;
+
     public void Update()
     {
         if (closePlayerSelect)
@@ -212,6 +221,14 @@ public class UIManager : NetworkBehaviour
             ShowPlayerSelect();
             switched = true;
         }
+    }
+
+    void PauseAction(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
+    {
+        if (!isPuased)
+            unPause();
+        else
+            ShowPause();
     }
 
     public void ShowCanvas(GameObject canvas)
@@ -275,8 +292,6 @@ public class UIManager : NetworkBehaviour
         ShowCanvas(JoinCanvas);
     }
 
-    
-
     public void ShowPlayerSelect()
     {
         ShowCanvas(PlayerSelectCanvas);
@@ -314,12 +329,14 @@ public class UIManager : NetworkBehaviour
     public void ShowPause()
     {
         ShowCanvas(PauseCanvas);
+        isPuased = true;
         PauseGame();
     }
 
     public void unPause()
     {
         ShowCanvas(GameCanvas);
+        isPuased = false;
         ResumeGame();
     }
 
@@ -347,7 +364,7 @@ public class UIManager : NetworkBehaviour
                 ShowPause();
                 break;
         }
-        
+
         // Play sound effect
         backAudio.Play();
     }
@@ -356,7 +373,7 @@ public class UIManager : NetworkBehaviour
     {
         NetworkManager.Singleton.Shutdown();
         ShowMainMenu();
-        
+
         // Play sound effect
         backAudio.Play();
     }

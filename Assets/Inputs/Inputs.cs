@@ -98,6 +98,15 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Press"",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""6494d25c-5e85-4c77-b559-1584e5b185bf"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -518,6 +527,39 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
                     ""action"": ""UISelect"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5a6333fe-58f8-43c8-8dc3-d49799d3f1b1"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b179f0fb-c058-4f2e-9ea8-5dc648511cea"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3fc9de96-ae17-4313-81aa-96aec997d2fc"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -1133,6 +1175,7 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
         m_Player_ControllerClick = m_Player.FindAction("ControllerClick", throwIfNotFound: true);
         m_Player_UIConfirm = m_Player.FindAction("UIConfirm", throwIfNotFound: true);
         m_Player_UISelect = m_Player.FindAction("UISelect", throwIfNotFound: true);
+        m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1214,6 +1257,7 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_ControllerClick;
     private readonly InputAction m_Player_UIConfirm;
     private readonly InputAction m_Player_UISelect;
+    private readonly InputAction m_Player_Pause;
     public struct PlayerActions
     {
         private @Inputs m_Wrapper;
@@ -1226,6 +1270,7 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
         public InputAction @ControllerClick => m_Wrapper.m_Player_ControllerClick;
         public InputAction @UIConfirm => m_Wrapper.m_Player_UIConfirm;
         public InputAction @UISelect => m_Wrapper.m_Player_UISelect;
+        public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1259,6 +1304,9 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
             @UISelect.started += instance.OnUISelect;
             @UISelect.performed += instance.OnUISelect;
             @UISelect.canceled += instance.OnUISelect;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1287,6 +1335,9 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
             @UISelect.started -= instance.OnUISelect;
             @UISelect.performed -= instance.OnUISelect;
             @UISelect.canceled -= instance.OnUISelect;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1477,6 +1528,7 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
         void OnControllerClick(InputAction.CallbackContext context);
         void OnUIConfirm(InputAction.CallbackContext context);
         void OnUISelect(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
