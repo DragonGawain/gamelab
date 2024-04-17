@@ -192,6 +192,9 @@ public class UIManager : NetworkBehaviour
             {
                 // Playing sound effect
                 confirmLongAudio.Play();
+                
+                // Starting game music
+                combatMusic.Play();
 
                 inputField.image.color = Color.green;
                 ShowPlayerSelect();
@@ -215,10 +218,6 @@ public class UIManager : NetworkBehaviour
     {
         if (closePlayerSelect)
         {
-            if (!combatMusic.isPlaying)
-            {
-                combatMusic.Play();
-            }
             
             PlayerSelectCanvas.SetActive(false);
         }
