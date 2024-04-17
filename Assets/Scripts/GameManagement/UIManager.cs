@@ -354,14 +354,13 @@ public class UIManager : NetworkBehaviour
 
     public void BackButton()
     {
-        ResumeGame();
         switch (pauseState)
         {
             case PauseState.ISONMAINMENU:
                 ShowMainMenu();
                 break;
             case PauseState.ISPLAYING:
-                ShowPause();
+                unPause();
                 break;
         }
 
