@@ -73,15 +73,6 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""ControllerClick"",
-                    ""type"": ""Button"",
-                    ""id"": ""245407da-e0ee-4ce3-ae66-9b4aa5adda37"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""UIConfirm"",
                     ""type"": ""Button"",
                     ""id"": ""9a9e9887-daa7-4f4a-9e84-fd40b690f1ee"",
@@ -417,17 +408,6 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
                     ""action"": ""MoveMouse"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""2ae36fc1-2ce0-4947-9474-9b6c70567b09"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ControllerClick"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
@@ -1194,7 +1174,6 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
         m_Player_SwapWeapon = m_Player.FindAction("SwapWeapon", throwIfNotFound: true);
         m_Player_MousePos = m_Player.FindAction("MousePos", throwIfNotFound: true);
         m_Player_MoveMouse = m_Player.FindAction("MoveMouse", throwIfNotFound: true);
-        m_Player_ControllerClick = m_Player.FindAction("ControllerClick", throwIfNotFound: true);
         m_Player_UIConfirm = m_Player.FindAction("UIConfirm", throwIfNotFound: true);
         m_Player_UISelect = m_Player.FindAction("UISelect", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
@@ -1276,7 +1255,6 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_SwapWeapon;
     private readonly InputAction m_Player_MousePos;
     private readonly InputAction m_Player_MoveMouse;
-    private readonly InputAction m_Player_ControllerClick;
     private readonly InputAction m_Player_UIConfirm;
     private readonly InputAction m_Player_UISelect;
     private readonly InputAction m_Player_Pause;
@@ -1289,7 +1267,6 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
         public InputAction @SwapWeapon => m_Wrapper.m_Player_SwapWeapon;
         public InputAction @MousePos => m_Wrapper.m_Player_MousePos;
         public InputAction @MoveMouse => m_Wrapper.m_Player_MoveMouse;
-        public InputAction @ControllerClick => m_Wrapper.m_Player_ControllerClick;
         public InputAction @UIConfirm => m_Wrapper.m_Player_UIConfirm;
         public InputAction @UISelect => m_Wrapper.m_Player_UISelect;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
@@ -1317,9 +1294,6 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
             @MoveMouse.started += instance.OnMoveMouse;
             @MoveMouse.performed += instance.OnMoveMouse;
             @MoveMouse.canceled += instance.OnMoveMouse;
-            @ControllerClick.started += instance.OnControllerClick;
-            @ControllerClick.performed += instance.OnControllerClick;
-            @ControllerClick.canceled += instance.OnControllerClick;
             @UIConfirm.started += instance.OnUIConfirm;
             @UIConfirm.performed += instance.OnUIConfirm;
             @UIConfirm.canceled += instance.OnUIConfirm;
@@ -1348,9 +1322,6 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
             @MoveMouse.started -= instance.OnMoveMouse;
             @MoveMouse.performed -= instance.OnMoveMouse;
             @MoveMouse.canceled -= instance.OnMoveMouse;
-            @ControllerClick.started -= instance.OnControllerClick;
-            @ControllerClick.performed -= instance.OnControllerClick;
-            @ControllerClick.canceled -= instance.OnControllerClick;
             @UIConfirm.started -= instance.OnUIConfirm;
             @UIConfirm.performed -= instance.OnUIConfirm;
             @UIConfirm.canceled -= instance.OnUIConfirm;
@@ -1547,7 +1518,6 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
         void OnSwapWeapon(InputAction.CallbackContext context);
         void OnMousePos(InputAction.CallbackContext context);
         void OnMoveMouse(InputAction.CallbackContext context);
-        void OnControllerClick(InputAction.CallbackContext context);
         void OnUIConfirm(InputAction.CallbackContext context);
         void OnUISelect(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);

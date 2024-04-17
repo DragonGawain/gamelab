@@ -51,15 +51,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "ControllerClick",
-                    "type": "Button",
-                    "id": "245407da-e0ee-4ce3-ae66-9b4aa5adda37",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "UIConfirm",
                     "type": "Button",
                     "id": "9a9e9887-daa7-4f4a-9e84-fd40b690f1ee",
@@ -395,17 +386,6 @@
                     "action": "MoveMouse",
                     "isComposite": false,
                     "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "2ae36fc1-2ce0-4947-9474-9b6c70567b09",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ControllerClick",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 },
                 {
                     "name": "",
