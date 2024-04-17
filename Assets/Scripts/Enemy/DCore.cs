@@ -32,7 +32,7 @@ public class DCore : NetworkBehaviour
     // [SerializeField]
     // private SO_TargetManager soTargetManager;
 
-   
+
     private void Awake()
     {
         //Warning.enabled = false;
@@ -81,10 +81,9 @@ public class DCore : NetworkBehaviour
         // or it returns false if dream core is still alive after the damage
     }
 
-  
     private float damage_tick_rate = 1.5f;
     private float damage_time = 0;
-    
+
     public bool GetDamage(int amount)
     {
         if (Time.time > damage_time)
@@ -95,7 +94,7 @@ public class DCore : NetworkBehaviour
         {
             return false;
         }
-        
+
         if (IsServer)
             GetDamageServerRpc(amount);
 
@@ -143,7 +142,7 @@ public class DCore : NetworkBehaviour
                 health = Math.Min(100, health);
                 heal_time = Time.time + heal_tick_rate;
                 OnHealthChanged?.Invoke((float)health / 1); // Invoke the event, passing the current health percentage
-
+                ColorDegradation.UpdateGlobalHP(-12);
             }
         }
 

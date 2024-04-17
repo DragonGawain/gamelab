@@ -56,6 +56,7 @@ public class ColorDegradation : MonoBehaviour
 
     public static void UpdateGlobalHP(int dmg)
     {
+        Debug.Log("COLOR DEGRAD CURRENT HP: " + currentHP);
         currentHP -= dmg;
         if (currentHP <= 0)
         {
