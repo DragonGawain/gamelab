@@ -176,6 +176,18 @@ MonoBehaviour:
     m_Localized: Marteau
     m_Metadata:
       m_Items: []
+  - m_Id: 17450620490346496
+    m_Localized: "Partagez ce code avec votre ami pour jouer\_!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17450936912834560
+    m_Localized: Entrez votre code ami ici !
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17451258968272896
+    m_Localized: Joindre
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

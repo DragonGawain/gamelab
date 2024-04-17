@@ -175,6 +175,18 @@ MonoBehaviour:
     m_Localized: Hammer
     m_Metadata:
       m_Items: []
+  - m_Id: 17450620490346496
+    m_Localized: Share this code with your friend to play!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17450936912834560
+    m_Localized: Enter your friend code here!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17451258968272896
+    m_Localized: Join
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
