@@ -66,7 +66,6 @@ namespace Players
 
         private void Awake()
         {
-            
             vfx.Stop();
             
             physicalInputs = new Inputs();
