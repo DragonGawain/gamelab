@@ -510,19 +510,8 @@
                 },
                 {
                     "name": "",
-                    "id": "3fc9de96-ae17-4313-81aa-96aec997d2fc",
-                    "path": "<Keyboard>/escape",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Pause",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "475a1480-e343-4385-83d6-c45611ec53a2",
-                    "path": "<Keyboard>/p",
+                    "id": "3e594a22-fc1a-49ac-a510-5ba36e497f5f",
+                    "path": "<Keyboard>/tab",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
