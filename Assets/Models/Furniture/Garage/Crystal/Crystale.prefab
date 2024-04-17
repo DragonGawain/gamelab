@@ -506,7 +506,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5561366267350933924
 Transform:
   m_ObjectHideFlags: 0
@@ -516,7 +516,7 @@ Transform:
   m_GameObject: {fileID: 8786035166625526005}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0, z: 0.03758}
+  m_LocalPosition: {x: 0, y: 0, z: 0.03056}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -533,8 +533,8 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 1, g: 0.2783019, b: 0.2783019, a: 1}
-  m_Intensity: 1
+  m_Color: {r: 0.504717, g: 1, b: 0.89713174, a: 1}
+  m_Intensity: 10
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -782,6 +782,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2042da7d22a51194797aaad115f8ece0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Warning: {fileID: 0}
 --- !u!114 &2552100961507070028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -830,8 +831,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f096cedfa750744d88f6a87ba7f41877, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crystalParticles1: {fileID: 0}
-  crystalParticles2: {fileID: 0}
   musicAudioSource: {fileID: 7635850412042946940}
 --- !u!82 &7635850412042946940
 AudioSource:
