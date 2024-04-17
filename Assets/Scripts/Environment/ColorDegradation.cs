@@ -60,6 +60,7 @@ public class ColorDegradation : MonoBehaviour
         if (currentHP <= 0)
         {
             // TODO: actually implement this
+            Debug.Log("COLOR DEGRADATION LOSS");
             GameManager.SetYouLose();
         }
         int i = 0;
