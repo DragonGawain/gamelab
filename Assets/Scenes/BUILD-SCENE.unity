@@ -3673,6 +3673,11 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2617119900203054953, guid: ffff310cd6cd9df4487f5fff607940b4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3136998628134592080, guid: ffff310cd6cd9df4487f5fff607940b4,
         type: 3}
       propertyPath: m_fontColor.b
@@ -6595,6 +6600,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy1 POPUP
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471314890863618026, guid: 928a447bd208b4ca5b4cd5228f1f92d1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5277442434982733877, guid: 928a447bd208b4ca5b4cd5228f1f92d1,
         type: 3}
@@ -19279,7 +19289,7 @@ PrefabInstance:
     - target: {fileID: 7901495630319631184, guid: 1498db2abb30bc64fab3bf9d73a04f41,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8001260469380920008, guid: 1498db2abb30bc64fab3bf9d73a04f41,
         type: 3}
