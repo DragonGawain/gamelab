@@ -160,6 +160,22 @@ MonoBehaviour:
       Marteau Superieur'
     m_Metadata:
       m_Items: []
+  - m_Id: 17448481630187520
+    m_Localized: Lance Balles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17448500038987776
+    m_Localized: Lance Flammes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17448554082594816
+    m_Localized: Lance Grenades
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17448515088150528
+    m_Localized: Marteau
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

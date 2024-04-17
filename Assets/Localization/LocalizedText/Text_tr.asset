@@ -137,6 +137,22 @@ MonoBehaviour:
       Bulutu\nS\xFCper \xC7eki\xE7"
     m_Metadata:
       m_Items: []
+  - m_Id: 17448481630187520
+    m_Localized: "Kur\u015Fun P\xFCsk\xFCrt\xFCc\xFC"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17448500038987776
+    m_Localized: Alev makinesi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17448554082594816
+    m_Localized: "El bombas\u0131 f\u0131rlat\u0131c\u0131"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17448515088150528
+    m_Localized: "\xC7eki\xE7"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
