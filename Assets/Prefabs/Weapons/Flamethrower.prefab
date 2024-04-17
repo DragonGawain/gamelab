@@ -122,6 +122,7 @@ GameObject:
   - component: {fileID: 634212828308203642}
   - component: {fileID: 5994752615539571729}
   - component: {fileID: 8257513896691335026}
+  - component: {fileID: 479056111410082561}
   m_Layer: 0
   m_Name: FlameHitbox
   m_TagString: FlameHitBox
@@ -179,6 +180,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac39cee484a37cb4b938ef270cc7ba0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &479056111410082561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6774655979530078354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4114531125bfb4665bf8959f6cac6379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DOTAudio: {fileID: 7733066279169684750}
 --- !u!1 &8973999602560017180
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,7 +205,6 @@ GameObject:
   - component: {fileID: 7830794301040452377}
   - component: {fileID: -3977294934916775856}
   - component: {fileID: -6998092408961798089}
-  - component: {fileID: 9057686391003895764}
   - component: {fileID: 7733066279169684750}
   - component: {fileID: 1458499287583807206}
   - component: {fileID: 5785003217887540947}
@@ -290,19 +303,6 @@ MonoBehaviour:
   InLocalSpace: 0
   Interpolate: 1
   SlerpPosition: 0
---- !u!114 &9057686391003895764
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8973999602560017180}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4114531125bfb4665bf8959f6cac6379, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DOTAudio: {fileID: 7733066279169684750}
 --- !u!82 &7733066279169684750
 AudioSource:
   m_ObjectHideFlags: 0
