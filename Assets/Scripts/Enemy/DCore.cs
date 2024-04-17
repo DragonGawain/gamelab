@@ -140,6 +140,7 @@ public class DCore : NetworkBehaviour
             if (Time.time > heal_time)
             {
                 health += 15;
+                health = Math.Min(100, health);
                 heal_time = Time.time + heal_tick_rate;
             }
         }
