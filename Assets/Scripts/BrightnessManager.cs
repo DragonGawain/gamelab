@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class BrightnessManager : MonoBehaviour
 {
     [SerializeField] private Slider brightnessSlider;
-    [SerializeField] private Light sceneLight;
     [SerializeField] private TextMeshProUGUI brightnessVolumeText;
     [SerializeField] private Volume postProcessObject;
     private ColorAdjustments _brightnessAdjustments;
