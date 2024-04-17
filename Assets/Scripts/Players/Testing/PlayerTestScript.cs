@@ -20,6 +20,9 @@ namespace Players
         protected Animator animator;
         protected Weapon currentWeapon;
         [SerializeField] protected VisualEffect vfx;
+        [SerializeField] protected VisualEffect dustFX;
+        [SerializeField] protected AudioSource walkingSound;
+        
         public event Action<float> OnHealthChanged; //changing health bar
 
         //Network stuff
@@ -67,6 +70,7 @@ namespace Players
         private void Awake()
         {
             vfx.Stop();
+            dustFX.Stop();
             
             physicalInputs = new Inputs();
             physicalInputs.Player.Enable();
@@ -91,6 +95,7 @@ namespace Players
         private void Start()
         {
             vfx.Stop();
+            dustFX.Stop();
         }
 
         private void FixedUpdate()
@@ -109,6 +114,14 @@ namespace Players
                 {
                     if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
                         animator.SetTrigger("OnRun");
+
+                    if (!walkingSound.isPlaying)
+                    {
+                        walkingSound.Play();
+                    }
+
+                    dustFX.Play();
+                    
                 }
             }
             else
@@ -117,6 +130,9 @@ namespace Players
                 {
                     if (animator.GetCurrentAnimatorStateInfo(0).IsName("Running"))
                         animator.SetTrigger("OnIdle");
+                    
+                    walkingSound.Stop();
+                    dustFX.Stop();
                 }
             }
 

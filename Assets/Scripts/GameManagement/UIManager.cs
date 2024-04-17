@@ -118,6 +118,8 @@ public class UIManager : NetworkBehaviour
     [SerializeField]
     AudioSource confirmLongAudio;
 
+    [SerializeField] private AudioSource combatMusic;
+
     private RelayConnect relayConnect;
 
     private string joinCode = null;
@@ -213,6 +215,11 @@ public class UIManager : NetworkBehaviour
     {
         if (closePlayerSelect)
         {
+            if (!combatMusic.isPlaying)
+            {
+                combatMusic.Play();
+            }
+            
             PlayerSelectCanvas.SetActive(false);
         }
 
