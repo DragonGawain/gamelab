@@ -191,12 +191,12 @@ public class SelectPlayer : NetworkBehaviour
 
         if (hostChoice.Value == 0)
         {
-            Debug.Log("host done");
+            //Debug.Log("host done");
             lightReady.SetActive(true);
         }
         if (hostChoice.Value == 1)
         {
-            Debug.Log("host done");
+            //Debug.Log("host done");
             darkReady.SetActive(true);
         }
 
