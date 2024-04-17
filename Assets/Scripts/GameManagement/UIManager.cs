@@ -118,6 +118,8 @@ public class UIManager : NetworkBehaviour
     [SerializeField]
     AudioSource confirmLongAudio;
 
+    [SerializeField] private AudioSource combatMusic;
+
     private RelayConnect relayConnect;
 
     private string joinCode = null;
@@ -190,6 +192,9 @@ public class UIManager : NetworkBehaviour
             {
                 // Playing sound effect
                 confirmLongAudio.Play();
+                
+                // Starting game music
+                combatMusic.Play();
 
                 inputField.image.color = Color.green;
                 ShowPlayerSelect();
@@ -213,6 +218,7 @@ public class UIManager : NetworkBehaviour
     {
         if (closePlayerSelect)
         {
+            
             PlayerSelectCanvas.SetActive(false);
         }
 

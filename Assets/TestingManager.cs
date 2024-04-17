@@ -26,10 +26,10 @@ public class TestingManager : NetworkBehaviour
     
 
     
-    public void UpdateHealth(TextMeshProUGUI TMP, int health)
-    {
-        TMP.text = health.ToString();
-    }
+    // public void UpdateHealth(TextMeshProUGUI TMP, int health)
+    // {
+    //     TMP.text = health.ToString();
+    // }
 
     public void Update()
     {
