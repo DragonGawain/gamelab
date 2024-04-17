@@ -210,17 +210,17 @@ public class WaveManager : NetworkBehaviour
             NetworkObject enemyNetwork = enemy.GetComponent<NetworkObject>();
             enemyNetwork.Spawn();
 
-            if (!hasET1Appeared && enemy.CompareTag(enemyType1.tag))
+            if (!hasET1Appeared && currentWave == 1)
             {
                 hasET1Appeared = true;
                 uim.ShowEnemy1Popup();
             }
-            if (!hasET2Appeared && enemy.CompareTag(enemyType2.tag))
+            if (!hasET2Appeared && currentWave == 2)
             {
                 hasET2Appeared = true;
                 uim.ShowEnemy2Popup();
             }
-            if (!hasET3Appeared && enemy.CompareTag(enemyType3.tag))
+            if (!hasET3Appeared && currentWave == 3)
             {
                 hasET3Appeared = true;
                 uim.ShowEnemy3Popup();
