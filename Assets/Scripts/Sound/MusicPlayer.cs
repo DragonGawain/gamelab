@@ -1,16 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class MusicPlayer : MonoBehaviour
 {
     // public ParticleSystem crystalParticles1; // Reference to the Particle System component
     // public ParticleSystem crystalParticles2; // Reference to the Particle System component
 
-    public AudioSource musicAudioSource; // Reference to the AudioSource component for playing music
+    private VisualEffect lightParticles;
+    private VisualEffect darkParticles;
 
-    ParticleSystem lightParticles = null;
-    ParticleSystem darkParticles = null;
+    public AudioSource musicAudioSource; // Reference to the AudioSource component for playing music
+    
     DCore core;
 
     private void Awake()
@@ -26,14 +28,14 @@ public class MusicPlayer : MonoBehaviour
     {
         if (other.CompareTag("LightPlayer")) // Check if the collider belongs to the player
         {
-            lightParticles = other.gameObject.GetComponentInChildren<ParticleSystem>();
+            lightParticles = other.gameObject.GetComponentInChildren<VisualEffect>();
             lightParticles.Play();
 
             musicAudioSource.Play(); // Play the music
         }
         if (other.CompareTag("DarkPlayer")) // Check if the collider belongs to the player
         {
-            darkParticles = other.gameObject.GetComponentInChildren<ParticleSystem>();
+            darkParticles = other.gameObject.GetComponentInChildren<VisualEffect>();
             darkParticles.Play();
 
             musicAudioSource.Play(); // Play the music
@@ -45,16 +47,16 @@ public class MusicPlayer : MonoBehaviour
         if (other.CompareTag("LightPlayer")) // Check if the collider belongs to the player
         {
             other.gameObject
-                .GetComponentInChildren<ParticleSystem>()
-                .Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+                .GetComponentInChildren<VisualEffect>()
+                .Stop();
             lightParticles = null;
             musicAudioSource.Stop(); // Play the music
         }
         if (other.CompareTag("DarkPlayer")) // Check if the collider belongs to the player
         {
             other.gameObject
-                .GetComponentInChildren<ParticleSystem>()
-                .Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+                .GetComponentInChildren<VisualEffect>()
+                .Stop();
             darkParticles = null;
             musicAudioSource.Stop(); // Play the music
         }
@@ -65,9 +67,9 @@ public class MusicPlayer : MonoBehaviour
         if (coreHP <= 0)
         {
             if (lightParticles != null)
-                lightParticles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+                lightParticles.Stop();
             if (darkParticles != null)
-                darkParticles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+                darkParticles.Stop();
         }
     }
 }
