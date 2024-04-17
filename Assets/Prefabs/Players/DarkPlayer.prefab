@@ -524,7 +524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 262823024
+  GlobalObjectIdHash: 3324557488
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -545,7 +545,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d113bfb3c03a9e047a4462b0d39233fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vfx: {fileID: 0}
+  vfx: {fileID: 7617727154305236848}
   lightPlayer: {fileID: 595387465054001676, guid: 64fbb6de6daaa614a8c9ebac0239daea,
     type: 3}
   darkPlayer: {fileID: 6164403967038991240}
