@@ -100,7 +100,7 @@ public class WaveManager : NetworkBehaviour
         }
         newVoidHoles = new();
         currentWave++;
-        uim.ShowWavePopup(currentWave);
+        //uim.ShowWavePopup(currentWave);
         GetWaveInfo(currentWave);
         nbEnemies = ET1 + ET2 + ET3;
         randomEnemyOrder = new();
@@ -216,17 +216,17 @@ public class WaveManager : NetworkBehaviour
             if (!hasET1Appeared && enemy.CompareTag("BasicEnemy"))
             {
                 hasET1Appeared = true;
-                uim.ShowEnemy1Popup();
+                //uim.ShowEnemy1Popup();
             }
             if (!hasET2Appeared && enemy.CompareTag("ComboEnemy"))
             {
                 hasET2Appeared = true;
-                uim.ShowEnemy2Popup();
+                //uim.ShowEnemy2Popup();
             }
             if (!hasET3Appeared && enemy.CompareTag("VoidEnemy"))
             {
                 hasET3Appeared = true;
-                uim.ShowEnemy3Popup();
+                //uim.ShowEnemy3Popup();
             }
             if (voidIndeces.Contains(randomEnemyOrder[nbEnemiesSpawnedThisWave]))
                 enemy.GetComponent<Enemy>().ThisEnemyIsVoid();
