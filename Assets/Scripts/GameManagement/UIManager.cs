@@ -388,21 +388,21 @@ public class UIManager : NetworkBehaviour
     public void ShowEnemy1Popup()
     {
         Enemy1Popup.SetActive(true);
-        PauseGame();
+        // PauseGame();
         StartCoroutine(HideEnemyPopupAfterDelay(Enemy1Popup, 5f));
     }
 
     public void ShowEnemy2Popup()
     {
         Enemy2Popup.SetActive(true);
-        PauseGame();
+        // PauseGame();
         StartCoroutine(HideEnemyPopupAfterDelay(Enemy2Popup, 5f));
     }
 
     public void ShowEnemy3Popup()
     {
         Enemy3Popup.SetActive(true);
-        PauseGame();
+        // PauseGame();
         StartCoroutine(HideEnemyPopupAfterDelay(Enemy3Popup, 5f));
     }
 
@@ -431,7 +431,7 @@ public class UIManager : NetworkBehaviour
                 break;
         }
 
-        PauseGame();
+        //PauseGame();
         StartCoroutine(HideWavePopupAfterDelay(5f, waveNb));
     }
 
