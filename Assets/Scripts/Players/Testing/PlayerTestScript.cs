@@ -66,6 +66,9 @@ namespace Players
 
         private void Awake()
         {
+            
+            vfx.Stop();
+            
             physicalInputs = new Inputs();
             physicalInputs.Player.Enable();
             // cam = camObject.GetComponent<Camera>();
