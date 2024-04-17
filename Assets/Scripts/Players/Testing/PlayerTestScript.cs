@@ -9,6 +9,7 @@ using DG.Tweening;
 using Sequence = DG.Tweening.Sequence;
 using System;
 using Unity.Netcode;
+using UnityEngine.VFX;
 
 namespace Players
 {
@@ -18,6 +19,7 @@ namespace Players
         private Vector3 direction;
         protected Animator animator;
         protected Weapon currentWeapon;
+        [SerializeField] protected VisualEffect vfx;
         public event Action<float> OnHealthChanged; //changing health bar
 
         //Network stuff
@@ -82,6 +84,11 @@ namespace Players
             physicalInputs.Player.Fire.performed += Fire;
             physicalInputs.Player.Fire.canceled += Fire;
             physicalInputs.Player.SwapWeapon.performed += SwapWeapon;
+        }
+
+        private void Start()
+        {
+            vfx.Stop();
         }
 
         private void FixedUpdate()

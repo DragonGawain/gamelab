@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 7344970976067780525}
   serializedVersion: 2
   m_LocalRotation: {x: 0.00000003774895, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.49, z: 0}
+  m_LocalPosition: {x: 0, y: 4.4, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -497,10 +497,6 @@ MonoBehaviour:
     m_ActionName: Player/MoveMouse[/XInputControllerWindows/rightStick,/Keyboard/i,/Keyboard/k,/Keyboard/j,/Keyboard/l]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 245407da-e0ee-4ce3-ae66-9b4aa5adda37
-    m_ActionName: Player/ControllerClick
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: 9a9e9887-daa7-4f4a-9e84-fd40b690f1ee
     m_ActionName: Player/ConfirmX[/Keyboard/x]
   - m_PersistentCalls:
@@ -509,8 +505,8 @@ MonoBehaviour:
     m_ActionName: Player/UILeft[/Keyboard/leftArrow]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: afbafa71-9b6e-4077-98f1-094c8879e4ab
-    m_ActionName: Player/UIRight[/Keyboard/rightArrow]
+    m_ActionId: 6494d25c-5e85-4c77-b559-1584e5b185bf
+    m_ActionName: Player/Pause[/DualShock4GamepadHID/select,/DualShock4GamepadHID/start,/Keyboard/escape,/Keyboard/p]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -549,6 +545,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d113bfb3c03a9e047a4462b0d39233fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vfx: {fileID: 7617727154305236848}
   lightPlayer: {fileID: 595387465054001676, guid: 64fbb6de6daaa614a8c9ebac0239daea,
     type: 3}
   darkPlayer: {fileID: 6164403967038991240}
