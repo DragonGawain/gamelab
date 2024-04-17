@@ -355,7 +355,7 @@ MonoBehaviour:
   confirmAudio: {fileID: 8582053981702699715}
   backAudio: {fileID: 7226599309891342313}
   confirmLongAudio: {fileID: 5508823079115124869}
-  combatMusic: {fileID: 0}
+  combatMusic: {fileID: 289867725578601965}
 --- !u!114 &2156159141011529784
 MonoBehaviour:
   m_ObjectHideFlags: 0
